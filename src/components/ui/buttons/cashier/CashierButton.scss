@@ -1,0 +1,12 @@
+@import '@/assets/scss/variables';
+.cashier {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:$button-gap-primary;
+  }
+}

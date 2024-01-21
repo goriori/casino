@@ -1,0 +1,31 @@
+@import 'variables';
+
+.title {
+  font-weight: 700;
+  font-size: 40px;
+  line-height: calc(59 / 40 * 100%);
+  text-align: center;
+  @media (max-width: $md5 + px) {
+    font-size: 24px;
+  }
+}
+
+.title-md {
+  font-size: 32px;
+  line-height: 100%;
+  font-weight: 400;
+}
+
+.subtitle {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+
+
+.text {
+  font-size: 16px;
+  line-height: 112%;
+}
+
+

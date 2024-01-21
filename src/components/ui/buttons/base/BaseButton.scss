@@ -1,0 +1,119 @@
+@import '@/assets/scss/variables';
+
+
+
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12.5px 20px;
+  font-size: 20px;
+  border: 1px solid transparent;
+  transition: 0.15s all ease-in-out;
+  // Size
+  &-small {
+    min-height: 49px;
+  }
+
+  &-medium {
+    min-height: 60px;
+  }
+
+  // Colors
+  &-primary {
+    background: $primary;
+    border-color: $primary;
+    color: $primary;
+
+    &:hover {
+      path {
+        fill: $secondary;
+      }
+
+      color: $secondary;
+      border-color: $secondary;
+    }
+  }
+
+  &-balance-primary {
+    background: $primary;
+    color: $white;
+    &:hover {
+      background: $secondary;
+    }
+  }
+
+ &-withdrawal-primary {
+   background: $primary;
+   color: $white;
+   &:hover {
+     background: $secondary;
+   }
+ }
+
+  &-cashier-primary {
+    color:$white;
+    background: $cashier-primary;
+    &:hover {
+      background: $cashier-secondary
+    }
+  }
+
+
+  &-provider-primary {
+    background: #262F61;
+    &:hover {
+      background: $secondary;
+    }
+  }
+
+  // Shadow
+
+  &-shadow-primary {
+    box-shadow: $shadow-primary;
+
+    &:hover {
+      box-shadow: $shadow-secondary;
+    }
+  }
+
+  // rounded
+  &-rounded-small {
+    border-radius: 16px;
+  }
+
+  &-rounded-full {
+    border-radius: 36px;
+  }
+
+  // outline
+
+  &-outlined {
+    background: none;
+  }
+
+  &-active {
+    background: $secondary;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

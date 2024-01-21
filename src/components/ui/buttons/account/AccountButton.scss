@@ -1,0 +1,10 @@
+@import '@/assets/scss/variables';
+
+.account {
+  &-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: $button-gap-primary;
+  }
+}
