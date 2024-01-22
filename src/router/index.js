@@ -1,14 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-const HomeView = () => import('@/pages/HomeView.vue')
+const AuthorizationView = () => import('@/pages/Authorization.vue')
+const MainView = () => import('@/pages/Main.vue')
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: HomeView,
+      name: 'authorization',
+      component: AuthorizationView,
+    },
+    {
+      path: '/main',
+      name: 'main',
+      component: MainView,
     },
   ],
 })

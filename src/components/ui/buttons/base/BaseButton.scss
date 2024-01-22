@@ -1,8 +1,6 @@
 @import '@/assets/scss/variables';
 
 
-
-
 .btn {
   position: relative;
   overflow: hidden;
@@ -20,6 +18,7 @@
 
   &-medium {
     min-height: 60px;
+    max-height: 60px;
   }
 
   // Colors
@@ -38,25 +37,32 @@
     }
   }
 
+  &-secondary {
+    background: #3E4C9D;
+  }
+
   &-balance-primary {
     background: $primary;
     color: $white;
+
     &:hover {
       background: $secondary;
     }
   }
 
- &-withdrawal-primary {
-   background: $primary;
-   color: $white;
-   &:hover {
-     background: $secondary;
-   }
- }
+  &-withdrawal-primary {
+    background: $primary;
+    color: $white;
+
+    &:hover {
+      background: $secondary;
+    }
+  }
 
   &-cashier-primary {
-    color:$white;
+    color: $white;
     background: $cashier-primary;
+
     &:hover {
       background: $cashier-secondary
     }
@@ -65,6 +71,7 @@
 
   &-provider-primary {
     background: #262F61;
+
     &:hover {
       background: $secondary;
     }

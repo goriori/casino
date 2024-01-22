@@ -4,13 +4,15 @@ import ProviderIcon from '@/components/ui/icons/provider/ProviderIcon.vue'
 </script>
 
 <template>
-  <div class="provider" >
-    <BaseButton rounded="small" color="provider-primary">
+  <div class="provider">
+    <BaseButton rounded="small" color="provider-primary" size="medium" class="provider-button">
       <div class="provider-content">
-        <ProviderIcon/>
+        <ProviderIcon />
       </div>
     </BaseButton>
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+@import 'ProviderButton';
+</style>
