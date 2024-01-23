@@ -98,6 +98,10 @@
 
     label {
       font-size: 14px;
+
+      @media (max-width: $md5 + px) {
+        font-size: 12px;
+      }
     }
   }
 
@@ -169,6 +173,14 @@ span {
 
   p {
     font-size: 12px;
+    @media (max-width: $md5 + px) {
+      font-size: 8px;
+    }
+  }
+  span{
+    @media (max-width: $md5 + px) {
+      font-size: 10px;
+    }
   }
 
 }
