@@ -1,8 +1,14 @@
 <script setup>
-import { testOutside, updateStateButton } from '@/components/modules/balance/BalanceModule.events.js'
+import {
+  closePopupReplenishment,
+  testOutside,
+  updateStateButton
+} from '@/components/modules/balance/BalanceModule.events.js'
 import {
   btnActive,
   navigation,
+  popupReplenishment,
+  popupSetting
 } from '@/components/modules/balance/BalanceModule.options.js'
 import BalanceButton from '@/components/ui/buttons/balance/BalanceButton.vue'
 import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
@@ -12,7 +18,7 @@ import WithdrawalPopup from '@/components/modules/balance/popups/withdrawal/With
 
 <template>
   <div class="balance-module" v-outside="testOutside" @click.stop>
-    <BalanceButton @is-active="updateStateButton" :is-active="btnActive"/>
+    <BalanceButton @is-active="updateStateButton" :is-active="btnActive" />
     <Transition name="fade">
       <div class="balance-module-popup" v-if="btnActive">
         <div class="popup-title">Ваш баланс</div>
@@ -31,6 +37,7 @@ import WithdrawalPopup from '@/components/modules/balance/popups/withdrawal/With
             v-ripple
             v-for="nav in navigation"
             :key="nav.id"
+            @click="nav.handler"
           >
             <div class="navigation-item-content">
               <img :src="`/images/icons/${nav.icon}.svg`" alt="" />
@@ -39,12 +46,18 @@ import WithdrawalPopup from '@/components/modules/balance/popups/withdrawal/With
             <div class="navigation-item-action">
               <ArrowIcon />
             </div>
+
           </div>
         </div>
       </div>
     </Transition>
     <Teleport to="body">
-      <WithdrawalPopup/>
+      <WithdrawalPopup
+        :setting="popupSetting"
+        @close="closePopupReplenishment"
+        v-if="popupReplenishment"
+        @click.stop
+      />
     </Teleport>
   </div>
 </template>
