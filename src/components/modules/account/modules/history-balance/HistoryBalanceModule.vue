@@ -27,20 +27,38 @@
       </div>
       <hr />
       <div class="history__balance-module-info">
-        <div class="info-title-items">
-          <div class="info-title">Дата</div>
-          <div class="info-title">Тип</div>
-          <div class="info-title">Описание</div>
-          <div class="info-title">Сумма</div>
-          <div class="info-title">Статус</div>
-        </div>
-        <div class="info-content-items">
-          <div class="info-content">01.01.2024</div>
-          <div class="info-content">Отправление</div>
-          <div class="info-content">evoplay</div>
-          <div class="info-content">500.00 Р</div>
-          <div class="info-content">Успешно</div>
-        </div>
+        <table>
+          <tr class="info-title-items">
+            <td class="info-title">Дата</td>
+            <td class="info-title">Тип</td>
+            <td class="info-title">Описание</td>
+            <td class="info-title">Сумма</td>
+            <td class="info-title">Статус</td>
+          </tr>
+
+          <tr class="info-content-item">
+            <td class="info-content">01.01.2024</td>
+            <td class="info-content">Отправление</td>
+            <td class="info-content">evoplay</td>
+            <td class="info-content">500.00 Р</td>
+            <td class="info-content">Успешно</td>
+          </tr>
+          <tr class="info-content-item">
+            <td class="info-content">01.01.2024</td>
+            <td class="info-content">Отправление</td>
+            <td class="info-content">evoplay</td>
+            <td class="info-content">500.00 Р</td>
+            <td class="info-content">Успешно</td>
+          </tr>
+          <tr class="info-content-item">
+            <td class="info-content">01.01.2024</td>
+            <td class="info-content">Отправление</td>
+            <td class="info-content">evoplay</td>
+            <td class="info-content">500.00 Р</td>
+            <td class="info-content">Успешно</td>
+          </tr>
+
+        </table>
       </div>
     </div>
   </div>
@@ -48,10 +66,12 @@
 
 <style scoped lang="scss">
 @import '@/assets/scss/variables';
+
 hr {
   height: 1px;
   background: #fff;
 }
+
 .history {
   &__balance {
     &-module {
@@ -100,8 +120,9 @@ hr {
         flex-direction: column;
         gap: 12px;
       }
+
       &-info {
-      display: flex;
+        display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: center;
@@ -113,27 +134,35 @@ hr {
 
 .info {
 
-  &-title-items {
-    display: grid;
-    grid-template-columns: repeat(5, 100px);
-    justify-content: start;
-    align-items: center;
-    gap: 86px;
-  }
 
   &-title {
     font-size: 14px;
     font-weight: 400;
-    color: #5570FB;
+    color: #5570fb;
   }
 
   &-content-items {
-    display: grid;
-    grid-template-columns: repeat(5, 100px);
-    justify-content: start;
-    align-items: center;
-    gap: 86px;
+    font-size: 14px;
+    color: #fff;
+  }
+
+  &-content-item {
+    color: #fff;
     font-size: 14px;
   }
+}
+tr {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 86px;
+  margin: 20px 0 0 0;
+}
+
+td {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+ width: 70px;
 }
 </style>

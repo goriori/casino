@@ -16,6 +16,7 @@ import RegistrationModule from '@/components/modules/registration/RegistrationMo
 <style scoped lang="scss">
 .page {
   color: #fff;
+
   &-modules {
     display: flex;
     flex-direction: column;

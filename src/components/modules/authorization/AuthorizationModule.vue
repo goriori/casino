@@ -1,14 +1,18 @@
 <script setup>
+import { useRouter } from 'vue-router'
+
 import { onChangeHiddenPassword, onAuthorization } from '@/components/modules/authorization/AuthorizationModule.events.js'
 import {
   pswrdHidden,
   formAuth,
 } from '@/components/modules/authorization/AuthorizationModule.options.js'
+
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import EmailIcon from '@/components/ui/icons/authorization/EmailIcon.vue'
 import HiddenIcon from '@/components/ui/icons/authorization/HiddenIcon.vue'
 import TelegramIcon from '@/components/ui/icons/authorization/TelegramIcon.vue'
 import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue'
+const router = useRouter()
 </script>
 
 <template>
@@ -65,7 +69,7 @@ import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue
     <div class="authorization-registration">
       <div class="authorization-registration-info">
         <p>Впервые на сайте?</p>
-        <span>Создать профиль</span>
+        <span @click="router.push('/registration')">Создать профиль</span>
       </div>
       <BaseButton color="primary" outline>
         <div class="btn-registration">

@@ -7,6 +7,7 @@ import {
 import BalanceButton from '@/components/ui/buttons/balance/BalanceButton.vue'
 import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 import ArrowIcon from '@/components/ui/icons/other/ArrowIcon.vue'
+import WithdrawalPopup from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.vue'
 </script>
 
 <template>
@@ -42,6 +43,9 @@ import ArrowIcon from '@/components/ui/icons/other/ArrowIcon.vue'
         </div>
       </div>
     </Transition>
+    <Teleport to="body">
+      <WithdrawalPopup/>
+    </Teleport>
   </div>
 </template>
 

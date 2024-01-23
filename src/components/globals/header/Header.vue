@@ -16,12 +16,12 @@ const page = ref(route.name)
       <img src="/images/logo.svg" alt="" />
     </div>
     <div class="header-actions">
-      <div class="header-actions-account" v-if="page !== 'authorization'">
+      <div class="header-actions-account" v-if="page !== 'authorization' || page !== 'registration'">
         <PersonalAccountModule />
         <BalanceModule />
         <CashierModule />
       </div>
-      <div class="header-actions-authorization" v-if="page === 'authorization'">
+      <div class="header-actions-authorization" v-if="page === 'authorization' || page === 'registration'">
         <SigninModule />
       </div>
     </div>
