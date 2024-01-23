@@ -1,11 +1,13 @@
 <script setup>
 import {
   onChangeHiddenPassword,
+  onChangeHiddenPasswordConfirm,
   onRegistration,
 } from '@/components/modules/registration/RegistrationModule.events.js'
 import {
   pswrdHidden,
   formReg,
+  pswrdCnfrmHidden,
 } from '@/components/modules/registration/RegistrationModule.options.js'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import EmailIcon from '@/components/ui/icons/authorization/EmailIcon.vue'
@@ -17,11 +19,44 @@ import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue
 <template>
   <div class="authorization-module">
     <div class="authorization-info">
-      <h1>Вход</h1>
-      <p>Введите свои учетные данные для доступа к вашему профилю</p>
+      <h1>Регистрация</h1>
+      <p>
+        Заполните форму<br />
+        для создания вашего профиля
+      </p>
     </div>
 
     <div class="authorization-form">
+      <div class="form-field">
+        <label>Имя</label><br />
+        <div class="form-field-input">
+          <input
+            type="text"
+            placeholder="Ввести имя"
+            v-model="formReg.first_name"
+          />
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Фамилия</label><br />
+        <div class="form-field-input">
+          <input
+            type="text"
+            placeholder="Ввести фамилию"
+            v-model="formReg.last_name"
+          />
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Дата рождения</label><br />
+        <div class="form-field-input">
+          <input
+            type="date"
+            placeholder="Ввести дату рождения"
+            v-model="formReg.birthday"
+          />
+        </div>
+      </div>
       <div class="form-field">
         <label>Логин</label><br />
         <div class="form-field-input">
@@ -45,6 +80,21 @@ import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue
           <HiddenIcon v-else @click="onChangeHiddenPassword" />
         </div>
       </div>
+      <div class="form-field">
+        <label>Подтвердите пароль</label><br />
+        <div class="form-field-input">
+          <input
+            :type="pswrdCnfrmHidden ? 'password' : 'text'"
+            placeholder="Ввести пароль"
+            v-model="formReg.password_confirmation"
+          />
+          <NotHiddenIcon
+            v-if="!pswrdCnfrmHidden"
+            @click="onChangeHiddenPasswordConfirm"
+          />
+          <HiddenIcon v-else @click="onChangeHiddenPasswordConfirm" />
+        </div>
+      </div>
     </div>
 
     <div class="authorization-accept">
@@ -61,7 +111,7 @@ import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue
 
     <div class="authorization-form-send">
       <BaseButton color="primary" @click="onRegistration">
-        <div class="btn-send-form">Войти в профиль</div>
+        <div class="btn-send-form">Зарегистрироваться</div>
       </BaseButton>
     </div>
 
