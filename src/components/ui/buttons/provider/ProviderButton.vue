@@ -5,7 +5,13 @@ import ProviderIcon from '@/components/ui/icons/provider/ProviderIcon.vue'
 
 <template>
   <div class="provider">
-    <BaseButton rounded="small" color="provider-primary" size="medium" class="provider-button">
+    <BaseButton
+      rounded="small"
+      color="provider-primary"
+      size="big"
+      class="provider-button"
+      shadow="none"
+    >
       <div class="provider-content">
         <ProviderIcon />
       </div>

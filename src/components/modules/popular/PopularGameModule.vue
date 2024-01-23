@@ -17,6 +17,7 @@ import PopularIcon from '@/components/ui/icons/popular/PopularIcon.vue'
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/scss/variables';
 .popular {
   &__game {
     &-module {
@@ -30,16 +31,26 @@ import PopularIcon from '@/components/ui/icons/popular/PopularIcon.vue'
         align-items: center;
         gap: 16px;
         font-size: 32px;
+
+        @media (max-width: $md4 + px) {
+          font-size: 20px;
+        }
       }
 
       &-items {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: flex-start;
-        //max-height: 605px;
-        //overflow-y: scroll;
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
         gap: 52px;
+
+        @media (max-width: 1640px) {
+          gap: 32px;
+        }
+        @media (max-width: $md2 + px) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        @media (max-width: $md4 + px) {
+          gap: 16px;
+        }
       }
     }
   }

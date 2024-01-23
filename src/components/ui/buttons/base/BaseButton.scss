@@ -22,6 +22,29 @@
     max-height: 60px;
   }
 
+  &-big{
+    padding: 20px 32px;
+
+    @media (max-width: 1900px) {
+      padding: 20px;
+    }
+
+    @media (max-width: 1700px) {
+      padding: 32px 16px;
+    }
+
+    @media (max-width: $md3 + px) {
+      padding: 22px 6px;
+      border-radius: 6px!important;
+      svg{
+        width: 100%;
+      }
+    }
+    @media (max-width: $md4 + px) {
+      padding: 12px 6px;
+    }
+  }
+
   // Colors
   &-primary {
     background: $primary;
