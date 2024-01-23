@@ -28,7 +28,7 @@ import PopularIcon from '@/components/ui/icons/popular/PopularIcon.vue'
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        gap: 10px;
+        gap: 16px;
         font-size: 32px;
       }
 

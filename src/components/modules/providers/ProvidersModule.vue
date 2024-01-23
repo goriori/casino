@@ -26,7 +26,7 @@ import ProviderMainIcon from '@/components/ui/icons/provider/ProviderMainIcon.vu
       display: flex;
       justify-content: flex-start;
       align-items: center;
-      gap: 10px;
+      gap: 16px;
       font-size: 32px;
     }
 

@@ -1,0 +1,52 @@
+
+@import '@/assets/scss/variables';
+
+.profile {
+  &-module {
+    width: 100%;
+    height: 100%;
+    padding: 18px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    background: #1d2345;
+    border-radius: 26px;
+    font-size: 24px;
+
+    &-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      color: $white;
+      font-weight: 600;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 36px;
+    }
+  }
+}
+
+.info {
+  &-item {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    text-align: center;
+    line-height: 145%;
+    h4 {
+      color: #bbb;
+      font-weight: 500;
+    }
+
+    p {
+      color: #5570fb;
+      font-weight: 700;
+    }
+  }
+}

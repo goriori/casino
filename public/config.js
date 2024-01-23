@@ -1,4 +1,7 @@
-window.API = 'https://jsonplaceholder.typicode.com'
+window.API = 'http://192.168.0.169'
 window.CEF = false
 window.TIMEOUT = 90
 window.IS_DEV = true
+
+window.TEST_TOKEN_AUTH =
+  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOi8vMTkyLjE2OC4wLjE2OS9hcGkvbG9naW4iLCJpYXQiOjE3MDU5OTIzNzksImV4cCI6MTcwNTk5NTk3OSwibmJmIjoxNzA1OTkyMzc5LCJqdGkiOiJ6cjFlekNKTURjUHQ2Z3NMTWM0eHJIUDBFWFlVWTh4YUxYeTR3VE9OIiwic3ViIjo2LCJwcnYiOiIzZWY2Y2Y4OWY1NTlhOTJiM2ViN2I3N2I4YzcyZGIzOWQ0N2VkYjYwIn0.RJsTqftUx1DHlp91Tzf9V0uHmTku68oinbjoOLmBya4'

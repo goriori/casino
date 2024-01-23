@@ -30,3 +30,10 @@
   </svg>
 </template>
 
+<style scoped lang="scss">
+svg {
+  cursor: pointer;
+}
+</style>
+<script setup>
+</script>
