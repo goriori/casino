@@ -99,7 +99,6 @@
     align-items: center;
     gap: 32px;
     border-bottom: 1px solid #ccc;
-
     div {
       cursor: pointer;
       border: 2px solid transparent;
@@ -113,6 +112,7 @@
   }
 
   &-item {
+    padding: 8px;
     &.active {
       color: #fff;
       border-bottom: 2px solid #5570fb;

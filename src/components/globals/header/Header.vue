@@ -8,6 +8,7 @@ import SigninModule from '@/components/modules/signin/SigninModule.vue'
 
 const route = useRoute()
 const page = ref(route.name)
+console.log(page.value)
 </script>
 
 <template>
