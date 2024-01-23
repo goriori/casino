@@ -9,7 +9,7 @@ import AttachIcon from '@/components/ui/icons/other/AttachIcon.vue'
 import { useTimer } from '@/utils/useTimer.js'
 
 const emits = defineEmits(['success', 'error'])
-const { currentTime, isTimerExpired, startTimer } = useTimer(60000)
+const { currentTime, isFinished, startTimer } = useTimer(15 * 60 * 1000)
 onMounted(() => {
   startTimer()
   onCheckStatusTranslation(emits)
@@ -25,7 +25,7 @@ onMounted(() => {
       </div>
       <div class="title-timer">
         <TimerIcon />
-        <p>00:00</p>
+        <p>{{ currentTime || '00:00'}}</p>
       </div>
     </div>
     <div class="confirm__translation-screen-info">

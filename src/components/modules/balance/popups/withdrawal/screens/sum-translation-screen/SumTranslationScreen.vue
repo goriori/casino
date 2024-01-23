@@ -7,9 +7,14 @@ import SberbankIcon from '@/components/ui/icons/other/SberbankIcon.vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import { onCheckStatusPay } from '@/components/modules/balance/popups/withdrawal/screens/sum-translation-screen/SumTranslationScreen.events.js'
 import { statusTranslation } from '@/components/modules/balance/popups/withdrawal/screens/sum-translation-screen/SumTranslationScreen.option.js'
+import { useTimer } from '@/utils/useTimer.js'
 
 const emits = defineEmits(['success', 'error'])
-onMounted(() => onCheckStatusPay(emits))
+const { currentTime, isFinished, startTimer } = useTimer(15 * 60 * 1000)
+onMounted(() => {
+  startTimer()
+  onCheckStatusPay(emits)
+})
 </script>
 
 <template>
@@ -18,7 +23,7 @@ onMounted(() => onCheckStatusPay(emits))
       <h4>Переведите по указанным реквизитам</h4>
       <div class="sum__translation-screen-timer">
         <TimerIcon />
-        <p>00:00</p>
+        <p>{{ currentTime || '00:00' }}</p>
       </div>
     </div>
     <div class="sum__translation-screen-attention">
