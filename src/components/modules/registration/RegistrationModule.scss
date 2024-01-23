@@ -1,0 +1,174 @@
+.authorization {
+  &-module {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    border-radius: 26px;
+    background: #1d2345;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+    padding: 32px 28px;
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+
+    h1 {
+      font-size: 28px;
+      font-weight: 600;
+    }
+
+    p {
+      font-size: 16px;
+      font-weight: 400;
+      color: #BBB;
+      max-width: 365px;
+      line-height: 145%;
+    }
+  }
+
+  &-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+
+    &-send {
+      width: 100%;
+    }
+  }
+
+  &-registration {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+
+    &-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+
+      p {
+        font-size: 12px;
+        color: #BBB;
+      }
+    }
+
+  }
+
+  &-accept {
+    width: 100%;
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 14px;
+    }
+  }
+}
+
+.accept {
+  &-item-field {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    input {
+      cursor: pointer;
+      width: 100%;
+      max-width: 24px;
+      min-height: 24px;
+      border: 1px solid transparent;
+
+    }
+
+    label {
+      font-size: 14px;
+    }
+  }
+
+  &-item-support {
+    flex: 1 0 auto;
+  }
+}
+
+
+span {
+  color: #5570FB;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.form {
+  &-field {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: start;
+    line-height: 145%;
+    font-size: 14px;
+
+    &-input {
+      width: 100%;
+      border: 1px solid #5570FB;
+      border-radius: 36px;
+      background: #fff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+
+
+    }
+
+    label {
+      font-weight: 500;
+
+    }
+
+    input {
+      width: 100%;
+      padding: 0 5px;
+      border-radius: 36px;
+      font-weight: 400;
+    }
+  }
+}
+
+.btn-send-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 100%;
+  color: #fff
+}
+
+
+.btn-registration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #fff;
+
+  p {
+    font-size: 12px;
+  }
+
+}
