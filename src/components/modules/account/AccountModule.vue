@@ -2,6 +2,7 @@
 import ProfileModule from '@/components/modules/account/modules/profile/ProfileModule.vue'
 import BalanceModule from '@/components/modules/account/modules/balance/BalanceModule.vue'
 import HistoryBalanceModule from '@/components/modules/account/modules/history-balance/HistoryBalanceModule.vue'
+import WithdrawalModule from '@/components/modules/account/modules/withdrawal/WithdrawalModule.vue'
 </script>
 
 <template>
@@ -31,6 +32,7 @@ import HistoryBalanceModule from '@/components/modules/account/modules/history-b
         <BalanceModule />
         <HistoryBalanceModule />
       </div>
+      <WithdrawalModule/>
     </div>
   </div>
 </template>
@@ -54,7 +56,7 @@ import HistoryBalanceModule from '@/components/modules/account/modules/history-b
     &-items {
       display: flex;
       justify-content: center;
-      align-items: center;
+      flex: 1 1 auto;
       gap: 48px;
     }
   }

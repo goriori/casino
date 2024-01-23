@@ -1,11 +1,11 @@
 <script setup>
 import {
   onChangeHiddenPassword,
-  onAuthorization,
+  onRegistration,
 } from '@/components/modules/registration/RegistrationModule.events.js'
 import {
   pswrdHidden,
-  formAuth,
+  formReg,
 } from '@/components/modules/registration/RegistrationModule.options.js'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import EmailIcon from '@/components/ui/icons/authorization/EmailIcon.vue'
@@ -28,7 +28,7 @@ import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue
           <input
             type="text"
             placeholder="Ввести логин"
-            v-model="formAuth.username"
+            v-model="formReg.username"
           />
           <EmailIcon />
         </div>
@@ -39,7 +39,7 @@ import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue
           <input
             :type="pswrdHidden ? 'password' : 'text'"
             placeholder="Ввести пароль"
-            v-model="formAuth.password"
+            v-model="formReg.password"
           />
           <NotHiddenIcon v-if="!pswrdHidden" @click="onChangeHiddenPassword" />
           <HiddenIcon v-else @click="onChangeHiddenPassword" />
@@ -60,7 +60,7 @@ import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue
     </div>
 
     <div class="authorization-form-send">
-      <BaseButton color="primary" @click="onAuthorization">
+      <BaseButton color="primary" @click="onRegistration">
         <div class="btn-send-form">Войти в профиль</div>
       </BaseButton>
     </div>

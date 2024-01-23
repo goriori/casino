@@ -57,6 +57,8 @@ import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
     padding: 18px 48px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 36px;
     background: #1d2345;
     border-radius: 26px;

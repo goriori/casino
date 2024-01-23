@@ -14,4 +14,11 @@ import AccountModule from '@/components/modules/account/AccountModule.vue'
   </div>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+.page {
+  color: #fff;
+  &-modules {
+    padding: 24px 48px;
+  }
+}
+</style>
