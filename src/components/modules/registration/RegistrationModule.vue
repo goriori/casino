@@ -117,8 +117,8 @@ import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue
 
     <div class="authorization-registration">
       <div class="authorization-registration-info">
-        <p>Впервые на сайте?</p>
-        <span>Создать профиль</span>
+        Я прочитал и согласен с
+        <span>Правилами Использования Сервиса</span>
       </div>
       <BaseButton color="primary" outline>
         <div class="btn-registration">

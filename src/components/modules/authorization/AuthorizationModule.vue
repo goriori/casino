@@ -1,7 +1,10 @@
 <script setup>
 import { useRouter } from 'vue-router'
 
-import { onChangeHiddenPassword, onAuthorization } from '@/components/modules/authorization/AuthorizationModule.events.js'
+import {
+  onChangeHiddenPassword,
+  onAuthorization,
+} from '@/components/modules/authorization/AuthorizationModule.events.js'
 import {
   pswrdHidden,
   formAuth,
@@ -68,7 +71,7 @@ const router = useRouter()
 
     <div class="authorization-registration">
       <div class="authorization-registration-info">
-        <p>Впервые на сайте?</p>
+        Впервые на сайте?
         <span @click="router.push('/registration')">Создать профиль</span>
       </div>
       <BaseButton color="primary" outline>
