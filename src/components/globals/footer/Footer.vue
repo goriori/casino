@@ -4,14 +4,18 @@ import ChatIcon from '@/components/ui/icons/footer/ChatIcon.vue'
 import ArrowUpIcon from '@/components/ui/icons/footer/ArrowUpIcon.vue'
 import MoveUpIcon from '@/components/ui/icons/other/MoveUpIcon.vue'
 import MoveUpModule from '@/components/modules/move-up/MoveUpModule.vue'
+import PopupPolicy from '@/ui/popups/PopupPolicy/PopupPolicy.vue'
+import { togglePrivacy } from './Footer.events.js'
+import { isPolicyOpen } from './Footer.options.js'
 </script>
 
 <template>
   <footer class="footer">
+    <PopupPolicy v-if="isPolicyOpen" />
     <h3>Legacy</h3>
     <div class="footer-links">
       <div class="footer-links-item">
-        <p>Dispute Resolution Policy</p>
+        <p @click="togglePrivacy">Dispute Resolution Policy</p>
         <p>Responsible Gaming Policy</p>
         <p>KYC Policy</p>
       </div>
