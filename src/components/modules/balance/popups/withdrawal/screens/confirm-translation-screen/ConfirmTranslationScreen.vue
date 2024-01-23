@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, watch } from 'vue'
 import { onCheckStatusTranslation } from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.events.js'
 import SberbankIcon from '@/components/ui/icons/other/SberbankIcon.vue'
 import TimerIcon from '@/components/ui/icons/other/TimerIcon.vue'
@@ -9,7 +9,12 @@ import AttachIcon from '@/components/ui/icons/other/AttachIcon.vue'
 import { useTimer } from '@/utils/useTimer.js'
 
 const emits = defineEmits(['success', 'error'])
-const { currentTime, isFinished, startTimer } = useTimer(15 * 60 * 1000)
+const { currentTime, isFinished, startTimer } = useTimer(1 * 10 * 1000)
+
+watch(isFinished, (value) => {
+  if (value) emits('error')
+})
+
 onMounted(() => {
   startTimer()
   onCheckStatusTranslation(emits)
@@ -25,7 +30,7 @@ onMounted(() => {
       </div>
       <div class="title-timer">
         <TimerIcon />
-        <p>{{ currentTime || '00:00'}}</p>
+        <p>{{ currentTime || '00:00' }}</p>
       </div>
     </div>
     <div class="confirm__translation-screen-info">

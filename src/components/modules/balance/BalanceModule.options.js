@@ -11,7 +11,10 @@ export const navigation = [
     id: 1,
     icon: 'account',
     title: 'Личный кабинет',
-    handler: function () {},
+    handler: function (router) {
+      router.push('/account')
+      popupReplenishment.value = false
+    },
 
   },
   {
@@ -39,7 +42,10 @@ export const navigation = [
     id: 4,
     icon: 'support',
     title: 'Тех. поддержка',
-    handler: function () {},
+    handler: function (router) {
+      router.push('/account')
+      popupReplenishment.value = !popupReplenishment.value
+    },
 
   },
 ]

@@ -4,6 +4,5 @@ export const onCheckStatusTranslation = (emits) => {
   const timeWait = 5000
   setTimeout(() => {
     statusTranslation.value = 'success'
-    emits('success')
-  }, timeWait)
+   }, timeWait)
 }

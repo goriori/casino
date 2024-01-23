@@ -1,14 +1,5 @@
 <script setup>
-import SupportModule from '@/components/modules/support/SupportModule.vue'
-import MoveUpModule from '@/components/modules/move-up/MoveUpModule.vue'
-import PopupPolicy from '@/components/ui/popups/PopupPolicy/PopupPolicy.vue'
-import PopupGamingPolicy from '@/components/ui/popups/PopupGamingPolicy/PopupGamingPolicy.vue'
-import PopupKYCPolicy from '@/components/ui/popups/popupKYCPolicy/popupKYCPolicy.vue'
-import PopupFairnessPolicy from '@/components/ui/popups/PopupFairnessPolicy/PopupFairnessPolicy.vue'
-import PopupRestraintPolicy from '@/components/ui/popups/PopupRestraintPolicy/PopupRestraintPolicy.vue'
-import PopupPrivacyPolicy from '@/components/ui/popups/PopupPrivacyPolicy/PopupPrivacyPolicy.vue'
-import PopupTermsPolicy from '@/components/ui/popups/PopupTermsPolicy/PopupTermsPolicy.vue'
-
+import { useRouter } from 'vue-router'
 import {
   openGamingPolicy,
   openPolicy,
@@ -27,6 +18,17 @@ import {
   isPrivacyPolicyOpen,
   isTermsPolicyOpen,
 } from './Footer.options.js'
+import SupportModule from '@/components/modules/support/SupportModule.vue'
+import MoveUpModule from '@/components/modules/move-up/MoveUpModule.vue'
+import PopupPolicy from '@/components/ui/popups/PopupPolicy/PopupPolicy.vue'
+import PopupGamingPolicy from '@/components/ui/popups/PopupGamingPolicy/PopupGamingPolicy.vue'
+import PopupKYCPolicy from '@/components/ui/popups/popupKYCPolicy/popupKYCPolicy.vue'
+import PopupFairnessPolicy from '@/components/ui/popups/PopupFairnessPolicy/PopupFairnessPolicy.vue'
+import PopupRestraintPolicy from '@/components/ui/popups/PopupRestraintPolicy/PopupRestraintPolicy.vue'
+import PopupPrivacyPolicy from '@/components/ui/popups/PopupPrivacyPolicy/PopupPrivacyPolicy.vue'
+import PopupTermsPolicy from '@/components/ui/popups/PopupTermsPolicy/PopupTermsPolicy.vue'
+
+const router = useRouter()
 </script>
 
 <template>
@@ -59,7 +61,7 @@ import {
     <hr />
     <div class="footer-info">
       <div class="footer-info-reserved">
-        <img src="/images/logo.svg" alt="" />
+        <img src="/images/logo.svg" alt="" @click="router.push('/')" />
         <p>© Casino | All rights reserved</p>
       </div>
       <div class="footer-info-payments">
@@ -83,6 +85,7 @@ import {
 
 <style scoped lang="scss">
 @import '@/assets/scss/variables';
+
 hr {
   display: flex;
   height: 0.5px;

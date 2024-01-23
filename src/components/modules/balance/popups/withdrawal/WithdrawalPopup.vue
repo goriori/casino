@@ -114,6 +114,8 @@ onMounted(() => (stateManipulate.value = props.setting.targetScreen))
             v-if="stateManipulate === 'sum-translation'"
           />
           <ConfirmTranslationScreen
+            @success="console.log('time success')"
+            @error="console.log('time expired')"
             v-if="stateManipulate === 'confirm-translation'"
           />
           <MessageScreen v-if="stateManipulate === 'message-translation'" />

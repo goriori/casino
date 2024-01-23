@@ -14,6 +14,8 @@ import BalanceButton from '@/components/ui/buttons/balance/BalanceButton.vue'
 import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 import ArrowIcon from '@/components/ui/icons/other/ArrowIcon.vue'
 import WithdrawalPopup from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.vue'
+import { useRouter } from 'vue-router'
+const router = useRouter()
 </script>
 
 <template>
@@ -37,7 +39,7 @@ import WithdrawalPopup from '@/components/modules/balance/popups/withdrawal/With
             v-ripple
             v-for="nav in navigation"
             :key="nav.id"
-            @click="nav.handler"
+            @click="nav.handler(router)"
           >
             <div class="navigation-item-content">
               <img :src="`/images/icons/${nav.icon}.svg`" alt="" />
