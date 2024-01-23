@@ -82,6 +82,7 @@ import {
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/scss/variables';
 hr {
   display: flex;
   height: 0.5px;
@@ -96,6 +97,11 @@ hr {
   background: #1d2345;
   gap: 48px;
 
+  @media (max-width: $md2 + px) {
+    padding: 24px;
+    gap: 24px;
+  }
+
   &-links {
     display: flex;
     justify-content: flex-start;
@@ -104,11 +110,24 @@ hr {
     font-weight: 500;
     gap: 160px;
 
+    @media (max-width: $md2 + px) {
+      justify-content: space-between;
+      gap: 24px;
+      font-size: 16px;
+    }
+
+    @media (max-width: $md3 + px) {
+      flex-wrap: wrap;
+    }
+
     &-item {
       cursor: pointer;
       display: flex;
       flex-direction: column;
       gap: 36px;
+      @media (max-width: $md3 + px) {
+        gap: 24px;
+      }
     }
   }
 

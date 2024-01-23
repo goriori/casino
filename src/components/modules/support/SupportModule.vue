@@ -37,6 +37,14 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
     font-weight: 600;
     color: $white;
 
+    @media (max-width: $md2 + px) {
+      font-size: 18px;
+    }
+
+    @media (max-width: $md4 + px) {
+      font-size: 16px;
+    }
+
     &-title {
       color: #bbb;
     }
