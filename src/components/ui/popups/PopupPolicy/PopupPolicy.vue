@@ -1,9 +1,11 @@
-<script setup></script>
+<script setup>
+import { closePolicy } from '@/components/globals/footer/Footer.events.js'
+</script>
 
 <template>
-  <div class="popup">
-    <div class="popup__content">
-      <div class="popup__content-close">
+  <div @click="closePolicy" class="popup">
+    <div @click.stop class="popup__content">
+      <div @click="closePolicy" class="popup__content-close">
         <img src="/images/icons/close.svg" alt="" />
       </div>
       <div class="popup__content-title">Dispute Resolution Policy</div>

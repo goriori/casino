@@ -4,29 +4,59 @@ import ChatIcon from '@/components/ui/icons/footer/ChatIcon.vue'
 import ArrowUpIcon from '@/components/ui/icons/footer/ArrowUpIcon.vue'
 import MoveUpIcon from '@/components/ui/icons/other/MoveUpIcon.vue'
 import MoveUpModule from '@/components/modules/move-up/MoveUpModule.vue'
-import PopupPolicy from '@/ui/popups/PopupPolicy/PopupPolicy.vue'
-import { togglePrivacy } from './Footer.events.js'
-import { isPolicyOpen } from './Footer.options.js'
+import PopupPolicy from '@/components/ui/popups/PopupPolicy/PopupPolicy.vue'
+import PopupGamingPolicy from '@/components/ui/popups/PopupGamingPolicy/PopupGamingPolicy.vue'
+import PopupKYCPolicy from '@/components/ui/popups/popupKYCPolicy/popupKYCPolicy.vue'
+import PopupFairnessPolicy from '@/components/ui/popups/PopupFairnessPolicy/PopupFairnessPolicy.vue'
+import PopupRestraintPolicy from '@/components/ui/popups/PopupRestraintPolicy/PopupRestraintPolicy.vue'
+import PopupPrivacyPolicy from '@/components/ui/popups/PopupPrivacyPolicy/PopupPrivacyPolicy.vue'
+import PopupTermsPolicy from '@/components/ui/popups/PopupTermsPolicy/PopupTermsPolicy.vue'
+
+import {
+  openGamingPolicy,
+  openPolicy,
+  openKYCPolicy,
+  openFairnessPolicy,
+  openRestraintPolicy,
+  openPrivacyPolicy,
+  openTermsPolicy,
+} from './Footer.events.js'
+import {
+  isPolicyOpen,
+  isGamingPolicyOpen,
+  isKYCPolicyOpen,
+  isFairnessPolicyOpen,
+  isRestraintPolicyOpen,
+  isPrivacyPolicyOpen,
+  isTermsPolicyOpen,
+} from './Footer.options.js'
 </script>
 
 <template>
   <footer class="footer">
-    <PopupPolicy v-if="isPolicyOpen" />
+    <TransitionGroup name="fade">
+      <PopupPolicy v-if="isPolicyOpen" />
+      <PopupGamingPolicy v-if="isGamingPolicyOpen" />
+      <PopupKYCPolicy v-if="isKYCPolicyOpen" />
+      <PopupFairnessPolicy v-if="isFairnessPolicyOpen" />
+      <PopupRestraintPolicy v-if="isRestraintPolicyOpen" />
+      <PopupPrivacyPolicy v-if="isPrivacyPolicyOpen" />
+      <PopupTermsPolicy v-if="isTermsPolicyOpen" />
+    </TransitionGroup>
     <h3>Legacy</h3>
     <div class="footer-links">
       <div class="footer-links-item">
-        <p @click="togglePrivacy">Dispute Resolution Policy</p>
-        <p>Responsible Gaming Policy</p>
-        <p>KYC Policy</p>
+        <p @click="openPolicy">Dispute Resolution Policy</p>
+        <p @click="openGamingPolicy">Responsible Gaming Policy</p>
+        <p @click="openKYCPolicy">KYC Policy</p>
       </div>
       <div class="footer-links-item">
-        <p>Fairness Policy</p>
-        <p>Self-Restraint Policy</p>
-        <p>Affiliate Program</p>
+        <p @click="openFairnessPolicy">Fairness Policy</p>
+        <p @click="openRestraintPolicy">Self-Restraint Policy</p>
       </div>
       <div class="footer-links-item">
-        <p>Privacy Notice</p>
-        <p>Terms and Conditions</p>
+        <p @click="openPrivacyPolicy">Privacy Notice</p>
+        <p @click="openTermsPolicy">Terms and Conditions</p>
       </div>
     </div>
     <hr />
@@ -48,7 +78,6 @@ import { isPolicyOpen } from './Footer.options.js'
     </div>
     <hr />
     <div class="footer-support-actions">
-      <ChatIcon />
       <SupportModule />
       <MoveUpModule />
     </div>
