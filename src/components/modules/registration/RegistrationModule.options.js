@@ -1,7 +1,7 @@
 import { ref } from 'vue'
 
-export const pswrdHidden = ref(false)
-export const pswrdCnfrmHidden = ref(false)
+export const pswrdHidden = ref(true)
+export const pswrdCnfrmHidden = ref(true)
 export const formReg = ref({
   username: '',
   password: '',

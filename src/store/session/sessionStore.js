@@ -6,8 +6,8 @@ import AccountService from '@/API/account/accountService.js'
 export const useSessionStore = defineStore('sessionStore', () => {
   const session = ref({})
   const authorization = async (formAuth) => {
-    const response = await AuthorizationService.authorization(formAuth)
-    console.log(response)
+    const { token } = await AuthorizationService.authorization(formAuth)
+    window.TEST_TOKEN_AUTH = token
   }
 
   const registration = async (formReg) => {

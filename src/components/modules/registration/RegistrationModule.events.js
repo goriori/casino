@@ -14,5 +14,26 @@ export const onChangeHiddenPassword = () =>
 export const onChangeHiddenPasswordConfirm = () =>
   (pswrdCnfrmHidden.value = !pswrdCnfrmHidden.value)
 
-export const onRegistration = async () =>
-  await sessionStore.registration(formReg.value)
+const clearForm = () => {
+  formReg.value = {
+    username: '',
+    password: '',
+    // eslint-disable-next-line camelcase
+    password_confirmation: '',
+    birthday: '',
+    // eslint-disable-next-line camelcase
+    first_name: '',
+    // eslint-disable-next-line camelcase
+    last_name: '',
+    phone: '',
+  }
+}
+export const onRegistration = async (router) => {
+  try {
+    await sessionStore.registration(formReg.value)
+    clearForm()
+  } catch (e) {
+    clearForm()
+    router.push('/')
+  }
+}

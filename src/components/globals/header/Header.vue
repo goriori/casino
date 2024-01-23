@@ -8,6 +8,8 @@ import SigninModule from '@/components/modules/signin/SigninModule.vue'
 
 const route = useRoute()
 const page = ref(route.name)
+const isAuthorizationPage =
+  page.value === 'authorization' || page.value === 'registration'
 console.log(page.value)
 </script>
 
@@ -17,12 +19,18 @@ console.log(page.value)
       <img src="/images/logo.svg" alt="" />
     </div>
     <div class="header-actions">
-      <div class="header-actions-account" v-if="page !== 'authorization' || page !== 'registration'">
+      <div
+        class="header-actions-account"
+        v-if="!isAuthorizationPage"
+      >
         <PersonalAccountModule />
         <BalanceModule />
         <CashierModule />
       </div>
-      <div class="header-actions-authorization" v-if="page === 'authorization' || page === 'registration'">
+      <div
+        class="header-actions-authorization"
+        v-if="isAuthorizationPage"
+      >
         <SigninModule />
       </div>
     </div>

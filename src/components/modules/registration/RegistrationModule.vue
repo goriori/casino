@@ -1,4 +1,6 @@
 <script setup>
+import { useRouter } from 'vue-router'
+
 import {
   onChangeHiddenPassword,
   onChangeHiddenPasswordConfirm,
@@ -14,6 +16,8 @@ import EmailIcon from '@/components/ui/icons/authorization/EmailIcon.vue'
 import HiddenIcon from '@/components/ui/icons/authorization/HiddenIcon.vue'
 import TelegramIcon from '@/components/ui/icons/authorization/TelegramIcon.vue'
 import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue'
+
+const router = useRouter()
 </script>
 
 <template>
@@ -112,7 +116,7 @@ import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue
     </div>
 
     <div class="authorization-form-send">
-      <BaseButton color="primary" @click="onRegistration">
+      <BaseButton color="primary" @click="onRegistration(router)">
         <div class="btn-send-form">Зарегистрироваться</div>
       </BaseButton>
     </div>
@@ -120,11 +124,17 @@ import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue
     <div class="authorization-registration">
       <div class="authorization-registration-info">
         <p>
+          У вас уже есть профиль?
+          <span @click="router.push('/')">Войти</span>
+        </p>
+      </div>
+
+      <div class="authorization-registration-info">
+        <p>
           Я прочитал и согласен с
           <span>Правилами Использования Сервиса</span>
         </p>
       </div>
-
       <BaseButton color="primary" outline>
         <div class="btn-registration">
           <p>Зарегестрироваться через</p>

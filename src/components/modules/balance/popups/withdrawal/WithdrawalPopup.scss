@@ -46,10 +46,11 @@
       border-bottom: 0.5px solid #ccc;
     }
 
-  &-content {
-    max-height: 570px;
-    overflow-y: scroll;
-  }
+    &-content {
+      max-height: 570px;
+      overflow-y: auto;
+    }
+
     &-balance {
       display: flex;
       justify-content: center;
@@ -99,6 +100,7 @@
     align-items: center;
     gap: 32px;
     border-bottom: 1px solid #ccc;
+
     div {
       cursor: pointer;
       border: 2px solid transparent;
@@ -113,6 +115,7 @@
 
   &-item {
     padding: 8px;
+
     &.active {
       color: #fff;
       border-bottom: 2px solid #5570fb;

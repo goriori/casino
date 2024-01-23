@@ -4,12 +4,21 @@ import { stateManipulate } from '@/components/modules/balance/popups/withdrawal/
 import {
   onSwitchWithdrawalReplenishment,
   onSwitchWithdrawalConclusion,
+  onSwitchWithdrawalSum,
+  onSwitchWithdrawalSelectBank,
+  onSwitchWithdrawalSumTranslation,
+  onSwitchWithdrawalConfirm,
 } from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.events.js'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import ReplenishmentScreen from '@/components/modules/balance/popups/withdrawal/screens/replenishment-screen/ReplenishmentScreen.vue'
 import ConclusionScreen from '@/components/modules/balance/popups/withdrawal/screens/conclusion-screen/ConclusionScreen.vue'
 import ArrowBackIcon from '@/components/ui/icons/other/ArrowBackIcon.vue'
 import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
+import SumScreen from '@/components/modules/balance/popups/withdrawal/screens/sum-screen/SumScreen.vue'
+import SelectBankScreen from '@/components/modules/balance/popups/withdrawal/screens/select-bank/SelectBankScreen.vue'
+import SumTranslationScreen from '@/components/modules/balance/popups/withdrawal/screens/sum-translation-screen/SumTranslationScreen.vue'
+import ConfirmTranslationScreen from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.vue'
+import MessageScreen from '@/components/modules/balance/popups/withdrawal/screens/message-screen/MessageScreen.vue'
 
 const props = defineProps({
   setting: {
@@ -39,14 +48,27 @@ onMounted(() => (stateManipulate.value = props.setting.targetScreen))
         </div>
       </div>
       <div class="popup-withdrawal-content">
-        <div class="popup-withdrawal-balance">
+        <div
+          class="popup-withdrawal-balance"
+          v-if="
+            stateManipulate === 'replenishment' ||
+            stateManipulate === 'conclusion'
+          "
+        >
           <div class="popup-withdrawal-count">
             <p>0.00</p>
             <span>₽</span>
           </div>
         </div>
+
         <div class="popup-withdrawal-choice">
-          <div class="choice-items">
+          <div
+            class="choice-items"
+            v-if="
+              stateManipulate === 'replenishment' ||
+              stateManipulate === 'conclusion'
+            "
+          >
             <div
               :class="[
                 'choice-item ',
@@ -70,8 +92,31 @@ onMounted(() => (stateManipulate.value = props.setting.targetScreen))
               Вывод
             </div>
           </div>
-          <ReplenishmentScreen v-if="stateManipulate === 'replenishment'" />
-          <ConclusionScreen v-if="stateManipulate === 'conclusion'" />
+          <ReplenishmentScreen
+            @bank-card="onSwitchWithdrawalSum"
+            v-if="stateManipulate === 'replenishment'"
+          />
+          <ConclusionScreen
+            @bank-card="onSwitchWithdrawalSum"
+            v-if="stateManipulate === 'conclusion'"
+          />
+          <SumScreen
+            @replenish="onSwitchWithdrawalSelectBank"
+            v-if="stateManipulate === 'sum-screen'"
+          />
+          <SelectBankScreen
+            @select-bank="onSwitchWithdrawalSumTranslation"
+            v-if="stateManipulate === 'select-bank'"
+          />
+          <SumTranslationScreen
+            @success="onSwitchWithdrawalConfirm"
+            @error="console.log('error')"
+            v-if="stateManipulate === 'sum-translation'"
+          />
+          <ConfirmTranslationScreen
+            v-if="stateManipulate === 'confirm-translation'"
+          />
+          <MessageScreen v-if="stateManipulate === 'message-translation'" />
         </div>
       </div>
     </div>

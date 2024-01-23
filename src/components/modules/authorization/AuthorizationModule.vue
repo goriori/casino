@@ -15,6 +15,7 @@ import EmailIcon from '@/components/ui/icons/authorization/EmailIcon.vue'
 import HiddenIcon from '@/components/ui/icons/authorization/HiddenIcon.vue'
 import TelegramIcon from '@/components/ui/icons/authorization/TelegramIcon.vue'
 import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue'
+
 const router = useRouter()
 </script>
 
@@ -64,15 +65,15 @@ const router = useRouter()
     </div>
 
     <div class="authorization-form-send">
-      <BaseButton color="primary" @click="onAuthorization">
+      <BaseButton color="primary" @click="onAuthorization(router)">
         <div class="btn-send-form">Войти в профиль</div>
       </BaseButton>
     </div>
 
     <div class="authorization-registration">
       <div class="authorization-registration-info">
-        У вас уже есть профиль?
-        <span @click="router.push('/')">Войти</span>
+        У вас нет профиля?
+        <span @click="router.push('/registration')">Создать профиль</span>
       </div>
       <BaseButton color="primary" outline>
         <div class="btn-registration">

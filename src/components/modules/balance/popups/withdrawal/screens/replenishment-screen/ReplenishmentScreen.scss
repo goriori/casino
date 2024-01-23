@@ -96,6 +96,7 @@
   gap: 26px;
 
   &-card {
+
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -109,6 +110,9 @@
     }
 
     &-pay {
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
       border-radius: 26px;
       background: #2F3975;
       padding: 16px 20px;
@@ -164,6 +168,9 @@
       }
 
       &-item {
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
         cursor: pointer;
         display: flex;
         justify-content: flex-start;

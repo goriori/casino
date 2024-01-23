@@ -2,14 +2,15 @@
 import WalletIcon from '@/components/ui/icons/other/WalletIcon.vue'
 import USDTIcon from '@/components/ui/icons/other/USDTIcon.vue'
 
+const emits = defineEmits(['bank-card'])
 </script>
 
 <template>
   <div class="popup-withdrawal-replenishment">
-    <div class="deposit" >
+    <div class="deposit">
       <div class="deposit-card">
         <p>Депозит с банковской карты:</p>
-        <div class="deposit-card-pay">
+        <div class="deposit-card-pay"  @click="emits('bank-card')" v-ripple>
           <WalletIcon />
           <div class="deposit-card-pay-content">
             <h4>Оплата банковской картой</h4>
@@ -20,7 +21,12 @@ import USDTIcon from '@/components/ui/icons/other/USDTIcon.vue'
       <div class="deposit-card-help">
         <p>Внести депозит с помощью криптовалюты:</p>
         <div class="deposit-card-help-items">
-          <div class="deposit-card-help-item" v-for="crypto in 10">
+          <div
+            class="deposit-card-help-item"
+            v-for="crypto in 10"
+            @click="emits('bank-card')"
+            v-ripple
+          >
             <USDTIcon />
             <div class="crypto-info">
               <h4>USDT (TRC20)</h4>
