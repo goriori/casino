@@ -99,12 +99,14 @@ import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue
 
     <div class="authorization-accept">
       <div class="authorization-accept-item">
-        <div class="accept-item-field">
+        <div class="accept-item-field checkbox">
           <input type="checkbox" />
-          <label>Напомнить через 30 дней</label>
-        </div>
-        <div class="accept-item-support">
-          <span>Забыли пароль?</span>
+          <div class="authorization-registration-info">
+            <p>
+              Я прочитал и согласен с
+              <span>Правилами Использования Сервиса</span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -117,9 +119,12 @@ import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue
 
     <div class="authorization-registration">
       <div class="authorization-registration-info">
-        Я прочитал и согласен с
-        <span>Правилами Использования Сервиса</span>
+        <p>
+          Я прочитал и согласен с
+          <span>Правилами Использования Сервиса</span>
+        </p>
       </div>
+
       <BaseButton color="primary" outline>
         <div class="btn-registration">
           <p>Зарегестрироваться через</p>

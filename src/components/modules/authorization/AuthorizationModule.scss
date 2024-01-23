@@ -83,6 +83,13 @@
     align-items: center;
     gap: 8px;
 
+    &.checkbox{
+      padding: 0 50px;
+      @media (max-width: $md4 + px) {
+        padding: 0;
+      }
+    }
+
     input {
       cursor: pointer;
       width: 100%;

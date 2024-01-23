@@ -71,8 +71,8 @@ const router = useRouter()
 
     <div class="authorization-registration">
       <div class="authorization-registration-info">
-        Впервые на сайте?
-        <span @click="router.push('/registration')">Создать профиль</span>
+        У вас уже есть профиль?
+        <span @click="router.push('/')">Войти</span>
       </div>
       <BaseButton color="primary" outline>
         <div class="btn-registration">
