@@ -1,6 +1,9 @@
 <script setup>
 import { onMounted } from 'vue'
-import { stateManipulate } from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.option.js'
+import {
+  stateManipulate,
+  stateSum,
+} from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.option.js'
 import {
   onSwitchWithdrawalReplenishment,
   onSwitchWithdrawalConclusion,
@@ -8,6 +11,7 @@ import {
   onSwitchWithdrawalSelectBank,
   onSwitchWithdrawalSumTranslation,
   onSwitchWithdrawalConfirm,
+  onSwitchWithdrawalMessage,
 } from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.events.js'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import ReplenishmentScreen from '@/components/modules/balance/popups/withdrawal/screens/replenishment-screen/ReplenishmentScreen.vue'
@@ -105,20 +109,26 @@ onMounted(() => (stateManipulate.value = props.setting.targetScreen))
             v-if="stateManipulate === 'sum-screen'"
           />
           <SelectBankScreen
+            :sum="stateSum"
             @select-bank="onSwitchWithdrawalSumTranslation"
             v-if="stateManipulate === 'select-bank'"
           />
           <SumTranslationScreen
+            :sum="stateSum"
             @success="onSwitchWithdrawalConfirm"
             @error="console.log('error')"
             v-if="stateManipulate === 'sum-translation'"
           />
           <ConfirmTranslationScreen
-            @success="console.log('time success')"
-            @error="console.log('time expired')"
+            :sum="stateSum"
+            @success="onSwitchWithdrawalMessage('success')"
+            @error="onSwitchWithdrawalMessage('error')"
             v-if="stateManipulate === 'confirm-translation'"
           />
-          <MessageScreen v-if="stateManipulate === 'message-translation'" />
+          <MessageScreen
+            :sum="stateSum"
+            v-if="stateManipulate === 'message-translation'"
+          />
         </div>
       </div>
     </div>

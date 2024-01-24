@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, watch } from 'vue'
 
 import TimerIcon from '@/components/ui/icons/other/TimerIcon.vue'
 import CompyIcon from '@/components/ui/icons/other/CompyIcon.vue'
@@ -10,7 +10,25 @@ import { statusTranslation } from '@/components/modules/balance/popups/withdrawa
 import { useTimer } from '@/utils/useTimer.js'
 
 const emits = defineEmits(['success', 'error'])
+const props = defineProps({
+  sum: {
+    type: [Number, String],
+    default: '0.00',
+  },
+  numberCardTo: {
+    type: [Number, String],
+    default: '0000 0000 0000 0000',
+  },
+  fullNameRecipient: {
+    type: String,
+    default: 'Иванов Иван И. (Сбербанк)',
+  },
+})
 const { currentTime, isFinished, startTimer } = useTimer(15 * 60 * 1000)
+
+watch(isFinished, (value) => {
+  if (value) emits('error')
+})
 onMounted(() => {
   startTimer()
   onCheckStatusPay(emits)
@@ -36,14 +54,14 @@ onMounted(() => {
         <div class="sum__translation-screen-info-item">
           <div class="item-info">
             <p>Сумма перевода</p>
-            <h4>1000₽</h4>
+            <h4>{{ sum }}₽</h4>
           </div>
           <CompyIcon />
         </div>
         <div class="sum__translation-screen-info-item">
           <div class="item-info">
             <p>Номер карты для перевода</p>
-            <h4>0000 0000 0000 0000</h4>
+            <h4>{{ numberCardTo }}</h4>
           </div>
           <CompyIcon />
         </div>
@@ -57,7 +75,7 @@ onMounted(() => {
         <div class="sum__translation-screen-info-item">
           <div class="item-info">
             <p>Имя получателя:</p>
-            <h4>Иванов Иван И. (Сбербанк)</h4>
+            <h4>{{ fullNameRecipient }}</h4>
           </div>
         </div>
       </div>

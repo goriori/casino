@@ -1,4 +1,4 @@
-window.API = 'http://192.168.0.169'
+window.API = 'https://api.gamesoffutures.ru'
 window.CEF = false
 window.TIMEOUT = 90
 window.IS_DEV = true

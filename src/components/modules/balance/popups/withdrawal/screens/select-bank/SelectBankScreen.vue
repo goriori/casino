@@ -2,7 +2,7 @@
 import USDTIcon from '@/components/ui/icons/other/USDTIcon.vue'
 
 const props = defineProps({
-  summ: {
+  sum: {
     type: [String, Number],
     default: 0,
   },
@@ -14,7 +14,7 @@ const emits = defineEmits(['select-bank'])
   <div class="select__bank-screen">
     <div class="select__bank-screen-sum">
       <p>Сумма пополнения</p>
-      <p>{{ summ }} Р</p>
+      <p>{{ sum }} Р</p>
     </div>
     <div class="select__bank-screen-select">
       <p>Выберите ваш банк для перевода</p>

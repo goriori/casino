@@ -9,7 +9,17 @@ import AttachIcon from '@/components/ui/icons/other/AttachIcon.vue'
 import { useTimer } from '@/utils/useTimer.js'
 
 const emits = defineEmits(['success', 'error'])
-const { currentTime, isFinished, startTimer } = useTimer(1 * 10 * 1000)
+const props = defineProps({
+  sum: {
+    type: [Number, String],
+    default: '0.00',
+  },
+  numberCardTo:{
+    type:String,
+    default:'0000 0000 0000 0000'
+  }
+})
+const { currentTime, isFinished, startTimer } = useTimer(15 * 60 * 1000)
 
 watch(isFinished, (value) => {
   if (value) emits('error')
@@ -40,14 +50,14 @@ onMounted(() => {
           <div class="info-confirm-item">
             <div class="item-info">
               <p>Сумма перевода</p>
-              <h4>1000₽</h4>
+              <h4>{{ sum }}₽</h4>
             </div>
             <CopyIcon />
           </div>
           <div class="info-confirm-item">
             <div class="item-info">
-              <p>Сумма перевода</p>
-              <h4>1000₽</h4>
+              <p>Номер карты для перевода:</p>
+              <h4>{{ numberCardTo }}</h4>
             </div>
             <CopyIcon />
           </div>

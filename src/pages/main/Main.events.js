@@ -5,6 +5,6 @@ const gameStore = useGameStore()
 const providerStore = useProviderStore()
 
 export const fetchEntityData = async () => {
-  await gameStore.getGames()
+  // await gameStore.getGames()
   await providerStore.getProviders()
 }

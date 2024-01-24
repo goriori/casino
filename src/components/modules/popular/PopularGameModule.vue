@@ -1,7 +1,14 @@
 <script setup>
-import ProviderMainIcon from '@/components/ui/icons/provider/ProviderMainIcon.vue'
 import GameCard from '@/components/ui/cards/game/GameCard.vue'
 import PopularIcon from '@/components/ui/icons/popular/PopularIcon.vue'
+import { useGameStore } from '@/store/games/gameStore.js'
+import { onMounted } from 'vue'
+import VLoader from '@/App.vue'
+
+const gameStore = useGameStore()
+onMounted(async () => {
+  await gameStore.getGames()
+})
 </script>
 
 <template>
@@ -11,13 +18,18 @@ import PopularIcon from '@/components/ui/icons/popular/PopularIcon.vue'
       <h3>Популярные</h3>
     </div>
     <div class="popular__game-module-items">
-      <GameCard v-for="game in 28" key="game" />
+      <GameCard
+        v-for="game in 34"
+        :key="game"
+        :gameItem="game"
+      />
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 @import '@/assets/scss/variables';
+
 .popular {
   &__game {
     &-module {

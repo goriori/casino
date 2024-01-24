@@ -2,9 +2,15 @@
 import { useRoute } from 'vue-router'
 import VLoader from '@/components/VLoader.vue'
 import { useStateStore } from '@/store/stateStore'
+import {useSessionStore} from '@/store/session/sessionStore.js'
+import { useGameStore } from '@/store/games/gameStore.js'
+import { useProviderStore } from '@/store/providers/providerStore.js'
 
 const route = useRoute()
 const stateStore = useStateStore()
+const sessionStore = useSessionStore()
+const gameStore = useGameStore()
+const providerStore = useProviderStore()
 </script>
 
 <template>

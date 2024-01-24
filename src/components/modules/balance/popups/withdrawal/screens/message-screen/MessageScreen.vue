@@ -3,6 +3,13 @@ import { alertTarget } from '@/components/modules/balance/popups/withdrawal/scre
 import ErrorIcon from '@/components/ui/icons/other/ErrorIcon.vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import FeedBackIcon from '@/components/ui/icons/other/FeedBackIcon.vue'
+
+const props = defineProps({
+  sum: {
+    type: [Number, String],
+    default: '0.00',
+  },
+})
 </script>
 
 <template>
@@ -21,7 +28,7 @@ import FeedBackIcon from '@/components/ui/icons/other/FeedBackIcon.vue'
       </div>
       <div class="error-sum-translation">
         <p>Сумма пополнения:</p>
-        <strong>1000 ₽</strong>
+        <strong>{{ sum}} ₽</strong>
       </div>
       <div class="error-feedback">
         <BaseButton>
@@ -42,7 +49,12 @@ import FeedBackIcon from '@/components/ui/icons/other/FeedBackIcon.vue'
       >
         В кассу
       </div>
-      <div class="message-screen-alert" id="to-repeat-alert" v-if="alertTarget === 'to-repeat'" v-ripple>
+      <div
+        class="message-screen-alert"
+        id="to-repeat-alert"
+        v-if="alertTarget === 'to-repeat'"
+        v-ripple
+      >
         Повторить еще раз
       </div>
     </div>

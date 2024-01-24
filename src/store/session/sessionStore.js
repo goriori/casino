@@ -4,10 +4,14 @@ import AuthorizationService from '@/API/authorization/authorizationService.js'
 import AccountService from '@/API/account/accountService.js'
 
 export const useSessionStore = defineStore('sessionStore', () => {
-  const session = ref({})
+  const session = ref({
+    token: sessionStorage.getItem('token') || null,
+  })
   const authorization = async (formAuth) => {
     const { token } = await AuthorizationService.authorization(formAuth)
-    window.TEST_TOKEN_AUTH = token
+    sessionStorage.setItem('token', token)
+    session.value.token = token
+    window.TEST_TOKEN_AUTH = session.value.token
   }
 
   const registration = async (formReg) => {

@@ -1,6 +1,5 @@
 .popup {
   &-screen {
-    position: relative;
     padding: 36px 0;
 
     &-sum {
@@ -81,14 +80,16 @@
     }
 
     &-alerts {
-      position: relative;
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
       text-align: center;
       color: #fff;
     }
 
     &-alert {
       cursor: pointer;
-      position: relative;
       overflow: hidden;
       padding: 15px 0;
       border-radius: 0 0 26px 26px;
