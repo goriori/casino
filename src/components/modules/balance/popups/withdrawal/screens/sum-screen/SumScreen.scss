@@ -1,3 +1,4 @@
+@import "@/assets/scss/variables";
 .popup {
   &-screen {
     padding: 36px 0;
@@ -94,6 +95,10 @@
       padding: 15px 0;
       border-radius: 0 0 26px 26px;
       background: #0f8cff;
+      @media (max-width: $md4 + px) {
+        border-radius: 26px;
+        margin: auto 18px 18px;
+      }
     }
   }
 }

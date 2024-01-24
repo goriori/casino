@@ -99,6 +99,11 @@
   align-items: center;
   gap: 26px;
 
+  @media (max-width: $md4 + px) {
+    padding: 18px 0;
+    gap: 18px;
+  }
+
   &-card {
     display: flex;
     justify-content: center;
@@ -180,7 +185,7 @@
         justify-content: flex-start;
         align-items: center;
         gap: 16px;
-        padding: 4px 21px 15px 21px;
+        padding: 16px;
         border-top: 1px solid #CCC;
 
       }

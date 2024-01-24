@@ -16,6 +16,12 @@
   left: 50%;
   transform: translate(-50%, -50%);
 
+  @media (max-width: $md4 + px) {
+    transform: none;
+    top: 0;
+    left: 0;
+  }
+
   &-bg {
     position: absolute;
     width: 100%;
@@ -38,6 +44,13 @@
     background: #3e4c9d;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
 
+    @media (max-width: $md4 + px) {
+      max-width: none;
+      min-height: auto;
+      height: 100%;
+      border-radius: 0;
+    }
+
     &-navigation {
       display: flex;
       justify-content: space-between;
@@ -49,6 +62,10 @@
     &-content {
       max-height: 570px;
       overflow-y: auto;
+      @media (max-width: $md4 + px) {
+        max-height: 90vh;
+        height: 100%;
+      }
     }
 
     &-balance {
@@ -56,6 +73,9 @@
       justify-content: center;
       align-items: center;
       padding: 36px 38px;
+      @media (max-width: $md4 + px) {
+        padding: 18px;
+      }
     }
 
     &-count {
@@ -130,6 +150,11 @@
   justify-content: center;
   align-items: center;
   gap: 26px;
+
+  @media (max-width: $md4 + px) {
+    padding: 18px 0;
+    gap: 18px;
+  }
 
   &-card {
     display: flex;
