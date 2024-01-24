@@ -1,14 +1,13 @@
 <script setup>
-import { onMounted, ref } from 'vue'
-import { onCheckRegistrationFromTelegram } from '@/pages/authorization/Authorization.events.js'
+import { onMounted } from 'vue'
+import { useRouter } from 'vue-router'
 import Header from '@/components/globals/header/Header.vue'
 import Footer from '@/components/globals/footer/Footer.vue'
 import AuthorizationModule from '@/components/modules/authorization/AuthorizationModule.vue'
-import { useRouter } from 'vue-router'
 
 const router = useRouter()
 onMounted(async () => {
-  await onCheckRegistrationFromTelegram(router)
+
 })
 </script>
 <template>

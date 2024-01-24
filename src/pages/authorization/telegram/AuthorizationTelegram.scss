@@ -1,0 +1,37 @@
+
+.page {
+  color: #fff;
+
+  &-modules {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-loading {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+      padding: 20vh 40px;
+    }
+  }
+
+  &-logo svg {
+    width: 100%;
+    max-height: 50px;
+    animation: pulse 2.5s linear infinite;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}

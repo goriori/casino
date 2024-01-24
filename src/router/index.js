@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const AuthorizationView = () =>
   import('@/pages/authorization/Authorization.vue')
+const AuthorizationTelegramView = () =>
+  import('@/pages/authorization/telegram/AuthorizationTelegram.vue')
 const MainView = () => import('@/pages/main/Main.vue')
 
 const AccountView = () => import('@/pages/account/Account.vue')
@@ -13,6 +15,11 @@ const router = createRouter({
       path: '/',
       name: 'authorization',
       component: AuthorizationView,
+    },
+    {
+      path: '/auth_tg',
+      name: 'authorization_telegram',
+      component: AuthorizationTelegramView,
     },
     {
       path: '/main',
@@ -32,6 +39,22 @@ const router = createRouter({
   ],
 })
 router.beforeEach((to, from, next) => {
-  next()
+  const hasToken = sessionStorage.getItem('token')
+  console.log(hasToken)
+  if (
+    !hasToken &&
+    to.name !== 'authorization' &&
+    to.name !== 'registration' &&
+    to.name !== 'authorization_telegram'
+  ) {
+    next({ name: 'authorization' })
+  } else if (
+    (hasToken && to.name === 'authorization') ||
+    (hasToken && to.name === 'authorization_telegram')
+  ) {
+    next({ name: 'main' })
+  } else {
+    next()
+  }
 })
 export default router

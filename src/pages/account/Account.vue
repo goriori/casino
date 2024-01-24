@@ -3,6 +3,9 @@ import Header from '@/components/globals/header/Header.vue'
 import Footer from '@/components/globals/footer/Footer.vue'
 import AccountModule from '@/components/modules/account/AccountModule.vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
+import { useSettingsStore } from '@/store/settings/settingStore.js'
+const settingStore= useSettingsStore()
+const linkToChat = `https://t.me/user?id=${settingStore.settings.tg_id}`
 </script>
 
 <template>
@@ -12,7 +15,9 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
       <div class="page-message">
         <p>Напишите нам для вывода средств</p>
         <BaseButton color="primary" outline>
-          <p class="btn-text">Связаться с нами</p>
+          <a :href="linkToChat" target="_blank" class="btn-text"
+            >Связаться с нами</a
+          >
         </BaseButton>
       </div>
       <AccountModule />
@@ -23,6 +28,7 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 
 <style scoped lang="scss">
 @import '@/assets/scss/variables';
+
 .page {
   color: #fff;
 

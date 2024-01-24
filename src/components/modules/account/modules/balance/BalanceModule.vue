@@ -1,5 +1,13 @@
 <script setup>
 import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
+import { useSessionStore } from '@/store/session/sessionStore.js'
+import { onMounted } from 'vue'
+
+const sessionStore = useSessionStore()
+
+onMounted(async () => {
+  await sessionStore.getInfoSession()
+})
 </script>
 
 <template>
@@ -34,7 +42,7 @@ import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
         <h4>Основной</h4>
         <div class="currency">
           <CurrencyIcon />
-          <p>0.00 ₽</p>
+          <p>{{sessionStore.session.profile?.balance}}</p>
         </div>
       </div>
       <div class="balance-module-info-item">

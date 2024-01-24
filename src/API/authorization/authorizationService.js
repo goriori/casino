@@ -1,4 +1,5 @@
 import { axiosInstance } from '@/utils/axios/axios'
+
 const queryString = '?shop_id=1&key=pLaHFj1OsSNDNclDjRN03OHHq'
 export default class AuthorizationService {
   static async authorization(formAuth) {
@@ -12,6 +13,8 @@ export default class AuthorizationService {
         },
         data: { ...formAuth },
       })
+      window.TOKEN_API = response.data.token
+      sessionStorage.setItem('token', response.data.token)
       return response.data
     } catch (e) {
       throw e

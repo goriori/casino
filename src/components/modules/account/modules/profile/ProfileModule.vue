@@ -1,4 +1,13 @@
-<script setup></script>
+<script setup>
+import { useSessionStore } from '@/store/session/sessionStore.js'
+import { onMounted } from 'vue'
+
+const sessionStore = useSessionStore()
+
+onMounted(async () => {
+  await sessionStore.getInfoSession()
+})
+</script>
 
 <template>
   <div class="profile-module">
@@ -26,15 +35,15 @@
     <div class="profile-module-info">
       <div class="info-item">
         <h4>Логин/ID</h4>
-        <p>123456789</p>
+        <p>{{ sessionStore.session.profile?.username }}</p>
       </div>
       <div class="info-item">
         <h4>Дата регистрации</h4>
-        <p>01.01.2024</p>
+        <p>{{ sessionStore.session.profile?.created_at || '00.00.0000' }}</p>
       </div>
       <div class="info-item">
         <h4>Дата рождения:</h4>
-        <p>01.01.2024</p>
+        <p>{{ sessionStore.session.profile?.birthday || '00.00.0000' }}</p>
       </div>
     </div>
   </div>

@@ -1,4 +1,13 @@
-<script setup></script>
+<script setup>
+import { useSessionStore } from '@/store/session/sessionStore.js'
+import { onMounted } from 'vue'
+
+const sessionStore = useSessionStore()
+
+onMounted(async () => {
+  await sessionStore.getStatusPay()
+})
+</script>
 
 <template>
   <div class="history__balance-module">
@@ -35,25 +44,17 @@
             <td class="info-title">Статус</td>
           </tr>
 
-          <tr class="info-content-item">
-            <td class="info-content">01.01.2024</td>
-            <td class="info-content">Отправление</td>
+          <tr
+            class="info-content-item"
+            v-for="history in sessionStore.session.history"
+            :key="history.id"
+          >
+            <td class="info-content">{{ history.created_at }}</td>
+            <td class="info-content">
+              {{ history.type === 'add' ? 'Зачисление' : 'Отправление' }}
+            </td>
             <td class="info-content">evoplay</td>
-            <td class="info-content">500.00 Р</td>
-            <td class="info-content">Успешно</td>
-          </tr>
-          <tr class="info-content-item">
-            <td class="info-content">01.01.2024</td>
-            <td class="info-content">Отправление</td>
-            <td class="info-content">evoplay</td>
-            <td class="info-content">500.00 Р</td>
-            <td class="info-content">Успешно</td>
-          </tr>
-          <tr class="info-content-item">
-            <td class="info-content">01.01.2024</td>
-            <td class="info-content">Отправление</td>
-            <td class="info-content">evoplay</td>
-            <td class="info-content">500.00 Р</td>
+            <td class="info-content">{{ history.summ }} Р</td>
             <td class="info-content">Успешно</td>
           </tr>
         </table>
@@ -178,20 +179,24 @@ hr {
     font-size: 14px;
   }
 }
+
 table {
   @media (max-width: $md2 + px) {
     width: 100%;
   }
 }
+
 tr {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 86px;
   margin: 20px 0 0 0;
+
   &:first-child {
     margin-top: 0;
   }
+
   @media (max-width: 1500px) {
     gap: 60px;
   }

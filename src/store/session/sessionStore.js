@@ -11,7 +11,6 @@ export const useSessionStore = defineStore('sessionStore', () => {
     const { token } = await AuthorizationService.authorization(formAuth)
     sessionStorage.setItem('token', token)
     session.value.token = token
-    window.TEST_TOKEN_AUTH = session.value.token
   }
 
   const registration = async (formReg) => {
