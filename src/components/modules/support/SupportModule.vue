@@ -17,37 +17,5 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 </template>
 
 <style scoped lang="scss">
-@import '@/assets/scss/variables';
-
-.support {
-  &-content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
-  }
-
-  &-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: start;
-    gap: 12px;
-    font-size: 20px;
-    font-weight: 600;
-    color: $white;
-
-    @media (max-width: $md2 + px) {
-      font-size: 18px;
-    }
-
-    @media (max-width: $md4 + px) {
-      font-size: 16px;
-    }
-
-    &-title {
-      color: #bbb;
-    }
-  }
-}
+@import 'SupportModule';
 </style>

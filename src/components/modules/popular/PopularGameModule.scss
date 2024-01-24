@@ -1,0 +1,47 @@
+@import '@/assets/scss/variables';
+@import '@/assets/scss/animation';
+
+.popular {
+  &__game {
+    &-module {
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+
+      @media (max-width: $md2 + px) {
+        gap: 24px;
+      }
+
+      &-title {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 16px;
+        font-size: 32px;
+
+        @media (max-width: $md4 + px) {
+          font-size: 20px;
+        }
+      }
+
+      &-items {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 52px;
+
+        @media (max-width: 1640px) {
+          gap: 32px;
+        }
+        @media (max-width: $md2 + px) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        @media (max-width: $md4 + px) {
+          gap: 16px;
+        }
+        @media (max-width: $md5 + px) {
+          gap: 8px;
+        }
+      }
+    }
+  }
+}

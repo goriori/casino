@@ -1,7 +1,6 @@
 <script setup>
-import AccountButton from '@/components/ui/buttons/account/AccountButton.vue'
 import { useRouter } from 'vue-router'
-
+import AccountButton from '@/components/ui/buttons/account/AccountButton.vue'
 const router = useRouter()
 </script>
 

@@ -1,6 +1,5 @@
 <script setup>
 import { useRouter } from 'vue-router'
-
 import {
   onChangeHiddenPassword,
   onChangeHiddenPasswordConfirm,

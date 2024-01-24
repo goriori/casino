@@ -1,6 +1,13 @@
 <script setup>
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import ProviderIcon from '@/components/ui/icons/provider/ProviderIcon.vue'
+
+const props = defineProps({
+  provider: {
+    type: Object,
+    default: {},
+  },
+})
 </script>
 
 <template>

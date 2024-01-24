@@ -15,18 +15,17 @@ export const useSessionStore = defineStore('sessionStore', () => {
   }
 
   const registration = async (formReg) => {
-    const response = await AuthorizationService.registration(formReg)
-    console.log(response)
+    await AuthorizationService.registration(formReg)
   }
 
   const getInfoSession = async () => {
     const response = await AccountService.getInfoAccount()
-    console.log(response)
+    session.value.profile = { ...response }
   }
 
   const getStatusPay = async () => {
-    const response = await AccountService.getInfoStatusPay()
-    console.log(response)
+    const { data } = await AccountService.getInfoStatusPay()
+    session.value.history = { ...data }
   }
   return {
     session,

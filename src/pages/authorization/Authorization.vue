@@ -7,8 +7,6 @@ import AuthorizationModule from '@/components/modules/authorization/Authorizatio
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-const tg = ref(window)
-
 onMounted(async () => {
   await onCheckRegistrationFromTelegram(router)
 })

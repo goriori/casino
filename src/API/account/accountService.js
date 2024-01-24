@@ -1,6 +1,7 @@
 import { axiosInstance } from '@/utils/axios/axios'
+import apiConfig from '@/API/api.config.js'
 
-const tokenAuth = window.TEST_TOKEN_AUTH
+const tokenAuth = apiConfig.token
 const queryString = '?shop_id=1&key=pLaHFj1OsSNDNclDjRN03OHHq'
 export default class AccountService {
   static async getInfoAccount() {
