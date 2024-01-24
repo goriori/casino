@@ -1,3 +1,4 @@
+@import "@/assets/scss/variables";
 .sum__translation {
   &-screen {
     display: flex;
@@ -91,6 +92,11 @@
       font-weight: 600;
       border-radius: 0 0 26px 26px;
       padding: 15px 0;
+
+      @media (max-width: $md4 + px) {
+        border-radius: 26px;
+        margin: auto 18px 18px;
+      }
     }
   }
 }
