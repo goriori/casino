@@ -26,6 +26,7 @@ onMounted(async () => {
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/scss/variables';
 .page {
   color: #fff;
 
@@ -34,6 +35,9 @@ onMounted(async () => {
     flex-direction: column;
     gap: 20px;
     padding: 48px 28px;
+    @media (max-width: $md2 + px) {
+      padding: 20px;
+    }
   }
 }
 

@@ -22,6 +22,7 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/scss/variables';
 .page {
   color: #fff;
 
@@ -30,6 +31,9 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
     flex-direction: column;
     gap: 20px;
     padding: 24px 48px;
+    @media (max-width: $md2 + px) {
+      padding: 20px;
+    }
   }
 
   &-message {
@@ -39,6 +43,15 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
     border: 1px solid #ef5a5a;
     border-radius: 16px;
     padding: 10px 20px;
+
+    @media (max-width: $md4 + px) {
+      flex-direction: column;
+      gap: 18px;
+      padding-bottom: 18px;
+      div {
+        width: 100%;
+      }
+    }
   }
 }
 

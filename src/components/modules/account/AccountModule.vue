@@ -32,17 +32,22 @@ import WithdrawalModule from '@/components/modules/account/modules/withdrawal/Wi
         <BalanceModule />
         <HistoryBalanceModule />
       </div>
-      <WithdrawalModule/>
+      <WithdrawalModule />
     </div>
   </div>
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/scss/variables';
 .account {
   &-module {
     display: flex;
     flex-direction: column;
     gap: 36px;
+
+    @media (max-width: $md2 + px) {
+      gap: 24px;
+    }
 
     &-title {
       display: flex;
@@ -51,6 +56,13 @@ import WithdrawalModule from '@/components/modules/account/modules/withdrawal/Wi
       gap: 16px;
       font-size: 32px;
       color: #fff;
+
+      @media (max-width: $md2 + px) {
+        font-size: 24px;
+        svg {
+          height: 28px;
+        }
+      }
     }
 
     &-items {
@@ -58,6 +70,13 @@ import WithdrawalModule from '@/components/modules/account/modules/withdrawal/Wi
       justify-content: center;
       flex: 1 1 auto;
       gap: 48px;
+
+      @media (max-width: 1500px) {
+        gap: 24px;
+      }
+      @media (max-width: $md2 + px) {
+        flex-direction: column;
+      }
     }
   }
 }
@@ -66,5 +85,8 @@ import WithdrawalModule from '@/components/modules/account/modules/withdrawal/Wi
   display: flex;
   flex-direction: column;
   gap: 36px;
+  @media (max-width: 1500px) {
+    gap: 24px;
+  }
 }
 </style>

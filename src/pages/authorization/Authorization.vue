@@ -11,7 +11,6 @@ const tg = ref(window)
 
 onMounted(async () => {
   await onCheckRegistrationFromTelegram(router)
-
 })
 </script>
 <template>
@@ -25,6 +24,7 @@ onMounted(async () => {
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/scss/variables';
 .page {
   color: #fff;
 
@@ -35,6 +35,9 @@ onMounted(async () => {
     align-items: center;
     gap: 20px;
     padding: 48px 28px;
+    @media (max-width: $md2 + px) {
+      padding: 20px;
+    }
   }
 }
 </style>

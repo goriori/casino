@@ -57,6 +57,7 @@ import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/scss/variables';
 .withdrawal {
   &-module {
     width: 100%;
@@ -70,6 +71,15 @@ import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
     background: #1d2345;
     border-radius: 26px;
     font-size: 24px;
+
+    @media (max-width: 1500px) {
+      padding: 18px;
+    }
+
+    @media (max-width: $md2 + px) {
+      gap: 24px;
+      font-size: 20px;
+    }
 
     &-title {
       display: flex;
@@ -86,6 +96,9 @@ import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
       flex-direction: column;
       justify-content: center;
       gap: 36px;
+      @media (max-width: $md2 + px) {
+        gap: 24px;
+      }
     }
   }
 }
@@ -101,6 +114,9 @@ import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
       color: #bbb;
       font-weight: 400;
       font-size: 24px;
+      @media (max-width: 1500px) {
+        font-size: 20px;
+      }
     }
 
     input {
@@ -116,6 +132,11 @@ import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 .withdrawal-module-action {
   max-width: 230px;
   margin: 0 auto;
+
+  @media (max-width: $md4 + px) {
+    max-width: none;
+    width: 100%;
+  }
 
   &-text {
     color: #fff;

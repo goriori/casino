@@ -13,6 +13,12 @@
   font-size: 20px;
   border: 1px solid transparent;
   transition: 0.15s all ease-in-out;
+
+  @media (max-width: $md2 + px) {
+    font-size: 18px;
+    padding: 10px 16px;
+  }
+
   // Size
   &-small {
     min-height: 49px;
@@ -115,10 +121,16 @@
   // rounded
   &-rounded-small {
     border-radius: 16px;
+    @media (max-width: $md2 + px) {
+      border-radius: 8px;
+    }
   }
 
   &-rounded-full {
     border-radius: 36px;
+    @media (max-width: $md2 + px) {
+      border-radius: 18px;
+    }
   }
 
   // outline

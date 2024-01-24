@@ -18,11 +18,7 @@ onMounted(async () => {
       <h3>Популярные</h3>
     </div>
     <div class="popular__game-module-items">
-      <GameCard
-        v-for="game in 34"
-        :key="game"
-        :gameItem="game"
-      />
+      <GameCard v-for="game in 34" :key="game" :gameItem="game" />
     </div>
   </div>
 </template>
@@ -36,6 +32,10 @@ onMounted(async () => {
       display: flex;
       flex-direction: column;
       gap: 36px;
+
+      @media (max-width: $md2 + px) {
+        gap: 24px;
+      }
 
       &-title {
         display: flex;
@@ -62,6 +62,9 @@ onMounted(async () => {
         }
         @media (max-width: $md4 + px) {
           gap: 16px;
+        }
+        @media (max-width: $md5 + px) {
+          gap: 8px;
         }
       }
     }

@@ -12,6 +12,15 @@
     border-radius: 26px;
     font-size: 24px;
 
+    @media (max-width: 1500px) {
+      padding: 18px;
+    }
+
+    @media (max-width: $md2 + px) {
+      gap: 24px;
+      font-size: 20px;
+    }
+
     &-title {
       display: flex;
       align-items: center;
@@ -27,6 +36,10 @@
       align-items: center;
       justify-content: center;
       gap: 36px;
+
+      @media (max-width: $md2 + px) {
+        gap: 24px;
+      }
     }
   }
 }
@@ -38,6 +51,11 @@
     gap: 26px;
     text-align: center;
     line-height: 145%;
+
+    @media (max-width: $md2 + px) {
+      gap: 24px;
+    }
+
     h4 {
       color: #bbb;
       font-weight: 500;

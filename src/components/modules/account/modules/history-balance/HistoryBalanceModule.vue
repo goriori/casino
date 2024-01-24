@@ -1,5 +1,4 @@
-<script setup>
-</script>
+<script setup></script>
 
 <template>
   <div class="history__balance-module">
@@ -20,9 +19,9 @@
     </div>
     <div class="history__balance-module-content">
       <div class="history__balance-module-target">
-        <p>С</p>
+        <p>с</p>
         <input type="date" />
-        <p>По</p>
+        <p>по</p>
         <input type="date" />
       </div>
       <hr />
@@ -57,7 +56,6 @@
             <td class="info-content">500.00 Р</td>
             <td class="info-content">Успешно</td>
           </tr>
-
         </table>
       </div>
     </div>
@@ -85,6 +83,15 @@ hr {
       border-radius: 26px;
       font-size: 24px;
 
+      @media (max-width: 1500px) {
+        padding: 18px;
+      }
+
+      @media (max-width: $md2 + px) {
+        font-size: 20px;
+        gap: 24px;
+      }
+
       &-title {
         display: flex;
         justify-content: center;
@@ -99,19 +106,23 @@ hr {
         justify-content: flex-start;
         align-items: center;
         gap: 20px;
-        text-transform: uppercase;
         font-size: 24px;
+
+        @media (max-width: $md4 + px) {
+          gap: 6px;
+        }
 
         p {
           color: #bbb;
         }
 
         input {
-          max-width: 90px;
+          max-width: 120px;
           max-height: 40px;
           padding: 10px;
           border-radius: 6px;
           border: 1px solid #5570fb;
+          font-size: 14px;
         }
       }
 
@@ -127,14 +138,30 @@ hr {
         align-items: center;
         justify-content: center;
         gap: 20px;
+
+        @media (max-width: $md4 + px) {
+          overflow-x: scroll;
+          align-items: flex-start;
+          padding-bottom: 18px;
+
+          &::-webkit-scrollbar {
+            height: 1px;
+          }
+
+          &::-webkit-scrollbar-track {
+            background-color: #ffffff50;
+          }
+
+          &::-webkit-scrollbar-thumb {
+            background-color: #ffffff;
+          }
+        }
       }
     }
   }
 }
 
 .info {
-
-
   &-title {
     font-size: 14px;
     font-weight: 400;
@@ -151,18 +178,35 @@ hr {
     font-size: 14px;
   }
 }
+table {
+  @media (max-width: $md2 + px) {
+    width: 100%;
+  }
+}
 tr {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   gap: 86px;
   margin: 20px 0 0 0;
+  &:first-child {
+    margin-top: 0;
+  }
+  @media (max-width: 1500px) {
+    gap: 60px;
+  }
+  @media (max-width: $md2 + px) {
+    justify-content: space-between;
+  }
 }
 
 td {
   display: flex;
   align-items: center;
   justify-content: flex-start;
- width: 70px;
+  width: 70px;
+  @media (max-width: 1500px) {
+    width: 60px;
+  }
 }
 </style>

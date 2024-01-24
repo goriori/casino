@@ -5,7 +5,7 @@ import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 <template>
   <div class="balance-module">
     <div class="balance-module-title">
-      <p>Профиль</p>
+      <p>Балланс</p>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
@@ -64,6 +64,15 @@ import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
     border-radius: 26px;
     font-size: 24px;
 
+    @media (max-width: 1500px) {
+      padding: 18px;
+    }
+
+    @media (max-width: $md2 + px) {
+      font-size: 20px;
+      gap: 24px;
+    }
+
     &-title {
       display: flex;
       justify-content: center;
@@ -80,12 +89,23 @@ import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
       color: $white;
       gap: 317px;
 
+      @media (max-width: $md2 + px) {
+        gap: 24px;
+        justify-content: space-around;
+        width: 100%;
+      }
+
       &-item {
         display: flex;
         flex-direction: column;
         align-items: start;
         gap: 26px;
         font-size: 24px;
+
+        @media (max-width: $md2 + px) {
+          font-size: 20px;
+          gap: 18px;
+        }
 
         h4 {
           font-weight: 500;
