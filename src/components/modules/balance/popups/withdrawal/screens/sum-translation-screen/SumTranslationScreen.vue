@@ -89,7 +89,7 @@ onMounted(() => {
     <BaseButton>
       <div class="btn-copy-number" @click="onClipboardWrite(numberCardTo)">
         <CompyIcon />
-        <p>Скопировть номер карты</p>
+        <p>Скопировать номер карты</p>
       </div>
     </BaseButton>
     <div class="sum__translation-screen-alerts">

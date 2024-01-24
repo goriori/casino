@@ -14,7 +14,10 @@ export const usePaymentStore = defineStore('paymentStore', () => {
   })
 
   const sendReplenishment = async () => {
-    await PaymentService.setReplenishment(replObject.value)
+    const form = new FormData()
+    const keysRepl = Object.keys(replObject.value)
+    keysRepl.forEach(key=> form.append(key, replObject.value[key]))
+    await PaymentService.setReplenishment(form)
   }
 
   const sendWithdrawal = async (withdrawalForm) => {
@@ -23,6 +26,6 @@ export const usePaymentStore = defineStore('paymentStore', () => {
   return {
     replObject,
     sendReplenishment,
-    sendWithdrawal
+    sendWithdrawal,
   }
 })

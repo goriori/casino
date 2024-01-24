@@ -50,12 +50,9 @@ const emits = defineEmits(['close'])
       <div class="success-withdrawal-icon">
         <SuccessIcon />
       </div>
-      <div class="success-withdrawal-title">Ваш платеж прошел успешно</div>
+      <div class="success-withdrawal-title">Ваш платеж обрабатывается</div>
       <div class="success-withdrawal-description">
-        Lorem Ipsum - это текст-"рыба", часто используемый в печати и
-        вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на
-        латинице с начала XVI века. В то время некий безымянный печатник создал
-        большую коллекцию размеров и форм шрифтов, используя
+        Пожалуйста ожидайте, это займет какое-то время.
       </div>
       <div class="success-withdrawal-sum-translation">
         <p>Сумма пополнения:</p>

@@ -17,6 +17,9 @@ import {
   screenshot,
 } from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.options.js'
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
+import {
+  statusTranslation
+} from '@/components/modules/balance/popups/withdrawal/screens/sum-translation-screen/SumTranslationScreen.option.js'
 
 const emits = defineEmits(['success', 'error'])
 const props = defineProps({
@@ -103,6 +106,24 @@ onMounted(() => {
       <p class="attach-rules">
         Чек по операции с номером документа (только PNG и JPG)
       </p>
+    </div>
+    <div class="confirm__translation-screen-alerts">
+      <div
+        class="confirm__translation-screen-alert"
+        id="alert-success"
+        @click="emits('success')"
+        v-if="statusTranslation === 'success'"
+      >
+        Оплачено
+      </div>
+      <div
+        class="confirm__translation-screen-alert"
+        id="alert-error"
+        @click="emits('error')"
+        v-if="statusTranslation === 'error'"
+      >
+        Ошибка
+      </div>
     </div>
   </div>
 </template>

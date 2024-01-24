@@ -26,3 +26,11 @@ export const onAuthorization = async (router) => {
     router.push('/')
   }
 }
+
+export const onAuthTelegram = () => {
+  const a = document.createElement('a')
+  a.href = `https://t.me/momytest_bot`
+  a.target = '_blank'
+  a.click()
+
+}

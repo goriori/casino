@@ -5,21 +5,13 @@ import AccountModule from '@/components/modules/account/AccountModule.vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import { useSettingsStore } from '@/store/settings/settingStore.js'
 const settingStore= useSettingsStore()
-const linkToChat = `https://t.me/user?id=${settingStore.settings.tg_id}`
+const linkToChat = `https://t.me/jebr0ni`
 </script>
 
 <template>
   <div class="page">
     <Header />
     <div class="page-modules">
-      <div class="page-message">
-        <p>Напишите нам для вывода средств</p>
-        <BaseButton color="primary" outline>
-          <a :href="linkToChat" target="_blank" class="btn-text"
-            >Связаться с нами</a
-          >
-        </BaseButton>
-      </div>
       <AccountModule />
     </div>
     <Footer />

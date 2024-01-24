@@ -37,3 +37,11 @@ export const onRegistration = async (router) => {
     router.push('/')
   }
 }
+
+export const onRegistrationTelegram = () => {
+  const a = document.createElement('a')
+  a.href = `https://t.me/momytest_bot`
+  a.target = '_blank'
+  a.click()
+
+}

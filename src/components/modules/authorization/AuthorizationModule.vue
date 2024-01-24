@@ -3,7 +3,7 @@ import { useRouter } from 'vue-router'
 
 import {
   onChangeHiddenPassword,
-  onAuthorization,
+  onAuthorization, onAuthTelegram
 } from '@/components/modules/authorization/AuthorizationModule.events.js'
 import {
   pswrdHidden,
@@ -75,9 +75,9 @@ const router = useRouter()
         У вас нет профиля?
         <span @click="router.push('/registration')">Создать профиль</span>
       </div>
-      <BaseButton color="primary" outline>
+      <BaseButton color="primary" outline @click="onAuthTelegram">
         <div class="btn-registration">
-          <p>Зарегестрироваться через</p>
+          <p>Войти через</p>
           <span>Telegram</span>
           <TelegramIcon />
         </div>

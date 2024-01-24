@@ -21,7 +21,12 @@ export const onChangeFullName = (e) => {
 }
 
 const onConfirmTranslation = async () => {
-  paymentStore.sendReplenishment()
+  try {
+    await paymentStore.sendReplenishment()
+    statusTranslation.value = 'success'
+  } catch (e) {
+    statusTranslation.value = 'error'
+  }
 }
 export const onChangeFile = (e) => {
   const files = e.target.files || e.dataTransfer.files

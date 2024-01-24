@@ -44,7 +44,7 @@ export const navigation = [
     title: 'Тех. поддержка',
     handler: function (router) {
       const a = document.createElement('a')
-      a.href = `https://t.me/user?id=${settingStore.settings.tg_id}`
+      a.href = `https://t.me/jebr0ni`
       a.target = '_blank'
       a.click()
       console.log(settingStore.settings.tg_id)

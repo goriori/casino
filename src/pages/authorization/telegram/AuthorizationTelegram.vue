@@ -70,10 +70,8 @@ onMounted(async () => await authorization())
           </svg>
         </div>
         <p>Авторизация через телеграм</p>
-        <p>Пожалуйста подождите</p>
-        <div>
-          {{ tg.initDataUnsafe }}
-        </div>
+        <p>Пожалуйста подождите...</p>
+
       </div>
     </div>
     <Footer />

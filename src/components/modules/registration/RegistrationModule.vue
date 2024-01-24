@@ -4,6 +4,7 @@ import {
   onChangeHiddenPassword,
   onChangeHiddenPasswordConfirm,
   onRegistration,
+  onRegistrationTelegram,
 } from '@/components/modules/registration/RegistrationModule.events.js'
 import {
   pswrdHidden,
@@ -104,7 +105,7 @@ const router = useRouter()
           <span>Правилами Использования Сервиса</span>
         </p>
       </div>
-      <BaseButton color="primary" outline>
+      <BaseButton color="primary" outline @click="onRegistrationTelegram">
         <div class="btn-registration">
           <p>Зарегестрироваться через</p>
           <span>Telegram</span>

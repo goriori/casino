@@ -1,3 +1,4 @@
+@import '@/assets/scss/variables';
 .confirm__translation {
   &-screen {
     display: flex;
@@ -57,9 +58,41 @@
         line-height: normal;
       }
     }
+
+    &-alerts {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    &-alert {
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 0 0 26px 26px;
+      padding: 15px 0;
+
+      @media (max-width: $md4 + px) {
+        border-radius: 0;
+      }
+    }
   }
 }
+#alert-error {
+  background: #FF3939;
 
+}
+
+#alert-success {
+  background: #45CC3A;
+
+}
 .title {
   &-target-bank {
     display: flex;
