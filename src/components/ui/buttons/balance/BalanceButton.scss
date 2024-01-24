@@ -1,19 +1,23 @@
 @import '@/assets/scss/variables';
+
 svg {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
 .balance {
   display: flex;
   justify-content: center;
   align-items: center;
   transition: 0.15s all ease-in-out;
+
   &-info {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: $button-gap-primary;
+    font-size: calc(10px + (10 + 10 * 0.7) * ((100vw - 320px) / 1920));
   }
 
   .arrow-active {

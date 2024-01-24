@@ -11,4 +11,5 @@ export const testOutside = () => {
   btnActive.value = false
 }
 
+export const onCloseMenu = () => (btnActive.value = false)
 export const closePopupReplenishment = () => (popupReplenishment.value = false)

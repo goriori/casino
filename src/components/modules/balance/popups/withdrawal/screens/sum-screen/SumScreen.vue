@@ -1,7 +1,9 @@
 <script setup>
 import { balance } from '@/components/modules/balance/popups/withdrawal/screens/sum-screen/SumScreen.options.js'
-import { onChangeSlotBalance } from '@/components/modules/balance/popups/withdrawal/screens/sum-screen/SumScreen.events.js'
-
+import {
+  onChangeSlotBalance,
+  onConfirmSum
+} from '@/components/modules/balance/popups/withdrawal/screens/sum-screen/SumScreen.events.js'
 const emits = defineEmits(['replenish'])
 </script>
 
@@ -64,7 +66,7 @@ const emits = defineEmits(['replenish'])
     <div class="popup-screen-alerts">
       <div
         class="popup-screen-alert"
-        @click="emits('replenish', balance)"
+        @click="onConfirmSum(emits)"
         v-ripple
       >
         Пополнить

@@ -1,20 +1,21 @@
-import { axiosInstance , validTokenExpired} from '@/utils/axios/axios'
+import { axiosInstance, validTokenExpired } from '@/utils/axios/axios'
 import apiConfig from '@/API/api.config.js'
 
 const queryString = '?shop_id=1&key=pLaHFj1OsSNDNclDjRN03OHHq'
-export default class AccountService {
-  static async getInfoAccount() {
+export default class PaymentService {
+  static async setReplenishment(replObject) {
     try {
       const tokenAuth = apiConfig.token || sessionStorage.getItem('token')
       const response = await axiosInstance({
-        url: '/me' + queryString,
+        url: '/ticketIn' + queryString,
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
           Accept: 'application/json',
           Authorization: `Bearer ${tokenAuth}`,
         },
         validateStatus: validTokenExpired,
-        method: 'GET',
+        method: 'POST',
+        data: { ...replObject },
       })
       return response.data
     } catch (e) {
@@ -22,18 +23,18 @@ export default class AccountService {
     }
   }
 
-  static async getInfoStatusPay() {
+  static async setWithdrawal(withdrwlObject) {
     try {
       const tokenAuth = apiConfig.token || sessionStorage.getItem('token')
       const response = await axiosInstance({
-        url: '/stats/pay' + queryString,
+        url: '/ticketOut' + queryString,
         headers: {
           'Content-Type': 'application/json',
           Accept: 'application/json',
           Authorization: `Bearer ${tokenAuth}`,
         },
-        validateStatus: validTokenExpired,
-        method: 'GET',
+        method: 'POST',
+        data: { ...withdrwlObject },
       })
       return response.data
     } catch (e) {

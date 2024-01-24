@@ -1,35 +1,31 @@
-@import "@/assets/scss/variables";
-.sum__translation {
-  &-screen {
+@import '@/assets/scss/variables';
+.replenishment {
+  &-cryptocurrency-screen {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 16px;
+    align-items: center;
+    gap: 20px;
     color: #fff;
-    padding: 36px 26px;
+    padding: 20px;
 
     &-title {
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      gap: 5px;
+      gap: 10px;
+      font-size: 20px;
+      font-weight: 600;
     }
 
-    &-timer {
+    &-text {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 6px;
-      border-radius: 26px;
-      background: #2f3975;
-      padding: 4px;
-      color: #fff;
-    }
-
-    &-attention {
+      text-align: center;
+      max-width: 372px;
       font-size: 14px;
       font-weight: 500;
-      color: #bbb;
       line-height: normal;
     }
 
@@ -37,9 +33,10 @@
       &-items {
         display: flex;
         flex-direction: column;
+        justify-content: center;
         border-radius: 26px;
         background: #2f3975;
-        padding: 10px 0;
+        padding: 5px 0;
 
         div {
           &:nth-child(1) {
@@ -76,44 +73,25 @@
 
     &-alerts {
       position: absolute;
-      left: 0;
-      bottom: 0;
       width: 100%;
+      bottom: 0;
+      left: 0;
+      text-align: center;
+      color: #fff;
     }
 
     &-alert {
+      position: relative;
       cursor: pointer;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
+      overflow: hidden;
+      padding: 15px 0;
+      background: #45CC3A;
+      border-radius: 0 0 26px 26px;
       font-size: 16px;
       font-weight: 600;
-      border-radius: 0 0 26px 26px;
-      padding: 15px 0;
-
       @media (max-width: $md4 + px) {
-        border-radius: 0;
+        border-radius:0;
       }
     }
   }
-}
-
-#alert-error {
-  background: #FF3939;
-
-}
-
-#alert-success {
-  background: #45CC3A;
-
-}
-
-.btn-copy-number {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  color: #fff;
 }

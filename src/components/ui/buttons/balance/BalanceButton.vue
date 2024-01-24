@@ -38,7 +38,7 @@ const buttonHandler = () => {
       :is-active="btnActive"
     >
       <div class="balance-info">
-        <div class="balance-count">{{ balance }} ₽</div>
+        <div class="balance-count">{{ Math.floor(balance) }} ₽</div>
         <div class="balance-currency">
           <CurrencyIcon v-if="country === 'ru'" />
         </div>

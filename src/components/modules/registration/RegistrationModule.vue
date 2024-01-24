@@ -31,36 +31,6 @@ const router = useRouter()
 
     <div class="authorization-form">
       <div class="form-field">
-        <label>Имя</label><br />
-        <div class="form-field-input">
-          <input
-            type="text"
-            placeholder="Ввести имя"
-            v-model="formReg.first_name"
-          />
-        </div>
-      </div>
-      <div class="form-field">
-        <label>Фамилия</label><br />
-        <div class="form-field-input">
-          <input
-            type="text"
-            placeholder="Ввести фамилию"
-            v-model="formReg.last_name"
-          />
-        </div>
-      </div>
-      <div class="form-field">
-        <label>Дата рождения</label><br />
-        <div class="form-field-input">
-          <input
-            type="date"
-            placeholder="Ввести дату рождения"
-            v-model="formReg.birthday"
-          />
-        </div>
-      </div>
-      <div class="form-field">
         <label>Логин</label><br />
         <div class="form-field-input">
           <input

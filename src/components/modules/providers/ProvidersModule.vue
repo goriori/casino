@@ -27,6 +27,7 @@ onMounted(async () => {
         class="providers-module-items"
         v-if="providerStore.providers.length > 0"
       >
+
         <ProviderButton
           v-for="provider in providerStore.providers"
           :provider="provider"

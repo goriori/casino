@@ -1,4 +1,3 @@
-
 @import '@/assets/scss/variables';
 
 .profile {
@@ -52,6 +51,14 @@
     text-align: center;
     line-height: 145%;
 
+    input {
+      width: 100%;
+      font-size: 14px;
+      padding: 10px;
+      border-radius: 6px 0 0 6px;
+      border: 1px solid #5570fb;
+    }
+
     @media (max-width: $md2 + px) {
       gap: 24px;
     }
@@ -62,8 +69,34 @@
     }
 
     p {
+      cursor: pointer;
       color: #5570fb;
       font-weight: 700;
+    }
+  }
+}
+
+
+.field {
+  &-container {
+    display: flex;
+    align-items: center;
+  }
+  &-action {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    padding: 3px;
+    border-radius: 0px 6px 6px 0px;
+    background: #5570fb;
+    font-size: 14px;
+    transition: 0.15s all ease-in-out;
+    &:hover {
+      background: #8a55fb;
     }
   }
 }

@@ -1,5 +1,9 @@
 <script setup>
 import USDTIcon from '@/components/ui/icons/other/USDTIcon.vue'
+import { usePaymentStore } from '@/store/payments/paymentStore.js'
+import {
+  bankList
+} from '@/components/modules/balance/popups/withdrawal/screens/select-bank/SelectBankScreen.options.js'
 
 const props = defineProps({
   sum: {
@@ -8,6 +12,11 @@ const props = defineProps({
   },
 })
 const emits = defineEmits(['select-bank'])
+const paymentStore = usePaymentStore()
+const onSelectBank = (bank) => {
+  paymentStore.replObject.name = bank.name
+  emits('select-bank')
+}
 </script>
 
 <template>
@@ -21,12 +30,12 @@ const emits = defineEmits(['select-bank'])
       <div class="select__bank-screen-items">
         <div
           class="select__bank-screen-item"
-          v-for="bank in 10"
-          @click="emits('select-bank')"
+          v-for="bank in bankList"
+          @click="onSelectBank(bank)"
           v-ripple
         >
           <USDTIcon />
-          <h4>Сбербанк</h4>
+          <h4>{{bank.name}}</h4>
         </div>
       </div>
     </div>

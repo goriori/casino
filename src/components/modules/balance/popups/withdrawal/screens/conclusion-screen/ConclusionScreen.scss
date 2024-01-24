@@ -154,9 +154,10 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: start;
       gap: 14px;
-
+      background: #2F3975;
+      padding: 30px;
+      border-radius: 26px;
       p {
         color: #BBB;
         font-size: 16px;
@@ -202,5 +203,59 @@
     color: #fff;
     font-size: 14px;
     font-weight: 600;
+  }
+}
+
+
+.info {
+  &-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+
+    h4 {
+      color: #bbb;
+      font-weight: 400;
+      font-size: 24px;
+      @media (max-width: 1500px) {
+        font-size: 20px;
+      }
+    }
+
+    input {
+      width: 100%;
+      font-size: 14px;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #5570fb;
+    }
+  }
+}
+
+.input-currency {
+  display: flex;
+
+  input {
+    border-radius: 6px 0 0 6px;
+  }
+
+  &-target {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    padding: 9px 6px;
+    border-radius: 0px 6px 6px 0px;
+    background: #5570fb;
+    font-size: 14px;
+    transition: 0.15s all ease-in-out;
+
+    &:hover {
+      background: #8a55fb;
+    }
   }
 }

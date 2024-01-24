@@ -1,6 +1,10 @@
 <script setup>
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { onMounted } from 'vue'
+import {
+  dateEnd,
+  dateStart, filteredHistory
+} from '@/components/modules/account/modules/history-balance/HistoryBalanceModule.options.js'
 
 const sessionStore = useSessionStore()
 
@@ -29,9 +33,9 @@ onMounted(async () => {
     <div class="history__balance-module-content">
       <div class="history__balance-module-target">
         <p>с</p>
-        <input type="date" />
+        <input type="date" v-model="dateStart" />
         <p>по</p>
-        <input type="date" />
+        <input type="date" v-model="dateEnd" />
       </div>
       <hr />
       <div class="history__balance-module-info">
@@ -46,10 +50,12 @@ onMounted(async () => {
 
           <tr
             class="info-content-item"
-            v-for="history in sessionStore.session.history"
+            v-for="history in filteredHistory"
             :key="history.id"
           >
-            <td class="info-content">{{ history.created_at }}</td>
+            <td class="info-content">
+              {{ new Date(history.created_at).toLocaleDateString() }}
+            </td>
             <td class="info-content">
               {{ history.type === 'add' ? 'Зачисление' : 'Отправление' }}
             </td>

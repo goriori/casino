@@ -25,7 +25,7 @@ onMounted(async () => {
     <Transition name="fade">
       <div class="popular__game-module-items" v-if="gameStore.games.length > 0">
         <GameCard
-          v-for="game in gameStore.games"
+          v-for="game in gameStore.filteredGame"
           :key="game"
           :gameItem="game"
         />

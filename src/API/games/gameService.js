@@ -1,4 +1,4 @@
-import { axiosInstance } from '@/utils/axios/axios'
+import { axiosInstance, validTokenExpired } from '@/utils/axios/axios'
 import apiConfig from '@/API/api.config.js'
 
 const queryString = '?shop_id=1&key=pLaHFj1OsSNDNclDjRN03OHHq'
@@ -13,6 +13,7 @@ export default class GamesService {
           Accept: 'application/json',
           Authorization: `Bearer ${tokenAuth}`,
         },
+        validateStatus: validTokenExpired,
         method: 'GET',
       })
       return response.data

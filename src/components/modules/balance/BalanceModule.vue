@@ -1,35 +1,48 @@
 <script setup>
+import { useRouter } from 'vue-router'
 import {
   closePopupReplenishment,
   testOutside,
-  updateStateButton
+  updateStateButton,
+  onCloseMenu
 } from '@/components/modules/balance/BalanceModule.events.js'
 import {
   btnActive,
   navigation,
   popupReplenishment,
-  popupSetting
+  popupSetting,
 } from '@/components/modules/balance/BalanceModule.options.js'
+import { useSessionStore } from '@/store/session/sessionStore.js'
 import BalanceButton from '@/components/ui/buttons/balance/BalanceButton.vue'
 import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 import ArrowIcon from '@/components/ui/icons/other/ArrowIcon.vue'
 import WithdrawalPopup from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.vue'
-import { useRouter } from 'vue-router'
+import MoveUpIcon from '@/components/ui/icons/other/MoveUpIcon.vue'
+import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
+
 const router = useRouter()
+const sessionStore = useSessionStore()
 </script>
 
 <template>
   <div class="balance-module" v-outside="testOutside" @click.stop>
-    <BalanceButton @is-active="updateStateButton" :is-active="btnActive" />
+    <BalanceButton
+      @is-active="updateStateButton"
+      :is-active="btnActive"
+      :balance="sessionStore.session.profile?.balance"
+    />
     <Transition name="fade">
       <div class="balance-module-popup" v-if="btnActive">
-        <div class="popup-title">Ваш баланс</div>
+        <div class="popup-title">
+          Ваш баланс
+          <CloseIcon @click="onCloseMenu" class="popup-title-close"/>
+        </div>
         <div class="popup-balances">
           <div class="balance-item">
             <div class="balance-item-name">Основной</div>
             <div class="balance-item-content">
               <CurrencyIcon />
-              <p>0.00 ₽</p>
+              <p>{{ sessionStore.session.profile?.balance }} ₽</p>
             </div>
           </div>
         </div>
@@ -48,7 +61,6 @@ const router = useRouter()
             <div class="navigation-item-action">
               <ArrowIcon />
             </div>
-
           </div>
         </div>
       </div>

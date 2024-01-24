@@ -1,9 +1,13 @@
 import { statusTranslation } from '@/components/modules/balance/popups/withdrawal/screens/sum-translation-screen/SumTranslationScreen.option.js'
 
-export const onCheckStatusPay = (emits) => {
+export const onCheckStatusPay = () => {
   const timeWait = 5000
   setTimeout(() => {
     statusTranslation.value = 'success'
-    setTimeout(() => emits('success'), 1000)
   }, timeWait)
+}
+
+export  const onClipboardWrite = ( value) => {
+  console.log(value)
+  navigator.clipboard.writeText(value)
 }

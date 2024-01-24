@@ -4,10 +4,12 @@
   align-items: center;
 
   &-content {
-    max-width: 92px;
+    color: #fff;
+    max-width: 150px;
+    font-size: calc(7px + (12 + 12 * 0.7) * ((100vw - 320px) / 1920));
   }
 
-  &-button{
+  &-button {
     width: 100%;
   }
 }

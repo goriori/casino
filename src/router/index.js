@@ -41,6 +41,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const hasToken = sessionStorage.getItem('token')
   console.log(hasToken)
+    // проверка на наличие токена
   if (
     !hasToken &&
     to.name !== 'authorization' &&
@@ -56,5 +57,7 @@ router.beforeEach((to, from, next) => {
   } else {
     next()
   }
+
+
 })
 export default router

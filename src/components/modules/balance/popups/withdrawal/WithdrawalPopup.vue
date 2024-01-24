@@ -1,8 +1,8 @@
 <script setup>
 import { onMounted } from 'vue'
 import {
-  stateManipulate,
-  stateSum,
+  stateManipulate, stateMessage,
+  stateSum
 } from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.option.js'
 import {
   onSwitchWithdrawalReplenishment,
@@ -12,6 +12,7 @@ import {
   onSwitchWithdrawalSumTranslation,
   onSwitchWithdrawalConfirm,
   onSwitchWithdrawalMessage,
+  onFinishWithdrawal, onClose
 } from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.events.js'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import ReplenishmentScreen from '@/components/modules/balance/popups/withdrawal/screens/replenishment-screen/ReplenishmentScreen.vue'
@@ -23,6 +24,8 @@ import SelectBankScreen from '@/components/modules/balance/popups/withdrawal/scr
 import SumTranslationScreen from '@/components/modules/balance/popups/withdrawal/screens/sum-translation-screen/SumTranslationScreen.vue'
 import ConfirmTranslationScreen from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.vue'
 import MessageScreen from '@/components/modules/balance/popups/withdrawal/screens/message-screen/MessageScreen.vue'
+import { useSessionStore } from '@/store/session/sessionStore.js'
+import ReplenishmentCryptocurrencyScreen from '@/components/modules/balance/popups/withdrawal/screens/replenishment-cryptocurrency-screen/ReplenishmentCryptocurrencyScreen.vue'
 
 const props = defineProps({
   setting: {
@@ -31,6 +34,7 @@ const props = defineProps({
   },
 })
 const emits = defineEmits(['close'])
+const sessionStore = useSessionStore()
 onMounted(() => (stateManipulate.value = props.setting.targetScreen))
 </script>
 
@@ -47,7 +51,7 @@ onMounted(() => (stateManipulate.value = props.setting.targetScreen))
             </div>
           </BaseButton>
         </div>
-        <div class="navigation-close" @click="emits('close')">
+        <div class="navigation-close" @click="onClose(emits)">
           <CloseIcon />
         </div>
       </div>
@@ -60,7 +64,7 @@ onMounted(() => (stateManipulate.value = props.setting.targetScreen))
           "
         >
           <div class="popup-withdrawal-count">
-            <p>0.00</p>
+            <p>{{ sessionStore.session.profile?.balance }}</p>
             <span>₽</span>
           </div>
         </div>
@@ -96,9 +100,14 @@ onMounted(() => (stateManipulate.value = props.setting.targetScreen))
               Вывод
             </div>
           </div>
+
           <ReplenishmentScreen
-            @bank-card="onSwitchWithdrawalSum"
+            @method="onSwitchWithdrawalSum"
             v-if="stateManipulate === 'replenishment'"
+          />
+          <ReplenishmentCryptocurrencyScreen
+            @success="onFinishWithdrawal('success-withdrawal')"
+            v-if="stateManipulate === 'replenishment-cryptocurrency'"
           />
           <ConclusionScreen
             @bank-card="onSwitchWithdrawalSum"
@@ -121,11 +130,13 @@ onMounted(() => (stateManipulate.value = props.setting.targetScreen))
           />
           <ConfirmTranslationScreen
             :sum="stateSum"
-            @success="onSwitchWithdrawalMessage('success')"
-            @error="onSwitchWithdrawalMessage('error')"
+            @success="onSwitchWithdrawalMessage('success-withdrawal')"
+            @error="onSwitchWithdrawalMessage('error-withdrawal')"
             v-if="stateManipulate === 'confirm-translation'"
           />
           <MessageScreen
+            @close="onClose(emits)"
+            :state-message="stateMessage"
             :sum="stateSum"
             v-if="stateManipulate === 'message-translation'"
           />

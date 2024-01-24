@@ -5,9 +5,13 @@ import TimerIcon from '@/components/ui/icons/other/TimerIcon.vue'
 import CompyIcon from '@/components/ui/icons/other/CompyIcon.vue'
 import SberbankIcon from '@/components/ui/icons/other/SberbankIcon.vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
-import { onCheckStatusPay } from '@/components/modules/balance/popups/withdrawal/screens/sum-translation-screen/SumTranslationScreen.events.js'
+import {
+  onCheckStatusPay,
+  onClipboardWrite,
+} from '@/components/modules/balance/popups/withdrawal/screens/sum-translation-screen/SumTranslationScreen.events.js'
 import { statusTranslation } from '@/components/modules/balance/popups/withdrawal/screens/sum-translation-screen/SumTranslationScreen.option.js'
 import { useTimer } from '@/utils/useTimer.js'
+import { usePaymentStore } from '@/store/payments/paymentStore.js'
 
 const emits = defineEmits(['success', 'error'])
 const props = defineProps({
@@ -24,6 +28,7 @@ const props = defineProps({
     default: 'Иванов Иван И. (Сбербанк)',
   },
 })
+const paymentStore = usePaymentStore()
 const { currentTime, isFinished, startTimer } = useTimer(15 * 60 * 1000)
 
 watch(isFinished, (value) => {
@@ -31,6 +36,7 @@ watch(isFinished, (value) => {
 })
 onMounted(() => {
   startTimer()
+  paymentStore.replObject.props = props.numberCardTo
   onCheckStatusPay(emits)
 })
 </script>
@@ -54,21 +60,21 @@ onMounted(() => {
         <div class="sum__translation-screen-info-item">
           <div class="item-info">
             <p>Сумма перевода</p>
-            <h4>{{ sum }}₽</h4>
+            <h4>{{ paymentStore.replObject.sum }}₽</h4>
           </div>
-          <CompyIcon />
+          <CompyIcon @click="onClipboardWrite(sum)" />
         </div>
         <div class="sum__translation-screen-info-item">
           <div class="item-info">
             <p>Номер карты для перевода</p>
-            <h4>{{ numberCardTo }}</h4>
+            <h4>{{ paymentStore.replObject.props }}</h4>
           </div>
-          <CompyIcon />
+          <CompyIcon @click="onClipboardWrite(numberCardTo)" />
         </div>
         <div class="sum__translation-screen-info-item">
           <div class="item-info">
             <p>Банк получателя</p>
-            <h4>Сбербанк</h4>
+            <h4>{{paymentStore.replObject.name}}</h4>
           </div>
           <SberbankIcon />
         </div>
@@ -81,7 +87,7 @@ onMounted(() => {
       </div>
     </div>
     <BaseButton>
-      <div class="btn-copy-number">
+      <div class="btn-copy-number" @click="onClipboardWrite(numberCardTo)">
         <CompyIcon />
         <p>Скопировть номер карты</p>
       </div>
@@ -90,6 +96,7 @@ onMounted(() => {
       <div
         class="sum__translation-screen-alert"
         id="alert-success"
+        @click="emits('success')"
         v-if="statusTranslation === 'success'"
       >
         Оплачено
@@ -97,6 +104,7 @@ onMounted(() => {
       <div
         class="sum__translation-screen-alert"
         id="alert-error"
+        @click="emits('error')"
         v-if="statusTranslation === 'error'"
       >
         Ошибка
