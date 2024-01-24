@@ -6,6 +6,7 @@ import PersonalAccountModule from '@/components/modules/personal-account/Persona
 import CashierModule from '@/components/modules/cashier/CashierModule.vue'
 import SigninModule from '@/components/modules/signin/SigninModule.vue'
 import { useSettingsStore } from '@/store/settings/settingStore.js'
+import AccountHeaderIcon from '@/components/ui/icons/header/AccountHeaderIcon.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -21,12 +22,19 @@ onMounted(async () => {
 
 <template>
   <header class="header">
+    <div class="header-account-icons">
+      <div class="icon-account">
+        <AccountHeaderIcon />
+      </div>
+    </div>
     <div class="header-logo" @click="router.push('/')">
       <img src="/images/logo.svg" alt="" />
     </div>
     <div class="header-actions">
       <div class="header-actions-account" v-if="!isAuthorizationPage">
-        <PersonalAccountModule />
+        <div class="action-personal_account">
+          <PersonalAccountModule />
+        </div>
         <BalanceModule />
       </div>
       <div class="header-actions-authorization" v-if="isAuthorizationPage">

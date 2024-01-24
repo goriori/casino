@@ -1,3 +1,5 @@
+@import '@/assets/scss/variables';
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -6,14 +8,40 @@
   background: #1d2345;
   border-radius: 0 0 36px 36px;
 
+  &-account-icons {
+    display: none;
+    @media (max-width: $md4 + px) {
+      display: block;
+    }
+  }
+
+  &-logo {
+    img {
+      @media (max-width: $md4 + px) {
+        max-width: 100px;
+      }
+    }
+
+  }
+
   &-actions {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 36px;
+
     &-account {
       display: flex;
       gap: 36px;
     }
   }
 }
+
+.action {
+  &-personal_account {
+    @media (max-width: $md4 + px) {
+      display: none;
+    }
+  }
+}
+

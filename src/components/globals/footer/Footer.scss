@@ -1,0 +1,87 @@
+@import '@/assets/scss/variables';
+
+hr {
+  display: flex;
+  height: 0.5px;
+  background: rgba(204, 204, 204, 0.5);
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 48px;
+  background: #1d2345;
+  gap: 48px;
+
+  @media (max-width: $md2 + px) {
+    padding: 24px;
+    gap: 24px;
+  }
+
+  &-links {
+    display: flex;
+    justify-content: flex-start;
+    align-items: start;
+    font-size: 20px;
+    font-weight: 500;
+    gap: 160px;
+
+    @media (max-width: $md2 + px) {
+      justify-content: space-between;
+      gap: 24px;
+      font-size: 16px;
+    }
+
+    @media (max-width: $md3 + px) {
+      flex-wrap: wrap;
+    }
+
+    &-item {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 36px;
+      @media (max-width: $md3 + px) {
+        gap: 24px;
+      }
+    }
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 36px;
+
+    &-reserved {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 36px;
+    }
+
+    &-payments {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 26px;
+
+      &-images {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+      }
+    }
+  }
+
+  &-support-actions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 635px;
+  }
+}
