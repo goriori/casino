@@ -32,19 +32,17 @@
 }
 
 @mixin scrollbar() {
-  &::-webkit-scrollbar {
-    height: 6px;
-    width: 6px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: $gray-400;
-    border: 0;
-    border-radius: 20px;
+  &::-webkit-scrollbar{
+    width: 4px;
+    height: 4px;
   }
 
   &::-webkit-scrollbar-track {
-    background: transparent;
+    background-color: #ffffff50;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
   }
 }
 

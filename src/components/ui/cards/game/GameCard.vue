@@ -23,7 +23,9 @@ const redirectToGame = () => (window.location.href = redirectLink)
       <img :src="generateImgLink" alt="" />
       <!--      <img src="/images/cards/game-card.png" alt="" />-->
       <div class="card-game-title">
-        <p>{{gameItem.title}}</p>
+        <p :style="{ fontSize: gameItem.title.length > 6 ? '16px' : '42px' }">
+          {{ gameItem.title }}
+        </p>
       </div>
     </div>
   </div>

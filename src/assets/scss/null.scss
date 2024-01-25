@@ -6,6 +6,18 @@
   margin: 0;
   border: 0;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  &::-webkit-scrollbar{
+    width: 4px;
+    height: 4px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #ffffff50;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #ffffff;
+  }
 }
 
 *,
