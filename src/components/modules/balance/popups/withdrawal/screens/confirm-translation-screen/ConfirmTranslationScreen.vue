@@ -1,9 +1,9 @@
 <script setup>
-import { onMounted, watch } from 'vue'
+import { onMounted, onUnmounted, watch } from 'vue'
 import {
+  clearOptions,
   onChangeFile,
   onChangeFullName,
-  onCheckStatusTranslation,
   onClipboardWrite,
 } from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.events.js'
 import SberbankIcon from '@/components/ui/icons/other/SberbankIcon.vue'
@@ -12,14 +12,10 @@ import CopyIcon from '@/components/ui/icons/other/CompyIcon.vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import AttachIcon from '@/components/ui/icons/other/AttachIcon.vue'
 import { useTimer } from '@/utils/useTimer.js'
-import {
-  fullName,
-  screenshot,
-} from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.options.js'
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
 import {
   statusTranslation
-} from '@/components/modules/balance/popups/withdrawal/screens/sum-translation-screen/SumTranslationScreen.option.js'
+} from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.options.js'
 
 const emits = defineEmits(['success', 'error'])
 const props = defineProps({
@@ -42,8 +38,9 @@ watch(isFinished, (value) => {
 
 onMounted(() => {
   startTimer()
-  onCheckStatusTranslation(emits)
 })
+
+onUnmounted(() => clearOptions())
 </script>
 
 <template>
@@ -74,7 +71,9 @@ onMounted(() => {
               <p>Номер карты для перевода:</p>
               <h4>{{ paymentStore.replObject.props }}</h4>
             </div>
-            <CopyIcon @click="onClipboardWrite(paymentStore.replObject.props)" />
+            <CopyIcon
+              @click="onClipboardWrite(paymentStore.replObject.props)"
+            />
           </div>
         </div>
       </div>
@@ -96,11 +95,7 @@ onMounted(() => {
         <div class="btn-attach-file">
           <AttachIcon />
           <p>Прикрепить чек из банка*</p>
-          <input
-            type="file"
-            accept=".jpg,.png"
-            @change="onChangeFile"
-          />
+          <input type="file" accept=".jpg,.png" @change="onChangeFile" />
         </div>
       </BaseButton>
       <p class="attach-rules">

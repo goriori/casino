@@ -1,4 +1,5 @@
 import {
+  historyStateManipulate,
   stateManipulate,
   stateMessage,
   stateSum,
@@ -16,25 +17,30 @@ export const onSwitchWithdrawalConclusion = () => {
 }
 
 export const onSwitchWithdrawalSum = (method) => {
+  historyStateManipulate.value.push('replenishment')
   stateManipulate.value = 'sum-screen'
 }
 
 export const onSwitchWithdrawalSelectBank = (sum) => {
   stateSum.value = sum
+  historyStateManipulate.value.push('sum-screen')
   if (paymentStore.replObject.type === 'crypto')
     stateManipulate.value = 'replenishment-cryptocurrency'
   else stateManipulate.value = 'select-bank'
 }
 
 export const onSwitchWithdrawalSumTranslation = () => {
+  historyStateManipulate.value.push('select-bank')
   stateManipulate.value = 'sum-translation'
 }
 
 export const onSwitchWithdrawalConfirm = () => {
+  historyStateManipulate.value.push('sum-translation')
   stateManipulate.value = 'confirm-translation'
 }
 
 export const onSwitchWithdrawalMessage = (message) => {
+  historyStateManipulate.value.push('confirm-translation')
   stateManipulate.value = 'message-translation'
   stateMessage.value = message
 }
@@ -43,6 +49,12 @@ export const onFinishWithdrawal = (message) => {
   onSwitchWithdrawalMessage(message)
 }
 
+export const onBack = () => {
+  if (historyStateManipulate.value.length === 0) return
+  const backStep = historyStateManipulate.value.length - 1
+  stateManipulate.value = historyStateManipulate.value[backStep]
+  historyStateManipulate.value.pop()
+}
 export const onClose = (emits) => {
   emits('close')
 }

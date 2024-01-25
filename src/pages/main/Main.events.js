@@ -6,8 +6,9 @@ const gameStore = useGameStore()
 const providerStore = useProviderStore()
 const sessionStore = useSessionStore()
 export const fetchEntityData = async () => {
-  // await gameStore.getGames()
-  // await providerStore.getProviders()
-  await sessionStore.getInfoSession()
-  await sessionStore.getStatusPay()
+  const hasToken = sessionStore.session.token
+  if (hasToken) {
+    await sessionStore.getInfoSession()
+    await sessionStore.getStatusPay()
+  }
 }

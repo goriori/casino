@@ -7,6 +7,7 @@ import CashierModule from '@/components/modules/cashier/CashierModule.vue'
 import SigninModule from '@/components/modules/signin/SigninModule.vue'
 import { useSettingsStore } from '@/store/settings/settingStore.js'
 import AccountHeaderIcon from '@/components/ui/icons/header/AccountHeaderIcon.vue'
+import { useSessionStore } from '@/store/session/sessionStore.js'
 
 const route = useRoute()
 const router = useRouter()
@@ -14,7 +15,7 @@ const page = ref(route.name)
 const isAuthorizationPage =
   page.value === 'authorization' || page.value === 'registration'
 const settingStore = useSettingsStore()
-
+const sessionStore = useSessionStore()
 onMounted(async () => {
   await settingStore.getSettings()
 })
@@ -32,7 +33,10 @@ onMounted(async () => {
     </div>
     <div class="header-actions">
       <div class="header-actions-account" v-if="!isAuthorizationPage">
-        <div class="action-personal_account">
+        <div
+          class="action-personal_account"
+          v-if="sessionStore.session?.token || sessionStore.session?.profile"
+        >
           <PersonalAccountModule />
         </div>
         <BalanceModule />

@@ -11,3 +11,7 @@ export  const onClipboardWrite = ( value) => {
   console.log(value)
   navigator.clipboard.writeText(value)
 }
+
+export const clearOptions = () => {
+  statusTranslation.value = 'none'
+}

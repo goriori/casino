@@ -12,7 +12,7 @@ import {
   onSwitchWithdrawalSumTranslation,
   onSwitchWithdrawalConfirm,
   onSwitchWithdrawalMessage,
-  onFinishWithdrawal, onClose
+  onFinishWithdrawal, onClose, onBack
 } from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.events.js'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import ReplenishmentScreen from '@/components/modules/balance/popups/withdrawal/screens/replenishment-screen/ReplenishmentScreen.vue'
@@ -44,8 +44,8 @@ onMounted(() => (stateManipulate.value = props.setting.targetScreen))
     <div class="popup-withdrawal">
       <div class="popup-withdrawal-navigation">
         <div class="navigation-back">
-          <BaseButton color="primary" outline>
-            <div class="btn-back-content">
+          <BaseButton color="primary" outline @click="onBack">
+            <div class="btn-back-content" >
               <ArrowBackIcon />
               <p>Назад</p>
             </div>

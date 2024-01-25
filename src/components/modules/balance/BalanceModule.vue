@@ -8,7 +8,8 @@ import {
 } from '@/components/modules/balance/BalanceModule.events.js'
 import {
   btnActive,
-  navigation,
+  navigationAuthorized,
+  navigationNotAuthorized,
   popupReplenishment,
   popupSetting,
 } from '@/components/modules/balance/BalanceModule.options.js'
@@ -17,7 +18,6 @@ import BalanceButton from '@/components/ui/buttons/balance/BalanceButton.vue'
 import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 import ArrowIcon from '@/components/ui/icons/other/ArrowIcon.vue'
 import WithdrawalPopup from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.vue'
-import MoveUpIcon from '@/components/ui/icons/other/MoveUpIcon.vue'
 import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
 
 const router = useRouter()
@@ -48,18 +48,40 @@ const sessionStore = useSessionStore()
         </div>
         <div class="popup-navigation">
           <div
-            class="navigation-item"
-            v-ripple
-            v-for="nav in navigation"
-            :key="nav.id"
-            @click="nav.handler(router)"
+            class="popup-navigation-no_authorized"
+            v-if="!sessionStore.session.token || !sessionStore.session?.profile"
           >
-            <div class="navigation-item-content">
-              <img :src="`/images/icons/${nav.icon}.svg`" alt="" />
-              <p>{{ nav.title }}</p>
+            <div
+              class="navigation-item"
+              v-ripple
+              v-for="nav in navigationNotAuthorized"
+              :key="nav.id"
+              @click="nav.handler(router)"
+            >
+              <div class="navigation-item-content">
+                <img :src="`/images/icons/${nav.icon}.svg`" alt="" />
+                <p>{{ nav.title }}</p>
+              </div>
+              <div class="navigation-item-action">
+                <ArrowIcon />
+              </div>
             </div>
-            <div class="navigation-item-action">
-              <ArrowIcon />
+          </div>
+          <div class="popup-navigation-authorized" v-else>
+            <div
+              class="navigation-item"
+              v-ripple
+              v-for="nav in navigationAuthorized"
+              :key="nav.id"
+              @click="nav.handler(router)"
+            >
+              <div class="navigation-item-content">
+                <img :src="`/images/icons/${nav.icon}.svg`" alt="" />
+                <p>{{ nav.title }}</p>
+              </div>
+              <div class="navigation-item-action">
+                <ArrowIcon />
+              </div>
             </div>
           </div>
         </div>

@@ -1,11 +1,12 @@
 <script setup>
-import { onMounted, watch } from 'vue'
+import { onMounted, onUnmounted, watch } from 'vue'
 
 import TimerIcon from '@/components/ui/icons/other/TimerIcon.vue'
 import CompyIcon from '@/components/ui/icons/other/CompyIcon.vue'
 import SberbankIcon from '@/components/ui/icons/other/SberbankIcon.vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import {
+  clearOptions,
   onCheckStatusPay,
   onClipboardWrite,
 } from '@/components/modules/balance/popups/withdrawal/screens/sum-translation-screen/SumTranslationScreen.events.js'
@@ -39,6 +40,7 @@ onMounted(() => {
   paymentStore.replObject.props = props.numberCardTo
   onCheckStatusPay(emits)
 })
+onUnmounted(() => clearOptions())
 </script>
 
 <template>
@@ -74,7 +76,7 @@ onMounted(() => {
         <div class="sum__translation-screen-info-item">
           <div class="item-info">
             <p>Банк получателя</p>
-            <h4>{{paymentStore.replObject.name}}</h4>
+            <h4>{{ paymentStore.replObject.name }}</h4>
           </div>
           <SberbankIcon />
         </div>

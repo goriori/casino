@@ -9,7 +9,34 @@ export const popupReplenishment = ref(false)
 export const popupSetting = ref({
   targetScreen: 'replenishment',
 })
-export const navigation = [
+
+
+const telegramLink = `https://t.me/jebr0ni`
+export const navigationNotAuthorized = [
+  {
+    id: 1,
+    icon: 'support',
+    title: 'Тех. поддержка',
+    handler: function (router) {
+      const a = document.createElement('a')
+      a.href = telegramLink
+      a.target = '_blank'
+      a.click()
+    },
+  },
+  {
+    id: 2,
+    icon: 'logout',
+    title: 'Войти',
+    handler: async function (router) {
+      popupReplenishment.value = false
+      btnActive.value = false
+      await router.push('/authorization')
+    },
+  },
+]
+
+export const navigationAuthorized = [
   {
     id: 1,
     icon: 'account',
@@ -44,10 +71,9 @@ export const navigation = [
     title: 'Тех. поддержка',
     handler: function (router) {
       const a = document.createElement('a')
-      a.href = `https://t.me/jebr0ni`
+      a.href = telegramLink
       a.target = '_blank'
       a.click()
-      console.log(settingStore.settings.tg_id)
     },
   },
   {
@@ -58,7 +84,7 @@ export const navigation = [
       await sessionStorage.clear()
       popupReplenishment.value = false
       btnActive.value = false
-      await router.push('/')
+      location.reload()
     },
   },
 ]

@@ -19,11 +19,11 @@ export const onAuthorization = async (router) => {
   try {
     await sessionStore.authorization(formAuth.value)
     clearForm()
-    router.push('/main')
+    router.push('/')
   } catch (e) {
     console.log(e)
     clearForm()
-    router.push('/')
+    router.push('/authorization')
   }
 }
 
@@ -32,5 +32,4 @@ export const onAuthTelegram = () => {
   a.href = `https://t.me/momytest_bot`
   a.target = '_blank'
   a.click()
-
 }

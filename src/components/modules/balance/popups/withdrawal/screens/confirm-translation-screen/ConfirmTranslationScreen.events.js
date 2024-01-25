@@ -8,12 +8,7 @@ import { useSessionStore } from '@/store/session/sessionStore.js'
 
 const paymentStore = usePaymentStore()
 const sessionStore = useSessionStore()
-export const onCheckStatusTranslation = (emits) => {
-  const timeWait = 5000
-  setTimeout(() => {
-    statusTranslation.value = 'success'
-  }, timeWait)
-}
+
 
 export const onChangeFullName = (e) => {
   fullName.value = e.target.value
@@ -22,6 +17,7 @@ export const onChangeFullName = (e) => {
 
 const onConfirmTranslation = async () => {
   try {
+    console.log('send repl')
     await paymentStore.sendReplenishment()
     statusTranslation.value = 'success'
   } catch (e) {
@@ -30,7 +26,6 @@ const onConfirmTranslation = async () => {
 }
 export const onChangeFile = (e) => {
   const files = e.target.files || e.dataTransfer.files
-  console.log(files)
   if (!files.length) return
   screenshot.value = files[0]
   paymentStore.replObject.screenshot = screenshot.value
@@ -41,4 +36,10 @@ export const onChangeFile = (e) => {
 export const onClipboardWrite = (value) => {
   console.log(value)
   navigator.clipboard.writeText(value)
+}
+
+export const clearOptions = () => {
+  statusTranslation.value = 'none'
+  screenshot.value = null
+  fullName.value = ''
 }
