@@ -23,10 +23,7 @@ const props = defineProps({
     type: [Number, String],
     default: '0.00',
   },
-  numberCardTo: {
-    type: String,
-    default: '0000 0000 0000 0000',
-  },
+
 })
 
 const paymentStore = usePaymentStore()

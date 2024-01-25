@@ -43,5 +43,18 @@
         }
       }
     }
+
+    &-alert {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      width: 100%;
+      transform: translate(-50%, 0);
+      text-align: center;
+      background: #FF3939;
+      padding: 10px;
+      font-size: calc(8px + (20 + 20 * 0.7) * ((100vw - 320px) / 1920));
+      z-index: 10;
+    }
   }
 }

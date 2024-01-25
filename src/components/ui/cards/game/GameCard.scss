@@ -7,13 +7,14 @@
     cursor: pointer;
     position: relative;
     overflow: hidden;
+    max-width: 200px;
     min-height: 276px;
     border-radius: 26px;
     border: 3px solid rgba(85, 112, 251, 0.8);
     background: $game-card-background;
     padding: 30px 0 0;
     transition: 0.15s all ease-in-out;
-    box-shadow: 0px 0px 20px 0px rgba(255, 255, 255, 0.35);
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.35);
     display: flex;
     flex-direction: column;
 
@@ -35,7 +36,7 @@
     }
     &:hover {
       transform: scale(1.2);
-      box-shadow: 0px 0px 20px 0px #e788ff;
+      box-shadow: 0 0 20px 0 #e788ff;
 
       @media (max-width: $md2 + px) {
         transform: scale(1.1);
@@ -46,9 +47,15 @@
       z-index: 1;
       width: 100%;
       object-fit: cover;
+      max-height: 216px;
+      margin: 0 auto;
       @media (max-width: $md2 + px) {
         position: static;
         transform: none;
+      }
+      @media (max-width: $md4 + px) {
+        max-width: 65px;
+
       }
     }
 
@@ -92,15 +99,25 @@
       }
 
       p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
         position: relative;
         z-index: 4;
         color: $white;
         font-weight: 700;
         text-transform: uppercase;
         text-align: center;
-        font-size: calc(8px + (24 + 24 * 0.7) * ((100vw - 320px)/1920));
+        font-size: calc(5px + (10 + 10 * 0.7) * ((100vw - 320px)/1920));
+        @media (max-width: $md4 + px) {
+          max-width: 50px;
+          font-size: calc(6px + (10 + 10 * 0.7) * ((100vw - 320px)/1920));
+        }
 
       }
     }
   }
+
+
 }

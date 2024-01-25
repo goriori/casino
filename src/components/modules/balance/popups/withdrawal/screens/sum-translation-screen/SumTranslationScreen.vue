@@ -20,10 +20,6 @@ const props = defineProps({
     type: [Number, String],
     default: '0.00',
   },
-  numberCardTo: {
-    type: [Number, String],
-    default: '0000 0000 0000 0000',
-  },
   fullNameRecipient: {
     type: String,
     default: 'Иванов Иван И. (Сбербанк)',
@@ -37,7 +33,6 @@ watch(isFinished, (value) => {
 })
 onMounted(() => {
   startTimer()
-  paymentStore.replObject.props = props.numberCardTo
   onCheckStatusPay(emits)
 })
 onUnmounted(() => clearOptions())

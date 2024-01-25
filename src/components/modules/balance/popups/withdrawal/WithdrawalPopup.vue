@@ -26,6 +26,7 @@ import ConfirmTranslationScreen from '@/components/modules/balance/popups/withdr
 import MessageScreen from '@/components/modules/balance/popups/withdrawal/screens/message-screen/MessageScreen.vue'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import ReplenishmentCryptocurrencyScreen from '@/components/modules/balance/popups/withdrawal/screens/replenishment-cryptocurrency-screen/ReplenishmentCryptocurrencyScreen.vue'
+import { usePaymentStore } from '@/store/payments/paymentStore.js'
 
 const props = defineProps({
   setting: {
@@ -35,6 +36,7 @@ const props = defineProps({
 })
 const emits = defineEmits(['close'])
 const sessionStore = useSessionStore()
+const paymentStore = usePaymentStore()
 onMounted(() => (stateManipulate.value = props.setting.targetScreen))
 </script>
 
@@ -123,6 +125,7 @@ onMounted(() => (stateManipulate.value = props.setting.targetScreen))
             v-if="stateManipulate === 'select-bank'"
           />
           <SumTranslationScreen
+            :number-card-to="paymentStore.replObject.props"
             :sum="stateSum"
             @success="onSwitchWithdrawalConfirm"
             @error="console.log('error')"

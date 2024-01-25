@@ -28,7 +28,7 @@ const authorization = async () => {
         status === 422 &&
         'username' in data &&
         data.username[0] === 'The username has already been taken.'
-      if (isHasUser) return router.push('/main')
+      if (isHasUser) return router.push('/')
     })
 }
 onMounted(async () => await authorization())
