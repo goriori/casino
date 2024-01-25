@@ -1,4 +1,7 @@
-import { withdrawalForm } from '@/components/modules/account/modules/withdrawal/WithdrawalModule.options.js'
+import {
+  statusTranslation,
+  withdrawalForm,
+} from '@/components/modules/account/modules/withdrawal/WithdrawalModule.options.js'
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useSettingsStore } from '@/store/settings/settingStore.js'
@@ -14,9 +17,11 @@ export const onSendWithdrawal = async () => {
       withdrawalForm.value.username = sessionStore.session.profile.username
       withdrawalForm.value.user_id = sessionStore.session.profile.id
       await paymentStore.sendWithdrawal(withdrawalForm.value)
+      setSuccessWithdrawal()
     })
     .then(clearForm)
     .catch((e) => {
+      setErrorWithdrawal()
       console.log('valid result', e)
     })
 }
@@ -32,6 +37,18 @@ const validForm = async () => {
   return true
 }
 
+const setSuccessWithdrawal = () => {
+  statusTranslation.value = 'success'
+  setTimeout(() => {
+    statusTranslation.value = 'none'
+  }, 3000)
+}
+const setErrorWithdrawal = () => {
+  statusTranslation.value = 'error'
+  setTimeout(() => {
+    statusTranslation.value = 'none'
+  }, 3000)
+}
 const clearForm = () => {
   withdrawalForm.value = {
     card: '',

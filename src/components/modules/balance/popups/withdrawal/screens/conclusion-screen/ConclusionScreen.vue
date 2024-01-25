@@ -1,7 +1,9 @@
 <script setup>
 import { onSendConclusionForm } from '@/components/modules/balance/popups/withdrawal/screens/conclusion-screen/ConclusionScreen.events.js'
-
-import { cnclsnForm } from '@/components/modules/balance/popups/withdrawal/screens/conclusion-screen/ConclusionScreen.options.js'
+import {
+  cnclsnForm,
+  statusTranslation,
+} from '@/components/modules/balance/popups/withdrawal/screens/conclusion-screen/ConclusionScreen.options.js'
 import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 
@@ -66,6 +68,28 @@ const emits = defineEmits(['bank-card'])
           <BaseButton color="primary" @click="onSendConclusionForm">
             <p class="withdrawal-module-action-text">Вывести средства</p>
           </BaseButton>
+        </div>
+        <div class="popup-withdrawal-alerts">
+          <Transition name="fade">
+            <div
+              class="popup-withdrawal-alert"
+              id="alert-success"
+              @click="emits('success')"
+              v-if="statusTranslation === 'success'"
+            >
+              Оплачено
+            </div>
+          </Transition>
+          <Transition name="fade">
+            <div
+              class="popup-withdrawal-alert"
+              id="alert-error"
+              @click="emits('error')"
+              v-if="statusTranslation === 'error'"
+            >
+              Ошибка
+            </div>
+          </Transition>
         </div>
       </div>
     </div>

@@ -1,11 +1,14 @@
 <script setup>
-import { withdrawalForm } from '@/components/modules/account/modules/withdrawal/WithdrawalModule.options.js'
+import {
+  statusTranslation,
+  withdrawalForm,
+} from '@/components/modules/account/modules/withdrawal/WithdrawalModule.options.js'
 import { onSendWithdrawal } from '@/components/modules/account/modules/withdrawal/WithdrawalModule.events.js'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 import CardIcon from '@/components/ui/icons/other/CardIcon.vue'
 
-
+const emits = defineEmits(['success', 'error'])
 </script>
 
 <template>
@@ -61,6 +64,28 @@ import CardIcon from '@/components/ui/icons/other/CardIcon.vue'
         </BaseButton>
       </div>
     </div>
+    <div class="withdrawal-module-alerts">
+      <Transition name="fade">
+        <div
+          class="withdrawal-module-alert"
+          id="alert-success"
+          v-if="statusTranslation === 'success'"
+          @click="emits('success')"
+        >
+          Оплачено
+        </div>
+      </Transition>
+      <Transition name="fade">
+        <div
+          class="withdrawal-module-alert"
+          id="alert-error"
+          @click="emits('error')"
+          v-if="statusTranslation === 'error'"
+        >
+          Ошибка
+        </div>
+      </Transition>
+    </div>
   </div>
 </template>
 
@@ -69,6 +94,7 @@ import CardIcon from '@/components/ui/icons/other/CardIcon.vue'
 
 .withdrawal {
   &-module {
+    position: relative;
     width: 100%;
     height: 100%;
     padding: 18px 48px;
@@ -109,7 +135,35 @@ import CardIcon from '@/components/ui/icons/other/CardIcon.vue'
         gap: 24px;
       }
     }
+
+    &-alerts {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    &-alert {
+      cursor: pointer;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      border-radius: 0 0 26px 26px;
+      padding: 25px 0;
+    }
   }
+}
+
+#alert-error {
+  background: #ff3939;
+}
+
+#alert-success {
+  background: #45cc3a;
 }
 
 .info {

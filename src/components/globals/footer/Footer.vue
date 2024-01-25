@@ -29,6 +29,7 @@ import PopupPrivacyPolicy from '@/components/ui/popups/PopupPrivacyPolicy/PopupP
 import PopupTermsPolicy from '@/components/ui/popups/PopupTermsPolicy/PopupTermsPolicy.vue'
 
 const router = useRouter()
+
 </script>
 
 <template>
@@ -78,7 +79,6 @@ const router = useRouter()
     <hr />
     <div class="footer-support-actions">
       <SupportModule />
-      <MoveUpModule />
     </div>
   </footer>
 </template>

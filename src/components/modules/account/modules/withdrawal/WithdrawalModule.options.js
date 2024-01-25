@@ -7,3 +7,6 @@ export const withdrawalForm = ref({
   tg_id: '',
   user_id: '',
 })
+
+
+export const statusTranslation = ref(false)

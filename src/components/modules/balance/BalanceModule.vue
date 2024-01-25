@@ -4,7 +4,7 @@ import {
   closePopupReplenishment,
   testOutside,
   updateStateButton,
-  onCloseMenu
+  onCloseMenu,
 } from '@/components/modules/balance/BalanceModule.events.js'
 import {
   btnActive,
@@ -35,7 +35,7 @@ const sessionStore = useSessionStore()
       <div class="balance-module-popup" v-if="btnActive">
         <div class="popup-title">
           Ваш баланс
-          <CloseIcon @click="onCloseMenu" class="popup-title-close"/>
+          <CloseIcon @click="onCloseMenu" class="popup-title-close" />
         </div>
         <div class="popup-balances">
           <div class="balance-item">
@@ -66,12 +66,14 @@ const sessionStore = useSessionStore()
       </div>
     </Transition>
     <Teleport to="body">
-      <WithdrawalPopup
-        :setting="popupSetting"
-        @close="closePopupReplenishment"
-        v-if="popupReplenishment"
-        @click.stop
-      />
+      <Transition name="fade">
+        <WithdrawalPopup
+          :setting="popupSetting"
+          @close="closePopupReplenishment"
+          v-if="popupReplenishment"
+          @click.stop
+        />
+      </Transition>
     </Teleport>
   </div>
 </template>

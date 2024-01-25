@@ -7,3 +7,5 @@ export const cnclsnForm = ref({
   tg_id: '',
   user_id: '',
 })
+
+export const statusTranslation = ref(false)

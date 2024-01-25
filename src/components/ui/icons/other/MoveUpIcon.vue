@@ -24,7 +24,6 @@ import ArrowUpIcon from '@/components/ui/icons/footer/ArrowUpIcon.vue'
   display: flex;
   justify-content: center;
   align-items: center;
-
   @media (max-width: $md2 + px) {
     right: 24px;
     bottom: 24px;

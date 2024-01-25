@@ -1,4 +1,4 @@
-import { cnclsnForm } from '@/components/modules/balance/popups/withdrawal/screens/conclusion-screen/ConclusionScreen.options.js'
+import { cnclsnForm , statusTranslation} from '@/components/modules/balance/popups/withdrawal/screens/conclusion-screen/ConclusionScreen.options.js'
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useRegular } from '@/utils/useRegular.js'
@@ -13,13 +13,28 @@ export const onSendConclusionForm = async () => {
       cnclsnForm.value.username = sessionStore.session.profile.username
       cnclsnForm.value.user_id = sessionStore.session.profile.id
       await paymentStore.sendWithdrawal(cnclsnForm.value)
+      setSuccessWithdrawal()
     })
     .then(clearForm)
     .catch((e) => {
+      setErrorWithdrawal()
       console.log('valid result', e)
     })
 }
 
+
+const setSuccessWithdrawal = () => {
+  statusTranslation.value = 'success'
+  setTimeout(() => {
+    statusTranslation.value = 'none'
+  }, 3000)
+}
+const setErrorWithdrawal = () => {
+  statusTranslation.value = 'error'
+  setTimeout(() => {
+    statusTranslation.value = 'none'
+  }, 3000)
+}
 const validForm = async () => {
   // console.log('valid number card:', cardTest(withdrawalForm.value.card))
   // console.log('valid user id:', withdrawalForm.value.user_id.trim().length === 0)

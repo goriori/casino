@@ -5,12 +5,14 @@ import { useStateStore } from '@/store/stateStore'
 import {useSessionStore} from '@/store/session/sessionStore.js'
 import { useGameStore } from '@/store/games/gameStore.js'
 import { useProviderStore } from '@/store/providers/providerStore.js'
+import MoveUpModule from '@/components/modules/move-up/MoveUpModule.vue'
 
 const route = useRoute()
 const stateStore = useStateStore()
 const sessionStore = useSessionStore()
 const gameStore = useGameStore()
 const providerStore = useProviderStore()
+
 </script>
 
 <template>
@@ -22,6 +24,7 @@ const providerStore = useProviderStore()
             <component :is="Component" :key="route.fullPath"></component>
           </suspense>
         </transition>
+        <MoveUpModule/>
       </template>
     </RouterView>
     <VLoader v-if="stateStore.isLoading" />
