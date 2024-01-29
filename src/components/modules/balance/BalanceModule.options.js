@@ -10,8 +10,7 @@ export const popupSetting = ref({
   targetScreen: 'replenishment',
 })
 
-
-const telegramLink = `https://t.me/jebr0ni`
+const telegramLink = `https://t.me/${settingStore.settings.tg_id}`
 export const navigationNotAuthorized = [
   {
     id: 1,

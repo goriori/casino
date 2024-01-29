@@ -15,23 +15,8 @@ const emits = defineEmits(['bank-card'])
     <div class="deposit">
       <div class="deposit-card">
         <p>Вывод на банковскую карту:</p>
-        <!--        <div class="deposit-card-pay" @click="emits('bank-card')" v-ripple>-->
-        <!--          <WalletIcon />-->
-        <!--          <div class="deposit-card-pay-content">-->
-        <!--            <h4>Оплата банковской картой</h4>-->
-        <!--            <p>Сбербанк, Тинькофф, Райффайзен, СБП</p>-->
-        <!--          </div>-->
-        <!--        </div>-->
       </div>
       <div class="deposit-card-help">
-        <div class="info-item">
-          <h4>ID пользователя</h4>
-          <input
-            type="text"
-            placeholder="Введите ID"
-            v-model="cnclsnForm.tg_id"
-          />
-        </div>
         <div class="info-item">
           <h4>Банковская карта</h4>
           <input

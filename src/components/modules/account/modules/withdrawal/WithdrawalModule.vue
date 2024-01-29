@@ -19,14 +19,6 @@ const emits = defineEmits(['success', 'error'])
     </div>
     <div class="withdrawal-module-info">
       <div class="info-item">
-        <h4>ID пользователя</h4>
-        <input
-          type="text"
-          placeholder="Введите ID"
-          v-model="withdrawalForm.tg_id"
-        />
-      </div>
-      <div class="info-item">
         <h4>Банковская карта</h4>
         <input
           type="text"

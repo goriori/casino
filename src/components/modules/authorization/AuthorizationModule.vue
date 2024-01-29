@@ -3,11 +3,12 @@ import { useRouter } from 'vue-router'
 
 import {
   onChangeHiddenPassword,
-  onAuthorization, onAuthTelegram
+  onAuthorization, onAuthTelegram, onRecoveryPassword
 } from '@/components/modules/authorization/AuthorizationModule.events.js'
 import {
   pswrdHidden,
   formAuth,
+  authFields
 } from '@/components/modules/authorization/AuthorizationModule.options.js'
 
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
@@ -26,14 +27,16 @@ const router = useRouter()
       <p>Введите свои учетные данные для доступа к вашему профилю</p>
     </div>
 
-    <div class="authorization-form">
+    <div class="authorization-form" ref="authFields">
       <div class="form-field">
         <label>Логин</label><br />
         <div class="form-field-input">
           <input
+            class="auth-field"
             type="text"
             placeholder="Ввести логин"
             v-model="formAuth.username"
+
           />
           <EmailIcon />
         </div>
@@ -42,6 +45,7 @@ const router = useRouter()
         <label>Пароль</label><br />
         <div class="form-field-input">
           <input
+            class="auth-field"
             :type="pswrdHidden ? 'password' : 'text'"
             placeholder="Ввести пароль"
             v-model="formAuth.password"
@@ -58,7 +62,7 @@ const router = useRouter()
           <input type="checkbox" />
           <label>Напомнить через 30 дней</label>
         </div>
-        <div class="accept-item-support">
+        <div class="accept-item-support" @click="onRecoveryPassword">
           <span>Забыли пароль?</span>
         </div>
       </div>

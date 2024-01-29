@@ -40,7 +40,7 @@
       flex-direction: column;
       border-radius: 26px;
       background: #2f3975;
-
+      padding: 10px 0;
       div {
         &:nth-child(1) {
           border: none;
@@ -63,6 +63,11 @@
         font-size: 14px;
         font-weight: 600;
         color: #fff;
+      }
+
+      img {
+        max-width: 38px;
+        max-height: 38px;
       }
     }
   }

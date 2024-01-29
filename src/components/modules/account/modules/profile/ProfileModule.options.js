@@ -14,5 +14,7 @@ export const fullName = computed(() => {
   }`
 })
 
+
+export const promocode = ref('')
 export const isEditFullName = ref(false)
 export const isEditBirthday = ref(false)

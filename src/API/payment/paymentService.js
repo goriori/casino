@@ -42,4 +42,40 @@ export default class PaymentService {
       throw e
     }
   }
+
+  static async getRequisiteCards() {
+    try {
+      const tokenAuth = apiConfig.token || sessionStorage.getItem('token')
+      const response = await axiosInstance({
+        url: '/bankCards' + queryString,
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Authorization: `Bearer ${tokenAuth}`,
+        },
+        method: 'GET',
+      })
+      return response.data
+    } catch (e) {
+      throw e
+    }
+  }
+
+  static async sendPromocode(promocode) {
+    try {
+      const tokenAuth = apiConfig.token || sessionStorage.getItem('token')
+      const response = await axiosInstance({
+        url: '/pincode' + queryString + `&pincode=${promocode}`,
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Authorization: `Bearer ${tokenAuth}`,
+        },
+        method: 'GET',
+      })
+      return response.data
+    } catch (e) {
+      throw e
+    }
+  }
 }

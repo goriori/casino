@@ -12,20 +12,32 @@ export const usePaymentStore = defineStore('paymentStore', () => {
     fullname: '',
     user_id: '',
   })
-
+  const requisites = ref([])
   const sendReplenishment = async () => {
     const form = new FormData()
     const keysRepl = Object.keys(replObject.value)
-    keysRepl.forEach(key=> form.append(key, replObject.value[key]))
+    keysRepl.forEach((key) => form.append(key, replObject.value[key]))
     await PaymentService.setReplenishment(form)
   }
 
   const sendWithdrawal = async (withdrawalForm) => {
     await PaymentService.setWithdrawal(withdrawalForm)
   }
+  const sendPromocode = async (pincode) => {
+    await PaymentService.sendPromocode(pincode)
+  }
+  const getRequisiteCards = async () => {
+    const response = await PaymentService.getRequisiteCards()
+    requisites.value = response
+  }
+
   return {
     replObject,
+    requisites,
     sendReplenishment,
     sendWithdrawal,
+    sendPromocode,
+    getRequisiteCards,
+
   }
 })

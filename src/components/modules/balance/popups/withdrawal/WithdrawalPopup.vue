@@ -1,8 +1,9 @@
 <script setup>
 import { onMounted } from 'vue'
 import {
-  stateManipulate, stateMessage,
-  stateSum
+  stateManipulate,
+  stateMessage,
+  stateSum,
 } from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.option.js'
 import {
   onSwitchWithdrawalReplenishment,
@@ -12,7 +13,9 @@ import {
   onSwitchWithdrawalSumTranslation,
   onSwitchWithdrawalConfirm,
   onSwitchWithdrawalMessage,
-  onFinishWithdrawal, onClose, onBack
+  onFinishWithdrawal,
+  onClose,
+  onBack,
 } from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.events.js'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import ReplenishmentScreen from '@/components/modules/balance/popups/withdrawal/screens/replenishment-screen/ReplenishmentScreen.vue'
@@ -37,7 +40,10 @@ const props = defineProps({
 const emits = defineEmits(['close'])
 const sessionStore = useSessionStore()
 const paymentStore = usePaymentStore()
-onMounted(() => (stateManipulate.value = props.setting.targetScreen))
+onMounted(async () => {
+  await paymentStore.getRequisiteCards()
+  stateManipulate.value = props.setting.targetScreen
+})
 </script>
 
 <template>
@@ -47,7 +53,7 @@ onMounted(() => (stateManipulate.value = props.setting.targetScreen))
       <div class="popup-withdrawal-navigation">
         <div class="navigation-back">
           <BaseButton color="primary" outline @click="onBack">
-            <div class="btn-back-content" >
+            <div class="btn-back-content">
               <ArrowBackIcon />
               <p>Назад</p>
             </div>
