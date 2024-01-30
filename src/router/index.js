@@ -42,22 +42,13 @@ router.beforeEach((to, from, next) => {
   const hasToken = sessionStorage.getItem('token')
   console.log(hasToken)
     // проверка на наличие токена
-  // if (
-  //   !hasToken &&
-  //   to.name !== 'authorization' &&
-  //   to.name !== 'registration' &&
-  //   to.name !== 'authorization_telegram'
-  // ) {
-  //   next({ name: 'authorization' })
-  // } else if (
-  //   (hasToken && to.name === 'authorization') ||
-  //   (hasToken && to.name === 'authorization_telegram')
-  // ) {
-  //   next({ name: 'main' })
-  // } else {
-  //   next()
-  // }
-  next()
+  if(!hasToken && to.name === 'account') {
+    next({name:'main'})
+  }else {
+    next()
+
+  }
+
 
 })
 export default router

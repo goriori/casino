@@ -1,27 +1,65 @@
 <script setup>
 import { onMounted } from 'vue'
-import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useRouter } from 'vue-router'
 import Header from '@/components/globals/header/Header.vue'
 import Footer from '@/components/globals/footer/Footer.vue'
+import { useSessionStore } from '@/store/session/sessionStore.js'
+import { axiosInstance } from '@/utils/axios/axios.js'
 
 const router = useRouter()
 const sessionStore = useSessionStore()
-const tg = window.Telegram?.WebApp
+
+const generatePassword = () => {
+  const characters =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*'
+  let password = ''
+  const { floor, random } = Math
+  for (let i = 0; i < 6; i++) {
+    const randomIndex = floor(random() * characters.length)
+    password += characters.charAt(randomIndex)
+  }
+
+  return password
+}
+
+const sendTelegramMessage = async (password, username) => {
+  try {
+    await axiosInstance({
+      url: '/sendPassword',
+      method: 'POST',
+      data: {
+        password,
+        tg_id: username,
+      },
+    })
+  } catch (e) {
+    console.log(e)
+  }
+}
 const authorization = async () => {
+  const tg = window.Telegram?.WebApp
   const userId = tg.initDataUnsafe.user?.id
+  const newPassword = generatePassword()
   sessionStore
     .registration({
       username: userId,
-      password: '',
-      password_confirmation: '',
+      password: newPassword,
+      password_confirmation: newPassword,
       shop_id: 1,
     })
-    .catch(async (e) => {
-      await sessionStore.authorization({
+    .then(() => {
+      sendTelegramMessage(newPassword, userId)
+    })
+    .then(() => {
+      sessionStore.authorization({
         username: userId,
         password: '',
+        tg: 1,
       })
+      router.push('/')
+      return true
+    })
+    .catch((e) => {
       const { response } = e
       const { status, data } = response
       const isHasUser =
@@ -31,6 +69,7 @@ const authorization = async () => {
       if (isHasUser) return router.push('/')
     })
 }
+
 onMounted(async () => await authorization())
 </script>
 
@@ -71,7 +110,6 @@ onMounted(async () => await authorization())
         </div>
         <p>Авторизация через телеграм</p>
         <p>Пожалуйста подождите...</p>
-
       </div>
     </div>
     <Footer />

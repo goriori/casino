@@ -16,4 +16,5 @@ export const onChangeStateEditBirthday = () => {
 
 export const onSendPromocode = async () => {
   await pyamentStore.sendPromocode(promocode.value)
+  promocode.value = ''
 }

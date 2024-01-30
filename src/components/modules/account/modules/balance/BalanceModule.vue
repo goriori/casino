@@ -1,7 +1,7 @@
 <script setup>
-import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
-import { useSessionStore } from '@/store/session/sessionStore.js'
 import { onMounted } from 'vue'
+import { useSessionStore } from '@/store/session/sessionStore.js'
+import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 
 const sessionStore = useSessionStore()
 
