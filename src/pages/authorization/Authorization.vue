@@ -6,9 +6,7 @@ import Footer from '@/components/globals/footer/Footer.vue'
 import AuthorizationModule from '@/components/modules/authorization/AuthorizationModule.vue'
 
 const router = useRouter()
-onMounted(async () => {
-
-})
+onMounted(async () => {})
 </script>
 <template>
   <div class="page">
@@ -22,6 +20,7 @@ onMounted(async () => {
 
 <style scoped lang="scss">
 @import '@/assets/scss/variables';
+
 .page {
   color: #fff;
 

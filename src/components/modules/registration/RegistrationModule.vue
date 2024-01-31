@@ -12,28 +12,42 @@ import {
   pswrdCnfrmHidden,
   regMessages,
 } from '@/components/modules/registration/RegistrationModule.options.js'
+
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import EmailIcon from '@/components/ui/icons/authorization/EmailIcon.vue'
 import HiddenIcon from '@/components/ui/icons/authorization/HiddenIcon.vue'
 import TelegramIcon from '@/components/ui/icons/authorization/TelegramIcon.vue'
 import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue'
+import PopupSuccessRegistration from '@/components/modules/registration/popups/popup-success/PopupSuccessRegistration.vue'
+import PopupErrorServerRegistration from '@/components/modules/registration/popups/popup-error-server/PopupErrorServerRegistration.vue'
+import PopupErrorValidRegistration from '@/components/modules/registration/popups/popup-error-valid/PopupErrorValidRegistration.vue'
 
 const router = useRouter()
 </script>
 
 <template>
   <div class="authorization-module">
-    <div class="authorization-message">
-      <Transition name="slide">
-        <div class="message-success" v-if="regMessages.success">
-          Вы успешно зарегестрировали аккаунт
-        </div>
-      </Transition>
-      <Transition name="slide">
-        <div class="message-error" v-if="regMessages.error">
-          Произошла ошибка. Попробуйте снова
-        </div>
-      </Transition>
+    <div class="authorization-popups">
+      <Teleport to="body">
+        <Transition name="slide">
+          <PopupSuccessRegistration
+            v-if="regMessages.success"
+            @close="regMessages.success = false"
+          />
+        </Transition>
+        <Transition name="slide">
+          <PopupErrorServerRegistration
+            v-if="regMessages.error"
+            @close="regMessages.error = false"
+          />
+        </Transition>
+        <Transition name="slide">
+          <PopupErrorValidRegistration
+            v-if="regMessages.isValid"
+            @close="regMessages.isValid = false"
+          />
+        </Transition>
+      </Teleport>
     </div>
     <div class="authorization-info">
       <h1>Регистрация</h1>

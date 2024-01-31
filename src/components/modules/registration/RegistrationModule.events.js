@@ -2,13 +2,15 @@ import {
   pswrdHidden,
   pswrdCnfrmHidden,
   formReg,
-  regMessages,
 } from '@/components/modules/registration/RegistrationModule.options.js'
-import { useRegular } from '@/utils/useRegular.js'
 
 import { useSessionStore } from '@/store/session/sessionStore.js'
+import {
+  onErrorMessage,
+  onErrorValid,
+  onValidForm,
+} from '@/components/modules/registration/RegistrationModule.valids.js'
 
-const { dateTest, cardTest, emailTest } = useRegular()
 const sessionStore = useSessionStore()
 
 export const onChangeHiddenPassword = () =>
@@ -35,32 +37,11 @@ export const onRegistration = async (router) => {
       .then(() => router.push('/authorization'))
   } catch (e) {
     console.log('result valid:', e)
-    onErrorMessage()
+    if (e === false) onErrorValid()
+    else onErrorMessage()
     clearForm()
     router.push('/registration')
   }
-}
-
-const onErrorMessage = () => {
-  regMessages.value.error = true
-  setTimeout(() => {
-    regMessages.value.error = false
-  }, 3000)
-}
-const onSuccessMessage = () => {
-  regMessages.value.success = true
-  setTimeout(() => {
-    regMessages.value.success = false
-  }, 3000)
-}
-const onValidForm = async () => {
-  if (formReg.value.password.trim().length === 0) throw false
-  if (formReg.value.password_confirmation.trim().length === 0) throw false
-  if (
-    formReg.value.password.trim() !== formReg.value.password_confirmation.trim()
-  )
-    throw false
-  return true
 }
 
 export const onRegistrationTelegram = () => {
