@@ -17,7 +17,6 @@ export default class PaymentService {
         method: 'POST',
         data: replObject,
       })
-      console.log(response.data)
       return response.data
     } catch (e) {
       throw e

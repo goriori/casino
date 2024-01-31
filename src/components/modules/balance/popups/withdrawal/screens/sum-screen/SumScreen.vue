@@ -10,6 +10,7 @@ import {
 import PopupErrorValidSum from '@/components/modules/balance/popups/withdrawal/screens/sum-screen/popups/popup-error-valid/PopupErrorValidSum.vue'
 
 const emits = defineEmits(['replenish'])
+const minCountPay = window.MESSAGES_POPUP.SUM_SCREEN.MIN_COUNT_PAY
 </script>
 
 <template>
@@ -27,7 +28,7 @@ const emits = defineEmits(['replenish'])
     <div class="popup-screen-sum">
       <div class="popup-screen-title">
         <h3>Введите сумму пополнения:</h3>
-        <p>Min. 300₽</p>
+        <p>Min. {{ minCountPay }} ₽</p>
         <div class="popup-screen-field">
           <input type="number" v-model.number="balance" min="1" max="100" />
           <p>₽</p>

@@ -40,7 +40,10 @@ export const onSwitchWithdrawalConfirm = () => {
 }
 
 export const onSwitchWithdrawalMessage = (message) => {
-  historyStateManipulate.value.push('confirm-translation')
+  if (stateManipulate.value === 'replenishment-cryptocurrency')
+    historyStateManipulate.value.push('replenishment-cryptocurrency')
+  else historyStateManipulate.value.push('confirm-translation')
+
   stateManipulate.value = 'message-translation'
   stateMessage.value = message
 }
@@ -55,6 +58,8 @@ export const onBack = () => {
   stateManipulate.value = historyStateManipulate.value[backStep]
   historyStateManipulate.value.pop()
 }
+export const onClearHistory = () => [(historyStateManipulate.value = [])]
 export const onClose = (emits) => {
+  onClearHistory()
   emits('close')
 }

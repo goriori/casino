@@ -4,6 +4,7 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import ErrorIcon from '@/components/ui/icons/other/ErrorIcon.vue'
 
 const emits = defineEmits(['close'])
+const message = window.MESSAGES_POPUP.WITHDRAWAL.ERROR_VALIDATION
 </script>
 
 <template>
@@ -13,7 +14,7 @@ const emits = defineEmits(['close'])
         <div class="window-container">
           <div class="window-content">
             <ErrorIcon />
-            <h3>Не корректно заполнены поля, пожалуйста попробуйте снова!</h3>
+            <h3>{{ message }}</h3>
             <BaseButton color="primary" outline @click="emits('close')">
               <p>Повторить</p>
             </BaseButton>

@@ -12,6 +12,8 @@ import PopupErrorServerWithdrawal from '@/components/modules/account/modules/wit
 import PopupErrorValidWithdrawal from '@/components/modules/account/modules/withdrawal/popups/popup-error-valid/PopupErrorValidWithdrawal.vue'
 
 const emits = defineEmits(['success', 'error'])
+const minCountWithdrawal = window.MESSAGES_POPUP.WITHDRAWAL.MIN_COUNT_WITHDRAWAL
+const maxCountWithdrawal = window.MESSAGES_POPUP.WITHDRAWAL.MAX_COUNT_WITHDRAWAL
 </script>
 
 <template>
@@ -56,9 +58,9 @@ const emits = defineEmits(['success', 'error'])
         <div class="input-currency">
           <input
             type="number"
-            placeholder="Введите сумму. Мин. 1000"
-            min="1000"
-            max="1000000000"
+            placeholder="Введите сумму"
+            :min="minCountWithdrawal"
+            :max="maxCountWithdrawal"
             v-model="withdrawalForm.sum"
           />
           <div class="input-currency-target">

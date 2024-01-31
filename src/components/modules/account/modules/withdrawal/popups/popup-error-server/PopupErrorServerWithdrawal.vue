@@ -4,6 +4,7 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import ErrorIcon from '@/components/ui/icons/other/ErrorIcon.vue'
 
 const emits = defineEmits(['close'])
+const message = window.MESSAGES_POPUP.WITHDRAWAL.ERROR_SERVER
 </script>
 
 <template>
@@ -14,8 +15,7 @@ const emits = defineEmits(['close'])
           <div class="window-content">
             <ErrorIcon />
             <h3>
-              Во время вывода средств произошла ошибка, пожалуйста попробуйте
-              позже!
+              {{ message }}
             </h3>
             <BaseButton color="primary" outline @click="emits('close')">
               <p>Закрыть</p>

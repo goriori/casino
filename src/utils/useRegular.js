@@ -9,6 +9,6 @@ export const useRegular = () => {
   return {
     dateTest,
     emailTest,
-    cardTest
+    cardTest,
   }
 }

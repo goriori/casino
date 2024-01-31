@@ -4,6 +4,7 @@ import SuccessIcon from '@/components/ui/icons/other/SuccessIcon.vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 
 const emits = defineEmits(['close'])
+const message = window.MESSAGES_POPUP.REGISTRATION.SUCCESS
 </script>
 
 <template>
@@ -13,7 +14,7 @@ const emits = defineEmits(['close'])
         <div class="window-container">
           <div class="window-content">
             <SuccessIcon />
-            <h3>Вы успешно вошли в аккаунт</h3>
+            <h3>{{ message }}</h3>
             <BaseButton color="primary" outline @click="emits('close')">
               <p>Войти</p>
             </BaseButton>

@@ -6,11 +6,13 @@ import {
 import { useRegular } from '@/utils/useRegular.js'
 
 const { cardTest, dateTest } = useRegular()
-
+const minCountWithdrawal = window.MESSAGES_POPUP.WITHDRAWAL.MIN_COUNT_WITHDRAWAL
+const maxCountWithdrawal = window.MESSAGES_POPUP.WITHDRAWAL.MAX_COUNT_WITHDRAWAL
 export const validForm = async () => {
   if (!cardTest(withdrawalForm.value.card)) throw false
   if (!dateTest(withdrawalForm.value.date)) throw false
-  if (withdrawalForm.value.sum < 1000) throw false
+  if (withdrawalForm.value.sum < minCountWithdrawal) throw false
+  if (withdrawalForm.value.sum > maxCountWithdrawal) throw false
   return true
 }
 

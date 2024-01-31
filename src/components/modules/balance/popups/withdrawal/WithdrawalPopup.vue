@@ -1,9 +1,10 @@
 <script setup>
 import { onMounted } from 'vue'
 import {
+  historyStateManipulate,
   stateManipulate,
   stateMessage,
-  stateSum,
+  stateSum
 } from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.option.js'
 import {
   onSwitchWithdrawalReplenishment,
@@ -52,7 +53,7 @@ onMounted(async () => {
     <div class="popup-withdrawal">
       <div class="popup-withdrawal-navigation">
         <div class="navigation-back">
-          <BaseButton color="primary" outline @click="onBack">
+          <BaseButton color="primary" outline @click="onBack" v-if="historyStateManipulate.length !== 0">
             <div class="btn-back-content">
               <ArrowBackIcon />
               <p>Назад</p>

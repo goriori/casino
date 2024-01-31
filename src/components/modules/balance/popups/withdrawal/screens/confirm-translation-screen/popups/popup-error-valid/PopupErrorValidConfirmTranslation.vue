@@ -4,6 +4,7 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import ErrorIcon from '@/components/ui/icons/other/ErrorIcon.vue'
 
 const emits = defineEmits(['close'])
+const message = window.MESSAGES_POPUP.CONFIRM_TRANSLATION.ERROR_VALIDATION
 </script>
 
 <template>
@@ -14,7 +15,7 @@ const emits = defineEmits(['close'])
           <div class="window-content">
             <ErrorIcon />
             <h3>
-              Поле ФИО обязательное для заполнения!
+              {{ message }}
             </h3>
             <BaseButton color="primary" outline @click="emits('close')">
               <p>Повторить</p>
@@ -28,5 +29,4 @@ const emits = defineEmits(['close'])
 
 <style scoped lang="scss">
 @import '../PopupConfirmTranslation';
-
 </style>

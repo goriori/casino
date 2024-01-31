@@ -4,6 +4,7 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import ErrorIcon from '@/components/ui/icons/other/ErrorIcon.vue'
 
 const emits = defineEmits(['close'])
+const message = window.MESSAGES_POPUP.CONFIRM_TRANSLATION.ERROR_SERVER
 </script>
 
 <template>
@@ -13,7 +14,7 @@ const emits = defineEmits(['close'])
         <div class="window-container">
           <div class="window-content">
             <ErrorIcon />
-            <h3>Произошла ошибка, пожалуйста попробуйте позже!</h3>
+            <h3>{{ message}}</h3>
             <BaseButton color="primary" outline @click="emits('close')">
               <p>Закрыть</p>
             </BaseButton>
