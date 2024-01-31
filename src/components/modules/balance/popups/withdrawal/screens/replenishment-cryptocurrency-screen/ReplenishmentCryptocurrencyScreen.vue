@@ -8,7 +8,7 @@ const paymentStore = usePaymentStore()
 const sessionStore = useSessionStore()
 const hashWallet = 'TGSET4qe8Pq9jQXwxSWShFqxmGQ1eYQn2J'
 paymentStore.replObject.user_id = sessionStore.session.profile?.id
-paymentStore.replObject.fullname = 'test_fullname'
+paymentStore.replObject.fullname = ''
 paymentStore.replObject.props = hashWallet
 
 const confirmPayment = async (emits) => {

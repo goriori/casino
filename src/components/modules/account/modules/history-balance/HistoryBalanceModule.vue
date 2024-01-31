@@ -31,12 +31,12 @@ onMounted(async () => {
       </svg>
     </div>
     <div class="history__balance-module-content">
-      <div class="history__balance-module-target">
-        <p>с</p>
-        <input type="date" v-model="dateStart" />
-        <p>по</p>
-        <input type="date" v-model="dateEnd" />
-      </div>
+<!--      <div class="history__balance-module-target">-->
+<!--        <p>с</p>-->
+<!--        <input type="date" v-model="dateStart" />-->
+<!--        <p>по</p>-->
+<!--        <input type="date" v-model="dateEnd" />-->
+<!--      </div>-->
       <hr />
       <div class="history__balance-module-info">
         <table>

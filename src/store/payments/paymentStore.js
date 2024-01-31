@@ -12,6 +12,7 @@ export const usePaymentStore = defineStore('paymentStore', () => {
     fullname: '',
     user_id: '',
   })
+  const targetRequisite = ref({})
   const requisites = ref([])
   const sendReplenishment = async () => {
     const form = new FormData()
@@ -34,6 +35,7 @@ export const usePaymentStore = defineStore('paymentStore', () => {
   return {
     replObject,
     requisites,
+    targetRequisite,
     sendReplenishment,
     sendWithdrawal,
     sendPromocode,

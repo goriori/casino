@@ -24,7 +24,7 @@ export const useSessionStore = defineStore('sessionStore', () => {
 
   const getStatusPay = async () => {
     const { data } = await AccountService.getInfoStatusPay()
-    session.value.history = { ...data }
+    session.value.history = [...data]
   }
   return {
     session,

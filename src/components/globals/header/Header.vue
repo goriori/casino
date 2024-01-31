@@ -29,7 +29,7 @@ onMounted(async () => {
       </div>
     </div>
     <div class="header-logo" @click="router.push('/')">
-      <img src="/images/logo.svg" alt="" />
+      <img src="https://api.gamesoffutures.ru/logo/logo.png" alt="" />
     </div>
     <div class="header-actions">
       <div class="header-actions-account" v-if="!isAuthorizationPage">

@@ -1,6 +1,25 @@
 @import "@/assets/scss/variables";
+
+.message {
+  &-success {
+    position: absolute;
+    background: #45CC3A;
+    padding: 20px;
+    width: 100%;
+    border-radius: 26px;
+  }
+  &-error {
+    position: absolute;
+    background: #FF3939;
+    padding: 20px;
+    width: 100%;
+    border-radius: 26px;
+  }
+}
+
 .authorization {
   &-module {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -11,7 +30,14 @@
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
     padding: 32px 28px;
   }
+  &-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
 
+  }
   &-info {
     display: flex;
     flex-direction: column;

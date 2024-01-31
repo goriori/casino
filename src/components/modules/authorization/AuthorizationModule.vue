@@ -3,25 +3,40 @@ import { useRouter } from 'vue-router'
 
 import {
   onChangeHiddenPassword,
-  onAuthorization, onAuthTelegram, onRecoveryPassword
+  onAuthorization,
+  onAuthTelegram,
+  onRecoveryPassword,
 } from '@/components/modules/authorization/AuthorizationModule.events.js'
 import {
   pswrdHidden,
   formAuth,
-  authFields
+  authFields,
+  authMessages,
 } from '@/components/modules/authorization/AuthorizationModule.options.js'
 
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import EmailIcon from '@/components/ui/icons/authorization/EmailIcon.vue'
 import HiddenIcon from '@/components/ui/icons/authorization/HiddenIcon.vue'
 import TelegramIcon from '@/components/ui/icons/authorization/TelegramIcon.vue'
-import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue'
+
 
 const router = useRouter()
 </script>
 
 <template>
   <div class="authorization-module">
+    <div class="authorization-message">
+      <Transition name="slide">
+        <div class="message-success" v-if="authMessages.success">
+          Вы успешно вошли в аккаунт.
+        </div>
+      </Transition>
+      <Transition name="slide">
+        <div class="message-error" v-if="authMessages.error">
+          Произошла ошибка. Попробуйте снова!
+        </div>
+      </Transition>
+    </div>
     <div class="authorization-info">
       <h1>Вход</h1>
       <p>Введите свои учетные данные для доступа к вашему профилю</p>
@@ -36,7 +51,6 @@ const router = useRouter()
             type="text"
             placeholder="Ввести логин"
             v-model="formAuth.username"
-
           />
           <EmailIcon />
         </div>

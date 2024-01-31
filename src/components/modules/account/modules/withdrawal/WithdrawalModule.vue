@@ -88,7 +88,6 @@ const emits = defineEmits(['success', 'error'])
   &-module {
     position: relative;
     width: 100%;
-    height: 100%;
     padding: 18px 48px;
     display: flex;
     flex-direction: column;
@@ -185,7 +184,7 @@ const emits = defineEmits(['success', 'error'])
 }
 
 .withdrawal-module-action {
-  max-width: 230px;
+  max-width: 260px;
   margin: 0 auto;
 
   @media (max-width: $md4 + px) {

@@ -10,6 +10,7 @@ import {
   pswrdHidden,
   formReg,
   pswrdCnfrmHidden,
+  regMessages,
 } from '@/components/modules/registration/RegistrationModule.options.js'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import EmailIcon from '@/components/ui/icons/authorization/EmailIcon.vue'
@@ -22,6 +23,18 @@ const router = useRouter()
 
 <template>
   <div class="authorization-module">
+    <div class="authorization-message">
+      <Transition name="slide">
+        <div class="message-success" v-if="regMessages.success">
+          Вы успешно зарегестрировали аккаунт
+        </div>
+      </Transition>
+      <Transition name="slide">
+        <div class="message-error" v-if="regMessages.error">
+          Произошла ошибка. Попробуйте снова
+        </div>
+      </Transition>
+    </div>
     <div class="authorization-info">
       <h1>Регистрация</h1>
       <p>
@@ -95,7 +108,7 @@ const router = useRouter()
       <div class="authorization-registration-info">
         <p>
           У вас уже есть профиль?
-          <span @click="router.push('/')">Войти</span>
+          <span @click="router.push('/authorization')">Войти</span>
         </p>
       </div>
 

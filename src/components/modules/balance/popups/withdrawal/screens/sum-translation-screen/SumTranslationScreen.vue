@@ -73,7 +73,7 @@ onUnmounted(() => clearOptions())
             <p>Банк получателя</p>
             <h4>{{ paymentStore.replObject.name }}</h4>
           </div>
-          <SberbankIcon />
+
         </div>
         <div class="sum__translation-screen-info-item">
           <div class="item-info">

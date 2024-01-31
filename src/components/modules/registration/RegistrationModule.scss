@@ -1,6 +1,25 @@
 @import "@/assets/scss/variables";
+
+
+.message {
+  &-success {
+    position: absolute;
+    background: #45CC3A;
+    padding: 20px;
+    width: 100%;
+    border-radius: 26px;
+  }
+  &-error {
+    position: absolute;
+    background: #FF3939;
+    padding: 20px;
+    width: 100%;
+    border-radius: 26px;
+  }
+}
 .authorization {
   &-module {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,6 +29,15 @@
     background: #1d2345;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
     padding: 32px 28px;
+  }
+
+  &-message {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+
   }
 
   &-info {
@@ -56,7 +84,8 @@
 
     &-info {
       font-size: 14px;
-      span{
+
+      span {
         text-decoration: underline;
       }
     }
@@ -83,7 +112,7 @@
     align-items: center;
     gap: 8px;
 
-    &.checkbox{
+    &.checkbox {
       padding: 0 50px;
       @media (max-width: $md4 + px) {
         padding: 0;
@@ -180,7 +209,8 @@ span {
       font-size: 8px;
     }
   }
-  span{
+
+  span {
     @media (max-width: $md5 + px) {
       font-size: 10px;
     }

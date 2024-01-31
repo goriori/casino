@@ -10,7 +10,7 @@ export const popupSetting = ref({
   targetScreen: 'replenishment',
 })
 
-const telegramLink = `https://t.me/${settingStore.settings.tg_id}`
+const telegramLink = `https://t.me/`
 export const navigationNotAuthorized = [
   {
     id: 1,
@@ -18,7 +18,7 @@ export const navigationNotAuthorized = [
     title: 'Тех. поддержка',
     handler: function (router) {
       const a = document.createElement('a')
-      a.href = telegramLink
+      a.href = telegramLink + settingStore.settings.tg_id
       a.target = '_blank'
       a.click()
     },
@@ -70,7 +70,7 @@ export const navigationAuthorized = [
     title: 'Тех. поддержка',
     handler: function (router) {
       const a = document.createElement('a')
-      a.href = telegramLink
+      a.href = telegramLink + settingStore.settings.tg_id
       a.target = '_blank'
       a.click()
     },

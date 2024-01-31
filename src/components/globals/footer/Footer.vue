@@ -19,14 +19,14 @@ import {
   isTermsPolicyOpen,
 } from './Footer.options.js'
 import SupportModule from '@/components/modules/support/SupportModule.vue'
-import MoveUpModule from '@/components/modules/move-up/MoveUpModule.vue'
-import PopupPolicy from '@/components/ui/popups/PopupPolicy/PopupPolicy.vue'
-import PopupGamingPolicy from '@/components/ui/popups/PopupGamingPolicy/PopupGamingPolicy.vue'
-import PopupKYCPolicy from '@/components/ui/popups/popupKYCPolicy/popupKYCPolicy.vue'
-import PopupFairnessPolicy from '@/components/ui/popups/PopupFairnessPolicy/PopupFairnessPolicy.vue'
-import PopupRestraintPolicy from '@/components/ui/popups/PopupRestraintPolicy/PopupRestraintPolicy.vue'
-import PopupPrivacyPolicy from '@/components/ui/popups/PopupPrivacyPolicy/PopupPrivacyPolicy.vue'
-import PopupTermsPolicy from '@/components/ui/popups/PopupTermsPolicy/PopupTermsPolicy.vue'
+import PopupPolicy from '@/components/ui/popups/popup-policy/PopupPolicy.vue'
+import PopupGamingPolicy from '@/components/ui/popups/popup-gaming-policy/PopupGamingPolicy.vue'
+import PopupKYCPolicy from '@/components/ui/popups/popup-kyc-policy/popupKYCPolicy.vue'
+import PopupFairnessPolicy from '@/components/ui/popups/popup-fairness-policy/PopupFairnessPolicy.vue'
+import PopupRestraintPolicy from '@/components/ui/popups/popup-restraint-policy/PopupRestraintPolicy.vue'
+import PopupPrivacyPolicy from '@/components/ui/popups/popup-privacy-policy/PopupPrivacyPolicy.vue'
+import PopupTermsPolicy from '@/components/ui/popups/popup-terms-policy/PopupTermsPolicy.vue'
+
 
 const router = useRouter()
 

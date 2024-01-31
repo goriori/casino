@@ -2,6 +2,7 @@ import {
   pswrdHidden,
   formAuth,
   authFields,
+  authMessages
 } from '@/components/modules/authorization/AuthorizationModule.options.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useSettingsStore } from '@/store/settings/settingStore.js'
@@ -25,7 +26,8 @@ export const onAuthorization = async (router) => {
     clearForm()
     router.push('/')
   } catch (e) {
-    console.log(e)
+    onErrorMessage()
+    console.log('valid result:', e)
     clearForm()
     router.push('/authorization')
   }
@@ -33,6 +35,20 @@ export const onAuthorization = async (router) => {
 
 const onValidForm = async () => {
   if (formAuth.value.username.trim().length === 0) throw false
+}
+
+const onErrorMessage = () => {
+  console.log('err')
+  authMessages.value.error = true
+  setTimeout(() => {
+    authMessages.value.error = false
+  }, 3000)
+}
+const onSuccessMessage = () => {
+  authMessages.value.success = true
+  setTimeout(() => {
+    authMessages.value.success = false
+  }, 3000)
 }
 
 export const onRecoveryPassword = () => {
