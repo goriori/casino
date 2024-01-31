@@ -8,9 +8,7 @@ import {
 } from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.events.js'
 import { useTimer } from '@/utils/useTimer.js'
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
-import {
-  translationMessages,
-} from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.options.js'
+import { translationMessages } from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.options.js'
 
 import TimerIcon from '@/components/ui/icons/other/TimerIcon.vue'
 import CopyIcon from '@/components/ui/icons/other/CompyIcon.vue'
@@ -115,7 +113,11 @@ onUnmounted(() => clearOptions())
         <div class="btn-attach-file">
           <AttachIcon />
           <p>Прикрепить чек из банка*</p>
-          <input type="file" accept=".jpg,.png" @change="onChangeFile" />
+          <input
+            type="file"
+            accept=".jpg,.png"
+            @change="(e) => onChangeFile(e, emits)"
+          />
         </div>
       </BaseButton>
       <p class="attach-rules">

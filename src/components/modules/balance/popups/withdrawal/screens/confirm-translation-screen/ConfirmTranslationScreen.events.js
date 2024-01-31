@@ -19,20 +19,22 @@ export const onChangeFullName = (e) => {
   paymentStore.replObject.fullname = fullName.value
 }
 
-const onConfirmTranslation = async () => {
+const onConfirmTranslation = async (emits) => {
   try {
     await paymentStore.sendReplenishment()
+    emits('success')
   } catch (e) {
     onErrorServer()
+    emits('error')
   }
 }
-export const onChangeFile = (e) => {
-  const files = e.target.files || e.dataTransfer.files
+export const onChangeFile = (event, emits) => {
+  const files = event.target.files || event.dataTransfer.files
   if (!files.length) return
   screenshot.value = files[0]
   paymentStore.replObject.screenshot = screenshot.value
   paymentStore.replObject.user_id = sessionStore.session.profile.id
-  onValidFullName().then(onConfirmTranslation).catch(onErrorValid)
+  onValidFullName(emits).then(onConfirmTranslation).catch(onErrorValid)
 }
 
 const onErrorServer = () => {

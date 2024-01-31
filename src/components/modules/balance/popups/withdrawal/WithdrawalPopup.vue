@@ -4,7 +4,8 @@ import {
   historyStateManipulate,
   stateManipulate,
   stateMessage,
-  stateSum
+  stateSum,
+
 } from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.option.js'
 import {
   onSwitchWithdrawalReplenishment,

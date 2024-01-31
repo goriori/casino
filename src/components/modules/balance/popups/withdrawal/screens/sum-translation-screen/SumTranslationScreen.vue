@@ -92,7 +92,7 @@ onUnmounted(() => clearOptions())
       </div>
     </div>
     <BaseButton>
-      <div class="btn-copy-number" @click="onClipboardWrite(numberCardTo)">
+      <div class="btn-copy-number" @click="onClipboardWrite(paymentStore.replObject.props)">
         <CompyIcon />
         <p>Скопировать номер карты</p>
       </div>

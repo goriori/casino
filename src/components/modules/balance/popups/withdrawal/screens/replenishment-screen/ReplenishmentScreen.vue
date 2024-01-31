@@ -21,7 +21,7 @@ const onChoiceMethodPayment = (method, crypto) => {
     <div class="deposit">
       <div class="deposit-card">
         <p>Депозит с банковской карты:</p>
-        <div class="deposit-card-pay" @click="emits('bank-card')" v-ripple>
+        <div class="deposit-card-pay"  v-ripple>
           <WalletIcon />
           <div
             class="deposit-card-pay-content"

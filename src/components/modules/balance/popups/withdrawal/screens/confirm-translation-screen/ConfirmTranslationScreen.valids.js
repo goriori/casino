@@ -4,8 +4,9 @@ import {
   translationMessages,
 } from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.options.js'
 
-export const onValidFullName = async () => {
+export const onValidFullName = async (emits) => {
   if (fullName.value.trim().length === 0) throw false
+  return emits
 }
 
 export const onErrorValid = () => {
