@@ -1,5 +1,8 @@
 <script setup>
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
+import {
+  onSelectBank
+} from '@/components/modules/balance/popups/withdrawal/screens/select-bank/SelectBankScreen.events.js'
 
 const props = defineProps({
   sum: {
@@ -9,12 +12,6 @@ const props = defineProps({
 })
 const emits = defineEmits(['select-bank'])
 const paymentStore = usePaymentStore()
-const onSelectBank = (bank) => {
-  paymentStore.replObject.fullname = bank?.name
-  paymentStore.replObject.name = bank?.title
-  paymentStore.replObject.props = bank?.card
-  emits('select-bank')
-}
 </script>
 
 <template>
@@ -29,7 +26,7 @@ const onSelectBank = (bank) => {
         <div
           class="select__bank-screen-item"
           v-for="bank in paymentStore.requisites"
-          @click="onSelectBank(bank)"
+          @click="onSelectBank(bank, emits)"
           v-ripple
         >
           <img :src="'https://api.gamesoffutures.ru' + bank.icon" alt="">

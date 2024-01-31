@@ -6,16 +6,18 @@ import {
   onChangeFullName,
   onClipboardWrite,
 } from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.events.js'
-import SberbankIcon from '@/components/ui/icons/other/SberbankIcon.vue'
+import { useTimer } from '@/utils/useTimer.js'
+import { usePaymentStore } from '@/store/payments/paymentStore.js'
+import {
+  translationMessages,
+} from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.options.js'
+
 import TimerIcon from '@/components/ui/icons/other/TimerIcon.vue'
 import CopyIcon from '@/components/ui/icons/other/CompyIcon.vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import AttachIcon from '@/components/ui/icons/other/AttachIcon.vue'
-import { useTimer } from '@/utils/useTimer.js'
-import { usePaymentStore } from '@/store/payments/paymentStore.js'
-import {
-  statusTranslation
-} from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.options.js'
+import PopupErrorValidConfirmTranslation from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/popups/popup-error-valid/PopupErrorValidConfirmTranslation.vue'
+import PopupErrorServerConfirmTranslation from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/popups/popup-error-server/PopupErrorServerConfirmTranslation.vue'
 
 const emits = defineEmits(['success', 'error'])
 const props = defineProps({
@@ -23,7 +25,6 @@ const props = defineProps({
     type: [Number, String],
     default: '0.00',
   },
-
 })
 
 const paymentStore = usePaymentStore()
@@ -42,10 +43,32 @@ onUnmounted(() => clearOptions())
 
 <template>
   <div class="confirm__translation-screen">
+    <div class="confirm__translation-screen-popups">
+      <Teleport to="body">
+        <Transition name="slide">
+          <PopupErrorServerConfirmTranslation
+            @close="translationMessages.error = false"
+            v-if="translationMessages.error"
+          />
+        </Transition>
+        <Transition name="slide">
+          <PopupErrorValidConfirmTranslation
+            @close="translationMessages.isValid = false"
+            v-if="translationMessages.isValid"
+          />
+        </Transition>
+      </Teleport>
+    </div>
     <div class="confirm__translation-screen-title">
       <div class="title-target-bank">
-        <SberbankIcon />
-        <p>Сбербанк</p>
+        <img
+          :src="
+            'https://api.gamesoffutures.ru' +
+            paymentStore.targetRequisite.bankIcon
+          "
+          alt=""
+        />
+        <p>{{ paymentStore.targetRequisite.bankName }}</p>
       </div>
       <div class="title-timer">
         <TimerIcon />
@@ -98,24 +121,6 @@ onUnmounted(() => clearOptions())
       <p class="attach-rules">
         Чек по операции с номером документа (только PNG и JPG)
       </p>
-    </div>
-    <div class="confirm__translation-screen-alerts">
-      <div
-        class="confirm__translation-screen-alert"
-        id="alert-success"
-        @click="emits('success')"
-        v-if="statusTranslation === 'success'"
-      >
-        Оплачено
-      </div>
-      <div
-        class="confirm__translation-screen-alert"
-        id="alert-error"
-        @click="emits('error')"
-        v-if="statusTranslation === 'error'"
-      >
-        Ошибка
-      </div>
     </div>
   </div>
 </template>

@@ -66,14 +66,22 @@ onUnmounted(() => clearOptions())
             <p>Номер карты для перевода</p>
             <h4>{{ paymentStore.replObject.props }}</h4>
           </div>
-          <CompyIcon @click="onClipboardWrite(numberCardTo)" />
+          <CompyIcon @click="onClipboardWrite(paymentStore.replObject.props)" />
         </div>
         <div class="sum__translation-screen-info-item">
           <div class="item-info">
             <p>Банк получателя</p>
-            <h4>{{ paymentStore.replObject.name }}</h4>
+            <div id="toBank">
+              <h4>{{ paymentStore.targetRequisite?.bankName }}</h4>
+              <img
+                :src="
+                  'https://api.gamesoffutures.ru' +
+                  paymentStore.targetRequisite?.bankIcon
+                "
+                alt=""
+              />
+            </div>
           </div>
-
         </div>
         <div class="sum__translation-screen-info-item">
           <div class="item-info">

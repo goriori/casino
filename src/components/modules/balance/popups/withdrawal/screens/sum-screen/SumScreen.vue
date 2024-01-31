@@ -1,14 +1,29 @@
 <script setup>
-import { balance } from '@/components/modules/balance/popups/withdrawal/screens/sum-screen/SumScreen.options.js'
+import {
+  balance,
+  sumMessages,
+} from '@/components/modules/balance/popups/withdrawal/screens/sum-screen/SumScreen.options.js'
 import {
   onChangeSlotBalance,
-  onConfirmSum
+  onConfirmSum,
 } from '@/components/modules/balance/popups/withdrawal/screens/sum-screen/SumScreen.events.js'
+import PopupErrorValidSum from '@/components/modules/balance/popups/withdrawal/screens/sum-screen/popups/popup-error-valid/PopupErrorValidSum.vue'
+
 const emits = defineEmits(['replenish'])
 </script>
 
 <template>
   <div class="popup-screen">
+    <div class="popup-screen-popups">
+      <Teleport to="body">
+        <Transition name="slide">
+          <PopupErrorValidSum
+            @close="sumMessages.isValid = false"
+            v-if="sumMessages.isValid"
+          />
+        </Transition>
+      </Teleport>
+    </div>
     <div class="popup-screen-sum">
       <div class="popup-screen-title">
         <h3>Введите сумму пополнения:</h3>
@@ -64,11 +79,7 @@ const emits = defineEmits(['replenish'])
       </div>
     </div>
     <div class="popup-screen-alerts">
-      <div
-        class="popup-screen-alert"
-        @click="onConfirmSum(emits)"
-        v-ripple
-      >
+      <div class="popup-screen-alert" @click="onConfirmSum(emits)" v-ripple>
         Пополнить
       </div>
     </div>
