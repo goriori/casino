@@ -6,7 +6,7 @@ const router = useRouter()
 </script>
 
 <template>
-  <AccountButton name="signin" @click="router.push('/')" />
+  <AccountButton name="signin" @click="router.push('/authorization')" />
 </template>
 
 <style scoped lang="scss"></style>
