@@ -8,8 +8,7 @@ import { axiosInstance } from '@/utils/axios/axios.js'
 
 const router = useRouter()
 const sessionStore = useSessionStore()
-const requests = ref([])
-const messageAuth = ref([])
+
 const generatePassword = () => {
   const characters =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*'
@@ -23,70 +22,56 @@ const generatePassword = () => {
 }
 
 const sendTelegramMessage = async (password, username) => {
-  try {
-    await axiosInstance({
-      url: '/sendPassword',
-      method: 'POST',
-      data: {
-        password,
-        tg_id: username,
-      },
-    })
-  } catch (e) {
-    console.log('err sendMessage')
-    console.log(e)
-  }
+  await axiosInstance({
+    url: '/sendPassword',
+    method: 'POST',
+    data: {
+      password,
+      tg_id: username,
+    },
+  })
 }
 
 const onRegistrationNewUser = async (userId, newPassword) => {
-  try {
-    await sessionStore.registration({
-      username: userId,
-      password: newPassword,
-      password_confirmation: newPassword,
-      shop_id: 1,
-    })
-
-  } catch (e) {
-    const { response } = e
-    const { status, data } = response
-    const isErrReg = data.username[0] === 'The username field is required.'
-    const isHasUser =
-      status === 422 &&
-      'username' in data &&
-      data.username[0] === 'The username has already been taken.'
-    if (isHasUser) {
-      console.log('isHasUser')
-      return await onAuthorizationUser(userId)
-    }
-    else if (isErrReg) {
-      console.log('Ошибка при регистрации. Не правильное тело запроса.')
-    } else {
-      // return await router.push('/')
-    }
-  }
+  await sessionStore.registration({
+    username: userId,
+    password: newPassword,
+    password_confirmation: newPassword,
+    shop_id: 1,
+  })
 }
 const onAuthorizationUser = async (userId) => {
-  try {
-    await sessionStore.authorization({
-      username: userId,
-      password: '',
-      tg: 1,
-    })
-    await router.push('/')
-  } catch (e) {
-    messageAuth.value.push('Ошибка при авторизации')
-    console.log('Ошибка при авторизации')
-    return false
+  await sessionStore.authorization({
+    username: userId,
+    password: '',
+    tg: 1,
+  })
+  await router.push('/')
+}
+const onErrorAuthorization = async (e, userId) => {
+  console.log(e)
+  const { response } = e
+  const { status, data } = response
+  const isErrReg = data.username[0] === 'The username field is required.'
+  const isHasUser =
+    status === 422 &&
+    'username' in data &&
+    data.username[0] === 'The username has already been taken.'
+  if (isHasUser) {
+    console.log('isHasUser')
+    return await onAuthorizationUser(userId)
+  } else if (isErrReg) {
+    console.log('Ошибка при регистрации. Не правильное тело запроса.')
   }
 }
 const authorization = async () => {
   const tg = window.Telegram?.WebApp
-  const userId = tg.initDataUnsafe.user?.id || '546307506'
+  const userId = tg.initDataUnsafe.user?.id
   const newPassword = generatePassword()
-  await onRegistrationNewUser(userId, newPassword)
-  await sendTelegramMessage(newPassword, userId)
-  await onAuthorizationUser(userId)
+  onRegistrationNewUser(userId, newPassword)
+    .then(() => sendTelegramMessage(newPassword, userId))
+    .then(() => onAuthorizationUser(userId))
+    .catch((e) => onErrorAuthorization(e, userId))
 }
 
 onMounted(async () => await authorization())
@@ -129,8 +114,6 @@ onMounted(async () => await authorization())
         </div>
         <p>Авторизация через телеграм</p>
         <p>Пожалуйста подождите...</p>
-        <p>Сообщение авторизации : {{ messageAuth }}</p>
-        <p>Запросы: {{ requests }}</p>
       </div>
     </div>
     <Footer />
