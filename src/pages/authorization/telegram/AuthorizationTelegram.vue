@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import Header from '@/components/globals/header/Header.vue'
 import Footer from '@/components/globals/footer/Footer.vue'
@@ -8,7 +8,8 @@ import { axiosInstance } from '@/utils/axios/axios.js'
 
 const router = useRouter()
 const sessionStore = useSessionStore()
-
+const requests = ref([])
+const messageAuth = ref([])
 const generatePassword = () => {
   const characters =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*'
@@ -18,7 +19,6 @@ const generatePassword = () => {
     const randomIndex = floor(random() * characters.length)
     password += characters.charAt(randomIndex)
   }
-
   return password
 }
 
@@ -33,41 +33,60 @@ const sendTelegramMessage = async (password, username) => {
       },
     })
   } catch (e) {
+    console.log('err sendMessage')
     console.log(e)
   }
 }
-const authorization = async () => {
-  const tg = window.Telegram?.WebApp
-  const userId = tg.initDataUnsafe.user?.id
-  const newPassword = generatePassword()
-  sessionStore
-    .registration({
+
+const onRegistrationNewUser = async (userId, newPassword) => {
+  try {
+    await sessionStore.registration({
       username: userId,
       password: newPassword,
       password_confirmation: newPassword,
       shop_id: 1,
     })
-    .then(() => {
-      sendTelegramMessage(newPassword, userId)
+
+  } catch (e) {
+    const { response } = e
+    const { status, data } = response
+    const isErrReg = data.username[0] === 'The username field is required.'
+    const isHasUser =
+      status === 422 &&
+      'username' in data &&
+      data.username[0] === 'The username has already been taken.'
+    if (isHasUser) {
+      console.log('isHasUser')
+      return await onAuthorizationUser(userId)
+    }
+    else if (isErrReg) {
+      console.log('Ошибка при регистрации. Не правильное тело запроса.')
+    } else {
+      // return await router.push('/')
+    }
+  }
+}
+const onAuthorizationUser = async (userId) => {
+  try {
+    await sessionStore.authorization({
+      username: userId,
+      password: '',
+      tg: 1,
     })
-    .then(() => {
-      sessionStore.authorization({
-        username: userId,
-        password: '',
-        tg: 1,
-      })
-      router.push('/')
-      return true
-    })
-    .catch((e) => {
-      const { response } = e
-      const { status, data } = response
-      const isHasUser =
-        status === 422 &&
-        'username' in data &&
-        data.username[0] === 'The username has already been taken.'
-      if (isHasUser) return router.push('/')
-    })
+    await router.push('/')
+  } catch (e) {
+    messageAuth.value.push('Ошибка при авторизации')
+    console.log('Ошибка при авторизации')
+    return false
+  }
+}
+const authorization = async () => {
+  const tg = window.Telegram?.WebApp
+  const userId = tg.initDataUnsafe.user?.id || '546307506'
+  const newPassword = generatePassword()
+  await onRegistrationNewUser(userId, newPassword)
+  await sendTelegramMessage(newPassword, userId)
+  await onAuthorizationUser(userId)
 }
 
 onMounted(async () => await authorization())
@@ -110,6 +129,8 @@ onMounted(async () => await authorization())
         </div>
         <p>Авторизация через телеграм</p>
         <p>Пожалуйста подождите...</p>
+        <p>Сообщение авторизации : {{ messageAuth }}</p>
+        <p>Запросы: {{ requests }}</p>
       </div>
     </div>
     <Footer />
