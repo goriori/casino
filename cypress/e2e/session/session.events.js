@@ -1,12 +1,8 @@
 import { USERS } from './session.options.js'
+import { getElement } from '../utils/base.utils.js'
 
 
-export   const goVisit = (url) => cy.visit(url)
-
-export const getElement = (selector) => cy.get(selector)
-export const waitPage = (time) => cy.wait(time)
-
-export const baseAuthorization = () => {
+export const onBaseAuthorization = () => {
   const loginInput = getElement('#auth-login')
   const passwordInput = getElement('#auth-password')
   const buttonForm = getElement('.authorization-form-send')
@@ -14,4 +10,3 @@ export const baseAuthorization = () => {
   passwordInput.type(USERS[0].password)
   buttonForm.click()
 }
-
