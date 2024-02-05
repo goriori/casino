@@ -18,8 +18,13 @@ export const loadModule = async () => {
   gameStore.getGames().then(changeLoad).then(changeLoadContent)
 }
 
-const changeLoad = () => (isLoad.value = !isLoad.value)
-const changeLoadContent = () =>
-  setTimeout(() => (isLoadContent.value = !isLoadContent.value), 500)
-
-
+const changeLoad = () => {
+  isLoad.value = !(
+    gameStore.games.length > 0 || gameStore.filteredGame.length > 0
+  )
+}
+const changeLoadContent = () => {
+  if (gameStore.games.length > 0 || gameStore.filteredGame.length > 0)
+    setTimeout(() => (isLoadContent.value = true), 500)
+  else isLoadContent.value = false
+}

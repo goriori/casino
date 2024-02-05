@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "dev:test-run": "cypress run",
+    "dev:test-open": "cypress open"
   },
   "dependencies": {
     "axios": "^1.5.0",
@@ -22,6 +24,7 @@
     "@rushstack/eslint-patch": "^1.1.4",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vue/eslint-config-prettier": "^7.0.0",
+    "cypress": "^13.6.4",
     "eslint": "^8.50.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.27.5",

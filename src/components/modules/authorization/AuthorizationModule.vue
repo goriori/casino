@@ -61,8 +61,9 @@ const router = useRouter()
         <label>Логин</label><br />
         <div class="form-field-input">
           <input
-            class="auth-field"
+            class="auth-field "
             type="text"
+            id="auth-login"
             placeholder="Ввести логин"
             v-model="formAuth.username"
           />
@@ -74,6 +75,7 @@ const router = useRouter()
         <div class="form-field-input">
           <input
             class="auth-field"
+            id="auth-password"
             :type="pswrdHidden ? 'password' : 'text'"
             placeholder="Ввести пароль"
             v-model="formAuth.password"
