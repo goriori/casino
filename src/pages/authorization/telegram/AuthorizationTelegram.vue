@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { axiosInstance } from '@/utils/axios/axios.js'
@@ -19,56 +19,60 @@ const generatePassword = () => {
     const randomIndex = floor(random() * characters.length)
     password += characters.charAt(randomIndex)
   }
-
   return password
 }
 
 const sendTelegramMessage = async (password, username) => {
-  try {
-    await axiosInstance({
-      url: '/sendPassword',
-      method: 'POST',
-      data: {
-        password,
-        tg_id: username,
-      },
-    })
-  } catch (e) {
-    console.log(e)
+  await axiosInstance({
+    url: '/sendPassword',
+    method: 'POST',
+    data: {
+      password,
+      tg_id: username,
+    },
+  })
+}
+
+const onRegistrationNewUser = async (userId, newPassword) => {
+  await sessionStore.registration({
+    username: userId,
+    password: newPassword,
+    password_confirmation: newPassword,
+    shop_id: 1,
+  })
+}
+const onAuthorizationUser = async (userId) => {
+  await sessionStore.authorization({
+    username: userId,
+    password: '',
+    tg: 1,
+  })
+  await router.push('/')
+}
+const onErrorAuthorization = async (e, userId) => {
+  console.log(e)
+  const { response } = e
+  const { status, data } = response
+  const isErrReg = data.username[0] === 'The username field is required.'
+  const isHasUser =
+    status === 422 &&
+    'username' in data &&
+    data.username[0] === 'The username has already been taken.'
+  if (isHasUser) {
+    console.log('isHasUser')
+    return await onAuthorizationUser(userId)
+  } else if (isErrReg) {
+    console.log('Ошибка при регистрации. Не правильное тело запроса.')
   }
 }
 const authorization = async () => {
   const tg = window.Telegram?.WebApp
   const userId = tg.initDataUnsafe.user?.id
   const newPassword = generatePassword()
-  sessionStore
-    .registration({
-      username: userId,
-      password: newPassword,
-      password_confirmation: newPassword,
-      shop_id: 1,
-    })
-    .then(() => {
-      sendTelegramMessage(newPassword, userId)
-    })
-    .then(() => {
-      sessionStore.authorization({
-        username: userId,
-        password: '',
-        tg: 1,
-      })
-      router.push('/')
-      return true
-    })
-    .catch((e) => {
-      const { response } = e
-      const { status, data } = response
-      const isHasUser =
-        status === 422 &&
-        'username' in data &&
-        data.username[0] === 'The username has already been taken.'
-      if (isHasUser) return router.push('/')
-    })
+  onRegistrationNewUser(userId, newPassword)
+    .then(() => sendTelegramMessage(newPassword, userId))
+    .then(() => onAuthorizationUser(userId))
+    .catch((e) => onErrorAuthorization(e, userId))
 }
 
 onMounted(async () => await authorization())

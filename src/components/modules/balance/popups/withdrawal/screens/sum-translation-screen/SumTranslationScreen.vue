@@ -86,7 +86,7 @@ onUnmounted(() => clearOptions())
         <div class="sum__translation-screen-info-item">
           <div class="item-info">
             <p>Имя получателя:</p>
-            <h4>{{ fullNameRecipient }}</h4>
+            <h4>{{ paymentStore.replObject.fullname }}</h4>
           </div>
         </div>
       </div>
