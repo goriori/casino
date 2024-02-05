@@ -3,6 +3,16 @@
 
 .popular {
   &__game {
+    &-loader {
+      padding: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+
+    }
+
     &-module {
       display: flex;
       flex-direction: column;
@@ -42,6 +52,8 @@
           gap: 8px;
         }
       }
+
+
     }
 
     &-alert {

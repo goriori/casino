@@ -1,11 +1,15 @@
 <script setup>
-import { onMounted } from 'vue'
+import { defineAsyncComponent, onMounted } from 'vue'
 import { fetchEntityData } from '@/pages/main/Main.events.js'
 import Header from '@/components/globals/header/Header.vue'
 import Footer from '@/components/globals/footer/Footer.vue'
-import ProvidersModule from '@/components/modules/providers/ProvidersModule.vue'
-import PopularGameModule from '@/components/modules/popular/PopularGameModule.vue'
 
+const ProvidersModule = defineAsyncComponent(() =>
+  import('@/components/modules/providers/ProvidersModule.vue')
+)
+const PopularGameModule = defineAsyncComponent(() =>
+  import('@/components/modules/popular/PopularGameModule.vue')
+)
 onMounted(async () => {
   await fetchEntityData()
 })
@@ -26,21 +30,5 @@ onMounted(async () => {
 </template>
 
 <style scoped lang="scss">
-@import '@/assets/scss/variables';
-.page {
-  color: #fff;
-
-  &-modules {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 48px 28px;
-    @media (max-width: $md2 + px) {
-      padding: 20px;
-    }
-  }
-}
-
-.modules {
-}
+@import 'Main';
 </style>

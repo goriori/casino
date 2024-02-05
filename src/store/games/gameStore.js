@@ -7,22 +7,27 @@ export const useGameStore = defineStore('gameStore', () => {
   const filteredGame = ref([])
   const getGames = async () => {
     const { data } = await GamesService.getGames()
+
     games.value = [
       ...data.filter(
         (item) =>
           item.view === 1 && item.category.length > 0 && item.category[0] !== 8
       ),
     ]
-    filteredGame.value = [...games.value]
+    console.time('copy value games')
+    filteredGame.value = games.value
+    console.timeEnd('copy value games')
+    console.time('filter games')
     filterGames(9)
+    console.timeEnd('filter games')
   }
 
   const filterGames = (categoryPosition) => {
-    filteredGame.value = [
-      ...games.value.filter((item) => {
-        return item.category.find((category) => category === categoryPosition)
-      }),
-    ]
+    const filterData = games.value.filter((item) => {
+      return item.category.find((category) => category === categoryPosition)
+    })
+    filteredGame.value = [...filterData]
   }
+
   return { games, filteredGame, getGames, filterGames }
 })

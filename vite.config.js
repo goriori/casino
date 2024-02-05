@@ -7,34 +7,34 @@ import imagemin from 'unplugin-imagemin/vite'
 export default defineConfig({
   plugins: [
     vue(),
-    imagemin({
-      // Default mode sharp. support squoosh and sharp
-      mode: 'sharp',
-      beforeBundle: false,
-      // Default configuration options for compressing different pictures
-      compress: {
-        jpg: {
-          quality: 100,
-        },
-        jpeg: {
-          quality: 100,
-        },
-        png: {
-          quality: 100,
-        },
-        webp: {
-          quality: 100,
-        },
-      },
-      conversion: [
-        { from: 'jpeg', to: 'webp' },
-        { from: 'JPEG', to: 'webp' },
-        { from: 'png', to: 'webp' },
-        { from: 'PNG', to: 'webp' },
-        { from: 'JPG', to: 'webp' },
-        { from: 'jpg', to: 'webp' },
-      ],
-    }),
+    // imagemin({
+    //   // Default mode sharp. support squoosh and sharp
+    //   mode: 'sharp',
+    //   beforeBundle: false,
+    //   // Default configuration options for compressing different pictures
+    //   compress: {
+    //     jpg: {
+    //       quality: 100,
+    //     },
+    //     jpeg: {
+    //       quality: 100,
+    //     },
+    //     png: {
+    //       quality: 100,
+    //     },
+    //     webp: {
+    //       quality: 100,
+    //     },
+    //   },
+    //   conversion: [
+    //     { from: 'jpeg', to: 'webp' },
+    //     { from: 'JPEG', to: 'webp' },
+    //     { from: 'png', to: 'webp' },
+    //     { from: 'PNG', to: 'webp' },
+    //     { from: 'JPG', to: 'webp' },
+    //     { from: 'jpg', to: 'webp' },
+    //   ],
+    // }),
   ],
   resolve: {
     alias: {

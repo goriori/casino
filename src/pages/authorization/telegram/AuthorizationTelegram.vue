@@ -1,10 +1,11 @@
 <script setup>
 import { onMounted } from 'vue'
 import { useRouter } from 'vue-router'
-import Header from '@/components/globals/header/Header.vue'
-import Footer from '@/components/globals/footer/Footer.vue'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { axiosInstance } from '@/utils/axios/axios.js'
+import Header from '@/components/globals/header/Header.vue'
+import Footer from '@/components/globals/footer/Footer.vue'
+
 
 const router = useRouter()
 const sessionStore = useSessionStore()

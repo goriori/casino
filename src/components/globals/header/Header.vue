@@ -3,11 +3,11 @@ import { onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import BalanceModule from '@/components/modules/balance/BalanceModule.vue'
 import PersonalAccountModule from '@/components/modules/personal-account/PersonalAccountModule.vue'
-import CashierModule from '@/components/modules/cashier/CashierModule.vue'
 import SigninModule from '@/components/modules/signin/SigninModule.vue'
 import { useSettingsStore } from '@/store/settings/settingStore.js'
 import AccountHeaderIcon from '@/components/ui/icons/header/AccountHeaderIcon.vue'
 import { useSessionStore } from '@/store/session/sessionStore.js'
+
 
 const route = useRoute()
 const router = useRouter()

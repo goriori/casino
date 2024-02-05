@@ -27,7 +27,7 @@ const onClickGame = () => {
 <template>
   <div class="card" @click="onClickGame">
     <div class="card-game">
-      <img :src="generateImgLink" alt="" />
+      <img loading="lazy" decoding="async" :src="generateImgLink" alt="" />
       <div class="card-game-title">
         <p>
           {{ gameItem.title }}
