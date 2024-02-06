@@ -3,9 +3,9 @@ import { ref } from 'vue'
 export const pswrdHidden = ref(true)
 export const pswrdCnfrmHidden = ref(true)
 export const regMessages = ref({
-  success:false,
-  error:false,
-  isValid:false
+  success: false,
+  error: false,
+  isValid: false,
 })
 
 export const formReg = ref({

@@ -64,6 +64,7 @@ const router = useRouter()
           <input
             type="text"
             placeholder="Ввести логин"
+            id="reg-login"
             v-model="formReg.username"
           />
           <EmailIcon />
@@ -75,6 +76,7 @@ const router = useRouter()
           <input
             :type="pswrdHidden ? 'password' : 'text'"
             placeholder="Ввести пароль"
+            id="reg-password"
             v-model="formReg.password"
           />
           <NotHiddenIcon v-if="!pswrdHidden" @click="onChangeHiddenPassword" />
@@ -87,6 +89,7 @@ const router = useRouter()
           <input
             :type="pswrdCnfrmHidden ? 'password' : 'text'"
             placeholder="Ввести пароль"
+            id="reg-confirm-password"
             v-model="formReg.password_confirmation"
           />
           <NotHiddenIcon

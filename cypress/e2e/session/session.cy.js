@@ -1,5 +1,6 @@
 import { BASE_URL, PAGES, tests } from './session.options.js'
-import { goVisit } from './session.events.js'
+import { goVisit } from '../utils/base.utils.js'
+
 
 describe('Authorization', () => {
   beforeEach(() => {
