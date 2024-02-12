@@ -9,6 +9,7 @@
     width: 100%;
     border-radius: 26px;
   }
+
   &-error {
     position: absolute;
     background: #FF3939;
@@ -17,8 +18,10 @@
     border-radius: 26px;
   }
 }
+
 .authorization {
   &-module {
+    color: #fff;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -26,7 +29,7 @@
     align-items: center;
     gap: 32px;
     border-radius: 26px;
-    background: #1d2345;
+    background: #2C2C2C;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
     padding: 32px 28px;
   }
@@ -144,7 +147,7 @@
 
 
 span {
-  color: #5570FB;
+  color: #D5A748;
   cursor: pointer;
   font-size: 14px;
 }
@@ -161,9 +164,7 @@ span {
 
     &-input {
       width: 100%;
-      border: 1px solid #5570FB;
-      border-radius: 36px;
-      background: #fff;
+      border-bottom: 1px solid #D5A748;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -183,6 +184,8 @@ span {
       padding: 0 5px;
       border-radius: 36px;
       font-weight: 400;
+      background: none;
+      color:$white;
     }
   }
 }

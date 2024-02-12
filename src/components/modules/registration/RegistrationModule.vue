@@ -4,7 +4,7 @@ import {
   onChangeHiddenPassword,
   onChangeHiddenPasswordConfirm,
   onRegistration,
-  onRegistrationTelegram,
+  onRegistrationTelegram, openAuthorization
 } from '@/components/modules/registration/RegistrationModule.events.js'
 import {
   pswrdHidden,
@@ -122,7 +122,7 @@ const router = useRouter()
       <div class="authorization-registration-info">
         <p>
           У вас уже есть профиль?
-          <span @click="router.push('/authorization')">Войти</span>
+          <span @click="openAuthorization">Войти</span>
         </p>
       </div>
 

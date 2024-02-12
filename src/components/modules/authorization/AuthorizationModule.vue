@@ -5,7 +5,7 @@ import {
   onChangeHiddenPassword,
   onAuthorization,
   onAuthTelegram,
-  onRecoveryPassword,
+  onRecoveryPassword, onRegistration
 } from '@/components/modules/authorization/AuthorizationModule.events.js'
 import {
   pswrdHidden,
@@ -58,7 +58,6 @@ const router = useRouter()
 
     <div class="authorization-form" ref="authFields">
       <div class="form-field">
-        <label>Логин</label><br />
         <div class="form-field-input">
           <input
             class="auth-field "
@@ -71,7 +70,6 @@ const router = useRouter()
         </div>
       </div>
       <div class="form-field">
-        <label>Пароль</label><br />
         <div class="form-field-input">
           <input
             class="auth-field"
@@ -107,7 +105,7 @@ const router = useRouter()
     <div class="authorization-registration">
       <div class="authorization-registration-info">
         У вас нет профиля?
-        <span @click="router.push('/registration')">Создать профиль</span>
+        <span @click="onRegistration">Создать профиль</span>
       </div>
       <BaseButton color="primary" outline @click="onAuthTelegram">
         <div class="btn-registration">

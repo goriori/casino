@@ -1,7 +1,9 @@
 import { ref } from 'vue'
 
 import { useSettingsStore } from '@/store/settings/settingStore.js'
+import { useStateStore } from '@/store/stateStore.js'
 
+const stateStore = useStateStore()
 const settingStore = useSettingsStore()
 export const btnActive = ref(false)
 
@@ -30,7 +32,7 @@ export const navigationNotAuthorized = [
     handler: async function (router) {
       popupReplenishment.value = false
       btnActive.value = false
-      await router.push('/authorization')
+      stateStore.globalModules.authorization.visibility = true
     },
   },
 ]

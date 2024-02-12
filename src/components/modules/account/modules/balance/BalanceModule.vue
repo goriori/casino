@@ -68,7 +68,7 @@ onMounted(async () => {
     justify-content: center;
     align-items: center;
     gap: 36px;
-    background: #1d2345;
+    background: #2C2C2C;
     border-radius: 26px;
     font-size: 24px;
 
@@ -130,7 +130,7 @@ onMounted(async () => {
   gap: 8px;
 
   p {
-    color: #5570fb;
+    color: #D5A748;
     font-weight: 700;
   }
 }

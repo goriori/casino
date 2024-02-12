@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import BalanceModule from '@/components/modules/balance/BalanceModule.vue'
 import PersonalAccountModule from '@/components/modules/personal-account/PersonalAccountModule.vue'
@@ -9,14 +9,18 @@ import AccountHeaderIcon from '@/components/ui/icons/header/AccountHeaderIcon.vu
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import BonusHeaderIcon from '@/components/ui/icons/header/BonusHeaderIcon.vue'
 import SupportHeaderIcon from '@/components/ui/icons/header/SupportHeaderIcon.vue'
+import PopupBase from '@/components/ui/popups/base/PopupBase.vue'
+import AuthorizationModule from '@/components/modules/authorization/AuthorizationModule.vue'
 
 const route = useRoute()
 const router = useRouter()
 const page = ref(route.name)
-const isAuthorizationPage =
-  page.value === 'authorization' || page.value === 'registration'
+
 const settingStore = useSettingsStore()
 const sessionStore = useSessionStore()
+const isAuthorized = computed(
+  () => sessionStore.session?.token || sessionStore.session?.profile
+)
 onMounted(async () => {
   await settingStore.getSettings()
 })
@@ -43,16 +47,15 @@ onMounted(async () => {
       <img src="https://api.gamesoffutures.ru/logo/logo.png" alt="" />
     </div>
     <div class="header-actions">
-      <div class="header-actions-account" v-if="!isAuthorizationPage">
-        <div
-          class="action-personal_account"
-          v-if="sessionStore.session?.token || sessionStore.session?.profile"
-        >
+      <div class="header-actions-account">
+        <div class="action-personal_account" v-if="isAuthorized">
           <PersonalAccountModule />
         </div>
-        <BalanceModule />
+        <div class="action-balance" v-if="isAuthorized">
+          <BalanceModule />
+        </div>
       </div>
-      <div class="header-actions-authorization" v-if="isAuthorizationPage">
+      <div class="header-actions-authorization" v-if="!isAuthorized">
         <SigninModule />
       </div>
     </div>

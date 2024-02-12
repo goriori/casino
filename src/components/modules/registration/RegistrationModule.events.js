@@ -10,9 +10,10 @@ import {
   onErrorValid,
   onValidForm,
 } from '@/components/modules/registration/RegistrationModule.valids.js'
+import { useStateStore } from '@/store/stateStore.js'
 
 const sessionStore = useSessionStore()
-
+const stateStore = useStateStore()
 export const onChangeHiddenPassword = () =>
   (pswrdHidden.value = !pswrdHidden.value)
 
@@ -40,10 +41,13 @@ export const onRegistration = async (router) => {
     if (e === false) onErrorValid()
     else onErrorMessage()
     clearForm()
-    router.push('/registration')
   }
 }
 
+export const openAuthorization = () => {
+  stateStore.globalModules.authorization.visibility = true
+  stateStore.globalModules.registration.visibility = false
+}
 export const onRegistrationTelegram = () => {
   const a = document.createElement('a')
   a.href = `https://t.me/momytest_bot`

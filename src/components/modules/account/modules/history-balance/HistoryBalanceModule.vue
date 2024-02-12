@@ -86,7 +86,7 @@ hr {
       display: flex;
       flex-direction: column;
       gap: 36px;
-      background: #1d2345;
+      background: #2C2C2C;
       border-radius: 26px;
       font-size: 24px;
 
@@ -172,7 +172,7 @@ hr {
   &-title {
     font-size: 14px;
     font-weight: 400;
-    color: #5570fb;
+    color: #D5A748;
   }
 
   &-content-items {

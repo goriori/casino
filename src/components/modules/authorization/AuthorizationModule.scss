@@ -18,7 +18,9 @@
 }
 
 .authorization {
+
   &-module {
+    color: #fff;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -26,7 +28,7 @@
     align-items: center;
     gap: 32px;
     border-radius: 26px;
-    background: #1d2345;
+    background: #2C2C2C;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
     padding: 32px 28px;
   }
@@ -121,13 +123,10 @@
       width: 100%;
       max-width: 24px;
       min-height: 24px;
-      border: 1px solid transparent;
-
     }
 
     label {
       font-size: 14px;
-
       @media (max-width: $md5 + px) {
         font-size: 12px;
       }
@@ -141,7 +140,7 @@
 
 
 span {
-  color: #5570FB;
+  color: #D5A748;
   cursor: pointer;
   font-size: 14px;
 }
@@ -158,21 +157,16 @@ span {
 
     &-input {
       width: 100%;
-      border: 1px solid #5570FB;
-      border-radius: 36px;
-      background: #fff;
+      border-bottom: 1px solid #D5A748;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
       padding: 16px;
-
-
     }
 
     label {
       font-weight: 500;
-
     }
 
     input {
@@ -180,6 +174,8 @@ span {
       padding: 0 5px;
       border-radius: 36px;
       font-weight: 400;
+      background: none;
+      color: #fff;
     }
   }
 }

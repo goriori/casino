@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     gap: 36px;
-    background: #1d2345;
+    background: #2C2C2C;
     border-radius: 26px;
     font-size: 24px;
 
@@ -56,7 +56,7 @@
       font-size: 14px;
       padding: 10px;
       border-radius: 6px 0 0 6px;
-      border: 1px solid #5570fb;
+      border: 1px solid #D5A748;
     }
 
     @media (max-width: $md2 + px) {
@@ -70,7 +70,7 @@
 
     p {
       cursor: pointer;
-      color: #5570fb;
+      color: #D5A748;
       font-weight: 700;
     }
   }

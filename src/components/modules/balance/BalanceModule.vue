@@ -19,6 +19,8 @@ import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 import ArrowIcon from '@/components/ui/icons/other/ArrowIcon.vue'
 import WithdrawalPopup from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.vue'
 import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
+import AuthorizationModule from '@/components/modules/authorization/AuthorizationModule.vue'
+import PopupBase from '@/components/ui/popups/base/PopupBase.vue'
 
 const router = useRouter()
 const sessionStore = useSessionStore()
@@ -96,6 +98,7 @@ const sessionStore = useSessionStore()
           @click.stop
         />
       </Transition>
+
     </Teleport>
   </div>
 </template>

@@ -10,11 +10,11 @@ import {
 } from '@/components/modules/authorization/AuthorizationModule.valids.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useSettingsStore } from '@/store/settings/settingStore.js'
-
+import { useStateStore } from '@/store/stateStore.js'
 
 const settingStore = useSettingsStore()
 const sessionStore = useSessionStore()
-
+const stateStore = useStateStore()
 export const onChangeHiddenPassword = () =>
   (pswrdHidden.value = !pswrdHidden.value)
 
@@ -29,7 +29,7 @@ export const onAuthorization = async (router) => {
     await onValidForm()
     await sessionStore.authorization(formAuth.value)
     clearForm()
-    router.push('/')
+    stateStore.globalModules.authorization.visibility = false
   } catch (e) {
     console.log('err object or boolean:', e)
     if (e === false) onErrorValid()
@@ -45,6 +45,11 @@ export const onRecoveryPassword = () => {
   a.target = '_blank'
   a.click()
 }
+export const onRegistration = () => {
+  stateStore.globalModules.authorization.visibility = false
+  stateStore.globalModules.registration.visibility = true
+}
+
 export const onAuthTelegram = () => {
   const a = document.createElement('a')
   a.href = `https://t.me/momytest_bot`
