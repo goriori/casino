@@ -18,13 +18,13 @@ const props = defineProps({
 })
 const primaryColor = computed(() => {
   const colors = {
-    primary: '#1d2345',
+    primary: '#2C2C2C',
   }
   return colors[props.color]
 })
 const secondaryColor = computed(() => {
   const colors = {
-    primary: '#1d2855',
+    primary: '#2C2C3C',
   }
   return colors[props.color]
 })

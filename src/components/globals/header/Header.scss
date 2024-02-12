@@ -6,9 +6,10 @@
   justify-content: space-between;
   align-items: center;
   padding: 24px 48px;
-  background: #1d2345;
+  background: #1E1E1E;
   border-radius: 0 0 36px 36px;
-z-index: 10;
+  z-index: 10;
+
   &-account-icons {
     display: none;
     @media (max-width: $md4 + px) {
@@ -30,6 +31,22 @@ z-index: 10;
     justify-content: center;
     align-items: center;
     gap: 36px;
+
+    &-bonus {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    &-support {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
 
     &-account {
       display: flex;

@@ -3,9 +3,12 @@ import { onMounted } from 'vue'
 import { useGameStore } from '@/store/games/gameStore.js'
 import {
   alertMessage,
+  filtersCategory,
   isLoadContent,
+  searchValue,
 } from '@/components/modules/popular/PopularGameModule.options.js'
 import {
+  clearSearch,
   loadModule,
   unAuthorizedCardClick,
 } from '@/components/modules/popular/PopularGameModule.events.js'
@@ -13,6 +16,8 @@ import {
 import GameCard from '@/components/ui/cards/game/GameCard.vue'
 import PopularIcon from '@/components/ui/icons/popular/PopularIcon.vue'
 import ContentLoader from '@/components/ui/content-loader/ContentLoader.vue'
+import BaseSelect from '@/components/ui/selects/base/BaseSelect.vue'
+import SearchIcon from '@/components/ui/icons/other/SearchIcon.vue'
 
 const gameStore = useGameStore()
 onMounted(async () => {
@@ -27,10 +32,20 @@ onMounted(async () => {
         Пожалуйста, войдите в аккаунт
       </div>
     </Transition>
-
+    <div class="popular__game-filters">
+      <div class="filters-item">
+        <BaseSelect :items="filtersCategory" />
+        <BaseSelect :items="filtersCategory" />
+      </div>
+      <div class="filters-item search">
+        <input placeholder="Поиск слотов" v-model="searchValue" />
+        <SearchIcon @click="clearSearch" />
+      </div>
+    </div>
     <div class="popular__game-module-title">
       <PopularIcon />
-      <h3>Популярные</h3>
+      <h3>Топ слоты</h3>
+      <p>(+{{ gameStore.games.length }} слотов)</p>
     </div>
     <div class="popular__game-module-items" v-if="!isLoadContent">
       <ContentLoader type="game-card" v-for="item in 15" :key="item">

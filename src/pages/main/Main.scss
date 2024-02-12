@@ -1,14 +1,100 @@
 @import '@/assets/scss/variables';
+
 .page {
   color: #fff;
-
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
   &-modules {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    padding: 48px 28px;
+    gap: 80px;
+    padding: 48px 64px;
     @media (max-width: $md2 + px) {
       padding: 20px;
     }
+  }
+
+  &-how_start {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 48px 64px;
+  }
+
+  &-about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 48px 64px;
+  }
+
+}
+
+.how_start {
+  &-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    text-align: center;
+  }
+
+  &-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    font-size: 32px;
+    font-weight: 700;
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 330px;
+
+    &-image {
+      margin: 0 0 8px 0;
+    }
+
+    &-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #D5A748;
+    }
+
+    &-description {
+      color: #BBBBBB;
+      font-size: 16px;
+      line-height: 23.2px;
+    }
+  }
+}
+
+.about {
+  &-content {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+    gap: 24px;
+    max-width: 966px;
+  }
+
+  &-title {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 16px;
+    font-size: 32px;
+    font-weight: 700;
+  }
+  &-description {
+    color: #BBBBBB;
+    font-size: 24px;
+    line-height: 34.8px;
+
   }
 }

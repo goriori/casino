@@ -28,11 +28,6 @@ const onClickGame = () => {
   <div class="card" @click="onClickGame">
     <div class="card-game">
       <img loading="lazy" decoding="async" :src="generateImgLink" alt="" />
-      <div class="card-game-title">
-        <p>
-          {{ gameItem.title }}
-        </p>
-      </div>
     </div>
   </div>
 </template>

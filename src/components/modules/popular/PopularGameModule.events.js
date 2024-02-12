@@ -2,6 +2,7 @@ import {
   alertMessage,
   isLoad,
   isLoadContent,
+  searchValue,
 } from '@/components/modules/popular/PopularGameModule.options.js'
 import { useGameStore } from '@/store/games/gameStore.js'
 
@@ -14,6 +15,9 @@ export const clearAlert = () => {
   setTimeout(() => (alertMessage.value = 'none'), 1500)
 }
 
+export const clearSearch = () => {
+  searchValue.value = ''
+}
 export const loadModule = async () => {
   gameStore.getGames().then(changeLoad).then(changeLoadContent)
 }

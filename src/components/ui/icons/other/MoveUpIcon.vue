@@ -10,6 +10,7 @@ import ArrowUpIcon from '@/components/ui/icons/footer/ArrowUpIcon.vue'
 
 <style scoped lang="scss">
 @import '@/assets/scss/variables';
+
 .move-up {
   position: fixed;
   z-index: 10;
@@ -19,7 +20,7 @@ import ArrowUpIcon from '@/components/ui/icons/footer/ArrowUpIcon.vue'
   width: 100%;
   max-width: 86px;
   min-height: 86px;
-  background: #3e4c9d;
+  background: #d5a748;
   border-radius: 43px;
   display: flex;
   justify-content: center;
