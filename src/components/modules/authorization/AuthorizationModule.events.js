@@ -28,6 +28,7 @@ export const onAuthorization = async (router) => {
   try {
     await onValidForm()
     await sessionStore.authorization(formAuth.value)
+    await sessionStore.getInfoSession()
     clearForm()
     stateStore.globalModules.authorization.visibility = false
   } catch (e) {

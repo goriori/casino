@@ -42,7 +42,7 @@ onMounted(async () => {
       </div>
     </div>
     <div class="header-actions">
-      <div class="header-actions-bonus">
+      <div class="header-actions-bonus" @click="router.push('/bonuses')">
         <BonusHeaderIcon />
         <p>Бонусы</p>
       </div>

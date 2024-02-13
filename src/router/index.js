@@ -8,6 +8,8 @@ const MainView = () => import('@/pages/main/Main.vue')
 
 const AccountView = () => import('@/pages/account/Account.vue')
 const Registration = () => import('@/pages/registration/Registration.vue')
+
+const BonusesView = () => import('@/pages/bonuses/Bonuses.vue')
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -36,6 +38,11 @@ const router = createRouter({
     //   name: 'registration',
     //   component: Registration,
     // },
+    {
+      path: '/bonuses',
+      name: 'bonuses',
+      component: BonusesView,
+    },
   ],
 })
 router.beforeEach((to, from, next) => {

@@ -9,35 +9,31 @@
     gap: 20px;
   }
 
+  &-container {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+  }
   &-modules {
     display: flex;
     flex-direction: column;
     gap: 80px;
-    padding: 48px 64px;
-    @media (max-width: $md2 + px) {
-      padding: 20px;
-    }
   }
 
   &-how_start {
     display: flex;
     flex-direction: column;
     gap: 24px;
-    padding: 48px 64px;
-    @media (max-width: $md4 + px) {
-      padding: 48px 24px;
-    }
+
   }
 
   &-about {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 48px 64px;
     @media (max-width: $md4 + px) {
       flex-direction: column-reverse;
       gap: 24px;
-      padding: 48px 24px;
     }
   }
 
