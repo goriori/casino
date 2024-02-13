@@ -22,7 +22,7 @@ onMounted(async () => {
   <div class="page">
     <Header />
     <div class="page-modules">
-      <StatisticsModule/>
+      <StatisticsModule />
       <!--      <div class="modules-providers">-->
       <!--        <ProvidersModule />-->
       <!--      </div>-->
@@ -44,9 +44,11 @@ onMounted(async () => {
           <div class="how_start-item-image">
             <img :src="startItem.img" alt="" />
           </div>
-          <div class="how_start-item-title">{{ startItem.title }}</div>
-          <div class="how_start-item-description">
-            {{ startItem.description }}
+          <div class="how_start-item-content">
+            <div class="how_start-item-title">{{ startItem.title }}</div>
+            <div class="how_start-item-description">
+              {{ startItem.description }}
+            </div>
           </div>
         </div>
       </div>
