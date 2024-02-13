@@ -22,6 +22,13 @@ const sessionStore = useSessionStore()
 const isAuthorized = computed(
   () => sessionStore.session?.token || sessionStore.session?.profile
 )
+const redirectToSupports = () => {
+  const telegramLink = 'https://t.me/'
+  const a = document.createElement('a')
+  a.href = telegramLink + settingStore.settings.tg_id
+  a.target = '_blank'
+  a.click()
+}
 onMounted(async () => {
   await settingStore.getSettings()
 })
@@ -31,7 +38,7 @@ onMounted(async () => {
   <header class="header">
     <div class="header-burger-icons">
       <div class="icon-burger">
-        <BurgerHeaderIocn/>
+        <BurgerHeaderIocn />
       </div>
     </div>
     <div class="header-actions">
@@ -39,7 +46,7 @@ onMounted(async () => {
         <BonusHeaderIcon />
         <p>Бонусы</p>
       </div>
-      <div class="header-actions-support">
+      <div class="header-actions-support" @click="redirectToSupports">
         <SupportHeaderIcon />
         <p>Техподдержка</p>
       </div>
