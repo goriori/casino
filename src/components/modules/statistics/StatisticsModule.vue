@@ -30,22 +30,44 @@ import BaseSlider from '@/components/ui/sliders/base/BaseSlider.vue'
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/scss/variables';
+
 .statistics_module {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 32px;
 
+  @media (max-width: $md3 + px) {
+    flex-direction: column;
+  }
+
   &-list {
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 16px;
+    @media (max-width: $md3 + px) {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   &-slider {
     max-width: 1336px;
     min-height: 600px;
+    @media (max-width: $md3 + px) {
+      max-width: 900px;
+      min-height: 400px;
+    }
+    @media (max-width: $md4 + px) {
+      max-width: 650px;
+      min-height: 300px;
+    }
+    @media (max-width: $md5 + px) {
+      max-width: 327px;
+      min-height: 150px;
+    }
   }
 }
 
@@ -58,12 +80,40 @@ import BaseSlider from '@/components/ui/sliders/base/BaseSlider.vue'
     align-items: center;
     gap: 25px;
     background: #2c2c2c;
+    @media (max-width: $md4 + px) {
+      padding: 36px 70px;
+      flex-direction: column;
+    }
+    @media (max-width: $md5 + px) {
+      padding: 36px 15px;
+      flex-direction: column;
+    }
   }
 
   &-content {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    @media (max-width: $md4 + px) {
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  &-title {
+    font-size: 16px;
+    color: #BBBBBB;
+    @media (max-width: $md4 + px) {
+      font-size: 14px;
+    }
+  }
+  &-value {
+    font-size: 24px;
+    font-weight: 700;
+    color: #d5a748;
+    @media (max-width: $md4 + px) {
+      font-size: 18px;
+    }
   }
 }
 </style>

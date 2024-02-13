@@ -47,20 +47,13 @@ const onChange = (e) => {
 @import '@/assets/scss/variables';
 
 .select {
-  min-width: 424px;
   position: relative;
   cursor: pointer;
+  width: 100%;
   height: 100%;
   background: #303030;
   padding: 20px 28px;
   border-radius: 4px;
-
-  @media (max-width: $md1 + px) {
-    min-width: 343px;
-  }
-  @media (max-width: $md2 + px) {
-    min-width: 243px;
-  }
 
   &-title {
     display: flex;
@@ -72,7 +65,7 @@ const onChange = (e) => {
   &-list {
     position: absolute;
     z-index: 100;
-    width: 560px;
+    width: 100%;
     border-radius: 8px;
     left: 0;
     max-height: 372px;

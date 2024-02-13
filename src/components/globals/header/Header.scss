@@ -9,7 +9,8 @@
   background: #1E1E1E;
   border-radius: 0 0 36px 36px;
   z-index: 10;
-  &-account-icons {
+
+  &-burger-icons {
     display: none;
     @media (max-width: $md4 + px) {
       display: block;
@@ -20,6 +21,7 @@
     img {
       @media (max-width: $md4 + px) {
         max-width: 100px;
+        max-height: 54px;
       }
     }
 
@@ -37,6 +39,9 @@
       justify-content: center;
       align-items: center;
       gap: 8px;
+      @media (max-width: $md4 + px) {
+        display: none;
+      }
     }
 
     &-support {
@@ -45,6 +50,9 @@
       justify-content: center;
       align-items: center;
       gap: 8px;
+      @media (max-width: $md4 + px) {
+        display: none;
+      }
     }
 
     &-account {

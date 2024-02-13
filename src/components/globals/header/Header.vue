@@ -11,6 +11,7 @@ import BonusHeaderIcon from '@/components/ui/icons/header/BonusHeaderIcon.vue'
 import SupportHeaderIcon from '@/components/ui/icons/header/SupportHeaderIcon.vue'
 import PopupBase from '@/components/ui/popups/base/PopupBase.vue'
 import AuthorizationModule from '@/components/modules/authorization/AuthorizationModule.vue'
+import BurgerHeaderIocn from '@/components/ui/icons/header/BurgerHeaderIocn.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -28,9 +29,9 @@ onMounted(async () => {
 
 <template>
   <header class="header">
-    <div class="header-account-icons">
-      <div class="icon-account">
-        <AccountHeaderIcon />
+    <div class="header-burger-icons">
+      <div class="icon-burger">
+        <BurgerHeaderIocn/>
       </div>
     </div>
     <div class="header-actions">
@@ -48,9 +49,6 @@ onMounted(async () => {
     </div>
     <div class="header-actions">
       <div class="header-actions-account">
-        <div class="action-personal_account" v-if="isAuthorized">
-          <PersonalAccountModule />
-        </div>
         <div class="action-balance" v-if="isAuthorized">
           <BalanceModule />
         </div>

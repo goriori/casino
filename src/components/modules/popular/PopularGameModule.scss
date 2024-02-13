@@ -6,6 +6,10 @@
   display: flex;
   justify-content: flex-start;
   flex: 0 1 543px;
+  @media (max-width: $md3 + px) {
+    flex-direction: row !important;
+    flex: 0 1 60px;
+  }
 }
 
 input {
@@ -33,11 +37,22 @@ input {
       justify-content: space-between;
       align-items: center;
       margin: 0 0 80px 0;
+      gap: 30px;
+      @media (max-width: $md3 + px) {
+        flex-direction: column;
+        gap: 30px;
+      }
 
       .filters-item {
         display: flex;
         align-items: center;
         gap: 30px;
+        width: 100%;
+        max-width: 848px;
+        @media (max-width: $md3 + px) {
+          width: 100%;
+          flex-direction: column;
+        }
       }
     }
 
