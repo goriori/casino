@@ -28,6 +28,7 @@ import PromoPermissionCard from '@/components/ui/cards/promo-permission/PromoPer
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/scss/variables';
 .loyalty__program {
   display: flex;
   flex-direction: column;
@@ -57,6 +58,15 @@ import PromoPermissionCard from '@/components/ui/cards/promo-permission/PromoPer
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       gap: 25px;
+      @media (max-width: $md3 + px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      @media (max-width: $md4 + px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: $md5 + px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
     }
   }
 }

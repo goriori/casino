@@ -26,7 +26,7 @@ import WithdrawalModule from '@/components/modules/account/modules/withdrawal/Wi
       </svg>
       <h3>Личный кабинет</h3>
     </div>
-    <div class="account-module-items">
+    <div class="account-module-desktop-items">
       <ProfileModule />
       <div class="items-middle">
         <BalanceModule />
@@ -34,11 +34,19 @@ import WithdrawalModule from '@/components/modules/account/modules/withdrawal/Wi
       </div>
       <WithdrawalModule />
     </div>
+    <div class="account-module-mobile-items">
+      <BalanceModule />
+      <div class="items-middle">
+        <ProfileModule />
+        <HistoryBalanceModule />
+      </div>
+    </div>
   </div>
 </template>
 
 <style scoped lang="scss">
 @import '@/assets/scss/variables';
+
 .account {
   &-module {
     display: flex;
@@ -65,7 +73,7 @@ import WithdrawalModule from '@/components/modules/account/modules/withdrawal/Wi
       }
     }
 
-    &-items {
+    &-desktop-items {
       display: flex;
       justify-content: center;
       flex: 1 1 auto;
@@ -76,6 +84,20 @@ import WithdrawalModule from '@/components/modules/account/modules/withdrawal/Wi
       }
       @media (max-width: $md2 + px) {
         flex-direction: column;
+      }
+      @media (max-width: $md4 + px) {
+        display: none;
+      }
+    }
+
+    &-mobile-items {
+      display: none;
+      justify-content: center;
+      flex: 1 1 auto;
+      gap: 24px;
+      flex-direction: column;
+      @media (max-width: $md4 + px) {
+        display: flex;
       }
     }
   }

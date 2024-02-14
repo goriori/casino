@@ -13,6 +13,9 @@
     display: flex;
     flex-direction: column;
     gap: 100px;
+    @media (max-width: $md4 + px) {
+      gap: 50px;
+    }
   }
   &-modules {
     display: flex;

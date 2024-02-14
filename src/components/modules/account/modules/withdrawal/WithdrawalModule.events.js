@@ -1,4 +1,7 @@
-import { withdrawalForm } from '@/components/modules/account/modules/withdrawal/WithdrawalModule.options.js'
+import {
+  choiceOut,
+  withdrawalForm,
+} from '@/components/modules/account/modules/withdrawal/WithdrawalModule.options.js'
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import {
@@ -25,6 +28,14 @@ export const onSendWithdrawal = async () => {
     })
 }
 
+export const choicePay = (choiceValue) => {
+  const valuesChoice = Object.keys(choiceOut.value)
+  valuesChoice.forEach((choice) => {
+    choice === choiceValue
+      ? (choiceOut.value[choice] = true)
+      : (choiceOut.value[choice] = false)
+  })
+}
 const clearForm = () => {
   withdrawalForm.value = {
     card: '',

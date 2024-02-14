@@ -31,9 +31,12 @@ import BonusCard from '@/components/ui/cards/bonus/BonusCard.vue'
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/scss/variables';
+
 #use-promo {
   max-width: 137px;
   max-height: 33px;
+
   p {
     color: #fff;
     font-size: 14px;
@@ -50,10 +53,15 @@ import BonusCard from '@/components/ui/cards/bonus/BonusCard.vue'
   display: flex;
   flex-direction: column;
   gap: 40px;
+
   &-title {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
+    @media (max-width: $md4 + px) {
+      flex-direction: column;
+      gap: 32px;
+    }
   }
 
   &-head {
@@ -76,6 +84,11 @@ import BonusCard from '@/components/ui/cards/bonus/BonusCard.vue'
     color: #fff;
     flex: 1 1;
     max-width: 587px;
+    @media (max-width: $md4 + px) {
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+    }
 
     input {
       background: none;
@@ -94,6 +107,15 @@ import BonusCard from '@/components/ui/cards/bonus/BonusCard.vue'
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 25px;
+    @media (max-width: $md3 + px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: $md4 + px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @media (max-width: $md5 + px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 }
 </style>
