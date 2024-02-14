@@ -15,20 +15,28 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  breakpoints: {
+    type: Object,
+    default: {},
+  },
 })
 </script>
 
 <template>
-  <swiper-container
-    :slides-per-view="1"
-    :centered-slides="true"
-    :pagination="pagination"
-    :navigation="navigation"
-  >
-    <swiper-slide v-for="image in images" :key="image">
-      <img :src="image.path" alt="" :class="['slider']" />
-    </swiper-slide>
-  </swiper-container>
+  <div class="slider">
+    <swiper-container
+      :slides-per-view="1"
+      :centered-slides="true"
+      :pagination="pagination"
+      :navigation="navigation"
+      :breakpoints="{ ...breakpoints }"
+    >
+      <swiper-slide v-for="image in images" :key="image">
+        <img :src="image.path" alt="" :class="['slider']" />
+      </swiper-slide>
+    </swiper-container>
+  </div>
+
 </template>
 
 <style scoped lang="scss">
@@ -38,5 +46,6 @@ img {
   height: 100%;
   object-fit: cover;
 }
+
 
 </style>

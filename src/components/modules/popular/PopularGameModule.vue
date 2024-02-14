@@ -3,13 +3,10 @@ import { onMounted } from 'vue'
 import { useGameStore } from '@/store/games/gameStore.js'
 import {
   alertMessage,
-  filtersCategory,
   isLoadContent,
   isShowAll,
-  searchValue,
 } from '@/components/modules/popular/PopularGameModule.options.js'
 import {
-  clearSearch,
   loadModule,
   showOrHiddenAll,
   unAuthorizedCardClick,
@@ -18,9 +15,9 @@ import {
 import GameCard from '@/components/ui/cards/game/GameCard.vue'
 import PopularIcon from '@/components/ui/icons/popular/PopularIcon.vue'
 import ContentLoader from '@/components/ui/content-loader/ContentLoader.vue'
-import BaseSelect from '@/components/ui/selects/base/BaseSelect.vue'
-import SearchIcon from '@/components/ui/icons/other/SearchIcon.vue'
+
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
+import PopularGameFilters from '@/components/modules/popular/filters/PopularGameFilters.vue'
 
 const gameStore = useGameStore()
 onMounted(async () => {
@@ -35,16 +32,7 @@ onMounted(async () => {
         Пожалуйста, войдите в аккаунт
       </div>
     </Transition>
-    <div class="popular__game-filters">
-      <div class="filters-item">
-        <BaseSelect :items="filtersCategory" />
-        <BaseSelect :items="filtersCategory" />
-      </div>
-      <div class="filters-item search">
-        <input placeholder="Поиск слотов" v-model="searchValue" />
-        <SearchIcon @click="clearSearch" />
-      </div>
-    </div>
+    <PopularGameFilters />
     <div class="popular__game-module-title">
       <PopularIcon />
       <h3>Топ слоты</h3>

@@ -9,7 +9,11 @@ import BaseSlider from '@/components/ui/sliders/base/BaseSlider.vue'
 <template>
   <div class="statistics_module">
     <div class="statistics_module-slider">
-      <BaseSlider :pagination="true" :navigation="true" :images="slides" />
+      <BaseSlider
+        :pagination="true"
+        :navigation="true"
+        :images="slides"
+      />
     </div>
     <div class="statistics_module-list">
       <div
@@ -55,18 +59,18 @@ import BaseSlider from '@/components/ui/sliders/base/BaseSlider.vue'
 
   &-slider {
     max-width: 1336px;
-    min-height: 600px;
+    max-height: 600px;
     @media (max-width: $md3 + px) {
       max-width: 900px;
-      min-height: 400px;
+      max-height: 400px;
     }
     @media (max-width: $md4 + px) {
       max-width: 650px;
-      min-height: 300px;
+      max-height: 300px;
     }
     @media (max-width: $md5 + px) {
       max-width: 327px;
-      min-height: 150px;
+      max-height: 150px;
     }
   }
 }
@@ -100,13 +104,15 @@ import BaseSlider from '@/components/ui/sliders/base/BaseSlider.vue'
       align-items: center;
     }
   }
+
   &-title {
     font-size: 16px;
-    color: #BBBBBB;
+    color: #bbbbbb;
     @media (max-width: $md4 + px) {
       font-size: 14px;
     }
   }
+
   &-value {
     font-size: 24px;
     font-weight: 700;

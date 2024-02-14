@@ -3,6 +3,10 @@ import { ref } from 'vue'
 import ArrowSelectIcon from '@/components/ui/icons/other/ArrowSelectIcon.vue'
 
 const props = defineProps({
+  name: {
+    type: String,
+    default: '',
+  },
   items: {
     type: Array,
     default: [],
@@ -12,10 +16,11 @@ const props = defineProps({
     default: false,
   },
 })
-const activeSelect = ref(props.active)
+
 const targetElement = ref(props.items[0].title || 'None')
+const emits = defineEmits(['changeActive'])
 const onSelect = () => {
-  activeSelect.value = !activeSelect.value
+  emits('changeActive', props.name)
 }
 const onChange = (e) => {
   targetElement.value = e.target.innerText
@@ -29,7 +34,7 @@ const onChange = (e) => {
       <ArrowSelectIcon />
     </div>
     <Transition name="bounce">
-      <div class="select-list" v-if="activeSelect">
+      <div class="select-list" v-if="active">
         <p
           class="select-list-item"
           v-for="item in items"
