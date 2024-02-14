@@ -1,8 +1,27 @@
 <script setup>
-import ProfileModule from '@/components/modules/account/modules/profile/ProfileModule.vue'
-import BalanceModule from '@/components/modules/account/modules/balance/BalanceModule.vue'
-import HistoryBalanceModule from '@/components/modules/account/modules/history-balance/HistoryBalanceModule.vue'
-import WithdrawalModule from '@/components/modules/account/modules/withdrawal/WithdrawalModule.vue'
+import { useSessionStore } from '@/store/session/sessionStore.js'
+import { defineAsyncComponent, onMounted } from 'vue'
+
+const sessionStore = useSessionStore()
+
+const ProfileModule = defineAsyncComponent(() =>
+  import('@/components/modules/account/modules/profile/ProfileModule.vue')
+)
+const BalanceModule = defineAsyncComponent(() =>
+  import('@/components/modules/account/modules/balance/BalanceModule.vue')
+)
+const HistoryBalanceModule = defineAsyncComponent(() =>
+  import(
+    '@/components/modules/account/modules/history-balance/HistoryBalanceModule.vue'
+  )
+)
+const WithdrawalModule = defineAsyncComponent(() =>
+  import('@/components/modules/account/modules/withdrawal/WithdrawalModule.vue')
+)
+
+onMounted(() => {
+  Promise.all([sessionStore.getInfoSession(), sessionStore.getStatusPay()])
+})
 </script>
 
 <template>
@@ -35,6 +54,7 @@ import WithdrawalModule from '@/components/modules/account/modules/withdrawal/Wi
       <WithdrawalModule />
     </div>
     <div class="account-module-mobile-items">
+      <div class="account-module-mobile-navigation"></div>
       <BalanceModule />
       <div class="items-middle">
         <ProfileModule />
@@ -68,8 +88,14 @@ import WithdrawalModule from '@/components/modules/account/modules/withdrawal/Wi
       @media (max-width: $md2 + px) {
         font-size: 24px;
         svg {
-          height: 28px;
+          max-width: 28px;
         }
+      }
+      @media (max-width: $md4 + px) {
+        svg {
+          max-width: 19px;
+        }
+        font-size: 20px;
       }
     }
 

@@ -5,11 +5,13 @@ import {
   alertMessage,
   filtersCategory,
   isLoadContent,
+  isShowAll,
   searchValue,
 } from '@/components/modules/popular/PopularGameModule.options.js'
 import {
   clearSearch,
   loadModule,
+  showOrHiddenAll,
   unAuthorizedCardClick,
 } from '@/components/modules/popular/PopularGameModule.events.js'
 
@@ -18,6 +20,7 @@ import PopularIcon from '@/components/ui/icons/popular/PopularIcon.vue'
 import ContentLoader from '@/components/ui/content-loader/ContentLoader.vue'
 import BaseSelect from '@/components/ui/selects/base/BaseSelect.vue'
 import SearchIcon from '@/components/ui/icons/other/SearchIcon.vue'
+import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 
 const gameStore = useGameStore()
 onMounted(async () => {
@@ -45,7 +48,7 @@ onMounted(async () => {
     <div class="popular__game-module-title">
       <PopularIcon />
       <h3>Топ слоты</h3>
-      <p>(+{{ gameStore.games.length }} слотов)</p>
+      <p>(+ 50000 слотов)</p>
     </div>
     <div class="popular__game-module-items" v-if="!isLoadContent">
       <ContentLoader type="game-card" v-for="item in 15" :key="item">
@@ -53,7 +56,10 @@ onMounted(async () => {
       </ContentLoader>
     </div>
     <Transition name="fade">
-      <div class="popular__game-module-items" v-if="isLoadContent">
+      <div
+        :class="['popular__game-module-items', { all: isShowAll }]"
+        v-if="isLoadContent"
+      >
         <GameCard
           v-for="game in gameStore.filteredGame"
           :key="game"
@@ -62,6 +68,10 @@ onMounted(async () => {
         />
       </div>
     </Transition>
+    <BaseButton color="primary" @click="showOrHiddenAll" id="show_all">
+      <p v-if="!isShowAll">Показать все</p>
+      <p v-else>Скрыть</p>
+    </BaseButton>
   </div>
 </template>
 

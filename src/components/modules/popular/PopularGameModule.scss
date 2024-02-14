@@ -1,6 +1,16 @@
 @import '@/assets/scss/variables';
 @import '@/assets/scss/animation';
 
+#show_all {
+  width: 100%;
+  max-width: 326px;
+  margin: 0 auto;
+
+  p {
+    color: #fff;
+  }
+}
+
 .search {
   border-bottom: 1px solid white;
   display: flex;
@@ -80,7 +90,14 @@ input {
       &-items {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
-        gap: 24px;
+        gap: 25px;
+        max-height: 1100px;
+        overflow: hidden;
+
+        &.all {
+          max-height: none;
+          overflow: hidden;
+        }
 
         @media (max-width: 1640px) {
           gap: 32px;

@@ -58,12 +58,10 @@
     background: $primary;
     border-color: $primary;
     color: $primary;
-
     &:hover {
       path {
         fill: $secondary;
       }
-
       color: $secondary;
       border-color: $secondary;
     }

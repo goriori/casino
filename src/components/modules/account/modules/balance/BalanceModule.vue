@@ -4,10 +4,6 @@ import { useSessionStore } from '@/store/session/sessionStore.js'
 import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 
 const sessionStore = useSessionStore()
-
-onMounted(async () => {
-  await sessionStore.getInfoSession()
-})
 </script>
 
 <template>
@@ -42,7 +38,7 @@ onMounted(async () => {
         <h4>Основной</h4>
         <div class="currency">
           <CurrencyIcon />
-          <p>{{sessionStore.session.profile?.balance}}</p>
+          <p>{{ sessionStore.session.profile?.balance }}</p>
         </div>
       </div>
       <div class="balance-module-info-item">
@@ -68,10 +64,10 @@ onMounted(async () => {
     justify-content: center;
     align-items: center;
     gap: 36px;
-    background: #2C2C2C;
+    background: #2c2c2c;
     border-radius: 26px;
     font-size: 24px;
-
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
     @media (max-width: 1500px) {
       padding: 18px;
     }
@@ -88,6 +84,9 @@ onMounted(async () => {
       gap: 12px;
       color: $white;
       font-weight: 600;
+      @media (max-width: $md4 + px) {
+        font-size: 18px;
+      }
     }
 
     &-info {
@@ -114,6 +113,9 @@ onMounted(async () => {
           font-size: 20px;
           gap: 18px;
         }
+        @media (max-width: $md4 + px) {
+          font-size: 14px;
+        }
 
         h4 {
           font-weight: 500;
@@ -130,7 +132,7 @@ onMounted(async () => {
   gap: 8px;
 
   p {
-    color: #D5A748;
+    color: #d5a748;
     font-weight: 700;
   }
 }

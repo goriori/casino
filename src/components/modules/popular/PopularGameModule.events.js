@@ -2,6 +2,7 @@ import {
   alertMessage,
   isLoad,
   isLoadContent,
+  isShowAll,
   searchValue,
 } from '@/components/modules/popular/PopularGameModule.options.js'
 import { useGameStore } from '@/store/games/gameStore.js'
@@ -13,6 +14,9 @@ export const unAuthorizedCardClick = () => {
   stateStore.globalModules.authorization.visibility = true
 }
 
+export const showOrHiddenAll = () => {
+  isShowAll.value = !isShowAll.value
+}
 export const clearSearch = () => {
   searchValue.value = ''
 }

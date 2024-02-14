@@ -6,7 +6,7 @@ export const isLoad = ref(true)
 
 export const isLoadContent = ref(false)
 
-
+export const isShowAll = ref(false)
 export const searchValue = ref('')
 export const filtersCategory = ref([
   {

@@ -6,9 +6,6 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 
 const sessionStore = useSessionStore()
 
-onMounted(async () => {
-  await sessionStore.getInfoSession()
-})
 </script>
 
 <template>

@@ -2,7 +2,7 @@ import { ref } from 'vue'
 
 export const timeClosePopup = ref(15000)
 export const choiceOut = ref({
-  bankCard: false,
+  bankCard: true,
   crypto: false,
 })
 export const withdrawalForm = ref({
