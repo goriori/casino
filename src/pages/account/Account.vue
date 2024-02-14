@@ -7,8 +7,10 @@ import AccountModule from '@/components/modules/account/AccountModule.vue'
 <template>
   <div class="page">
     <Header />
-    <div class="page-modules">
-      <AccountModule />
+    <div class="page-container container">
+      <div class="page-modules">
+        <AccountModule />
+      </div>
     </div>
     <Footer />
   </div>

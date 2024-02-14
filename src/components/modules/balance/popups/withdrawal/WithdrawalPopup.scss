@@ -41,7 +41,7 @@
     max-width: 456px;
     min-height: 647px;
     border-radius: 26px;
-    background: #3e4c9d;
+    background: #2C2C2C;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
 
     @media (max-width: $md4 + px) {
@@ -86,7 +86,7 @@
       gap: 20px;
       padding: 16px 0 17px 0;
       border-radius: 26px;
-      background: #2f3975;
+      background: #1E1E1E;
       font-size: 40px;
       font-weight: 700;
       color: #fff;
@@ -128,7 +128,7 @@
 
       &:hover {
         color: #fff;
-        border-bottom: 2px solid #5570fb;
+        border-bottom: 2px solid #1E1E1E;
       }
     }
   }
@@ -138,7 +138,7 @@
 
     &.active {
       color: #fff;
-      border-bottom: 2px solid #5570fb;
+      border-bottom: 2px solid #1E1E1E;
     }
   }
 }

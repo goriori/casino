@@ -4,7 +4,9 @@ const sessionStore = useSessionStore()
 export const fetchEntityData = async () => {
   const hasToken = sessionStore.session.token
   if (hasToken) {
-    await sessionStore.getInfoSession()
-    await sessionStore.getStatusPay()
+    await Promise.all([
+      sessionStore.getInfoSession(),
+      sessionStore.getStatusPay(),
+    ])
   }
 }
