@@ -8,14 +8,11 @@ import {
 } from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.events.js'
 import { useTimer } from '@/utils/useTimer.js'
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
-import { translationMessages } from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.options.js'
 
 import TimerIcon from '@/components/ui/icons/other/TimerIcon.vue'
 import CopyIcon from '@/components/ui/icons/other/CompyIcon.vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import AttachIcon from '@/components/ui/icons/other/AttachIcon.vue'
-import PopupErrorValidConfirmTranslation from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/popups/popup-error-valid/PopupErrorValidConfirmTranslation.vue'
-import PopupErrorServerConfirmTranslation from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/popups/popup-error-server/PopupErrorServerConfirmTranslation.vue'
 
 const emits = defineEmits(['success', 'error'])
 const props = defineProps({
@@ -41,22 +38,6 @@ onUnmounted(() => clearOptions())
 
 <template>
   <div class="confirm__translation-screen">
-    <div class="confirm__translation-screen-popups">
-      <Teleport to="body">
-        <Transition name="slide">
-          <PopupErrorServerConfirmTranslation
-            @close="translationMessages.error = false"
-            v-if="translationMessages.error"
-          />
-        </Transition>
-        <Transition name="slide">
-          <PopupErrorValidConfirmTranslation
-            @close="translationMessages.isValid = false"
-            v-if="translationMessages.isValid"
-          />
-        </Transition>
-      </Teleport>
-    </div>
     <div class="confirm__translation-screen-title">
       <div class="title-target-bank">
         <img

@@ -9,6 +9,10 @@ import VLoader from '@/components/VLoader.vue'
 import { useSettingsStore } from '@/store/settings/settingStore.js'
 import PopupConnectNetwork from '@/components/globals/popups/popup-connect-network/PopupConnectNetwork.vue'
 import { defineAsyncComponent } from 'vue'
+import PopupReplenishment from '@/components/globals/popups/popup-replenishment/PopupReplenishment.vue'
+import PopupErrorServer from '@/components/globals/popups/popup-error-server/PopupErrorServer.vue'
+import PopupErrorValid from '@/components/globals/popups/popup-error-valid/PopupErrorValid.vue'
+import PopupSuccess from '@/components/globals/popups/popup-success/PopupSuccess.vue'
 
 const route = useRoute()
 
@@ -33,13 +37,30 @@ const providerStore = useProviderStore()
       </Transition>
       <Transition>
         <AuthorizationPopupModule
-          v-if="stateStore.globalModules.authorization.visibility"
+          v-if="stateStore.globalPopupsModules.authorization.visibility"
         />
       </Transition>
-      <Transition>
+      <Transition name="slide">
         <RegistrationPopupModule
-          v-if="stateStore.globalModules.registration.visibility"
+          v-if="stateStore.globalPopupsModules.registration.visibility"
         />
+      </Transition>
+      <Transition name="slide">
+        <PopupReplenishment
+          v-if="stateStore.globalPopupsModules.replenishment.visibility"
+        />
+      </Transition>
+      <Transition name="slide">
+        <PopupErrorServer v-if="stateStore.globalPopupMessages.errorServer" />
+      </Transition>
+      <Transition name="slide">
+        <PopupErrorServer v-if="stateStore.globalPopupMessages.errorServer" />
+      </Transition>
+      <Transition name="slide">
+        <PopupErrorValid v-if="stateStore.globalPopupMessages.errorValid" />
+      </Transition>
+      <Transition name="slide">
+        <PopupSuccess v-if="stateStore.globalPopupMessages.success" />
       </Transition>
     </Teleport>
 

@@ -1,6 +1,5 @@
 <script setup>
 import { useRouter } from 'vue-router'
-
 import {
   onChangeHiddenPassword,
   onAuthorization,
@@ -11,46 +10,18 @@ import {
   pswrdHidden,
   formAuth,
   authFields,
-  authMessages,
 } from '@/components/modules/authorization/AuthorizationModule.options.js'
-
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import EmailIcon from '@/components/ui/icons/authorization/EmailIcon.vue'
 import HiddenIcon from '@/components/ui/icons/authorization/HiddenIcon.vue'
 import TelegramIcon from '@/components/ui/icons/authorization/TelegramIcon.vue'
-import PopupSuccessAuthorization from '@/components/modules/authorization/popups/popup-success/PopupSuccessAuthorization.vue'
-import PopupErrorAuthorization from '@/components/modules/authorization/popups/popup-error-server/PopupErrorServerAuthorization.vue'
 import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue'
-import PopupErrorValidAuthorization from '@/components/modules/authorization/popups/popup-error-valid/PopupErrorValidAuthorization.vue'
 
 const router = useRouter()
 </script>
 
 <template>
   <div class="authorization-module">
-    <div class="authorization-popups">
-      <Teleport to="body">
-        <Transition name="slide">
-          <PopupSuccessAuthorization
-            v-if="authMessages.success"
-            @close="authMessages.success = false"
-          />
-        </Transition>
-        <Transition name="slide">
-          <PopupErrorAuthorization
-            v-if="authMessages.error"
-            @close="authMessages.error = false"
-          />
-        </Transition>
-        <Transition name="slide">
-          <PopupErrorValidAuthorization
-            v-if="authMessages.isValid"
-            @close="authMessages.isValid = false"
-          />
-        </Transition>
-      </Teleport>
-    </div>
-
     <div class="authorization-info">
       <h1>Вход</h1>
       <p>Введите свои учетные данные для доступа к вашему профилю</p>

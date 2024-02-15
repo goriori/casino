@@ -30,7 +30,7 @@ export const onAuthorization = async (router) => {
     await sessionStore.authorization(formAuth.value)
     await sessionStore.getInfoSession()
     clearForm()
-    stateStore.globalModules.authorization.visibility = false
+    stateStore.globalPopupsModules.authorization.visibility = false
   } catch (e) {
     console.log('err object or boolean:', e)
     if (e === false) onErrorValid()
@@ -47,8 +47,8 @@ export const onRecoveryPassword = () => {
   a.click()
 }
 export const onRegistration = () => {
-  stateStore.globalModules.authorization.visibility = false
-  stateStore.globalModules.registration.visibility = true
+  stateStore.globalPopupsModules.authorization.visibility = false
+  stateStore.globalPopupsModules.registration.visibility = true
 }
 
 export const onAuthTelegram = () => {

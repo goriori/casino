@@ -35,18 +35,17 @@ export const onRegistration = async (router) => {
         sessionStore.registration(formReg.value)
       })
       .then(clearForm)
-      .then(() => router.push('/authorization'))
+      .then(openAuthorization)
   } catch (e) {
     console.log('result valid:', e)
     if (e === false) onErrorValid()
     else onErrorMessage()
-    clearForm()
   }
 }
 
 export const openAuthorization = () => {
-  stateStore.globalModules.authorization.visibility = true
-  stateStore.globalModules.registration.visibility = false
+  stateStore.globalPopupsModules.authorization.visibility = true
+  stateStore.globalPopupsModules.registration.visibility = false
 }
 export const onRegistrationTelegram = () => {
   const a = document.createElement('a')

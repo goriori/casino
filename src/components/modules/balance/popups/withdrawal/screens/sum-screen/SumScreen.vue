@@ -1,13 +1,11 @@
 <script setup>
 import {
-  balance,
-  sumMessages,
+  balance, isValid,
 } from '@/components/modules/balance/popups/withdrawal/screens/sum-screen/SumScreen.options.js'
 import {
   onChangeSlotBalance,
   onConfirmSum,
 } from '@/components/modules/balance/popups/withdrawal/screens/sum-screen/SumScreen.events.js'
-import PopupErrorValidSum from '@/components/modules/balance/popups/withdrawal/screens/sum-screen/popups/popup-error-valid/PopupErrorValidSum.vue'
 
 const emits = defineEmits(['replenish'])
 const minCountPay = window.MESSAGES_POPUP.SUM_SCREEN.MIN_COUNT_PAY
@@ -15,20 +13,10 @@ const minCountPay = window.MESSAGES_POPUP.SUM_SCREEN.MIN_COUNT_PAY
 
 <template>
   <div class="popup-screen">
-    <div class="popup-screen-popups">
-      <Teleport to="body">
-        <Transition name="slide">
-          <PopupErrorValidSum
-            @close="sumMessages.isValid = false"
-            v-if="sumMessages.isValid"
-          />
-        </Transition>
-      </Teleport>
-    </div>
     <div class="popup-screen-sum">
       <div class="popup-screen-title">
         <h3>Введите сумму пополнения:</h3>
-        <p>Min. {{ minCountPay }} ₽</p>
+        <p v-if="isValid">Min. {{ minCountPay }} ₽</p>
         <div class="popup-screen-field">
           <input type="number" v-model.number="balance" min="1" max="100" />
           <p>₽</p>

@@ -1,6 +1,6 @@
 import {
   balance,
-  sumMessages,
+  isValid,
   timeClosePopup,
 } from '@/components/modules/balance/popups/withdrawal/screens/sum-screen/SumScreen.options.js'
 
@@ -10,6 +10,6 @@ export const validSum = async () => {
 }
 
 export const errorValid = () => {
-  sumMessages.value.isValid = true
-  setTimeout(() => (sumMessages.value.isValid = true), timeClosePopup.value)
+  isValid.value = true
+  setTimeout(() => (isValid.value = false), timeClosePopup.value)
 }

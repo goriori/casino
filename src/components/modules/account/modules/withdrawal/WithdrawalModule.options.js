@@ -12,8 +12,9 @@ export const withdrawalForm = ref({
   date: '',
   user_id: '',
 })
-export const translationMessage = ref({
-  error: false,
-  success: false,
-  isValid: false,
+export const validResults = ref({
+  sum: true,
+  bankCard: true,
+  cryptoAddress: true,
 })
+

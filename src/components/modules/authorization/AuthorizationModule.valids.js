@@ -3,6 +3,7 @@ import {
   formAuth,
   timeClosePopup,
 } from '@/components/modules/authorization/AuthorizationModule.options.js'
+import { useStateStore } from '@/store/stateStore.js'
 
 export const onValidForm = async () => {
   if (formAuth.value.username.trim().length === 0) throw false
@@ -10,16 +11,18 @@ export const onValidForm = async () => {
 }
 
 export const onErrorMessage = () => {
-  authMessages.value.error = true
+  const stateStore = useStateStore()
+  stateStore.globalPopupMessages.errorServer = true
   setTimeout(() => {
-    authMessages.value.error = false
+    stateStore.globalPopupMessages.errorServer = false
   }, timeClosePopup.value)
 }
 
 export const onErrorValid = () => {
-  authMessages.value.isValid = true
+  const stateStore = useStateStore()
+  stateStore.globalPopupMessages.errorValid = true
   setTimeout(() => {
-    authMessages.value.isValid = false
+    stateStore.globalPopupMessages.errorValid = false
   }, timeClosePopup.value)
 }
 export const onSuccessMessage = () => {

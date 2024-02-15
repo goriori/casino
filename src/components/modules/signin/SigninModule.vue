@@ -7,7 +7,7 @@ const router = useRouter()
 const stateStore = useStateStore()
 
 const onAuthorization = () =>
-  (stateStore.globalModules.authorization.visibility = true)
+  (stateStore.globalPopupsModules.authorization.visibility = true)
 </script>
 
 <template>

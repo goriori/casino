@@ -1,36 +1,46 @@
 import {
+  choiceOut,
   timeClosePopup,
-  translationMessage,
+  validResults,
   withdrawalForm,
 } from '@/components/modules/account/modules/withdrawal/WithdrawalModule.options.js'
 import { useRegular } from '@/utils/useRegular.js'
+import { useStateStore } from '@/store/stateStore.js'
 
 const { cardTest } = useRegular()
 const minCountWithdrawal = window.MESSAGES_POPUP.WITHDRAWAL.MIN_COUNT_WITHDRAWAL
 const maxCountWithdrawal = window.MESSAGES_POPUP.WITHDRAWAL.MAX_COUNT_WITHDRAWAL
 export const validForm = async () => {
-  if (!cardTest(withdrawalForm.value.card)) throw false
-  if (withdrawalForm.value.sum < minCountWithdrawal) throw false
+  if (withdrawalForm.value.sum < minCountWithdrawal) {
+    validResults.value.sum = false
+    setTimeout(() => (validResults.value.sum = true), 5000)
+    throw false
+  }
   if (withdrawalForm.value.sum > maxCountWithdrawal) throw false
+  if (!cardTest(withdrawalForm.value.card) && choiceOut.value.bankCard)
+    throw false
   return true
 }
 
 export const setSuccessWithdrawal = () => {
-  translationMessage.value.success = true
+  const stateStore = useStateStore()
+  stateStore.globalPopupMessages.success = true
   setTimeout(() => {
-    translationMessage.value.success = false
+    stateStore.globalPopupMessages.success = false
   }, timeClosePopup.value)
 }
 export const setErrorWithdrawal = () => {
-  translationMessage.value.error = true
+  const stateStore = useStateStore()
+  stateStore.globalPopupMessages.errorServer = true
   setTimeout(() => {
-    translationMessage.value.error = false
+    stateStore.globalPopupMessages.errorServer = false
   }, timeClosePopup.value)
 }
 
 export const setErrorValidWithdrawal = () => {
-  translationMessage.value.isValid = true
+  const stateStore = useStateStore()
+  stateStore.globalPopupMessages.errorValid = true
   setTimeout(() => {
-    translationMessage.value.isValid = false
+    stateStore.globalPopupMessages.errorValid = false
   }, timeClosePopup.value)
 }

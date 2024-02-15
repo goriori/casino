@@ -3,6 +3,7 @@ import {
   timeClosePopup,
   translationMessages,
 } from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.options.js'
+import { useStateStore } from '@/store/stateStore.js'
 
 export const onValidFullName = async (emits) => {
   if (fullName.value.trim().length === 0) throw false
@@ -10,9 +11,10 @@ export const onValidFullName = async (emits) => {
 }
 
 export const onErrorValid = () => {
-  translationMessages.value.isValid = true
+  const stateStore = useStateStore()
+  stateStore.globalPopupMessages.errorValid = true
   setTimeout(
-    () => (translationMessages.value.isValid = false),
+    () => (stateStore.globalPopupMessages.errorValid = false),
     timeClosePopup.value
   )
 }

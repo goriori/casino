@@ -11,13 +11,11 @@ import {
   validForm,
 } from '@/components/modules/account/modules/withdrawal/WithdrawalModule.valids.js'
 
-const paymentStore = usePaymentStore()
-const sessionStore = useSessionStore()
 export const onSendWithdrawal = async () => {
+  const paymentStore = usePaymentStore()
   validForm()
     .then(async (result) => {
-      withdrawalForm.value.username = sessionStore.session.profile.username
-      withdrawalForm.value.user_id = sessionStore.session.profile.id
+      rebuildForm()
       await paymentStore.sendWithdrawal(withdrawalForm.value)
       setSuccessWithdrawal()
     })
@@ -35,6 +33,12 @@ export const choicePay = (choiceValue) => {
       ? (choiceOut.value[choice] = true)
       : (choiceOut.value[choice] = false)
   })
+}
+const rebuildForm = () => {
+  const sessionStore = useSessionStore()
+  withdrawalForm.value.username = sessionStore.session.profile.username
+  withdrawalForm.value.user_id = sessionStore.session.profile.id
+  withdrawalForm.value.date = Date.now()
 }
 const clearForm = () => {
   withdrawalForm.value = {

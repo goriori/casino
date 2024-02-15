@@ -3,11 +3,13 @@ import {
   regMessages,
 } from '@/components/modules/registration/RegistrationModule.options.js'
 import { timeClosePopup } from '@/components/modules/authorization/AuthorizationModule.options.js'
+import { useStateStore } from '@/store/stateStore.js'
 
 export const onErrorMessage = () => {
-  regMessages.value.error = true
+  const stateStore = useStateStore()
+  stateStore.globalPopupMessages.errorServer = true
   setTimeout(() => {
-    regMessages.value.error = false
+    stateStore.globalPopupMessages.errorServer = false
   }, 3000)
 }
 export const onSuccessMessage = () => {
@@ -18,9 +20,10 @@ export const onSuccessMessage = () => {
 }
 
 export const onErrorValid = () => {
-  regMessages.value.isValid = true
+  const stateStore = useStateStore()
+  stateStore.globalPopupMessages.errorValid = true
   setTimeout(() => {
-    regMessages.value.isValid = false
+    stateStore.globalPopupMessages.errorValid = false
   }, timeClosePopup.value)
 }
 
