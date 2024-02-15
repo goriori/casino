@@ -13,14 +13,28 @@ import CardIcon from '@/components/ui/icons/other/CardIcon.vue'
 import ChoicePayCard from '@/components/ui/cards/choice-pay/ChoicePayCard.vue'
 import CryptoPayIcon from '@/components/ui/icons/pay/CryptoPayIcon.vue'
 import BankCardPayIcon from '@/components/ui/icons/pay/BankCardPayIcon.vue'
+import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
+import { useStateStore } from '@/store/stateStore.js'
+
+const props = defineProps({
+  isPopup: {
+    type: Boolean,
+    default: false,
+  },
+})
 const emits = defineEmits(['success', 'error'])
 const minCountWithdrawal = window.MESSAGES_POPUP.WITHDRAWAL.MIN_COUNT_WITHDRAWAL
 const maxCountWithdrawal = window.MESSAGES_POPUP.WITHDRAWAL.MAX_COUNT_WITHDRAWAL
+const stateStore = useStateStore()
 </script>
 
 <template>
   <div class="withdrawal-module">
-
+    <div class="withdrawal-module-head" v-if="isPopup">
+      <CloseIcon
+        @click="stateStore.globalPopupsModules.replenishment.visibility = false"
+      />
+    </div>
     <div class="withdrawal-module-title">
       <p>Вывод средств</p>
       <CardIcon />

@@ -1,4 +1,5 @@
 import { ref } from 'vue'
+import { useStateStore } from '@/store/stateStore.js'
 
 export const accountMenu = ref([
   {
@@ -11,7 +12,10 @@ export const accountMenu = ref([
     id: 2,
     icon: 'conclusion',
     title: 'Вывод средств',
-    handler: function () {},
+    handler: function () {
+      const stateStore = useStateStore()
+      stateStore.globalPopupsModules.replenishment.visibility = true
+    },
   },
   {
     id: 3,

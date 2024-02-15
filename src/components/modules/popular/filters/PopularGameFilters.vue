@@ -1,14 +1,24 @@
 <script setup>
 import SearchIcon from '@/components/ui/icons/other/SearchIcon.vue'
 import BaseSelect from '@/components/ui/selects/base/BaseSelect.vue'
-import {
-  clearSearch,
-  onActiveSelect,
-} from '@/components/modules/popular/filters/PopularGameFilters.events.js'
-import {
+// import {
+//   clearSearch,
+//   fetchData,
+//   onActiveSelect,
+// } from '@/components/modules/popular/filters/PopularGameFilters.events.js'
+import { useMethods } from '@/components/modules/popular/filters/PopularGameFilters.events.js'
+import { useData } from '@/components/modules/popular/filters/PopularGameFilters.options.js'
+import { useProviderStore } from '@/store/providers/providerStore.js'
+import { useGameStore } from '@/store/games/gameStore.js'
+
+const providerStore = useProviderStore()
+const gameStore = useGameStore()
+
+const { filters, searchValue } = useData()
+const { onActiveSelect, clearSearch, handlerFilter } = useMethods(
   filters,
-  searchValue,
-} from '@/components/modules/popular/filters/PopularGameFilters.options.js'
+  searchValue
+)
 </script>
 
 <template>
@@ -22,8 +32,10 @@ import {
       />
       <BaseSelect
         name="providers"
-        :items="filters.providers.values"
+        v-if="providerStore.providers.length > 0"
+        :items="providerStore.providers"
         :active="filters.providers.active"
+        :handler="handlerFilter"
         @changeActive="onActiveSelect"
       />
     </div>

@@ -24,6 +24,7 @@ export const useGameStore = defineStore('gameStore', () => {
 
 
   const filterGames = (categoryPosition) => {
+    console.log(categoryPosition)
     const filterData = games.value.filter((item) => {
       return item.category.find((category) => category === categoryPosition)
     })

@@ -6,7 +6,7 @@ import WithdrawalModule from '@/components/modules/account/modules/withdrawal/Wi
 <template>
   <PopupBase>
     <template #window>
-      <WithdrawalModule />
+      <WithdrawalModule isPopup />
     </template>
   </PopupBase>
 </template>

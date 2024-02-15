@@ -15,15 +15,19 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  handler: {
+    type: Function,
+    required: false,
+  },
 })
-
-const targetElement = ref(props.items[0].title || 'None')
+const targetElement = ref(props.items[0].title)
 const emits = defineEmits(['changeActive'])
-const onSelect = () => {
+const onSelect = (category) => {
   emits('changeActive', props.name)
 }
-const onChange = (e) => {
-  targetElement.value = e.target.innerText
+const onChange = (category) => {
+  if (props.handler) props.handler(category.position)
+  targetElement.value = category.title
 }
 </script>
 
@@ -39,7 +43,7 @@ const onChange = (e) => {
           class="select-list-item"
           v-for="item in items"
           :key="item"
-          @click="onChange"
+          @click="onChange(item)"
         >
           {{ item.title }}
         </p>

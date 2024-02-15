@@ -16,11 +16,13 @@ import PopupSuccess from '@/components/globals/popups/popup-success/PopupSuccess
 
 const route = useRoute()
 
-const AuthorizationPopupModule = defineAsyncComponent(() =>
-  import('@/components/modules/authorization/AuthorizationPopupModule.vue')
+const PopupAuthorization = defineAsyncComponent(() =>
+  import(
+    '@/components/globals/popups/popup-authorization/PopupAuthorization.vue'
+  )
 )
-const RegistrationPopupModule = defineAsyncComponent(() =>
-  import('@/components/modules/registration/RegistrationPopupModule.vue')
+const PopupRegistration = defineAsyncComponent(() =>
+  import('@/components/globals/popups/popup-registration/PopupRegistration.vue')
 )
 const stateStore = useStateStore()
 const settingStore = useSettingsStore()
@@ -36,12 +38,12 @@ const providerStore = useProviderStore()
         <PopupConnectNetwork />
       </Transition>
       <Transition>
-        <AuthorizationPopupModule
+        <PopupAuthorization
           v-if="stateStore.globalPopupsModules.authorization.visibility"
         />
       </Transition>
       <Transition name="slide">
-        <RegistrationPopupModule
+        <PopupRegistration
           v-if="stateStore.globalPopupsModules.registration.visibility"
         />
       </Transition>

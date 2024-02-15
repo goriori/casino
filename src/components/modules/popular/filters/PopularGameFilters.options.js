@@ -1,6 +1,7 @@
 import { ref } from 'vue'
-export const searchValue = ref('')
-export const filtersCategory = ref([
+
+const searchValue = ref('')
+const filtersCategory = ref([
   {
     id: 1,
     title: 'Популярные',
@@ -34,7 +35,7 @@ export const filtersCategory = ref([
     title: 'Рулетка',
   },
 ])
-export const filters = ref({
+const filters = ref({
   category: {
     active: false,
     values: filtersCategory,
@@ -44,3 +45,12 @@ export const filters = ref({
     values: filtersCategory,
   },
 })
+
+// eslint-disable-next-line func-style
+export function useData() {
+  return {
+    filters,
+    searchValue,
+    filtersCategory,
+  }
+}
