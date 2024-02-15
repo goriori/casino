@@ -17,6 +17,9 @@ export const accountMenu = ref([
     id: 3,
     icon: 'logout',
     title: 'Выход',
-    handler: function () {},
+    handler: async function () {
+      await sessionStorage.clear()
+      location.reload()
+    },
   },
 ])

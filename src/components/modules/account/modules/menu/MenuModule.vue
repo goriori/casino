@@ -8,6 +8,7 @@ import { accountMenu } from '@/components/modules/account/modules/menu/MenuModul
       class="navigation-item"
       v-for="navMenu in accountMenu"
       :key="navMenu.id"
+      @click="navMenu.handler"
     >
       <img :src="`/images/icons/${navMenu.icon}.svg`" alt="" />
       <p>{{ navMenu.title }}</p>
