@@ -59,6 +59,7 @@ export function useMethods(
     onSwitchWithdrawalSum,
     onSwitchWithdrawalSelectBank,
     onSwitchWithdrawalSumTranslation,
+    onSwitchWithdrawalMessage,
     onSwitchWithdrawalConfirm,
     onFinishWithdrawal,
     onBack,

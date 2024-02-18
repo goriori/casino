@@ -1,5 +1,6 @@
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
+import { useStateStore } from '@/store/stateStore.js'
 
 export function useMethods(
   fullName,
@@ -11,6 +12,7 @@ export function useMethods(
 ) {
   const paymentStore = usePaymentStore()
   const sessionStore = useSessionStore()
+  const stateStore = useStateStore()
   const onChangeFullName = (e) => {
     fullName.value = e.target.value
     paymentStore.replObject.fullname = fullName.value
@@ -21,6 +23,7 @@ export function useMethods(
       await paymentStore.sendReplenishment()
       emits('success')
     } catch (e) {
+      console.log(e)
       onErrorServer()
       emits('error')
     }
@@ -35,9 +38,9 @@ export function useMethods(
   }
 
   const onErrorServer = () => {
-    translationMessages.value.error = true
+    stateStore.globalPopupMessages.errorServer = true
     setTimeout(
-      () => (translationMessages.value.error = false),
+      () => (stateStore.globalPopupMessages.errorServer = false),
       timeClosePopup.value
     )
   }

@@ -21,11 +21,7 @@ const props = defineProps({
 const paymentStore = usePaymentStore()
 const { currentTime, isFinished, startTimer } = useTimer(15 * 60 * 1000)
 const { screenshot, timeClosePopup, translationMessages, fullName } = useData()
-const { onValidFullName, onErrorValid } = useValids(
-  fullName,
-  timeClosePopup,
-  translationMessages
-)
+const { onValidFullName, onErrorValid } = useValids(fullName, timeClosePopup)
 const { clearOptions, onChangeFile, onChangeFullName, onClipboardWrite } =
   useMethods(
     fullName,
