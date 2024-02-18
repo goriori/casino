@@ -1,5 +1,4 @@
 <script setup>
-
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import CardIcon from '@/components/ui/icons/other/CardIcon.vue'
 import ChoicePayCard from '@/components/ui/cards/choice-pay/ChoicePayCard.vue'
@@ -22,8 +21,12 @@ const minCountWithdrawal = window.MESSAGES_POPUP.WITHDRAWAL.MIN_COUNT_WITHDRAWAL
 const maxCountWithdrawal = window.MESSAGES_POPUP.WITHDRAWAL.MAX_COUNT_WITHDRAWAL
 const stateStore = useStateStore()
 const { choiceOut, validResults, withdrawalForm, timeClosePopup } = useData()
-const { validForm, setErrorValidWithdrawal, setErrorWithdrawal, setSuccessWithdrawal } =
-  useValid(choiceOut, timeClosePopup, validResults, withdrawalForm)
+const {
+  validForm,
+  setErrorValidWithdrawal,
+  setErrorWithdrawal,
+  setSuccessWithdrawal,
+} = useValid(choiceOut, timeClosePopup, validResults, withdrawalForm)
 const { choicePay, onSendWithdrawal } = useMethods(
   choiceOut,
   withdrawalForm,
@@ -75,6 +78,8 @@ const { choicePay, onSendWithdrawal } = useMethods(
         <div class="input-currency">
           <input
             type="number"
+            name="sum"
+            autocomplete="off"
             placeholder="Введите сумму"
             :min="minCountWithdrawal"
             :max="maxCountWithdrawal"
@@ -86,6 +91,8 @@ const { choicePay, onSendWithdrawal } = useMethods(
         <h4>Банковская карта</h4>
         <input
           type="number"
+          name="numberCard"
+          autocomplete="off"
           placeholder="Введите номер банковской карты"
           v-model="withdrawalForm.card"
         />
@@ -94,6 +101,8 @@ const { choicePay, onSendWithdrawal } = useMethods(
         <h4>Криптокошелек</h4>
         <input
           type="text"
+          name="addressWallet"
+          autocomplete="off"
           placeholder="Введите адрес кошелька USDTTRC20"
           v-model="withdrawalForm.cryptoWallet"
         />

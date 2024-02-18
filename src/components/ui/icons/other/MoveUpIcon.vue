@@ -13,7 +13,7 @@ import ArrowUpIcon from '@/components/ui/icons/footer/ArrowUpIcon.vue'
 
 .move-up {
   position: fixed;
-  z-index: 10;
+  z-index: 9;
   right: 48px;
   bottom: 50px;
   cursor: pointer;

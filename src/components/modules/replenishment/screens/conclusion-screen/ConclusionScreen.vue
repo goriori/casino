@@ -20,6 +20,8 @@ const emits = defineEmits(['bank-card'])
           <h4>Банковская карта</h4>
           <input
             type="text"
+            name="numberCard"
+            autocomplete="off"
             placeholder="Введите номер банковской карты"
             v-model="cnclsnForm.card"
           />
@@ -29,6 +31,8 @@ const emits = defineEmits(['bank-card'])
           <div class="input-currency">
             <input
               type="number"
+              name="sum"
+              autocomplete="off"
               placeholder="Введите сумму. Мин. 1000"
               min="1000"
               max="1000000000"
@@ -44,6 +48,8 @@ const emits = defineEmits(['bank-card'])
           <h4>Дата вывода средств</h4>
           <input
             type="date"
+            name="date"
+            autocomplete="off"
             placeholder="Введите дату вывода"
             v-model="cnclsnForm.date"
           />

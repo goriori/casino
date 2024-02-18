@@ -1,11 +1,17 @@
 <script setup>
-import { useData } from '@/components/modules/replenishment/ReplenishmentModule.options.js'
-import { useMethods } from '@/components/modules/replenishment/ReplenishmentModule.events.js'
+import { useData } from '@/components/modules/replenishment/screens/sum-screen/SumScreen.options.js'
+import { useMethods } from '@/components/modules/replenishment/screens/sum-screen/SumScreen.events.js'
+import { useValid } from '@/components/modules/replenishment/screens/sum-screen/SumScreen.valids.js'
 
 const emits = defineEmits(['replenish'])
 const minCountPay = window.MESSAGES_POPUP.SUM_SCREEN.MIN_COUNT_PAY
-const { balance, isValid } = useData()
-const { onChangeSlotBalance, onConfirmSum } = useMethods(balance)
+const { balance, isValid, timeClosePopup } = useData()
+const { errorValid, validSum } = useValid(balance, isValid, timeClosePopup)
+const { onChangeSlotBalance, onConfirmSum } = useMethods(
+  balance,
+  errorValid,
+  validSum
+)
 </script>
 
 <template>
@@ -15,7 +21,14 @@ const { onChangeSlotBalance, onConfirmSum } = useMethods(balance)
         <h3>Введите сумму пополнения:</h3>
         <p v-if="isValid">Min. {{ minCountPay }} ₽</p>
         <div class="popup-screen-field">
-          <input type="number" v-model.number="balance" min="1" max="100" />
+          <input
+            type="number"
+            name="balance"
+            autocomplete="off"
+            v-model.number="balance"
+            min="1"
+            max="100"
+          />
           <p>₽</p>
         </div>
       </div>

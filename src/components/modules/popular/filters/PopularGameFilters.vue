@@ -40,7 +40,7 @@ const { onActiveSelect, clearSearch, handlerFilter } = useMethods(
       />
     </div>
     <div class="filters-item search">
-      <input placeholder="Поиск слотов" v-model="searchValue" />
+      <input placeholder="Поиск слотов" name="search" v-model="searchValue" />
       <SearchIcon @click="clearSearch" />
     </div>
   </div>

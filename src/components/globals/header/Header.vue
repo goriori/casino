@@ -12,6 +12,7 @@ import SupportHeaderIcon from '@/components/ui/icons/header/SupportHeaderIcon.vu
 import PopupBase from '@/components/ui/popups/base/PopupBase.vue'
 import AuthorizationModule from '@/components/modules/authorization/AuthorizationModule.vue'
 import BurgerHeaderIocn from '@/components/ui/icons/header/BurgerHeaderIocn.vue'
+import BurgerMenu from '@/components/globals/header/components/burger/BurgerMenu.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -29,6 +30,7 @@ const redirectToSupports = () => {
   a.target = '_blank'
   a.click()
 }
+
 onMounted(async () => {
   await settingStore.getSettings()
 })
@@ -36,11 +38,7 @@ onMounted(async () => {
 
 <template>
   <header class="header">
-    <div class="header-burger-icons">
-      <div class="icon-burger">
-        <BurgerHeaderIocn />
-      </div>
-    </div>
+    <BurgerMenu/>
     <div class="header-actions">
       <div class="header-actions-bonus" @click="router.push('/bonuses')">
         <BonusHeaderIcon />

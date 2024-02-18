@@ -10,10 +10,27 @@
   border-radius: 0 0 36px 36px;
   z-index: 10;
 
-  &-burger-icons {
-    display: none;
-    @media (max-width: $md4 + px) {
-      display: block;
+  &-burger {
+    &-icons {
+      display: none;
+      @media (max-width: $md4 + px) {
+        display: block;
+        cursor: pointer;
+      }
+    }
+
+    &-menu {
+      position: absolute;
+      width:100vw;
+      height: 100vh;
+      background: #262626;
+      left:0;
+      top:0;
+      z-index: 10;
+      &-item {
+        display: flex;
+        gap: 10px;
+      }
     }
   }
 

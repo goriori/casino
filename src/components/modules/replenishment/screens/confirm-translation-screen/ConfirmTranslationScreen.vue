@@ -96,6 +96,8 @@ onUnmounted(() => clearOptions())
         <p>фио отправителя:*</p>
         <input
           type="text"
+          name="fullname"
+          autocomplete="off"
           placeholder="Фамилия Имя Отчество"
           @change="onChangeFullName"
         />
@@ -106,6 +108,8 @@ onUnmounted(() => clearOptions())
           <p>Прикрепить чек из банка*</p>
           <input
             type="file"
+            name="file"
+            autocomplete="off"
             accept=".jpg,.png"
             @change="(e) => onChangeFile(e, emits)"
           />

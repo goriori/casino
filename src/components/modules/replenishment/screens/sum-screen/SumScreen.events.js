@@ -1,10 +1,6 @@
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
-import {
-  errorValid,
-  validSum,
-} from './SumScreen.valids.js'
 
-export function useMethods(balance) {
+export function useMethods(balance, errorValid, validSum) {
   const paymentStore = usePaymentStore()
   const onChangeSlotBalance = (slot) => {
     balance.value = slot

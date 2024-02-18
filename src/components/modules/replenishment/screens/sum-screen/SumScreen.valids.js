@@ -1,16 +1,15 @@
-import {
-  balance,
-  isValid,
-  timeClosePopup,
-} from '@/components/modules/balance/popups/withdrawal/screens/sum-screen/SumScreen.options.js'
+export function useValid(balance, isValid, timeClosePopup) {
+  const minCountBalance = window.MESSAGES_POPUP.SUM_SCREEN.MIN_COUNT_PAY
+  const validSum = async () => {
+    if (balance.value < minCountBalance) throw false
+  }
 
-const minCountBalance = window.MESSAGES_POPUP.SUM_SCREEN.MIN_COUNT_PAY
-export const validSum = async () => {
-  if (balance.value < minCountBalance) throw false
+  const errorValid = () => {
+    isValid.value = true
+    setTimeout(() => (isValid.value = false), timeClosePopup.value)
+  }
+  return {
+    validSum,
+    errorValid,
+  }
 }
-
-export const errorValid = () => {
-  isValid.value = true
-  setTimeout(() => (isValid.value = false), timeClosePopup.value)
-}
-
