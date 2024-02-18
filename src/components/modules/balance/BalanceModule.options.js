@@ -37,8 +37,7 @@ export const navigationAuthorized = [
     icon: 'conclusion',
     title: 'Вывод средств',
     handler: function () {
-      popupSetting.value.targetScreen = 'conclusion'
-      popupReplenishment.value = !popupReplenishment.value
+      stateStore.globalPopupsModules.conclusion.visibility = true
     },
   },
   {

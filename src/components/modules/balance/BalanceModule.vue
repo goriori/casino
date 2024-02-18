@@ -16,8 +16,8 @@ import { useSessionStore } from '@/store/session/sessionStore.js'
 import BalanceButton from '@/components/ui/buttons/balance/BalanceButton.vue'
 import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 import ArrowIcon from '@/components/ui/icons/other/ArrowIcon.vue'
-import WithdrawalPopup from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.vue'
 import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
+import ReplenishmentModule from '@/components/modules/replenishment/ReplenishmentModule.vue'
 
 const router = useRouter()
 const sessionStore = useSessionStore()
@@ -68,14 +68,13 @@ const sessionStore = useSessionStore()
     </Transition>
     <Teleport to="body">
       <Transition name="fade">
-        <WithdrawalPopup
+        <ReplenishmentModule
           :setting="popupSetting"
           @close="closePopupReplenishment"
           v-if="popupReplenishment"
           @click.stop
         />
       </Transition>
-
     </Teleport>
   </div>
 </template>

@@ -13,6 +13,7 @@ import PopupReplenishment from '@/components/globals/popups/popup-replenishment/
 import PopupErrorServer from '@/components/globals/popups/popup-error-server/PopupErrorServer.vue'
 import PopupErrorValid from '@/components/globals/popups/popup-error-valid/PopupErrorValid.vue'
 import PopupSuccess from '@/components/globals/popups/popup-success/PopupSuccess.vue'
+import PopupConclusion from '@/components/globals/popups/popup-conclusion/PopupConclusion.vue'
 
 const route = useRoute()
 
@@ -49,7 +50,15 @@ const providerStore = useProviderStore()
       </Transition>
       <Transition name="slide">
         <PopupReplenishment
+          @close="
+            stateStore.globalPopupsModules.replenishment.visibility = false
+          "
           v-if="stateStore.globalPopupsModules.replenishment.visibility"
+        />
+      </Transition>
+      <Transition name="slide">
+        <PopupConclusion
+          v-if="stateStore.globalPopupsModules.conclusion.visibility"
         />
       </Transition>
       <Transition name="slide">

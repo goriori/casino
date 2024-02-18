@@ -3,6 +3,7 @@ import { useSessionStore } from '@/store/session/sessionStore.js'
 import { defineAsyncComponent, onMounted } from 'vue'
 import MenuModule from '@/components/modules/account/modules/menu/MenuModule.vue'
 import PersonalAccountIcon from '@/components/ui/icons/account/PersonalAccountIcon.vue'
+import ConclusionModule from '@/components/modules/conclusion/ConclusionModule.vue'
 
 const sessionStore = useSessionStore()
 
@@ -29,8 +30,14 @@ onMounted(() => {
 <template>
   <div class="account-module">
     <div class="account-module-title">
-      <PersonalAccountIcon color="white" />
-      <h3>Личный кабинет</h3>
+      <div class="title">
+        <PersonalAccountIcon color="white" />
+        <h3>Личный кабинет</h3>
+      </div>
+
+      <div class="account-module-desktop-navigation">
+        <MenuModule />
+      </div>
     </div>
     <div class="account-module-desktop-items">
       <ProfileModule />
@@ -38,7 +45,7 @@ onMounted(() => {
         <BalanceModule />
         <HistoryBalanceModule />
       </div>
-      <WithdrawalModule />
+      <ConclusionModule />
     </div>
     <div class="account-module-mobile-items">
       <MenuModule />
@@ -64,25 +71,33 @@ onMounted(() => {
       gap: 24px;
     }
 
+    &-desktop-navigation {
+      @media (max-width: $md4 + px) {
+        display: none;
+      }
+    }
+
     &-title {
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
-      gap: 16px;
-      font-size: 32px;
-      color: #fff;
-
-      @media (max-width: $md2 + px) {
-        font-size: 24px;
-        svg {
-          max-width: 28px;
+      .title {
+        display: flex;
+        align-items: center;
+        font-size: 32px;
+        gap: 16px;
+        @media (max-width: $md2 + px) {
+          font-size: 24px;
+          svg {
+            max-width: 28px;
+          }
         }
-      }
-      @media (max-width: $md4 + px) {
-        svg {
-          max-width: 19px;
+        @media (max-width: $md4 + px) {
+          svg {
+            max-width: 19px;
+          }
+          font-size: 20px;
         }
-        font-size: 20px;
       }
     }
 

@@ -14,6 +14,9 @@ export const useStateStore = defineStore('stateStore', () => {
     replenishment: {
       visibility: false,
     },
+    conclusion: {
+      visibility: false,
+    },
   })
   const globalPopupMessages = ref({
     errorServer: false,

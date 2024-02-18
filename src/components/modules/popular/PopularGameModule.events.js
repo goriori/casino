@@ -9,7 +9,7 @@ import { useStateStore } from '@/store/stateStore.js'
 const gameStore = useGameStore()
 const stateStore = useStateStore()
 export const unAuthorizedCardClick = () => {
-  stateStore.globalModules.authorization.visibility = true
+  stateStore.globalPopupsModules.authorization.visibility = true
 }
 
 export const showOrHiddenAll = () => {
