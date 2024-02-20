@@ -4,7 +4,6 @@ import { useData } from '@/components/modules/replenishment/ReplenishmentModule.
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import ReplenishmentScreen from '@/components/modules/replenishment/screens/replenishment-screen/ReplenishmentScreen.vue'
 import ReplenishmentCryptocurrencyScreen from '@/components/modules/replenishment/screens/replenishment-cryptocurrency-screen/ReplenishmentCryptocurrencyScreen.vue'
-import ConclusionScreen from '@/components/modules/replenishment/screens/conclusion-screen/ConclusionScreen.vue'
 import SumScreen from '@/components/modules/replenishment/screens/sum-screen/SumScreen.vue'
 import SelectBankScreen from '@/components/modules/replenishment/screens/select-bank/SelectBankScreen.vue'
 import SumTranslationScreen from '@/components/modules/replenishment/screens/sum-translation-screen/SumTranslationScreen.vue'
