@@ -7,8 +7,17 @@ import PopupSuccess from '@/components/globals/popups/popup-success/PopupSuccess
 import PopupConclusion from '@/components/globals/popups/popup-conclusion/PopupConclusion.vue'
 import PopupErrorValid from '@/components/globals/popups/popup-error-valid/PopupErrorValid.vue'
 import { useStateStore } from '@/store/stateStore.js'
-const stateStore = useStateStore()
+import { defineAsyncComponent } from 'vue'
 
+const stateStore = useStateStore()
+const PopupAuthorization = defineAsyncComponent(() =>
+  import(
+    '@/components/globals/popups/popup-authorization/PopupAuthorization.vue'
+  )
+)
+const PopupRegistration = defineAsyncComponent(() =>
+  import('@/components/globals/popups/popup-registration/PopupRegistration.vue')
+)
 </script>
 
 <template>

@@ -14,17 +14,12 @@ export const useGameStore = defineStore('gameStore', () => {
           item.view === 1 && item.category.length > 0 && item.category[0] !== 8
       ),
     ]
-    console.time('copy value games')
     filteredGame.value = games.value
-    console.timeEnd('copy value games')
-    console.time('filter games')
     filterGames(9)
-    console.timeEnd('filter games')
   }
 
 
   const filterGames = (categoryPosition) => {
-    console.log(categoryPosition)
     const filterData = games.value.filter((item) => {
       return item.category.find((category) => category === categoryPosition)
     })

@@ -8,9 +8,7 @@ import { startItems } from '@/pages/main/Main.options.js'
 import AboutInfoIcon from '@/components/ui/icons/other/AboutInfoIcon.vue'
 import StatisticsModule from '@/components/modules/statistics/StatisticsModule.vue'
 
-const ProvidersModule = defineAsyncComponent(() =>
-  import('@/components/modules/providers/ProvidersModule.vue')
-)
+
 const PopularGameModule = defineAsyncComponent(() =>
   import('@/components/modules/popular/PopularGameModule.vue')
 )
