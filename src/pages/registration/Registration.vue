@@ -15,6 +15,7 @@ import RegistrationModule from '@/components/modules/registration/RegistrationMo
 
 <style scoped lang="scss">
 @import '@/assets/scss/variables';
+
 .page {
   color: #fff;
 

@@ -4,11 +4,11 @@ import { useGameStore } from '@/store/games/gameStore.js'
 
 // eslint-disable-next-line func-style
 export function useMethods(filters, searchValue) {
+  const gameStore = useGameStore()
   const clearSearch = () => {
     searchValue.value = ''
   }
   const handlerFilter = async (categoryPosition) => {
-    const gameStore = useGameStore()
     await gameStore.filterGames(categoryPosition)
   }
 
@@ -21,13 +21,17 @@ export function useMethods(filters, searchValue) {
     )
   }
 
+  const onSearch = async () => {
+    gameStore.searchGames(searchValue.value)
+    clearSearch()
+  }
   onMounted(async () => {
     const providerStore = useProviderStore()
     await Promise.all([providerStore.getProviders()])
   })
   return {
-    clearSearch,
     onActiveSelect,
     handlerFilter,
+    onSearch,
   }
 }

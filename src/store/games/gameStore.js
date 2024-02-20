@@ -18,13 +18,18 @@ export const useGameStore = defineStore('gameStore', () => {
     filterGames(9)
   }
 
-
   const filterGames = (categoryPosition) => {
     const filterData = games.value.filter((item) => {
       return item.category.find((category) => category === categoryPosition)
     })
     filteredGame.value = [...filterData]
   }
-
-  return { games, filteredGame, getGames, filterGames }
+  const searchGames = (searchValue = '') => {
+    const searchData = games.value.filter((game) =>
+      game.title.includes(searchValue)
+    )
+    console.log(searchData)
+    filteredGame.value = [...searchData]
+  }
+  return { games, filteredGame, getGames, filterGames, searchGames }
 })

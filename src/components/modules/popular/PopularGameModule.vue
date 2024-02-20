@@ -44,16 +44,19 @@ onMounted(async () => {
       </ContentLoader>
     </div>
     <Transition name="fade">
-      <div
-        :class="['popular__game-module-items', { all: isShowAll }]"
-        v-if="isLoadContent"
-      >
-        <GameCard
-          v-for="game in gameStore.filteredGame"
-          :key="game"
-          :gameItem="game"
-          @unauthorized="unAuthorizedCardClick"
-        />
+      <div v-if="isLoadContent">
+        <div
+          :class="['popular__game-module-items', { all: isShowAll }]"
+          v-if="gameStore.filteredGame.length > 0"
+        >
+          <GameCard
+            v-for="game in gameStore.filteredGame"
+            :key="game"
+            :gameItem="game"
+            @unauthorized="unAuthorizedCardClick"
+          />
+        </div>
+        <div v-else>Ничего не найдено</div>
       </div>
     </Transition>
     <BaseButton color="primary" @click="showOrHiddenAll" id="show_all">

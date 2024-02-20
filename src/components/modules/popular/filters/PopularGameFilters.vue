@@ -1,21 +1,14 @@
 <script setup>
-import SearchIcon from '@/components/ui/icons/other/SearchIcon.vue'
-import BaseSelect from '@/components/ui/selects/base/BaseSelect.vue'
-// import {
-//   clearSearch,
-//   fetchData,
-//   onActiveSelect,
-// } from '@/components/modules/popular/filters/PopularGameFilters.events.js'
 import { useMethods } from '@/components/modules/popular/filters/PopularGameFilters.events.js'
 import { useData } from '@/components/modules/popular/filters/PopularGameFilters.options.js'
 import { useProviderStore } from '@/store/providers/providerStore.js'
-import { useGameStore } from '@/store/games/gameStore.js'
+import SearchIcon from '@/components/ui/icons/other/SearchIcon.vue'
+import BaseSelect from '@/components/ui/selects/base/BaseSelect.vue'
 
 const providerStore = useProviderStore()
-const gameStore = useGameStore()
 
 const { filters, searchValue } = useData()
-const { onActiveSelect, clearSearch, handlerFilter } = useMethods(
+const { onActiveSelect, onSearch, handlerFilter } = useMethods(
   filters,
   searchValue
 )
@@ -41,7 +34,7 @@ const { onActiveSelect, clearSearch, handlerFilter } = useMethods(
     </div>
     <div class="filters-item search">
       <input placeholder="Поиск слотов" name="search" v-model="searchValue" />
-      <SearchIcon @click="clearSearch" />
+      <SearchIcon @click="onSearch" />
     </div>
   </div>
 </template>
