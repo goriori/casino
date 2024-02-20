@@ -25,9 +25,9 @@ export function useValid(
   }
   const setSuccessWithdrawal = () => {
     const stateStore = useStateStore()
-    stateStore.globalPopupMessages.success = true
+    stateStore.globalPopupMessages.application = true
     setTimeout(() => {
-      stateStore.globalPopupMessages.success = false
+      stateStore.globalPopupMessages.application = false
     }, timeClosePopup.value)
   }
   const setErrorWithdrawal = () => {

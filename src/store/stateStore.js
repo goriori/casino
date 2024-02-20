@@ -22,6 +22,7 @@ export const useStateStore = defineStore('stateStore', () => {
     errorServer: false,
     errorValid: false,
     success: false,
+    application: false,
   })
 
   return {

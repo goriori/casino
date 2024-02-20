@@ -1,7 +1,5 @@
-
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
-
 
 export function useMethods(
   choiceOut,

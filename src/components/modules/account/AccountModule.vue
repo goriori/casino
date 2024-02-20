@@ -18,9 +18,6 @@ const HistoryBalanceModule = defineAsyncComponent(() =>
     '@/components/modules/account/modules/history-balance/HistoryBalanceModule.vue'
   )
 )
-const WithdrawalModule = defineAsyncComponent(() =>
-  import('@/components/modules/account/modules/withdrawal/WithdrawalModule.vue')
-)
 
 onMounted(() => {
   Promise.all([sessionStore.getInfoSession(), sessionStore.getStatusPay()])
