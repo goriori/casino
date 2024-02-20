@@ -9,11 +9,7 @@ import BaseSlider from '@/components/ui/sliders/base/BaseSlider.vue'
 <template>
   <div class="statistics_module">
     <div class="statistics_module-slider">
-      <BaseSlider
-        :pagination="true"
-        :navigation="true"
-        :images="slides"
-      />
+      <BaseSlider :pagination="true" :navigation="true" :images="slides" />
     </div>
     <div class="statistics_module-list">
       <div
@@ -42,35 +38,27 @@ import BaseSlider from '@/components/ui/sliders/base/BaseSlider.vue'
   align-items: center;
   gap: 32px;
 
-  @media (max-width: $md3 + px) {
+  @media (max-width: $md1 + px) {
     flex-direction: column;
   }
 
   &-list {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 16px;
-    @media (max-width: $md3 + px) {
+    @media (max-width: $md1 + px) {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
   &-slider {
-    max-width: 1336px;
+    width: 75%;
     max-height: 600px;
-    @media (max-width: $md3 + px) {
-      max-width: 900px;
-      max-height: 400px;
-    }
-    @media (max-width: $md4 + px) {
-      max-width: 650px;
-      max-height: 300px;
-    }
-    @media (max-width: $md5 + px) {
-      max-width: 327px;
-      max-height: 150px;
+    @media (max-width: $md1 + px) {
+      width: 100%;
     }
   }
 }

@@ -2,6 +2,15 @@
 import BonusIcon from '@/components/ui/icons/other/BonusIcon.vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import BonusCard from '@/components/ui/cards/bonus/BonusCard.vue'
+import { ref } from 'vue'
+import { usePaymentStore } from '@/store/payments/paymentStore.js'
+
+const promocode = ref('')
+const paymentStore = usePaymentStore()
+const onSendPromocode = () => {
+  paymentStore.sendPromocode(promocode.value)
+  promocode.value = ''
+}
 </script>
 
 <template>
@@ -12,8 +21,8 @@ import BonusCard from '@/components/ui/cards/bonus/BonusCard.vue'
         <p>Мои бонусы</p>
       </div>
       <div class="personal__bonuses-promo">
-        <input type="text" placeholder="Введите промокод" />
-        <BaseButton color="white" id="send-promo">
+        <input type="text" placeholder="Введите промокод" v-model="promocode" />
+        <BaseButton color="white" id="send-promo" @click="onSendPromocode">
           <p>Применить</p>
         </BaseButton>
       </div>

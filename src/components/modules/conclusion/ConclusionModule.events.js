@@ -11,10 +11,12 @@ export function useMethods(
 ) {
   const onSendWithdrawal = async () => {
     const paymentStore = usePaymentStore()
+    const sessionStore = useSessionStore()
     validForm()
       .then(async (result) => {
         rebuildForm()
         await paymentStore.sendWithdrawal(withdrawalForm.value)
+        await sessionStore.getInfoSession()
         setSuccessWithdrawal()
       })
       .then(clearForm)
