@@ -17,6 +17,9 @@ export const useStateStore = defineStore('stateStore', () => {
     conclusion: {
       visibility: false,
     },
+    profileEdit: {
+      visibility: false,
+    },
   })
   const globalPopupMessages = ref({
     errorServer: false,

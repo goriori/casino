@@ -26,10 +26,12 @@ const { onActiveSelect, onSearch, handlerFilter } = useMethods(
       <BaseSelect
         name="providers"
         v-if="providerStore.providers.length > 0"
+        default-target-element="Ka-Gaming"
         :items="providerStore.providers"
         :active="filters.providers.active"
         :handler="handlerFilter"
         @changeActive="onActiveSelect"
+
       />
     </div>
     <div class="filters-item search">

@@ -8,6 +8,7 @@ import PopupConclusion from '@/components/globals/popups/popup-conclusion/PopupC
 import PopupErrorValid from '@/components/globals/popups/popup-error-valid/PopupErrorValid.vue'
 import { useStateStore } from '@/store/stateStore.js'
 import { defineAsyncComponent } from 'vue'
+import PopupProfileEdit from '@/components/globals/popups/popup-profile-edit/PopupProfileEdit.vue'
 
 const stateStore = useStateStore()
 const PopupAuthorization = defineAsyncComponent(() =>
@@ -44,6 +45,12 @@ const PopupRegistration = defineAsyncComponent(() =>
     <Transition name="slide">
       <PopupConclusion
         v-if="stateStore.globalPopupsModules.conclusion.visibility"
+      />
+    </Transition>
+    <Transition name="slide">
+      <PopupProfileEdit
+        @close="stateStore.globalPopupsModules.profileEdit.visibility = false"
+        v-if="stateStore.globalPopupsModules.profileEdit.visibility"
       />
     </Transition>
     <Transition name="slide">

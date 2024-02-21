@@ -19,8 +19,12 @@ const props = defineProps({
     type: Function,
     required: false,
   },
+  defaultTargetElement: {
+    type: String,
+    default: 'Не выбрано',
+  },
 })
-const targetElement = ref(props.items[0].title)
+const targetElement = ref(props.defaultTargetElement)
 const emits = defineEmits(['changeActive'])
 const onSelect = (category) => {
   emits('changeActive', props.name)

@@ -7,15 +7,9 @@ export const useGameStore = defineStore('gameStore', () => {
   const filteredGame = ref([])
   const getGames = async () => {
     const { data } = await GamesService.getGames()
-
-    games.value = [
-      ...data.filter(
-        (item) =>
-          item.view === 1 && item.category.length > 0 && item.category[0] !== 8
-      ),
-    ]
+    games.value = [...data]
     filteredGame.value = games.value
-    filterGames(9)
+    filterGames(17)
   }
 
   const filterGames = (categoryPosition) => {

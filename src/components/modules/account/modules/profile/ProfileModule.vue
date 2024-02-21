@@ -1,11 +1,12 @@
 <script setup>
 import { useSessionStore } from '@/store/session/sessionStore.js'
-import { onMounted } from 'vue'
-
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
+import { useStateStore } from '@/store/stateStore.js'
 
+const stateStore = useStateStore()
 const sessionStore = useSessionStore()
-
+const onEditProfile = () =>
+  (stateStore.globalPopupsModules.profileEdit.visibility = true)
 </script>
 
 <template>
@@ -32,13 +33,9 @@ const sessionStore = useSessionStore()
           }}
         </p>
       </div>
-      <!--      <div class="info-item">-->
-      <!--        <h4>Ввести промокод:</h4>-->
-      <!--        <input type="text" placeholder="Прмокод" v-model="promocode" />-->
-      <!--        <BaseButton color="primary" outline @click="onSendPromocode"-->
-      <!--          >Ввести промокод</BaseButton-->
-      <!--        >-->
-      <!--      </div>-->
+      <BaseButton class="btn-edit" @click="onEditProfile">
+        <p>Редактировать</p>
+      </BaseButton>
     </div>
   </div>
 </template>
