@@ -9,12 +9,13 @@ import { useStateStore } from '@/store/stateStore.js'
 const emits = defineEmits(['close'])
 const sessionStore = useSessionStore()
 const stateSession = useStateStore()
+console.log(sessionStore.session.profile)
 const formUpdate = ref({
-  first_name: sessionStore.profile?.first_name,
-  last_name: sessionStore.profile?.last_name,
-  birthday: sessionStore.profile?.birthday,
-  phone: sessionStore.profile?.phone,
-  address: sessionStore.profile?.address,
+  first_name: sessionStore.session.profile?.first_name,
+  last_name: sessionStore.session.profile?.last_name,
+  birthday: sessionStore.session.profile?.birthday,
+  phone: sessionStore.session.profile?.phone,
+  address: sessionStore.session.profile?.address,
 })
 
 const onSendForm = async () => {
