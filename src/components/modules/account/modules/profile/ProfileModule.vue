@@ -33,6 +33,35 @@ const onEditProfile = () =>
           }}
         </p>
       </div>
+      <div class="info-item">
+        <h4>Имя, Фамилия</h4>
+        <p>
+          {{
+            sessionStore.profile?.first_name || 'Имя'
+          }}
+          {{
+            sessionStore.profile?.last_name || 'Фамилия'
+          }}
+        </p>
+      </div>
+      <div class="info-item">
+        <h4>Дата рождения</h4>
+        <p>
+          {{
+            new Date(
+              sessionStore.session.profile?.birthday
+            ).toLocaleDateString() || '00.00.0000'
+          }}
+        </p>
+      </div>
+      <div class="info-item">
+        <h4>Телефон</h4>
+        <p>
+          {{
+           sessionStore.profile?.phone || 'Не установлен'
+          }}
+        </p>
+      </div>
       <BaseButton class="btn-edit" @click="onEditProfile">
         <p>Редактировать</p>
       </BaseButton>
