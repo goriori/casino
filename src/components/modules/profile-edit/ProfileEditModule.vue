@@ -2,7 +2,26 @@
 import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
 import BaseInput from '@/components/ui/inputs/base/BaseInput.vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
+import { ref } from 'vue'
+import { useSessionStore } from '@/store/session/sessionStore.js'
+import { useStateStore } from '@/store/stateStore.js'
+
 const emits = defineEmits(['close'])
+const sessionStore = useSessionStore()
+const stateSession = useStateStore()
+const formUpdate = ref({
+  first_name: sessionStore.profile?.first_name,
+  last_name: sessionStore.profile?.last_name,
+  birthday: sessionStore.profile?.birthday,
+  phone: sessionStore.profile?.phone,
+  address: sessionStore.profile?.address,
+})
+
+const onSendForm = async () => {
+  await sessionStore.updateInfoAccount(formUpdate).catch(() => {
+    stateSession.globalPopupMessages.errorServer = true
+  })
+}
 </script>
 
 <template>
@@ -13,12 +32,41 @@ const emits = defineEmits(['close'])
     <div class="profile_edit-form form">
       <h2>Реадктирование информации</h2>
       <div class="form-field">
-        <BaseInput placeholder="Имя" />
+        <BaseInput
+          placeholder="Имя"
+          type="text"
+          v-model="formUpdate.first_name"
+        />
       </div>
       <div class="form-field">
-        <BaseInput placeholder="Фамилия" />
+        <BaseInput
+          placeholder="Фамилия"
+          type="text"
+          v-model="formUpdate.last_name"
+        />
       </div>
-      <BaseButton color="primary" id="btn-edit">
+      <div class="form-field">
+        <BaseInput
+          placeholder="Дата рождения"
+          type="date"
+          v-model="formUpdate.birthday"
+        />
+      </div>
+      <div class="form-field">
+        <BaseInput
+          placeholder="Телефон"
+          type="tel"
+          v-model="formUpdate.phone"
+        />
+      </div>
+      <div class="form-field">
+        <BaseInput
+          placeholder="Аддресс"
+          type="text"
+          v-model="formUpdate.address"
+        />
+      </div>
+      <BaseButton color="primary" id="btn-edit" @click="onSendForm">
         <p>Сохранить</p>
       </BaseButton>
     </div>
@@ -55,7 +103,7 @@ const emits = defineEmits(['close'])
       text-align: center;
       color: #fff;
       line-height: 120%;
-      margin:0 0 10px 0;
+      margin: 0 0 10px 0;
     }
   }
 }

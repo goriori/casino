@@ -9,7 +9,12 @@
   background: #1E1E1E;
   border-radius: 0 0 36px 36px;
   z-index: 10;
+  min-height: 140px;
 
+    @media (max-width: $md5 + px) {
+      min-height: 80px;
+      padding: 11px 26px;
+    }
   &-burger {
     &-icons {
       display: none;
@@ -21,12 +26,13 @@
 
     &-menu {
       position: absolute;
-      width:100vw;
+      width: 100vw;
       height: 100vh;
       background: #262626;
-      left:0;
-      top:0;
+      left: 0;
+      top: 0;
       z-index: 10;
+
       &-item {
         display: flex;
         gap: 10px;
@@ -35,8 +41,15 @@
   }
 
   &-logo {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 100%;
+    display: flex;
+    align-items: center;
     img {
       @media (max-width: $md4 + px) {
+        top: 11px;
         max-width: 100px;
         max-height: 54px;
       }

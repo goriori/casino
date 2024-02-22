@@ -9,14 +9,14 @@ export function useMethods(
   setSuccessWithdrawal,
   validForm
 ) {
+  const paymentStore = usePaymentStore()
+  const sessionStore = useSessionStore()
   const onSendWithdrawal = async () => {
-    const paymentStore = usePaymentStore()
-    const sessionStore = useSessionStore()
     validForm()
       .then(async (result) => {
         rebuildForm()
-        await paymentStore.sendWithdrawal(withdrawalForm.value)
-        await sessionStore.getInfoSession()
+        if (choiceOut.value.bankCard) await conclusionBank()
+        else if (choiceOut.value.crypto) await conclusionCrypto()
         setSuccessWithdrawal()
       })
       .then(clearForm)
@@ -24,6 +24,20 @@ export function useMethods(
         if (e === false) setErrorValidWithdrawal()
         else setErrorWithdrawal()
       })
+  }
+
+  const conclusionBank = async () => {
+    await paymentStore.sendWithdrawal(withdrawalForm.value)
+    await sessionStore.getInfoSession()
+  }
+  const conclusionCrypto = async () => {
+    await paymentStore.sendWithdrawal({
+      sum: withdrawalForm.value.sum,
+      props: withdrawalForm.value.cryptoWallet,
+      type: 'crypto',
+      date: withdrawalForm.value.date,
+      user_id: withdrawalForm.value.user_id,
+    })
   }
   const choicePay = (choiceValue) => {
     const valuesChoice = Object.keys(choiceOut.value)
