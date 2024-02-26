@@ -19,9 +19,15 @@ const formUpdate = ref({
 })
 
 const onSendForm = async () => {
-  await sessionStore.updateInfoAccount(formUpdate).catch(() => {
-    stateSession.globalPopupMessages.errorServer = true
-  })
+  await sessionStore
+    .updateInfoAccount(formUpdate.value)
+    .catch(() => {
+      stateSession.globalPopupMessages.errorServer = true
+    })
+    .finally(async () => {
+      await sessionStore.getInfoSession()
+      stateSession.globalPopupsModules.profileEdit.visibility = false
+    })
 }
 </script>
 

@@ -52,7 +52,7 @@ export default class AccountService {
           Authorization: `Bearer ${tokenAuth}`,
         },
         validateStatus: validTokenExpired,
-        method: 'PATH',
+        method: 'POST',
         data: { ...formUpdate },
       })
       return response.data

@@ -37,10 +37,10 @@ const onEditProfile = () =>
         <h4>Имя, Фамилия</h4>
         <p>
           {{
-            sessionStore.profile?.first_name || 'Имя'
+            sessionStore.session.profile?.first_name || 'Имя'
           }}
           {{
-            sessionStore.profile?.last_name || 'Фамилия'
+            sessionStore.session.profile?.last_name || 'Фамилия'
           }}
         </p>
       </div>
@@ -58,7 +58,7 @@ const onEditProfile = () =>
         <h4>Телефон</h4>
         <p>
           {{
-           sessionStore.profile?.phone || 'Не установлен'
+           sessionStore.session.profile?.phone || 'Не установлен'
           }}
         </p>
       </div>
