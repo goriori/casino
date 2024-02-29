@@ -78,6 +78,7 @@ onMounted(() => {
       display: flex;
       justify-content: space-between;
       align-items: center;
+
       .title {
         display: flex;
         align-items: center;
@@ -103,6 +104,10 @@ onMounted(() => {
       justify-content: center;
       flex: 1 1 auto;
       gap: 48px;
+
+      div:nth-child(3) {
+        flex: 1 0 424px;
+      }
 
       @media (max-width: 1500px) {
         gap: 24px;

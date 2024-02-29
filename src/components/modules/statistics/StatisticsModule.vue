@@ -4,6 +4,13 @@ import {
   statistics,
 } from '@/components/modules/statistics/StatisticsModule.options.js'
 import BaseSlider from '@/components/ui/sliders/base/BaseSlider.vue'
+import { useSettingsStore } from '@/store/settings/settingStore.js'
+import { onMounted } from 'vue'
+
+const settingStore = useSettingsStore()
+onMounted(() => {
+  Promise.all([settingStore.getStatistics()])
+})
 </script>
 
 <template>

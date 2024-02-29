@@ -12,6 +12,7 @@
     padding: 18px 48px;
     display: flex;
     flex-direction: column;
+    flex: 1 0 424px;
     gap: 36px;
     background: #2C2C2C;
     border-radius: 26px;
@@ -62,24 +63,13 @@
     gap: 26px;
     text-align: center;
     line-height: 145%;
-
-    input {
-      width: 100%;
-      font-size: 14px;
-      padding: 10px;
-      border-radius: 6px 0 0 6px;
-      border: 1px solid #D5A748;
-    }
-
     @media (max-width: $md2 + px) {
       gap: 24px;
     }
-
     h4 {
       color: #bbb;
       font-weight: 500;
     }
-
     p {
       cursor: pointer;
       color: #D5A748;

@@ -20,4 +20,22 @@ export default class SettingService {
       throw e
     }
   }
+
+  static async getStatistics() {
+    try {
+      const tokenAuth = apiConfig.token || sessionStorage.getItem('token')
+      const response = await axiosInstance({
+        url: '/statistics' + queryString,
+        headers: {
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          // Authorization: `Bearer ${tokenAuth}`,
+        },
+        method: 'GET',
+      })
+      return response.data
+    } catch (e) {
+      throw e
+    }
+  }
 }
