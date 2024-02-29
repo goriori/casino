@@ -14,6 +14,7 @@ const settingStore = useSettingsStore()
 const sessionStore = useSessionStore()
 const gameStore = useGameStore()
 const providerStore = useProviderStore()
+
 </script>
 
 <template>
