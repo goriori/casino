@@ -6,7 +6,7 @@ import RegistrationModule from '@/components/modules/registration/RegistrationMo
 <template>
   <PopupBase>
     <template #window>
-      <RegistrationModule />
+      <RegistrationModule isPopup/>
     </template>
   </PopupBase>
 </template>

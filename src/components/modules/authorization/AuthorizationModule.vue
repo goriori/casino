@@ -4,7 +4,8 @@ import {
   onChangeHiddenPassword,
   onAuthorization,
   onAuthTelegram,
-  onRecoveryPassword, onRegistration
+  onRecoveryPassword,
+  onRegistration,
 } from '@/components/modules/authorization/AuthorizationModule.events.js'
 import {
   pswrdHidden,
@@ -16,12 +17,26 @@ import EmailIcon from '@/components/ui/icons/authorization/EmailIcon.vue'
 import HiddenIcon from '@/components/ui/icons/authorization/HiddenIcon.vue'
 import TelegramIcon from '@/components/ui/icons/authorization/TelegramIcon.vue'
 import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue'
+import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
+import { useStateStore } from '@/store/stateStore.js'
 
+const props = defineProps({
+  isPopup: {
+    type: Boolean,
+    default: false,
+  },
+})
 const router = useRouter()
+const stateStore = useStateStore()
 </script>
 
 <template>
   <div class="authorization-module">
+    <div class="authorization-head" v-if="isPopup">
+      <CloseIcon
+        @click="stateStore.globalPopupsModules.authorization.visibility = false"
+      />
+    </div>
     <div class="authorization-info">
       <h1>Вход</h1>
       <p>Введите свои учетные данные для доступа к вашему профилю</p>
@@ -31,7 +46,7 @@ const router = useRouter()
       <div class="form-field">
         <div class="form-field-input">
           <input
-            class="auth-field "
+            class="auth-field"
             type="text"
             id="auth-login"
             placeholder="Ввести логин"

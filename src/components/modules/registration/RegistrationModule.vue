@@ -4,7 +4,8 @@ import {
   onChangeHiddenPassword,
   onChangeHiddenPasswordConfirm,
   onRegistration,
-  onRegistrationTelegram, openAuthorization
+  onRegistrationTelegram,
+  openAuthorization,
 } from '@/components/modules/registration/RegistrationModule.events.js'
 import {
   pswrdHidden,
@@ -17,12 +18,26 @@ import EmailIcon from '@/components/ui/icons/authorization/EmailIcon.vue'
 import HiddenIcon from '@/components/ui/icons/authorization/HiddenIcon.vue'
 import TelegramIcon from '@/components/ui/icons/authorization/TelegramIcon.vue'
 import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue'
+import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
+import { useStateStore } from '@/store/stateStore.js'
 
+const props = defineProps({
+  isPopup: {
+    type: Boolean,
+    default: false,
+  },
+})
 const router = useRouter()
+const stateStore = useStateStore()
 </script>
 
 <template>
   <div class="authorization-module">
+    <div class="authorization-head" v-if="isPopup">
+      <CloseIcon
+        @click="stateStore.globalPopupsModules.registration.visibility = false"
+      />
+    </div>
     <div class="authorization-info">
       <h1>Регистрация</h1>
       <p>

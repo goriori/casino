@@ -20,13 +20,16 @@
 }
 
 .authorization {
+  &-head {
+    display: flex;
+    justify-content: flex-end;
+  }
   &-module {
     color: #fff;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     gap: 32px;
     border-radius: 26px;
     background: #2C2C2C;

@@ -6,7 +6,7 @@ import AuthorizationModule from '@/components/modules/authorization/Authorizatio
 <template>
   <PopupBase>
     <template #window>
-      <AuthorizationModule />
+      <AuthorizationModule isPopup />
     </template>
   </PopupBase>
 </template>

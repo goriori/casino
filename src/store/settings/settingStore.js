@@ -14,6 +14,7 @@ export const useSettingsStore = defineStore('settingsStore', () => {
     app.value.statistics = { ...response }
   }
   return {
+    app,
     settings,
     getSettings,
     getStatistics

@@ -5,9 +5,17 @@ import {
 } from '@/components/modules/statistics/StatisticsModule.options.js'
 import BaseSlider from '@/components/ui/sliders/base/BaseSlider.vue'
 import { useSettingsStore } from '@/store/settings/settingStore.js'
-import { onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
+import PulseSpiner from '@/components/ui/spiners/Pulse/PulseSpiner.vue'
+import ComposeSpiner from '@/components/ui/spiners/Compose/ComposeSpiner.vue'
 
 const settingStore = useSettingsStore()
+
+const load = computed(() => {
+  if (settingStore.app.statistics) return false
+  else return true
+})
+
 onMounted(() => {
   Promise.all([settingStore.getStatistics()])
 })
@@ -29,7 +37,9 @@ onMounted(() => {
         </div>
         <div class="list-content">
           <div class="list-title">{{ statistic.title }}</div>
-          <div class="list-value">{{ statistic.value }}</div>
+          <div class="list-value" v-if="!load">
+            {{ settingStore.app.statistics[statistic.keyValue] }}
+          </div>
         </div>
       </div>
     </div>

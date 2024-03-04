@@ -1,30 +1,30 @@
 import { ref } from 'vue'
-import { randomAllPrise, randomPeoples, randomTopWin } from '@/components/modules/statistics/StatisticsModule.events.js'
+
 
 export const statistics = ref([
   {
     id: 1,
     image: '/images/statistics/1.png',
     title: 'Топ выйгрыш за сутки',
-    value: randomTopWin(),
+    keyValue: 'top',
   },
   {
     id: 2,
     image: '/images/statistics/2.png',
     title: 'Всего разыгрывается',
-    value: randomAllPrise(),
+    keyValue: 'total',
   },
   {
     id: 3,
     image: '/images/statistics/3.png',
     title: 'Игроков онлайн',
-    value: randomPeoples(),
+    keyValue: 'online',
   },
   {
     id: 4,
     image: '/images/statistics/4.png',
     title: 'Среднее время вылаты',
-    value: '5 мин',
+    keyValue: 'pay',
   },
 ])
 

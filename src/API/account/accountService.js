@@ -1,20 +1,17 @@
 import { axiosInstance, validTokenExpired } from '@/utils/axios/axios'
 import apiConfig from '@/API/api.config.js'
 
-const queryString = '?shop_id=1&key=pLaHFj1OsSNDNclDjRN03OHHq'
 export default class AccountService {
   static async getInfoAccount() {
     try {
-      const tokenAuth = apiConfig.token || sessionStorage.getItem('token')
+      apiConfig.getToken()
       const response = await axiosInstance({
-        url: '/me' + queryString,
+        url: '/me',
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          Authorization: `Bearer ${tokenAuth}`,
+          Authorization: `Bearer ${apiConfig.token}`
         },
         validateStatus: validTokenExpired,
-        method: 'GET',
+        method: 'GET'
       })
       return response.data
     } catch (e) {
@@ -24,16 +21,14 @@ export default class AccountService {
 
   static async getInfoStatusPay() {
     try {
-      const tokenAuth = apiConfig.token || sessionStorage.getItem('token')
+      apiConfig.getToken()
       const response = await axiosInstance({
-        url: '/stats/pay' + queryString,
+        url: '/stats/pay',
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          Authorization: `Bearer ${tokenAuth}`,
+          Authorization: `Bearer ${apiConfig.token}`
         },
         validateStatus: validTokenExpired,
-        method: 'GET',
+        method: 'GET'
       })
       return response.data
     } catch (e) {
@@ -43,17 +38,15 @@ export default class AccountService {
 
   static async updateInfoAccount(formUpdate) {
     try {
-      const tokenAuth = apiConfig.token || sessionStorage.getItem('token')
+      apiConfig.getToken()
       const response = await axiosInstance({
-        url: '/me/details' + queryString,
+        url: '/me/details',
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          Authorization: `Bearer ${tokenAuth}`,
+          Authorization: `Bearer ${apiConfig.token}`
         },
         validateStatus: validTokenExpired,
         method: 'POST',
-        data: { ...formUpdate },
+        data: { ...formUpdate }
       })
       return response.data
     } catch (e) {
