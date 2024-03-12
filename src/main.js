@@ -4,6 +4,7 @@ import router from './router'
 import App from './App.vue'
 import VClickOutside from '@/directives/vClickOutside'
 import vRipple from '@/directives/vRipple'
+import VueSplide from '@splidejs/vue-splide';
 import '@/assets/scss/main.scss'
 
 
@@ -12,4 +13,5 @@ const app = createApp(App)
   .directive('outside', VClickOutside)
   .use(createPinia())
   .use(router)
+  .use(VueSplide)
   .mount('#app')

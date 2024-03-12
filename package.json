@@ -11,6 +11,8 @@
     "dev:test-open": "cypress open"
   },
   "dependencies": {
+    "@splidejs/splide": "^4.1.4",
+    "@splidejs/vue-splide": "^0.6.12",
     "axios": "^1.5.0",
     "date-fns": "^2.30.0",
     "fs": "^0.0.1-security",

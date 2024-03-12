@@ -6,8 +6,6 @@ import {
 import BaseSlider from '@/components/ui/sliders/base/BaseSlider.vue'
 import { useSettingsStore } from '@/store/settings/settingStore.js'
 import { computed, onMounted, ref } from 'vue'
-import PulseSpiner from '@/components/ui/spiners/Pulse/PulseSpiner.vue'
-import ComposeSpiner from '@/components/ui/spiners/Compose/ComposeSpiner.vue'
 
 const settingStore = useSettingsStore()
 
@@ -49,10 +47,11 @@ onMounted(() => {
 <style scoped lang="scss">
 @import '@/assets/scss/variables';
 
+
+
 .statistics_module {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   gap: 32px;
 
   @media (max-width: $md1 + px) {
@@ -72,8 +71,18 @@ onMounted(() => {
   }
 
   &-slider {
-    width: 75%;
     max-height: 600px;
+    ::v-deep(.splide__track ) {
+      height: 100%;
+    }
+
+    ::v-deep(.splide) {
+      height: 100%;
+    }
+
+    ::v-deep(.slider) {
+      height: 100%;
+    }
     @media (max-width: $md1 + px) {
       width: 100%;
     }

@@ -1,7 +1,6 @@
 <script setup>
-import { register } from 'swiper/element/bundle'
-
-register()
+import { Splide, SplideSlide } from '@splidejs/vue-splide'
+import '@splidejs/vue-splide/css'
 const props = defineProps({
   images: {
     type: Array,
@@ -24,28 +23,19 @@ const props = defineProps({
 
 <template>
   <div class="slider">
-    <swiper-container
-      :slides-per-view="1"
-      :centered-slides="true"
-      :pagination="pagination"
-      :navigation="navigation"
-      :breakpoints="{ ...breakpoints }"
-    >
-      <swiper-slide v-for="image in images" :key="image">
+    <Splide>
+      <SplideSlide v-for="image in images" :key="image">
         <img :src="image.path" alt="" :class="['slider']" />
-      </swiper-slide>
-    </swiper-container>
+      </SplideSlide>
+    </Splide>
   </div>
-
 </template>
 
 <style scoped lang="scss">
+
 img {
   border-radius: 8px;
   width: 100%;
-  height: 100%;
   object-fit: cover;
 }
-
-
 </style>

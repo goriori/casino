@@ -7,7 +7,8 @@ import ArrowHowStartIcon from '@/components/ui/icons/other/ArrowHowStartIcon.vue
 import { startItems } from '@/pages/main/Main.options.js'
 import AboutInfoIcon from '@/components/ui/icons/other/AboutInfoIcon.vue'
 import StatisticsModule from '@/components/modules/statistics/StatisticsModule.vue'
-
+import CaseCard from '@/components/ui/cards/case/CaseCard.vue'
+import CasesModule from '@/components/modules/cases/CasesModule.vue'
 
 const PopularGameModule = defineAsyncComponent(() =>
   import('@/components/modules/popular/PopularGameModule.vue')
@@ -22,6 +23,7 @@ onMounted(async () => {
     <div class="page-container container">
       <div class="page-modules">
         <StatisticsModule />
+        <CasesModule />
         <div class="modules-popular">
           <PopularGameModule />
         </div>
@@ -76,5 +78,9 @@ onMounted(async () => {
 </template>
 
 <style scoped lang="scss">
+.keys_card {
+  max-width: 550px;
+}
+
 @import 'Main';
 </style>
