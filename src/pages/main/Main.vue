@@ -1,21 +1,17 @@
 <script setup>
-import { defineAsyncComponent, onMounted } from 'vue'
-import { fetchEntityData } from '@/pages/main/Main.events.js'
+import { defineAsyncComponent } from 'vue'
 import Header from '@/components/globals/header/Header.vue'
 import Footer from '@/components/globals/footer/Footer.vue'
 import ArrowHowStartIcon from '@/components/ui/icons/other/ArrowHowStartIcon.vue'
 import { startItems } from '@/pages/main/Main.options.js'
 import AboutInfoIcon from '@/components/ui/icons/other/AboutInfoIcon.vue'
 import StatisticsModule from '@/components/modules/statistics/StatisticsModule.vue'
-import CaseCard from '@/components/ui/cards/case/CaseCard.vue'
 import CasesModule from '@/components/modules/cases/CasesModule.vue'
 
 const PopularGameModule = defineAsyncComponent(() =>
   import('@/components/modules/popular/PopularGameModule.vue')
 )
-onMounted(async () => {
-  await fetchEntityData()
-})
+
 </script>
 <template>
   <div class="page">
@@ -58,14 +54,13 @@ onMounted(async () => {
             <p>О нашем казино</p>
           </div>
           <div class="about-description">
-            Перед вами полноценное Kaзинo с качественным наполнением из
-            современных игровых автоматов. Пройдя регистрацию, вы получите
-            доступ к лицензированным автоматам, и возможность заработать
-            реальные деньги, которые можно вывести любым удобным способом,
-            включая платежные системы Европы и стран СНГ. 95 % игровых автоматов
-            доступны для загрузки с планшета или телефона. Сервис адаптирован
-            для большинства смартфонов и сохраняет функционал десктопного
-            издания.
+            Надёжная площадка для выгодной и безопасной игры в автоматы.
+            Посетителям клуба предложен широкий ассортимент азартных игр. В
+            коллекцию входят традиционные слоты с барабанами и линиями выплат, а
+            также известные настольные развлечения. Зарегистрированные
+            пользователи могут получать бонусы, принимать участие в турнирах,
+            лотереях и различных акциях. Личная информация клиентов хранится в
+            строгой конфиденциальности.
           </div>
         </div>
         <div class="about-image">

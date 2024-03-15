@@ -47,7 +47,7 @@ const props = defineProps({
     gap: 25px;
     background: #2c2c2c;
     padding: 36px 18px;
-    border-radius: 8px;
+    border-radius: 36px;
 
     &-head {
       display: flex;
@@ -56,13 +56,14 @@ const props = defineProps({
     }
 
     &-image {
-      max-width: 200px;
+      max-width: 160px;
       max-height: 200px;
       margin: 0 auto;
 
       img {
         width: 100%;
         height: 100%;
+        object-fit: contain;
       }
     }
 

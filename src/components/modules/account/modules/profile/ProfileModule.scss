@@ -47,7 +47,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 36px;
+      gap: 30px;
 
       @media (max-width: $md2 + px) {
         gap: 24px;
@@ -60,12 +60,9 @@
   &-item {
     display: flex;
     flex-direction: column;
-    gap: 26px;
+    gap: 8px;
     text-align: center;
     line-height: 145%;
-    @media (max-width: $md2 + px) {
-      gap: 24px;
-    }
     h4 {
       color: #bbb;
       font-weight: 500;

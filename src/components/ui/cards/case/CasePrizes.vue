@@ -1,55 +1,18 @@
 <script setup>
 import MoneyPrizeIcon from '@/components/ui/icons/prizes/MoneyPrizeIcon.vue'
 import DropdownIcon from '@/components/ui/icons/other/DropdownIcon.vue'
-import { ref } from 'vue'
-import ExpPrizeIcon from '@/components/ui/icons/prizes/ExpPrizeIcon.vue'
-import RoulettePrizeIcon from '@/components/ui/icons/prizes/RoulettePrizeIcon.vue'
 
-const prizes = ref([
-  {
-    id: 'awddwapodwposp@o2qe12ek0kdawd',
-    title: 'Леньги 4500Р',
-    content: [
-      'Деньги 4500 Р будут зачислены на ваш баланс.\n' +
-        'Отыгрыш не требуется.',
-    ],
-    icon: MoneyPrizeIcon,
-    showContent: false,
-    get haveContent() {
-      return this.content.length > 0
-    },
+const props = defineProps({
+  prizes: {
+    type: Array,
+    default: [],
   },
-  {
-    id: 'awddwapodwposp@s',
-    title: 'Опыт 300',
-    content: ['Заработайте 300 опыта. Опыт повышает ваш уровень лояльности.'],
-    icon: ExpPrizeIcon,
-    showContent: false,
-    get haveContent() {
-      return this.content.length > 0
-    },
-  },
-  {
-    id: 'awddwapodwposp@o2qess12ek0kdawd',
-    title: 'Опыт 300',
-    content: ['Заработайте 300 опыта. Опыт повышает ваш уровень лояльности.'],
-    icon: ExpPrizeIcon,
-    showContent: false,
-    get haveContent() {
-      return this.content.length > 0
-    },
-  },
-  {
-    id: 'awd123dwapodwposp@o2qe1xc1232ek0kdawd',
-    title: '2 Колесо фортуны',
-    content: [],
-    icon: RoulettePrizeIcon,
-    showContent: false,
-    get haveContent() {
-      return this.content.length > 0
-    },
-  },
-])
+})
+const emits = defineEmits(['showPrizeDescription'])
+console.log(props.prizes)
+const showPrizeDescription = (prize) => {
+  emits('showPrizeDescription', prize.id)
+}
 </script>
 
 <template>
@@ -57,10 +20,7 @@ const prizes = ref([
     <h2>Призы</h2>
     <div class="card_case-content">
       <div class="card_case-prize" v-for="prize in prizes" :key="prize.id">
-        <div
-          class="card_case-prize-title"
-          @click="prize.showContent = !prize.showContent"
-        >
+        <div class="card_case-prize-title" @click="showPrizeDescription(prize)">
           <component :is="prize.icon" />
           <p>{{ prize.title }}</p>
           <DropdownIcon v-if="prize.haveContent" />
@@ -68,11 +28,9 @@ const prizes = ref([
         <Transition name="fade">
           <div
             class="card_case-prize-description"
-            v-if="prize.content.length > 0 && prize.showContent"
+            v-if="prize?.description && prize.showContent"
           >
-            <p v-for="(content, index) in prize.content" :key="index">
-              {{ content }}
-            </p>
+            {{ prize.description }}
           </div>
         </Transition>
       </div>

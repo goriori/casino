@@ -29,4 +29,19 @@ export default class SettingService {
       throw e
     }
   }
+  static async getStatuses() {
+    try {
+      apiConfig.getToken()
+      const response = await axiosInstance({
+        url: '/statuses',
+        headers: {
+          Authorization: `Bearer ${apiConfig.token}`,
+        },
+        method: 'GET',
+      })
+      return response.data
+    } catch (e) {
+      throw e
+    }
+  }
 }

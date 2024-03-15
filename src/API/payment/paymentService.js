@@ -1,6 +1,5 @@
 import { axiosInstance, validTokenExpired } from '@/utils/axios/axios'
 import apiConfig from '@/API/api.config.js'
-
 export default class PaymentService {
   static async setReplenishment(replObject) {
     try {

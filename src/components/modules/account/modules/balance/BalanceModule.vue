@@ -68,6 +68,7 @@ const sessionStore = useSessionStore()
     border-radius: 26px;
     font-size: 24px;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+    flex: 0 0 220px;
     @media (max-width: 1500px) {
       padding: 18px;
     }

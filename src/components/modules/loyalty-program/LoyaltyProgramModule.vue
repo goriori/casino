@@ -2,24 +2,16 @@
 import PircentIcon from '@/components/ui/icons/other/PircentIcon.vue'
 import StatusCard from '@/components/ui/cards/status/StatusCard.vue'
 import PromoPermissionCard from '@/components/ui/cards/promo-permission/PromoPermissionCard.vue'
+import BonusIcon from '@/components/ui/icons/other/BonusIcon.vue'
 </script>
 
 <template>
   <div class="loyalty__program">
-    <div class="loyalty__program-title">
-      <div class="program-title">
-        <PircentIcon />
-        <p>Программа лояльности</p>
-      </div>
-      <div class="program-description">
-        <p>Играйте чаще и получайте бонусные баллы и другие призы</p>
-      </div>
-    </div>
-    <div class="loyalty__program-status">
-      <StatusCard />
-    </div>
     <div class="loyalty__program-promo_permission">
-      <p>Вам доступно:</p>
+      <h2>
+        <BonusIcon />
+        Вам доступно:
+      </h2>
       <div class="loyalty__program-promo_permission-list">
         <PromoPermissionCard v-for="card in 5" :key="card" />
       </div>
@@ -29,6 +21,7 @@ import PromoPermissionCard from '@/components/ui/cards/promo-permission/PromoPer
 
 <style scoped lang="scss">
 @import '@/assets/scss/variables';
+
 .loyalty__program {
   display: flex;
   flex-direction: column;
@@ -48,10 +41,11 @@ import PromoPermissionCard from '@/components/ui/cards/promo-permission/PromoPer
     display: flex;
     flex-direction: column;
     gap: 40px;
-    p {
-      font-size: 24px;
-      font-weight: 400;
-      color: #bbbbbb;
+
+    h2 {
+      display: flex;
+      align-items: center;
+      gap: 15px;
     }
 
     &-list {

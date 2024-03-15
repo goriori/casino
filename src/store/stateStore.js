@@ -20,12 +20,16 @@ export const useStateStore = defineStore('stateStore', () => {
     profileEdit: {
       visibility: false,
     },
+    statusesList: {
+      visibility: false,
+    },
   })
   const globalPopupMessages = ref({
     errorServer: false,
     errorValid: false,
     success: false,
     application: false,
+    exchangeCoin: false,
   })
 
   return {

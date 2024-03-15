@@ -26,13 +26,10 @@
       gap: 30px;
 
     }
-
-
-
     &-module {
       display: flex;
       flex-direction: column;
-      gap: 36px;
+      gap: 40px;
 
       @media (max-width: $md2 + px) {
         gap: 24px;

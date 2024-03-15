@@ -54,7 +54,7 @@ onMounted(() => {
   justify-content: space-between;
   gap: 32px;
 
-  @media (max-width: $md1 + px) {
+  @media (max-width: $md2 + px) {
     flex-direction: column;
   }
 

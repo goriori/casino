@@ -1,26 +1,60 @@
 <script setup>
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import DropdownIcon from '@/components/ui/icons/other/DropdownIcon.vue'
-import { computed, ref } from 'vue'
+import { computed, ref, shallowRef } from 'vue'
 import CasePrizes from '@/components/ui/cards/case/CasePrizes.vue'
+import RoulettePrizeIcon from '@/components/ui/icons/prizes/RoulettePrizeIcon.vue'
+import MoneyPrizeIcon from '@/components/ui/icons/prizes/MoneyPrizeIcon.vue'
+import ExpPrizeIcon from '@/components/ui/icons/prizes/ExpPrizeIcon.vue'
 
 const props = defineProps({
-  keysImage: {
+  caseId: {
+    type: Number,
+    default: null,
+  },
+  caseImage: {
     type: String,
     default: '/images/cases/defaultCase.svg',
   },
-  keysTitle: {
+  caseTitle: {
     type: String,
     default: 'Ультра кейс',
   },
-  keysPrice: {
+  casePrice: {
     type: [Number, String],
     default: 7000,
   },
+  casePrizes: {
+    type: Array,
+    default: [],
+  },
+  openHandler: {
+    type: Function,
+    default: () => {},
+  },
 })
-
+const buildPrizes = (() => {
+  return props.casePrizes.map((item) => ({
+    ...item,
+    icon: (() => {
+      if (item.type === 'roulette') return shallowRef(RoulettePrizeIcon)
+      else if (item.type === 'balance') return shallowRef(MoneyPrizeIcon)
+      else return shallowRef(ExpPrizeIcon)
+    })(),
+    showContent: false,
+    get haveContent() {
+      return item.description !== null
+    },
+  }))
+})()
 const showPrize = ref(false)
 const sizeChip = computed(() => (showPrize.value ? '100%' : '80%'))
+const prizes = ref([...buildPrizes])
+
+const showPrizeDescription = (id) => {
+  const stateShow = prizes.value.find((prize) => prize.id === id).showContent
+  prizes.value.find((prize) => prize.id === id).showContent = !stateShow
+}
 </script>
 
 <template>
@@ -29,28 +63,34 @@ const sizeChip = computed(() => (showPrize.value ? '100%' : '80%'))
       <div
         :class="['card_case-image', { 'card_case-image-active': showPrize }]"
       >
-        <img :src="keysImage" alt="keys_image" />
+        <img :src="caseImage" alt="keys_image" />
         <div class="card_case-show" @click="showPrize = !showPrize">
           <p>{{ showPrize ? 'Скрыть призы' : 'Призы' }}</p>
           <DropdownIcon />
         </div>
       </div>
       <div class="card_case-title" v-if="!showPrize">
-        <strong>{{ keysTitle }}</strong>
+        <strong>{{ caseTitle }}</strong>
       </div>
     </div>
 
-    <CasePrizes v-if="showPrize" />
+    <CasePrizes
+      :prizes="prizes"
+      v-if="showPrize"
+      @showPrizeDescription="showPrizeDescription"
+    />
     <div :class="['card_case-right', { 'card_case-right-active': showPrize }]">
       <div class="card_case-title" v-if="showPrize">
-        <strong>{{ keysTitle }}</strong>
+        <strong>{{ caseTitle }}</strong>
       </div>
       <div class="card_case-right">
         <div class="card_case-price">
-          <strong>{{ keysPrice }} Р</strong>
+          <strong>{{ casePrice }} Р</strong>
           <p>Цена ключа</p>
         </div>
-        <BaseButton color="primary" id="open_keys"><p>Открыть</p></BaseButton>
+        <BaseButton color="primary" id="open_keys" @click="openHandler(caseId)">
+          <p>Открыть</p>
+        </BaseButton>
       </div>
     </div>
   </article>
@@ -66,6 +106,7 @@ const sizeChip = computed(() => (showPrize.value ? '100%' : '80%'))
   padding: 20px 40px;
   display: flex;
   justify-content: space-between;
+  gap: 10px;
 
   &-active {
     flex-direction: column;
@@ -82,8 +123,11 @@ const sizeChip = computed(() => (showPrize.value ? '100%' : '80%'))
     max-width: 160px;
     max-height: 140px;
     top: -50px;
-    left: 0%;
+    left: 0;
     transition: all 0.3s ease-in-out;
+    @media (max-width: $md1 + px) {
+      max-width: 110px;
+    }
 
     &-active {
       transform: translate(-50%, 0);
@@ -98,6 +142,18 @@ const sizeChip = computed(() => (showPrize.value ? '100%' : '80%'))
 
   &-title {
     font-size: 32px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 300px;
+    @media (max-width: $md1 + px) {
+      font-size: 22px;
+      max-width: 200px;
+    }
+    @media (max-width: $md2 + px) {
+      font-size: 15px;
+      max-width: 150px;
+    }
   }
 
   &-show {
@@ -124,6 +180,10 @@ const sizeChip = computed(() => (showPrize.value ? '100%' : '80%'))
     gap: 30px;
     text-align: end;
 
+    .card_case-title {
+
+    }
+
     &-active {
       flex-direction: row;
       justify-content: space-between;
@@ -139,6 +199,12 @@ const sizeChip = computed(() => (showPrize.value ? '100%' : '80%'))
     strong {
       font-size: 32px;
       color: $primary;
+      @media (max-width: $md1 + px) {
+        font-size: 22px;
+      }
+      @media (max-width: $md2 + px) {
+        font-size: 15px;
+      }
     }
 
     p {
@@ -149,6 +215,10 @@ const sizeChip = computed(() => (showPrize.value ? '100%' : '80%'))
 }
 
 #open_keys {
+  @media (max-width: $md1 + px) {
+    max-width: 100px;
+  }
+
   p {
     color: #fff;
   }

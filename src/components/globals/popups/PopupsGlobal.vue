@@ -9,6 +9,8 @@ import PopupErrorValid from '@/components/globals/popups/popup-error-valid/Popup
 import { useStateStore } from '@/store/stateStore.js'
 import { defineAsyncComponent } from 'vue'
 import PopupProfileEdit from '@/components/globals/popups/popup-profile-edit/PopupProfileEdit.vue'
+import PopupStatusList from '@/components/globals/popups/popup-status-list/PopupStatusList.vue'
+import PopupExchangeCoins from '@/components/globals/popups/popup-exchange-coins/PopupExchangeCoins.vue'
 
 const stateStore = useStateStore()
 const PopupAuthorization = defineAsyncComponent(() =>
@@ -54,6 +56,12 @@ const PopupRegistration = defineAsyncComponent(() =>
       />
     </Transition>
     <Transition name="slide">
+      <PopupStatusList
+        @close="stateStore.globalPopupsModules.statusesList.visibility = false"
+        v-if="stateStore.globalPopupsModules.statusesList.visibility"
+      />
+    </Transition>
+    <Transition name="slide">
       <PopupErrorServer v-if="stateStore.globalPopupMessages.errorServer" />
     </Transition>
     <Transition name="slide">
@@ -69,6 +77,9 @@ const PopupRegistration = defineAsyncComponent(() =>
       <PopupApplicationProcessing
         v-if="stateStore.globalPopupMessages.application"
       />
+    </Transition>
+    <Transition name="slide">
+      <PopupExchangeCoins v-if="stateStore.globalPopupMessages.exchangeCoin" />
     </Transition>
   </Teleport>
 </template>

@@ -1,11 +1,11 @@
 <script setup>
-import { useSessionStore } from '@/store/session/sessionStore.js'
-import { defineAsyncComponent, onMounted } from 'vue'
+import { defineAsyncComponent } from 'vue'
 import MenuModule from '@/components/modules/account/modules/menu/MenuModule.vue'
 import PersonalAccountIcon from '@/components/ui/icons/account/PersonalAccountIcon.vue'
-import ConclusionModule from '@/components/modules/conclusion/ConclusionModule.vue'
+import ExchangePointsModule from '@/components/modules/exchange-points/ExchangePointsModule.vue'
+import ProfileStatusModule from '@/components/modules/profile-status/ProfileStatusModule.vue'
+import ReferalPromoCodeModule from '@/components/modules/referal-code/ReferalPromoCodeModule.vue'
 
-const sessionStore = useSessionStore()
 
 const ProfileModule = defineAsyncComponent(() =>
   import('@/components/modules/account/modules/profile/ProfileModule.vue')
@@ -19,9 +19,7 @@ const HistoryBalanceModule = defineAsyncComponent(() =>
   )
 )
 
-onMounted(() => {
-  Promise.all([sessionStore.getInfoSession(), sessionStore.getStatusPay()])
-})
+
 </script>
 
 <template>
@@ -42,7 +40,11 @@ onMounted(() => {
         <BalanceModule />
         <HistoryBalanceModule />
       </div>
-      <ConclusionModule />
+      <div class="items-right">
+        <ExchangePointsModule />
+        <ProfileStatusModule />
+        <ReferalPromoCodeModule />
+      </div>
     </div>
     <div class="account-module-mobile-items">
       <MenuModule />
@@ -104,6 +106,7 @@ onMounted(() => {
       justify-content: center;
       flex: 1 1 auto;
       gap: 48px;
+      max-height: 730px;
 
       div:nth-child(3) {
         flex: 1 0 424px;
@@ -137,6 +140,15 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
   gap: 36px;
+  @media (max-width: 1500px) {
+    gap: 24px;
+  }
+}
+
+.items-right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   @media (max-width: 1500px) {
     gap: 24px;
   }

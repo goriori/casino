@@ -15,7 +15,10 @@ const stateStore = useStateStore()
         <div class="window-container">
           <div class="window-content">
             <ErrorIcon />
-            <h3>Произошла ошибка сервера, пожалуйста попробуйте позже</h3>
+            <h3>
+              Произошла ошибка сервера или что - то пошло не так, пожалуйста
+              попробуйте позже
+            </h3>
             <BaseButton
               color="primary"
               outline

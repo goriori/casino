@@ -5,12 +5,7 @@ import BonusCard from '@/components/ui/cards/bonus/BonusCard.vue'
 import { ref } from 'vue'
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
 
-const promocode = ref('')
-const paymentStore = usePaymentStore()
-const onSendPromocode = () => {
-  paymentStore.sendPromocode(promocode.value)
-  promocode.value = ''
-}
+
 </script>
 
 <template>
@@ -20,13 +15,8 @@ const onSendPromocode = () => {
         <BonusIcon />
         <p>Мои бонусы</p>
       </div>
-      <div class="personal__bonuses-promo">
-        <input type="text" placeholder="Введите промокод" v-model="promocode" />
-        <BaseButton color="white" id="send-promo" @click="onSendPromocode">
-          <p>Применить</p>
-        </BaseButton>
-      </div>
     </div>
+
     <div class="personal__bonuses-list">
       <BonusCard v-for="card in 5" :key="card">
         <template #actions>
@@ -65,7 +55,6 @@ const onSendPromocode = () => {
 
   &-title {
     display: flex;
-    justify-content: space-between;
     align-items: flex-start;
     @media (max-width: $md4 + px) {
       flex-direction: column;

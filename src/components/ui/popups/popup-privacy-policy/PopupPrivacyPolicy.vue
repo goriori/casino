@@ -8,260 +8,1033 @@ import { closePrivacyPolicy } from '@/components/globals/footer/Footer.events.js
       <div @click="closePrivacyPolicy" class="popup__content-close">
         <img src="/images/icons/close.svg" alt="" />
       </div>
-      <div class="popup__content-title">Privacy Notice</div>
+      <div class="popup__content-title">Политика конфиденциальности</div>
       <div class="popup__content-text">
         <div class="text">
-          INTRODUCTION<br /><br />
+          <strong>Введение</strong><br /><br />
 
-          JetTon Gaming Platform (hereinafter – the “JetTon”, “We”, “Us” or
-          “Our”), values its Player’s (hereinafter – the “Player” or “You”)
-          privacy and confidentiality.<br />
-          This Privacy Notice sets out the ways we collect and use your personal
-          data when You engage with JetTon and use Our services via the Website
-          https://jetton.games/ and its mirrors (hereinafter – the “Platform”).
-          This Notice together with Terms and Conditions and Cookie Policy is
-          available at Our Platform and contains information on how We process
-          and collect any Personal Data that You provide to Us. By visiting Our
-          Platform, You are accepting and consenting with this Notice. IF YOU DO
-          NOT AGREE WITH THE TERMS OF THIS PRIVACY NOTICE AND DO NOT WISH TO
-          PROVIDE US WITH THE PERSONAL INFORMATION WE REQUIRE, PLEASE DO NOT USE
-          THIS PLATFORM.<br />
-          In this Privacy Notice, You can find an explanation of how You can
-          ensure that Your Personal Data is handled in a responsible manner and
-          in accordance with applicable data protection legislation.<br />
-          This Privacy Notice is applicable to EU citizens Personal Data, all
-          other Players will be treated due to their local laws. The Data
-          Controller for Your Personal Data is: JetTon B.V. Email:
-          info@jetton.games<br />
-          CONTACT DETAILS 1 We have appointed a Data Protection Officer
-          (hereinafter – “DPO”). If You have any questions regarding the
-          processing of Your Personal Data, including any requests for the
-          application of Your legal rights, You can contact Our DPO:
-          info@jetton.games. The time limit for responding to any request is 30
-          (thirty) calendar days.<br />
-          Occasionally it may take us longer than a month if your request is
-          particularly complex or you have made a number of requests. In this
-          case, we will notify you and keep you updated.<br /><br />
+          Настоящая Политика конфиденциальности (далее «Политика») регулирует
+          обработку ваших личных данных (далее также именуемых «данные») при
+          посещении или использовании вами сайта (далее «Сайт») или при
+          обращении к администрации Сайта по указанным контактам.<br /><br />
 
-          TYPE OF PERSONAL DATA WE COLLECT<br />
+          <strong>Информация о нас</strong><br /><br />
 
-          We collect and process the following personal information grouped into
-          the following categories:<br />
-          Identity Data includes first name, maiden name, last name, username or
-          similar identifier, title, date of birth, and customer ID.<br />
-          Contact Data includes residential and billing address, email address
-          and telephone number(s), You username in Telegram.<br />
-          Financial Data includes details of Your sources used to deposit money
-          with Us, as well as crypto currency wallet, payment card or payment
-          account details, including information contained within any bank
-          statements.<br />
-          Transaction Data includes details about any deposits and withdrawals,
-          wagering and other details of games You have played on Our
-          Platform.<br />
-          Technical Data includes internet protocol (IP) address, Your login
-          data, browser type and version, time zone setting and location,
-          language use, browser plug-in types and versions, operating system and
-          platform and other technology on the devices You use to access the
-          Platform.<br />
-          Usage Data includes information about how You use Our Platform and the
-          products and services offered on the Platform, Your username and
-          password (encrypted), information on the games played, login and
-          logout times, duration of Your game play, information on claimed
-          bonuses and promotions and Your responsible gaming and AML
-          classification.<br />
-          Marketing and Communications Data includes Your preferences in
-          receiving marketing material from Us and Our third parties and Your
-          communication preferences.<br />
-          The information collected with the help of cookies. Read more about
-          cookies and for what purpose We use them in Our Сookie Policy.<br />
-          We may also collect additional information about You when You provide
-          such information to Us through Your use of Our services.<br />
-          We do not collect Sensitive Personal Data.<br />
-          COLLECTION OF YOUR PERSONAL DATA<br /><br />
+          spin city находится под управлением компании ICS MANPOWER SOLUTIONS
+          Ltd., зарегистрированной в Республике Кипр; адрес основного места
+          деятельности: Voukourestiou, 25, Neptune House, 1st floor, Flat/Office
+          11 Zakaki, 3045, Limassol, Кипр; регистрационный номер: HE 445968. Все
+          услуги по организации и проведению азартных игр лицензированы
+          компанией TwiceDice B.V. (лицензия 8048/JAZ2021-047), адрес: Fransche
+          Bloemweg 4, Willemstad, Кюрасао; регистрационный номер: 154842,
+          которая является материнской компанией по отношению к ICS MANPOWER
+          SOLUTIONS Ltd.<br /><br />
 
-          We use different methоds to collect Personal Data from and about
-          You:<br />
-          Direct interaction: You provide Us Your Personal Data when contacting
-          directly (for example, when you provide information to register on the
-          Platform, contact customer support through Your user profile, or sign
-          up for a newsletter).<br />
-          Through third parties or publicly available sources: We may obtain
-          Personal Data about you through publicly available records or third
-          parties (for example, through the Platform's technology). Such third
-          parties include Our Affiliates, public authorities, public websites
-          and social media, suppliers and vendors.<br />
-          PURPOSES AND BASIS OF PROCESSING OF YOUR PERSONAL DATA<br /><br />
+          <strong>Какие данные мы обрабатываем</strong><br /><br />
 
-          To fulfill Your contract with Us, that is the Terms and Conditions, in
-          order to:<br />
-          Administer and manage Our customer relationships that is providing Our
-          services to You. This includes helping You to create and manage Your
-          account and access Our services.<br />
-          Perform operations related to Your participation in the game play or
-          use of Our services, e.g. providing Our customer service function
-          (including assisting and tracking issues about customer service).<br />
-          Carry out security reviews to verify Your account for suspected
-          breaches of Our Terms and Conditions and/or of applicable law and
-          regulations.<br />
-          Process and verify Your bets and other online transactions, including
-          payment transactions.<br />
-          To fulfill Our legal and regulatory obligations (such as licensing
-          requirements and Anti Money Laundering Regulations):<br />
-          Monitor game play and transactions to investigate fraud, terrorism and
-          money laundering.<br />
-          Provide a variety of tools in order to control and monitor Your gaming
-          habits and manage problem gambling.<br />
-          Carry out required due-diligence procedures.<br />
-          Conduct age and identity verification procedures.<br />
-          For business and operational purposes on the basis of Our legitimate
-          interest. When We, for instance, perform statistical analysis, the
-          processing is based on a balance of interest, which means that We have
-          a legitimate interest in the processing of data (that is a commercial
-          interest in developing Our services). We are processing Your Personal
-          Data on the basis of Our legitimate interest in order to:<br />
-          Contact You about Our services.<br />
-          Provide You with tailored services, assistance and feedback if You
-          have questions regarding Your use of Our services.<br />
-          Perform statistical analysis to improve and develop Our current games
-          and services and develop new and exciting features. In carrying out
-          such an analysis, We will mainly use the data in an aggregated
-          form.<br />
-          Investigate complaints and monitor accounts to prevent the use of
-          unfair practices.<br />
-          In accordance with Your preferences and on the basis of Your
-          consent:<br />
-          Customize marketing material and Your Platform experience, e.g. by
-          recommending appropriate games/services and presenting You with
-          targeted bonus offers and similar. Such customization is based on the
-          history of the game and promotions and services in which You
-          participated.<br />
-          Sending marketing material, e.g. information on new services and
-          promotions, which, in Our opinion, may be of interest on the basis of
-          promotions and services in which You participated.<br />
-          If We have performed any data processing that will require Your
-          consent, We have obtained such consent from You in connection with the
-          specific processing activity.<br />
-          SHARING YOUR PERSONAL DATA<br /><br />
+          Контактные данные. Когда вы общаетесь с нами через интерфейс Сайта или
+          через указанные контакты, вы предоставляете нам следующие данные:<br /><br />
+          <ul>
+            <li>
+              контактные данные (почтовый адрес, адрес эл. почты или номер
+              телефона);
+            </li>
+            <li>имя и фамилию;</li>
+            <li>
+              информацию, которую вы сообщаете нам во время нашего
+              взаимодействия;
+            </li>
+            <li>
+              кроме того, мы записываем историю вашего общения с нами, в том
+              числе ведем запись аудиозвонков (например, когда вы разговариваете
+              с нашей службой поддержки и т. д.).
+            </li>
+          </ul>
+          <br /><br />
 
-          We share personal data with:<br />
-          Analytics companies<br />
-          Advertising agencies<br />
-          Social Media companies<br />
-          Risk and fraud agencies<br />
-          Customer service agencies<br />
-          Regulators<br />
-          Credit Reference Agencies<br />
-          Game providers<br />
-          Payment providers<br />
-          We disclose anonymized data (such as aggregated statistics) about the
-          players in order to describe our sales, customers, traffic patterns
-          and other information to prospective partners, advertisers, investors
-          and other reputable third parties and for other lawful purposes, but
-          these statistics will not contain your personal data.<br />
-          Occasionally we are required by law, court order or governmental
-          authority to disclose certain types of personal data. We may share
-          your personal data with organizations who provide us with verification
-          services. For further information You can contact our DPO
-          info@jetton.games.<br /><br />
-          OVERSEAS TRANSFER OF YOUR INFORMATION<br /><br />
+          Данные учетной записи. Создавая учетную запись на Сайте, вы
+          предоставляете нам, помимо своих Контактных данных, следующую
+          информацию:<br /><br />
 
-          We transfer personal data to organizations outside the European
-          Economic Area (“EEA”) in connection with the provision of services and
-          for the purposes listed above.<br />
-          Where data is transferred outside the EEA we will do so under standard
-          contractual clauses or binding corporate rules or any other acceptable
-          method that ensures a protection of your data to the standard required
-          within the EEA.<br />
-          If your personal data is transferred by us outside the EEA in
-          accordance with paragraph above, we will take all reasonable steps to
-          ensure that adequate measures are in place to keep your personal data
-          as secure as it is within the EEA and in accordance with this Privacy
-          Policy.<br /><br />
-          RETAINING YOUR PERSONAL DATA<br /><br />
+          <ul>
+            <li>имя и фамилию;</li>
+            <li>пол</li>
+            <li>дату рождения</li>
+            <li>информацию об активированных вами купонах</li>
+            <li>имя пользователя (если применимо);</li>
+            <li>имя пользователя (если применимо);</li>
+            <li>дополнительные данные (если применимо).</li>
+          </ul>
+          <br /><br />
 
-          We retain the Personal Data only as long is it necessary to fulfill
-          the purposes for which the data was collected. Due to regulatory
-          requirements (such as licensing requirements), most of Your data is
-          stored as long as You are registered with JetTon. In case You want to
-          close or delete Your account, all data (such as which segment You
-          belong to or any other information generated for marketing purposes)
-          is erased, unless it is required by legislation or regulatory
-          requirements (such as licensing requirements) that We retain the data.
-          In that case, such data will be kept as long as required in accordance
-          with the requirements of the applicable laws and/or regulations (e.g.
-          minimum of 5 years after the deleting Player’s game account).<br /><br />
-          YOUR RIGHTS UNDER APPLICABLE DATA PROTECTION LEGISLATION<br /><br />
+          Кроме того, если вы отказались от участия в азартных играх на
+          определенный период времени или заблокировали учетную запись навсегда,
+          мы также зафиксируем эту информацию. <br /><br />
 
-          You have the rights to:<br />
-          Information about how we use your personal data.<br />
-          Access the personal data we hold about you.<br />
-          Request we erase your personal data.<br />
-          Object to us processing your personal data where legal basis is our
-          legitimate interests. Including for marketing processes.<br />
-          Rectify any inaccurate personal data we process.<br />
-          Request we restrict our processing of your data.<br />
-          Request we share your information with another organization (data
-          portability).<br />
-          Request an explanation of the logic involved where we make decisions
-          about you solely through automated means.<br />
-          Lodge a complaint with a data protection regulator.<br />
-          Withdraw your consent where we have specifically requested your
-          consent to process your personal data and have no other lawful
-          conditions by contacting info@jetton.games. You can withdraw your
-          consent for receiving direct marketing by within your account settings
-          on our Platform or mobile application.<br />
-          If you would like to exercise any of your rights then you can do so by
-          contacting us on Live Chat via Telegram Channel @jetton_support or
-          emailing us at info@jetton.games.<br />
-          Where you make a request in respect of your rights we will require
-          proof of identification. We may also ask that you clarify your
-          request. If a third-party is making a request on your behalf we will
-          ask them for your authorization that they act on your behalf and
-          additional photographic identity verification.<br /><br />
-          WITHDRAWING YOUR CONSENT<br /><br />
+          Данные о согласии на получение новостной рассылки. Мы собираем данные
+          о том, согласились ли вы получать нашу новостную рассылку.
+          <br /><br />
 
-          Where We process Your Personal Data based on Your consent, depending
-          on your country of residence, You have the right to withdraw Your
-          consent for processing of Your Personal Data or to change channels for
-          receiving information at any time by changing the settings in Your
-          account.<br />
-          If You want to unsubscribe from receiving marketing materials – in
-          each e-mail there is also a way for You to unsubscribe or “opt-out” in
-          any marketing We send you.<br />
-          You should be aware that even if You do not consent to receive
-          marketing messages, You may still receive the occasional service email
-          from JetTon which shall inform You of any changes to Terms and
-          Conditions and this Privacy Notice, as well as anything else that may
-          impact the service We provide to You.<br /><br />
-          AUTOMATED DECISION MAKING AND PROFILING<br /><br />
+          Реферальные данные. Мы собираем ваши реферальные данные (о реферальных
+          пользователях или реферальных партнерах). <br /><br />
 
-          We are legally obligated to take measures to meet the requirements
-          under the rules around Anti Money Laundering, anti-terrorist
-          financing, fraud and responsible gaming. In order to do this We may
-          rely on programs that monitor player behavior. We may also use
-          segmentation in order to divide Our Players into groups based on the
-          behavior, e.g. in the area of marketing.<br /><br />
-          DATA SECURITY MEASURES<br /><br />
+          Данные о ставках. Эти данные включают информацию о том, какие ставки и
+          на какие исходы вы сделали, в какие игры играли, а также общую сумму
+          выигрышей и проигрышей и аналогичную информацию. <br /><br />
 
-          We understand the importance of data security measures and techniques
-          and strive to ensure that Your data is safe with Us. We have put in
-          place several measures to protect Your data from unauthorized access
-          to and alteration as well disclosure and destruction of
-          information.<br /><br />
-          TRANSLATIONS OF THIS PRIVACY NOTICE<br /><br />
+          Данные Верификации. В процессе Верификации вы должны будете
+          предоставить нам следующие данные: <br /><br />
 
-          We have translated this Privacy Notice from English into other
-          languages. We have done this to ensure that Our Players are clear
-          about how We treat their Personal Data. In case of any discrepancy
-          between the meanings of any translated versions of this Privacy
-          Notice, the meaning of this English language version shall prevail.<br /><br />
-          AMENDMENTS TO THIS PRIVACY NOTICE<br /><br />
+          <ul>
+            <li>копию или фото документа, удостоверяющего личность</li>
+            <li>
+              фото вашего платежного средства или другое доказательство того,
+              что вы являетесь держателем платежного средства, которое
+              используется или будет использоваться для совершения транзакций;
+            </li>
+            <li>ваше фото</li>
+            <li>
+              ваше фото с документом, удостоверяющим личность, и платежной
+              картой;
+            </li>
+            <li>
+              подтверждение проживания по указанному адресу (это может быть счет
+              за коммунальные услуги, городской телефон или другие документы,
+              которых в соответствии с законодательными и нормативными
+              требованиями вашей юрисдикции должно быть достаточно для
+              подтверждения вашего проживания по указанному адресу);
+            </li>
+            <li>
+              подтверждение источника ваших средств (в некоторых ситуациях);
+            </li>
+            <li>
+              запись ваших видео и(или) аудиопереговоров с администрацией Сайта
+              (если Верификация осуществляется посредством аудио или
+              видеозвонка);
+            </li>
+            <li>
+              При проведении Верификации мы проверяем некоторых пользователей
+              Сайта по государственным реестрам, базам данных публичных
+              должностных лиц и другим достоверным источникам и запрашиваем у
+              них дополнительные данные.
+            </li>
+          </ul>
+          <br /><br />
 
-          This Notice may be adjusted from time to time. You will always find
-          the latest version of this Notice on Our Platform. If We make any
-          significant changes to this Notice, We will notify You of these
-          changes, either by email and/or by adding information about the
-          changes on Our Platform, before any the changes take effect.
+          <strong>Платежные</strong> данные. На Сайте используется
+          SSL-шифрование, которое обеспечивает конфиденциальность вашей
+          информации при передаче данных. Все платежные операции осуществляются
+          через защищенный сервер платежного шлюза. Однако мы можем хранить вашу
+          историю внесения и снятия средств, а также частичную платежную
+          информацию (например, последние четыре цифры вашей банковской карты,
+          название банка-эмитента и т. д.). <br /><br />
+
+          Данные Программы лояльности. Для частых посетителей Сайта мы
+          разработали Программу лояльности. Это означает, что мы формируем
+          данные об участии пользователя в этой Программе. Эти данные
+          включают:<br /><br />
+
+          <ul>
+            <li>заработанные очки</li>
+            <li>уровень</li>
+            <li>сумму кешбэка</li>
+            <li>
+              прочие данные, которые могут обрабатываться в рамках Программы
+              лояльности
+            </li>
+          </ul>
+          <br /><br />
+
+          Данные о бонусах. Мы обрабатываем данные об использовании вами бонусов
+          в Бонусной программе. Эти данные включают в числе прочего<br /><br />
+
+          <ul>
+            <li>информацию об использованных вами бонусах</li>
+            <li>бонусный баланс.</li>
+          </ul>
+          <br /><br />
+
+          Автоматически собираемые данные. При использовании вами Сайта
+          некоторые данные собираются автоматически. Мы получаем эти данные от
+          вашего браузера, а затем анализируем их. Эти данные включают:<br /><br />
+
+          <ul>
+            <li>общее время, проведенное на Сайте;</li>
+            <li>
+              переходы по внутренним ссылкам (на основе URL следующей
+              просмотренной страницы);
+            </li>
+            <li>
+              ваш IP-адрес и строку пользовательского агента (какой браузер
+              используется, какая версия и в какой операционной системе).
+            </li>
+          </ul>
+          <br /><br />
+
+          Данные файлов cookie. Файлы cookie могут собирать данные, подпадающие
+          под определение личных данных. Чтобы узнать больше об использовании
+          файлов cookie, ознакомьтесь с политикой использования файлов
+          cookie.<br /><br />
+
+          <strong>Цели и правовые основания обработки данных</strong
+          ><br /><br />
+          <table class="news-article">
+            <thead>
+              <tr>
+                <th><br /></th>
+                <th style="width: 33%"><big>Цель</big></th>
+                <th style="width: 33%"><big>Данные</big></th>
+                <th style="width: 33%"><big>Правовые основания</big></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p><strong>Управление Сайтом и его защита:</strong></p>
+                  <ul>
+                    <li>
+                      для защиты Сайта от кибератак (включая в числе прочего
+                      DDoS-атаки);
+                    </li>
+                    <li>
+                      для выявления проблем с Сайтом или сервером,
+                      обеспечивающим доступ к Сайту.
+                    </li>
+                  </ul>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>
+                    a) Automatically collected data;<br />b) данные файлов
+                    cookie.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    Законные интересы Компании в соответствии со Статьей 6(1)(f)
+                    Регламента 2016/679 (далее «GDPR»). Управление Сайтом и
+                    Сервером, обеспечивающим доступ к Сайту, а также их защита
+                    соответствуют законным интересам Компании.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p>
+                    <strong
+                      >Для создания вашей учетной записи и предоставления вам
+                      Услуг, доступных на Сайте.</strong
+                    >
+                    Без этих данных мы не сможем создать вашу учетную запись на
+                    Сайте и предоставить вам наши Услуги.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>
+                    a) Contact data;<br />b) данные учетной записи;<br />c)
+                    данные о ставках;<br />d) платежные данные.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    Исполнение договора в соответствии со Статьей 6(1)(b) GDPR.
+                    Эти данные необходимы для создания вашей учетной записи, и
+                    без них мы не сможем заключить с вами договор и создать
+                    учетную запись на Сайте.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p>
+                    <strong>Для проведения Верификации.</strong> Мы проводим
+                    Верификацию в целях а) соблюдения действующего
+                    законодательства по борьбе с отмыванием денег и
+                    финансированием терроризма: из этого следует, что
+                    предоставление данных для Верификации требуется по закону.
+                    Без этих данных мы были бы не в состоянии выполнить наши
+                    юридические обязательства в соответствии с упомянутым выше
+                    законодательством; b) предотвращения мошенничества, обмана и
+                    нарушения Условий использования Сайта. В некоторых случаях
+                    мы проводим дополнительную верификацию (например,
+                    посредством видеозвонка), чтобы не допустить нарушения наших
+                    Условий (которые представляют собой договор между вами и
+                    нами), обмана и мошенничества. Из этого следует, что
+                    дополнительная верификация — это процедура, предусмотренная
+                    договором между вами и нами; c) предотвращения использования
+                    Сайта детьми.<br />Без Верификации мы не сможем создать вашу
+                    учетную запись (в некоторых случаях) или разрешить
+                    дальнейшее использование вашей учетной записи.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>Любые данные о вас, которыми мы располагаем.</p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    a) When Verification is conducted for the purposes of
+                    compliance with money laundering and counter-terrorist
+                    financing legislation and prevention of the use of the
+                    Website by children: compliance with the legal obligation to
+                    which the Company is subject under Article 6(1)(c) of the
+                    GDPR;<br />b) когда Верификация проводится в целях
+                    предотвращения мошенничества и обмана: Законные интересы
+                    Компании в соответствии со Статьей 6(1)(f) GDPR.
+                    Предотвращение мошеннической деятельности и обмана
+                    соответствует законным интересам Компании;<br />c) при
+                    проведении Верификации в целях обеспечения соответствия
+                    Условиям использования Сайта: исполнения договора, стороной
+                    которого вы являетесь, в соответствии со Статьей 6(1)(b)
+                    GDPR. Наши Условия представляют собой договор между вами и
+                    Компанией, и ваш отказ от прохождения верификации будет
+                    означать нарушение положений этого документа.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p>
+                    <strong
+                      >Для выполнения запросов государственных органов, судов и
+                      других аналогичных учреждений.</strong
+                    >
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>Любые данные о вас, которыми мы располагаем.</p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    Соблюдение юридических обязательств, которыми связана
+                    Компания в соответствии со Статьей 6(1)(c) GDPR;
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p>
+                    <strong>Для связи с вами.</strong><br />Мы можем связываться
+                    с вами по разным причинам:
+                  </p>
+                  <p>
+                    a) When you contact us via the interface of the Website or
+                    via contact details available on the Website and ask a
+                    question about our Website, the Company etc.;<br />b) когда
+                    вы используете Сайт, вы общаетесь со Службой поддержки и
+                    другими сотрудниками Компании, которые могут быть
+                    задействованы в предоставлении вам наших Услуг или решении
+                    ваших проблем, связанных с использованием вами Сайта;
+                    <br />c) кроме того, мы можем использовать ваши контактные
+                    данные, чтобы сообщать вам об изменениях на нашем Сайте, а
+                    также в продуктах, услугах и документах или правилах,
+                    которые вас касаются.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>
+                    Контактные и любые другие данные о вас, которыми мы
+                    располагаем (если того требуют цели взаимодействия).
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    a) If you do not have an account on the Website and
+                    communicate with us about the general issues: Legitimate
+                    interests of the Company in accordance with Article 6(1)(f)
+                    of the GDPR. Communication with the general public is the
+                    legitimate interest of the Company;<br />b) когда мы
+                    взаимодействуем с вами в ходе использования вами Сайта,
+                    вашей учетной записи или наших Услуг: выполнение договора,
+                    стороной которого вы являетесь, в соответствии со Статьей
+                    6(1)(b) GDPR. Без этого взаимодействия мы не сможем
+                    предоставить вам доступ к некоторым функциям Сайта и (или)
+                    решить ваши проблемы, которые могут возникнуть во время
+                    использования вами Сайта.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p>
+                    <strong
+                      >Для выполнения запросов субъекта данных и других
+                      поступивших от вас юридических запросов.</strong
+                    >
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>Любые данные о вас, которыми мы располагаем.</p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    Соблюдение юридических обязательств, которыми связана
+                    Компания в соответствии со Статьей 6(1)(c) GDPR.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p>
+                    <strong
+                      >Для выполнения вашего запроса на самоисключение.</strong
+                    >
+                    Если вы приняли решение о самоисключении (блокировке или
+                    ограничении вашей учетной записи на определенный период
+                    времени или постоянную блокировку учетной записи), мы
+                    используем ваши данные для выполнения этого запроса на
+                    самоисключение.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>
+                    a) Verification data;<br />b) данные учетной записи;<br />c)
+                    контактные данные;<br />d) платежные данные.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    Исполнение договора, стороной которого вы являетесь, в
+                    соответствии со Статьей 6(1)(b) GDPR.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p><strong>Для отправки вам Новостной рассылки.</strong></p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>a) Newsletter consent data;<br />b) контактные данные.</p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    Ваше согласие, предоставленное в соответствии со Статьей
+                    6(1)(a) GDPR.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p>
+                    <strong>Для улучшения работы Сайта и его функций:</strong
+                    ><br />a. тестирования новых функций и возможностей
+                    Сайта;<br />b. проведения исследований и анализа.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>
+                    a) Automatically collected data;<br />b) данные файлов
+                    cookie.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    Законные интересы Компании в соответствии со Статьей 6(1)(f)
+                    GDPR. Улучшение и совершенствование Сайта и Услуг,
+                    предоставляемых посредством Сайта, соответствуют законным
+                    интересам Компании.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p>
+                    <strong>Предоставить вам доступ к Сайту</strong><br />, а
+                    также Сайту, адаптированному для вашего устройства и его
+                    настроек.
+                  </p>
+                  <p>
+                    Без Автоматически собираемых данных и данных файлов cookie
+                    Сайт может не работать и (или) работать неправильно.
+                    Например, если вы отключите файлы cookie, вы не сможете
+                    войти на Сайт, а мы не сможем запомнить ваш выбор настроек
+                    для сайта (например, язык Сайта).
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>
+                    a) Automatically collected data;<br />b) данные файлов
+                    cookie.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    Законные интересы Компании в соответствии со Статьей 6(1)(f)
+                    GDPR. Предоставление доступа к Сайту его пользователям
+                    соответствует законным интересам Компании.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p>
+                    <strong>Для недопущения нарушений наших Условий</strong>,
+                    мошенничества, сговора, недобросовестного использования
+                    Сайта и другой подобной деятельности.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>Любые данные о вас, которыми мы располагаем.</p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    Законные интересы Компании в соответствии со Статьей 6(1)(f)
+                    GDPR. Недопущение нарушений наших Условий, мошенничества,
+                    сговора, недобросовестного использования Сайта и другой
+                    подобной деятельности соответствует законным интересам
+                    Компании.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p>
+                    <strong>Для расчета комиссии рефереру</strong>, направившему
+                    вас на Сайт.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>
+                    a) Account data;<br />b) контактные данные;<br />c) данные о
+                    ставках;<br />d) платежные данные.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    Законные интересы Компании в соответствии со Статьей 6(1)(f)
+                    GDPR. Расчет комиссии реферерам соответствует законным
+                    интересам Компании.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p>
+                    <strong
+                      >Для формулирования, подачи и защиты судебных
+                      исков</strong
+                    >. Мы можем использовать ваши данные для защиты наших
+                    законных интересов в судебных, юридических спорах и т. д.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>Любые данные о вас, которыми мы располагаем.</p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    Законные интересы Компании в соответствии со Статьей 6(1)(f)
+                    GDPR. Формулирование, подача и защита судебных исков
+                    соответствует законным интересам Компании.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p>
+                    <strong>Для проведения ваших платежей через Сайт</strong>.
+                    Без ваших Платежных данных мы не сможем обработать ваш
+                    платеж и, соответственно, предоставить вам Услуги Сайта.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>Платежные данные</p>
+                  .
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    Исполнение договора, стороной которого вы являетесь, в
+                    соответствии со Статьей 6(1)(b) GDPR.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p>
+                    <strong
+                      >Для расчета вашего остатка средств на Сайте (как
+                      реальных, так и бонусных).</strong
+                    >
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>
+                    a) Payment data;<br />b) данные о бонусах;<br />c) данные
+                    Программы лояльности;<br />d) данные о ставках.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    Исполнение договора, стороной которого вы являетесь, в
+                    соответствии со Статьей 6(1)(b) GDPR.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p><strong>Для расчета вашего кешбэка.</strong></p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>
+                    a) Payment data;<br />b) данные о бонусах;<br />c) данные
+                    Программы лояльности;<br />d) данные о ставках.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    Исполнение договора, стороной которого вы являетесь, в
+                    соответствии со Статьей 6(1)(b) GDPR.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p>
+                    <strong
+                      >Для оказания VIP-поддержки определенным
+                      пользователям.</strong
+                    >
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>
+                    a) Payment data;<br />b) данные о бонусах;<br />c) данные
+                    Программы лояльности;<br />d) данные о ставках.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    Законные интересы Компании в соответствии со Статьей 6(1)(f)
+                    GDPR. VIP-поддержка определенных пользователей соответствует
+                    законным интересам Компании.
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="mobile-td"><br /></div>
+                  <br />
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Цель</big></div>
+                  <p>
+                    <strong
+                      >Для предоставления вам доступа к нашей Программе
+                      лояльности.</strong
+                    >
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Данные</big></div>
+                  <p>
+                    a) Payment data;<br />b) данные о бонусах;<br />c) данные
+                    Программы лояльности;<br />d) данные о ставках.
+                  </p>
+                </td>
+                <td>
+                  <div class="mobile-td"><big>Правовые основания</big></div>
+                  <p>
+                    Исполнение договора, стороной которого вы являетесь, в
+                    соответствии со Статьей 6(1)(b) GDPR.
+                  </p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <br /><br />
+
+          <strong>Получатели ваших данных</strong> <br /><br />
+
+          Наши субподрядчики, связанные компании и другие юридические лица. Сайт
+          и Услуги, оказываемые через Сайт, поддерживаются и предоставляются
+          большим количеством людей, которые могут быть наняты либо Компанией,
+          либо любой из наших связанных компаний, субподрядчиков и других
+          учреждений. Это означает, что мы можем предоставлять им ваши данные.
+          Обратите внимание, что все эти передаваемые данные защищены
+          соответствующими соглашениями о передаче данных, которые обязывают
+          получателей обрабатывать ваши данные в соответствии с настоящей
+          Политикой и законодательством о защите данных, которому подчиняется
+          Компания. Мы привлекаем поставщиков для оказания следующих услуг
+          <br /><br />
+
+          <ul>
+            <li>хостинга Сайта и данных</li>
+            <li>маркетинговых услуг</li>
+            <li>IT-услуг и обеспечения безопасности</li>
+            <li>поставщиков ПО для службы поддержки клиентов</li>
+            <li>поставщиков платежных услуг</li>
+            <li>
+              услуг KYC («знай своего клиента»), противодействия мошенничеству и
+              отмыванию денежных средств
+            </li>
+            <li>поставщиков игр</li>
+            <li>услуг аудита, юридических услуг и комплайенса</li>
+          </ul>
+          <br /><br />
+
+          Центр(-ы) обработки данных, обеспечивающие доступ к Сайту. Сайт и
+          Услуги, предоставляемые через Сайт, размещаются на Сервере,
+          принадлежащем третьей стороне. Это означает, что мы можем
+          предоставлять им ваши данные. Обратите внимание, что ваши данные
+          хранятся только в зашифрованном виде, что делает невозможным
+          расшифровку ваших данных без ключей дешифрования. <br /><br />
+
+          Финансовые учреждения: банки, поставщики платежных услуг, операторы
+          платежных систем или шлюзов и другие подобные организации. Ваши
+          транзакции, связанные с Услугами, предоставляемыми через Сайт,
+          обрабатываются сторонними финансовыми учреждениями. Это означает, что
+          мы можем предоставлять им ваши данные для обработки ваших транзакций и
+          выполнения их юридических и нормативных обязательств. <br /><br />
+
+          Курьерские службы. Если вы получите какой-либо физический выигрыш(-и)
+          или приз(-ы), ваши данные будут переданы курьерской службе, которая
+          будет заниматься доставкой вам выигрыша или приза. <br /><br />
+
+          Органы по аккредитации, аудиторы. Когда Компания проходит независимый
+          аудит, касающиеся вас данные могут быть переданы аудитору. Все эти
+          органы или аудиторы по закону обязаны обрабатывать ваши данные в
+          соответствии с настоящей Политикой и действующим законодательством.
+          <br /><br />
+
+          Аналитика. Мы используем услуги анализа данных для определения
+          характеристик и структуры нашей аудитории, адаптации наших
+          маркетинговых услуг и улучшения взаимодействия с Сайтом. Сюда
+          относятся Google Analytics и Hotjar. <br /><br />
+
+          Google Analytics. The Website uses Google Analytics, a web analytics
+          service. It is operated by Google LLC., 1600 Amphitheatre Parkway,
+          Mountain View, CA 94043, USA. Google Analytics uses previously
+          mentioned "cookies". The information generated by the cookie about
+          your use of the Website is usually transmitted to a Google server in
+          the USA and stored there. Google Analytics Opt-out Browser Add-on
+          provides visitors and users with the ability to prevent their data
+          from being collected and used by Google Analytics. To install Google
+          Analytics Opt-out Browser Add-on, follow this link:
+          https://tools.google.com/dlpage/gaoptout?hl=en
+          <br /><br />
+
+          Cloudflare, Inc. The Company uses the services, provided by
+          Cloudflare, Inc. 101 Townsend St, San Francisco, CA 94107 USA.
+          Сloudflare provides web optimization and security services that the
+          Company uses to improve and protect the Website, including a reverse
+          proxy, pass-through security service. Cloudflare may collect the log
+          data from the visitors of the Website. Additionally, the Company
+          deployed Cloudflare`s cookie file for security purposes (see Cookies
+          Policy to find out more). To find out more about the processing of the
+          data by Cloudflare, please follow
+          https://www.cloudflare.com/privacypolicy <br /><br />
+
+          Hotjar. Hotjar (registered place of business: Hotjar Ltd, Level 2 St
+          Julians Business Centre, 3, Elia Zammit Street St Julians STJ 1000,
+          Malta) is a technology service that helps us better understand our
+          users’ experience (e.g. how much time they spend on which pages, which
+          links they choose to click, etc.) and this enables us to maintain, and
+          improve our Website. Hotjar uses cookies and other technologies to
+          collect data on our users’ behaviour and their devices (in particular
+          a device’s IP address (captured and stored only in anonymized form),
+          device screen size, device type (unique device identifiers), browser
+          information, geographic location (country only), preferred language
+          used to display our Website). Hotjar stores this information in a
+          pseudonymized user profile. If you want to opt-out from the processing
+          of the data concerning you by Hotjar, please, follow Hotjar`s Opt-out
+          Webpage via the link https://www.hotjar.com/legal/compliance/opt-out
+          <br /><br />
+
+          <strong>Срок хранения ваших данных </strong><br /><br />
+
+          Данные наших пользователей, имеющих учетную запись на Сайте: 6 (шесть)
+          лет с даты закрытия вашей учетной записи на Сайте и расторжения нашего
+          с вами договора. <br /><br />
+
+          <strong>Ваши права субъекта данных</strong><br /><br />
+          В соответствии с применимым законодательством о защите данных у вас
+          есть права, которыми вы можете воспользоваться: a) отправив нам запрос
+          на наш юридический адрес; или b) отправив запрос на наш адрес
+          электронной почты ; или c) через интерфейс Сайта (для
+          некоторых функций).<br /><br />
+
+          Обратите внимание, что эти права действуют с некоторыми
+          ограничениями:<br /><br />
+          <ul>
+            <li>
+              Если мы не уверены в личности запрашивающего информацию лица, мы
+              проверяем личность пользователя или посетителя, который делает
+              запрос на реализацию любого из прав, прежде чем его выполнить
+            </li>
+            <li>
+              Мы можем ограничить указанные ниже права или отказать в реализации
+              любого из прав, если это ограничение или отказ основаны на
+              законодательстве, которому подчиняется Компания, или если мы можем
+              отказать в выполнении вашего запроса в соответствии с действующим
+              законодательством. В этом случае мы укажем причину отказа в ответе
+              на ваш запрос;
+            </li>
+            <li>
+              Информация, содержащаяся в этом разделе, представляет собой
+              описание прав, предусмотренных GDPR, приводится лишь в качестве
+              справки и не имеет юридической силы. Если вы хотите узнать больше
+              об этих правах, ознакомьтесь со Статьями 15–22 GDPR.
+            </li>
+          </ul>
+          <br /><br />
+
+          <strong>У вас есть следующие права:</strong><br /><br />
+
+          Право на отзыв согласия. Если вы ранее дали согласие (в соответствии
+          со Статьей 6(1)(a) GDPR) на обработку ваших данных, вы имеете право
+          отозвать это согласие в любое время. Это означает, что мы прекратим
+          обработку личных данных, для обработки которых требовалось согласие,
+          начиная с даты его отзыва. Отзыв согласия не влияет на законность
+          обработки данных на основании ранее предоставленного согласия до его
+          отзыва.<br /><br />
+
+          Право доступа. Вы имеете право получить от нас подтверждение факта
+          обработки касающихся вас данных и, если мы действительно обрабатываем
+          ваши личные данные, получить копию обрабатываемых личных данных.<br /><br />
+
+          Право на внесение изменений. Вы имеете право потребовать от нас
+          исправления касающихся вас неверных личных данных.<br /><br />
+
+          Право на удаление данных (или право на «забвение»). Вы имеете право
+          потребовать от нас удаления (уничтожения) ваших личных данных. По
+          вашему запросу ваши личные данные будут удалены. Это право
+          применяется, если:<br /><br />
+
+          • your personal data are no longer needed for the purposes for which
+          these data were collected;<br /><br />
+          • вы отозвали свое (ранее предоставленное) согласие и других законных
+          оснований для дальнейшей обработки ваших данных нет;<br /><br />
+          • нам не нужно хранить ваши личные данные в целях соблюдения
+          действующего законодательства;<br /><br />
+          • данные обрабатываются незаконно;<br /><br />
+          • какие-либо ограничения этого права действующим законодательством не
+          предусмотрены;<br /><br />
+          • в иных случаях, когда удаление (уничтожение) данных требуется
+          действующим законодательством.<br /><br />
+
+          Право на возражение против обработки данных. В конкретной ситуации вы
+          имеете право возражать против обработки ваших личных данных, если
+          такая обработка была необходима для обеспечения законных интересов
+          Компании или третьей стороны (Статья 6(1)(f) GDPR). Кроме того, вы
+          имеете право возражать против обработки ваших личных данных в целях
+          прямого маркетинга (если применимо).<br /><br />
+
+          Право на ограничение обработки. Вы имеете право потребовать, чтобы мы
+          обрабатывали ваши данные в ограниченном объеме, в любой из следующих
+          ситуаций:<br /><br />
+
+          • you contested to the accuracy of the personal data, for a period
+          enabling the Сompany to verify the accuracy of the personal data;<br /><br />
+          • обработка является незаконной, но вы возражаете против удаления
+          личных данных и вместо этого требуете ограничения их использования;<br /><br />
+          • нам больше не нужны личные данные для целей обработки, но они
+          необходимы вам для предъявления, осуществления или защиты законных
+          претензий;<br /><br />
+          • вы возражали против обработки данных, используя свое право на такое
+          возражение до проверки того, чьи законные основания имеют
+          преимущественную силу — ваши или Компании.<br /><br />
+
+          Право на переносимость данных. Вы имеете право получить от нас
+          собранные у вас данные в структурированном, машиночитаемом формате и
+          имеете право передать эти данные другому контролеру (простым языком,
+          другой компании). Это право применяется только к той обработке,
+          которая:<br /><br />
+
+          • Was carried out by automated means;<br /><br />
+          • основана на Статьях 6(1)(a) и 9(2)(a) GDPR (согласие) или на Статье
+          6(1)(b) GDPR, т. е. обработка осуществлялась в соответствии с
+          договором между вами и нами.<br /><br />
+
+          <strong>Вы имеете право подать жалобу в надзорный орган</strong
+          ><br /><br />
+
+          Вы всегда можете связаться с нами по любому вопросу, касающемуся
+          обработки ваших данных, и в том числе подать жалобу. Если у вас есть
+          вопросы или проблемы, пожалуйста, свяжитесь с нами по адресу<br /><br />
+          You can always contact us for any issue concerning the processing of
+          your data, including complaints. If you have queries or concerns,
+          please contact us at , и мы ответим на ваш запрос.<br /><br />
+
+          Если вы недовольны нашим ответом на ваш запрос или если вас не
+          устраивает то, как мы обрабатываем ваши личные данные, вы имеете право
+          в любой момент подать жалобу в надзорный орган, в частности в стране
+          вашего постоянного проживания, работы или предполагаемого нарушения.
+          Мы просим вас сначала попытаться решить возникшие проблемы с нами
+          (хотя, как указано выше, вы имеете право в любое время связаться с
+          компетентным регулирующим органом).<br /><br />
+
+          <strong>Международный перенос данных</strong><br /><br />
+
+          Наша компания работает по всему миру, а это означает, что ваши данные
+          могут быть переданы в так называемые «третьи страны» в значении,
+          указанном в GDPR. Мы используем следующие способы передачи личных
+          данных в «третьи страны»:<br /><br />
+
+          Мы передаем личные данные в третью страну, если Европейская комиссия
+          решила, что такая третья страна обеспечивает надлежащий уровень
+          защиты. Более подробную информацию можно получить на официальном сайте
+          Европейской комиссии;<br /><br />
+
+          Если мы используем поставщиков услуг, которые не обеспечивают
+          надлежащую защиту, мы обеспечим наличие дополнительных гарантий и
+          средств защиты по мере необходимости, в том числе путем заключения
+          специальных договоров, одобренных Европейской комиссией. Более
+          подробную информацию можно получить на официальном сайте Европейской
+          комиссии. Если вам нужна дополнительная информация о конкретном
+          механизме, используемом нами при передаче ваших личных данных в
+          «третьи страны», свяжитесь с нами.<br /><br />
+
+          <strong>Обработка личных данных несовершеннолетних</strong
+          ><br /><br />
+          Сайт не предназначен для пользователей младше 18 лет или возраста,
+          необходимого для участия в азартных играх по месту жительства
+          (юрисдикции) конкретного пользователя (далее «Совершеннолетие»). Если
+          вы являетесь родителем или законным опекуном и обнаружили, что ваш
+          ребенок использует наш Сайт, свяжитесь с нами любым доступным способом
+          связи, и мы примем соответствующие меры.<br /><br />
+
+          <strong>Сторонние сайты</strong><br /><br />
+          Этот Сайт может содержать ссылки на Сайты, принадлежащие третьим
+          сторонам. Например, ссылки или гиперссылки на сторонние сайты (далее
+          «сторонние сайты»). Вы переходите по этим ссылкам или гиперссылкам на
+          свой страх и риск. Компания не несет ответственности за содержание
+          этих Сайтов и не несет ответственности за то, что может произойти в
+          результате вашего посещения этих сторонних сайтов. Компания
+          рекомендует вам ознакомиться с «Политикой конфиденциальности» или
+          «Политикой по обработке данных», или другим документом о
+          конфиденциальности на этих Сайтах, прежде чем предоставлять им
+          какие-либо касающиеся вас данные.<br /><br />
+
+          <strong>Внесение изменений в настоящую Политику</strong><br /><br />
+          Компания вправе изменять настоящую Политику. В случае внесения
+          каких-либо изменений Компания опубликует обновленную Политику до
+          вступления в силу этих изменений. Компания уведомит зарегистрированных
+          пользователей об изменениях в настоящей Политике, отправив уведомление
+          по электронной почте. Дальнейшее использования вами Сайта будет
+          означать, что вы ознакомились с пересмотренной Политикой и поняли
+          ее.<br /><br />
+
+          <strong>Язык настоящей Политики</strong><br /><br />
+          Настоящая Политика составлена на английском языке. Обратите внимание,
+          что переводы настоящей Политики на другие языки даны для удобства. В
+          случае несоответствия версий настоящей Политики на разных языках
+          преимущественную силу имеет английская версия.<br /><br />
         </div>
       </div>
     </div>
@@ -270,4 +1043,16 @@ import { closePrivacyPolicy } from '@/components/globals/footer/Footer.events.js
 
 <style scoped lang="scss">
 @import 'PopupPrivacyPolicy';
+
+li {
+  &::before {
+    content: '•';
+    line-height: 12px;
+    font-weight: 900;
+    text-align: center;
+    width: 16px;
+    height: 16px;
+    margin: 0 10px;
+  }
+}
 </style>
