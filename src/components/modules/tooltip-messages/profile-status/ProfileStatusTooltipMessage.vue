@@ -1,4 +1,8 @@
-<script setup></script>
+<script setup>
+import { useSessionStore } from '@/store/session/sessionStore.js'
+
+const sessionStore = useSessionStore()
+</script>
 
 <template>
   <div class="profile__status-tooltip">
@@ -20,10 +24,20 @@
     </svg>
     <div class="profile__status-info">
       <p>
-        Ваш статус: <strong><span>Новичок</span></strong>
+        Ваш статус:
+        <strong
+          ><span>{{
+            sessionStore.session.profile.stair_status.title
+          }}</span></strong
+        >
       </p>
       <p>
-        Курс обмена: <strong><span>10 к 1</span></strong>
+        Курс обмена:
+        <strong
+          ><span
+            >{{ sessionStore.session.profile?.stair_status.ratio }} к 1</span
+          ></strong
+        >
       </p>
     </div>
   </div>

@@ -2,7 +2,7 @@
 import InfoIcon from '@/components/ui/icons/other/InfoIcon.vue'
 import { useBonusSystemStore } from '@/store/bonus-system/bonusSystemStore.js'
 import InfoTooltip from '@/components/ui/tooltips/info/InfoTooltip.vue'
-import ReferalPromocodeTooltipMessage from '@/components/ui/tooltip-messages/referal-promocode/ReferalPromocodeTooltipMessage.vue'
+import ReferalPromocodeTooltipMessage from '@/components/modules/tooltip-messages/referal-promocode/ReferalPromocodeTooltipMessage.vue'
 
 const bonusSystemStore = useBonusSystemStore()
 </script>

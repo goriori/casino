@@ -4,6 +4,7 @@ import {
 } from '@/components/modules/registration/RegistrationModule.options.js'
 import { timeClosePopup } from '@/components/modules/authorization/AuthorizationModule.options.js'
 import { useStateStore } from '@/store/stateStore.js'
+import { useRegular } from '@/utils/useRegular.js'
 
 export const onErrorMessage = () => {
   const stateStore = useStateStore()
@@ -27,12 +28,14 @@ export const onErrorValid = () => {
   }, timeClosePopup.value)
 }
 
-export const onValidForm = async () => {
-  if (formReg.value.password.trim().length === 0) throw false
-  if (formReg.value.password_confirmation.trim().length === 0) throw false
-  if (
-    formReg.value.password.trim() !== formReg.value.password_confirmation.trim()
-  )
-    throw false
+export const onValidForm = async (targetEntity = 'email') => {
+  const { emailTest, phoneTest } = useRegular()
+  if (targetEntity === 'email' && formReg.value.email.trim().length === 0) throw false
+  if (targetEntity === 'email' && !emailTest(formReg.value.email)) throw false
+  else if (targetEntity === 'phone' && formReg.value.phone.trim().length === 0) throw false
+  if (targetEntity === 'phone' && !phoneTest(formReg.value.phone)) throw false
+  else if (formReg.value.password.trim().length === 0) throw false
+  else if (formReg.value.password_confirmation.trim().length === 0) throw false
+  else if ( formReg.value.password.trim() !== formReg.value.password_confirmation.trim()) throw false
   return true
 }

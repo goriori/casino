@@ -25,7 +25,7 @@ export const usePaymentStore = defineStore('paymentStore', () => {
     await PaymentService.setWithdrawal(withdrawalForm)
   }
   const sendPromocode = async (pincode) => {
-    await PaymentService.sendPromocode(pincode)
+    return  await PaymentService.sendPromocode(pincode)
   }
   const getRequisiteCards = async () => {
     const response = await PaymentService.getRequisiteCards()

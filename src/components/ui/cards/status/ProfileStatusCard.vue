@@ -1,12 +1,24 @@
 <script setup>
 import AccountIcon from '@/components/ui/icons/other/AccountIcon.vue'
+import { ref } from 'vue'
 
 const props = defineProps({
   actionHandler: {
     type: Function,
     default: () => {},
   },
+  status: {
+    type: String,
+    default: 'Новичок',
+  },
+  exp: {
+    type: Number,
+    default: 0,
+  },
 })
+
+const expProfile = ref(`${(100 / 100) * props.exp}%`)
+const statusBar = ref(props.exp)
 </script>
 
 <template>
@@ -18,7 +30,7 @@ const props = defineProps({
         </div>
         <div class="info-content">
           <p>Ваш статус:</p>
-          <p>Premium</p>
+          <p>{{ status }}</p>
         </div>
       </div>
       <div class="status-bar"></div>
@@ -63,7 +75,7 @@ const props = defineProps({
       position: absolute;
       top: -3px;
       left: -3px;
-      width: 80%;
+      width: v-bind(expProfile);
       border-radius: 20px;
       border: 3px solid #d5a748;
     }
@@ -98,6 +110,7 @@ const props = defineProps({
 .info {
   &-content {
     display: flex;
+    align-items: center;
     gap: 10px;
 
     p:nth-child(1) {

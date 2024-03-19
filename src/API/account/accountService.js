@@ -8,10 +8,10 @@ export default class AccountService {
       const response = await axiosInstance({
         url: '/me',
         headers: {
-          Authorization: `Bearer ${apiConfig.token}`
+          Authorization: `Bearer ${apiConfig.token}`,
         },
         validateStatus: validTokenExpired,
-        method: 'GET'
+        method: 'GET',
       })
       return response.data
     } catch (e) {
@@ -25,10 +25,10 @@ export default class AccountService {
       const response = await axiosInstance({
         url: '/stats/pay',
         headers: {
-          Authorization: `Bearer ${apiConfig.token}`
+          Authorization: `Bearer ${apiConfig.token}`,
         },
         validateStatus: validTokenExpired,
-        method: 'GET'
+        method: 'GET',
       })
       return response.data
     } catch (e) {
@@ -42,11 +42,28 @@ export default class AccountService {
       const response = await axiosInstance({
         url: '/me/details',
         headers: {
-          Authorization: `Bearer ${apiConfig.token}`
+          Authorization: `Bearer ${apiConfig.token}`,
         },
         validateStatus: validTokenExpired,
         method: 'POST',
-        data: { ...formUpdate }
+        data: { ...formUpdate },
+      })
+      return response.data
+    } catch (e) {
+      throw e
+    }
+  }
+
+  static async getMessagesAccount() {
+    try {
+      apiConfig.getToken()
+      const response = await axiosInstance({
+        url: '/messages',
+        headers: {
+          Authorization: `Bearer ${apiConfig.token}`,
+        },
+        validateStatus: validTokenExpired,
+        method: 'GET',
       })
       return response.data
     } catch (e) {

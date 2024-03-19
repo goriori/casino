@@ -99,6 +99,8 @@ hr {
       font-size: 24px;
       box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
       flex: 0 0 461px;
+      overflow: auto;
+      @include no-scroll();
       @media (max-width: 1500px) {
         padding: 18px;
       }
@@ -188,7 +190,7 @@ hr {
           flex-direction: column;
           gap: 20px;
           max-height: 500px;
-          overflow-y: scroll;
+
           @include no-scroll();
         }
       }

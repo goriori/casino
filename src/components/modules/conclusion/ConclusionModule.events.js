@@ -7,6 +7,7 @@ export function useMethods(
   setErrorValidWithdrawal,
   setErrorWithdrawal,
   setSuccessWithdrawal,
+  setErrorVerification,
   validForm
 ) {
   const paymentStore = usePaymentStore()
@@ -21,7 +22,9 @@ export function useMethods(
       })
       .then(clearForm)
       .catch((e) => {
-        if (e === false) setErrorValidWithdrawal()
+        console.log(e)
+        if (e === 'error verification') setErrorVerification()
+        else if (e === 'error valid') setErrorValidWithdrawal()
         else setErrorWithdrawal()
       })
   }

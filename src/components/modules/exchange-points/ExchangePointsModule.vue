@@ -1,12 +1,14 @@
 <script setup>
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useBonusSystemStore } from '@/store/bonus-system/bonusSystemStore.js'
 import { useStateStore } from '@/store/stateStore.js'
 import InfoTooltip from '@/components/ui/tooltips/info/InfoTooltip.vue'
-import ProfileStatusTooltipMessage from '@/components/ui/tooltip-messages/profile-status/ProfileStatusTooltipMessage.vue'
+import ProfileStatusTooltipMessage from '@/components/modules/tooltip-messages/profile-status/ProfileStatusTooltipMessage.vue'
+import { useSessionStore } from '@/store/session/sessionStore.js'
 
 const bonusSystemStore = useBonusSystemStore()
+const sessionStore = useSessionStore()
 const stateStore = useStateStore()
 const bonusOut = ref(0)
 const validBonusOut = async () => {
@@ -23,8 +25,13 @@ const onExchange = () => {
       console.log(e)
       stateStore.globalPopupMessages.errorServer = true
     })
-  bonusOut.value = 0
+    .finally(() => (bonusOut.value = 0))
 }
+
+const convertateCoins = computed(() => {
+  const ratioAccountTarget = sessionStore.session.profile?.stair_status?.ratio
+  return bonusOut.value / ratioAccountTarget
+})
 </script>
 
 <template>
@@ -60,7 +67,7 @@ const onExchange = () => {
               stroke-linejoin="round"
             />
           </svg>
-          <p>10Р</p>
+          <p>{{ convertateCoins }} Р</p>
         </div>
         <BaseButton id="exchange_button" @click="onExchange">
           <p>Обменять</p>
@@ -97,6 +104,7 @@ const onExchange = () => {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    flex: 1 0 350px;
   }
 }
 
@@ -133,6 +141,10 @@ const onExchange = () => {
     p {
       color: #d5a748;
       font-size: 32px;
+      max-width: 80px;
+      white-space: nowrap;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
     }
   }
 }

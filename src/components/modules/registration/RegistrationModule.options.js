@@ -3,10 +3,12 @@ import { ref } from 'vue'
 export const pswrdHidden = ref(true)
 export const pswrdCnfrmHidden = ref(true)
 export const regMessages = ref({
-  success:false,
-  error:false,
-  isValid:false
+  success: false,
+  error: false,
+  isValid: false,
 })
+
+export const targetEntity = ref('email')
 
 export const formReg = ref({
   username: '',
@@ -19,4 +21,5 @@ export const formReg = ref({
   // eslint-disable-next-line camelcase
   last_name: '',
   phone: '',
+  email: '',
 })

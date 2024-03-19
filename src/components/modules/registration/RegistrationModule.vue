@@ -11,6 +11,7 @@ import {
   pswrdHidden,
   formReg,
   pswrdCnfrmHidden,
+  targetEntity,
 } from '@/components/modules/registration/RegistrationModule.options.js'
 
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
@@ -45,15 +46,39 @@ const stateStore = useStateStore()
         для создания вашего профиля
       </p>
     </div>
-
+    <div class="authorization-target">
+      <div
+        :class="['target-item ', { active: targetEntity === 'email' }]"
+        @click="targetEntity = 'email'"
+      >
+        Почта
+      </div>
+      <div
+        :class="['target-item ', { active: targetEntity === 'phone' }]"
+        @click="targetEntity = 'phone'"
+      >
+        Телефон
+      </div>
+    </div>
     <div class="authorization-form">
-      <div class="form-field">
-        <label>Логин</label><br />
+      <div class="form-field" v-if="targetEntity === 'email'">
+        <label>Почта</label><br />
         <div class="form-field-input">
           <input
             type="text"
-            placeholder="Ввести логин"
-            v-model="formReg.username"
+            placeholder="Ввести почту"
+            v-model="formReg.email"
+          />
+          <EmailIcon />
+        </div>
+      </div>
+      <div class="form-field" v-if="targetEntity === 'phone'">
+        <label>Телефон</label><br />
+        <div class="form-field-input">
+          <input
+            type="text"
+            placeholder="Ввести номер телефона"
+            v-model="formReg.phone"
           />
           <EmailIcon />
         </div>

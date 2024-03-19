@@ -24,13 +24,14 @@
     display: flex;
     justify-content: flex-end;
   }
+
   &-module {
     color: #fff;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 32px;
+    gap: 20px;
     border-radius: 26px;
     background: #2C2C2C;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
@@ -44,6 +45,14 @@
     width: 100%;
     text-align: center;
 
+  }
+
+  &-target {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    min-height: 30px;
   }
 
   &-info {
@@ -188,7 +197,7 @@ span {
       border-radius: 36px;
       font-weight: 400;
       background: none;
-      color:$white;
+      color: $white;
     }
   }
 }
@@ -219,6 +228,23 @@ span {
   span {
     @media (max-width: $md5 + px) {
       font-size: 10px;
+    }
+  }
+
+}
+
+
+.target {
+  &-item {
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+
+    &.active {
+      padding: 5px 10px;
+      transition: all 0.1s ease-in-out;
+      background:  #d5a748;
+      border-radius: 36px;
     }
   }
 

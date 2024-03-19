@@ -31,6 +31,7 @@ export const onAuthorization = async (router) => {
     await onValidForm()
     await sessionStore.authorization(formAuth.value)
     await sessionStore.getInfoSession()
+    await sessionStore.getStatusPay()
     bonusSystemStore.onInitBonusSystemAccount(sessionStore.session.profile)
     clearForm()
     stateStore.globalPopupsModules.authorization.visibility = false
@@ -53,7 +54,6 @@ export const onRegistration = () => {
   stateStore.globalPopupsModules.authorization.visibility = false
   stateStore.globalPopupsModules.registration.visibility = true
 }
-
 
 export const onAuthTelegram = () => {
   const a = document.createElement('a')

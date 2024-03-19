@@ -2,10 +2,8 @@
 import { defineAsyncComponent } from 'vue'
 import MenuModule from '@/components/modules/account/modules/menu/MenuModule.vue'
 import PersonalAccountIcon from '@/components/ui/icons/account/PersonalAccountIcon.vue'
-import ExchangePointsModule from '@/components/modules/exchange-points/ExchangePointsModule.vue'
 import ProfileStatusModule from '@/components/modules/profile-status/ProfileStatusModule.vue'
 import ReferalPromoCodeModule from '@/components/modules/referal-code/ReferalPromoCodeModule.vue'
-
 
 const ProfileModule = defineAsyncComponent(() =>
   import('@/components/modules/account/modules/profile/ProfileModule.vue')
@@ -19,7 +17,9 @@ const HistoryBalanceModule = defineAsyncComponent(() =>
   )
 )
 
-
+const ExchangePointsModule = defineAsyncComponent(() =>
+  import('@/components/modules/exchange-points/ExchangePointsModule.vue')
+)
 </script>
 
 <template>

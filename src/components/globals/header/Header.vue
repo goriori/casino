@@ -13,6 +13,7 @@ import PopupBase from '@/components/ui/popups/base/PopupBase.vue'
 import AuthorizationModule from '@/components/modules/authorization/AuthorizationModule.vue'
 import BurgerHeaderIocn from '@/components/ui/icons/header/BurgerHeaderIocn.vue'
 import BurgerMenu from '@/components/globals/header/components/burger/BurgerMenu.vue'
+import MailMessagesModule from '@/components/modules/mail-messages/MailMessagesModule.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -38,7 +39,7 @@ onMounted(async () => {
 
 <template>
   <header class="header">
-    <BurgerMenu/>
+    <BurgerMenu />
     <div class="header-actions">
       <div class="header-actions-bonus" @click="router.push('/bonuses')">
         <BonusHeaderIcon />
@@ -54,6 +55,9 @@ onMounted(async () => {
     </div>
     <div class="header-actions">
       <div class="header-actions-account">
+        <div class="action-mail" v-if="isAuthorized">
+          <MailMessagesModule />
+        </div>
         <div class="action-balance" v-if="isAuthorized">
           <BalanceModule />
         </div>

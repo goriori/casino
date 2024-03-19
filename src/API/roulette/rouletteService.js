@@ -1,4 +1,5 @@
 import { axiosInstance } from '@/utils/axios/axios'
+import apiConfig from '@/API/api.config.js'
 
 export default class RouletteService {
   static async getPrizes() {
@@ -13,11 +14,15 @@ export default class RouletteService {
     }
   }
 
-  static async spinRoulette(caseId) {
+  static async spinRoulette() {
     try {
+      apiConfig.getToken()
       const response = await axiosInstance({
         url: '/roulette/spin',
         method: 'GET',
+        headers: {
+          Authorization: `Bearer ${apiConfig.token}`,
+        },
       })
       return response.data
     } catch (e) {

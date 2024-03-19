@@ -11,6 +11,10 @@ import { defineAsyncComponent } from 'vue'
 import PopupProfileEdit from '@/components/globals/popups/popup-profile-edit/PopupProfileEdit.vue'
 import PopupStatusList from '@/components/globals/popups/popup-status-list/PopupStatusList.vue'
 import PopupExchangeCoins from '@/components/globals/popups/popup-exchange-coins/PopupExchangeCoins.vue'
+import PopupErrorVerification from '@/components/globals/popups/popup-error-verification/PopupErrorVerification.vue'
+import PopupRoulette from '@/components/globals/popups/popup-roulette/PopupRoulette.vue'
+import PopupError from '@/components/globals/popups/popup-error/PopupError.vue'
+import PopupWinnPrize from '@/components/globals/popups/popup-win-prize/PopupWinnPrize.vue'
 
 const stateStore = useStateStore()
 const PopupAuthorization = defineAsyncComponent(() =>
@@ -62,7 +66,27 @@ const PopupRegistration = defineAsyncComponent(() =>
       />
     </Transition>
     <Transition name="slide">
+      <PopupRoulette
+        @close="stateStore.globalPopupsModules.roulette.visibility = false"
+        v-if="stateStore.globalPopupsModules.roulette.visibility"
+      />
+    </Transition>
+    <Transition name="slide">
+      <PopupWinnPrize
+        @close="stateStore.globalPopupsModules.winnPrize.visibility = false"
+        v-if="stateStore.globalPopupsModules.winnPrize.visibility"
+      />
+    </Transition>
+    <Transition name="slide">
+      <PopupError v-if="stateStore.globalPopupMessages.error.visibility" />
+    </Transition>
+    <Transition name="slide">
       <PopupErrorServer v-if="stateStore.globalPopupMessages.errorServer" />
+    </Transition>
+    <Transition name="slide">
+      <PopupErrorVerification
+        v-if="stateStore.globalPopupMessages.errorVerification"
+      />
     </Transition>
     <Transition name="slide">
       <PopupErrorServer v-if="stateStore.globalPopupMessages.errorServer" />

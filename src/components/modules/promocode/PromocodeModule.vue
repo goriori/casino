@@ -3,18 +3,29 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import { ref } from 'vue'
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
 import CoinsIcon from '@/components/ui/icons/other/CoinsIcon.vue'
+import { useSessionStore } from '@/store/session/sessionStore.js'
+import { useStateStore } from '@/store/stateStore.js'
 
 const promocode = ref('')
 const paymentStore = usePaymentStore()
+const sessionStore = useSessionStore()
+const stateStore = useStateStore()
 const onSendPromocode = () => {
-  paymentStore.sendPromocode(promocode.value)
-  promocode.value = ''
+  if (!sessionStore.session.profile) {
+    stateStore.globalPopupsModules.authorization.visibility = true
+  } else {
+    paymentStore.sendPromocode(promocode.value).then((response) => {
+      if (response.error) stateStore.globalPopupMessages.errorValid = true
+      console.log(response)
+    })
+    promocode.value = ''
+  }
 }
 </script>
 
 <template>
   <div class="promocode__module">
-    <h2>Промокд</h2>
+    <h2>Промокод</h2>
     <div class="promocode__module-icon">
       <CoinsIcon />
     </div>
@@ -29,14 +40,18 @@ const onSendPromocode = () => {
 
 <style scoped lang="scss">
 @import '@/assets/scss/variables';
+
 .promocode__module {
   display: flex;
   flex-direction: column;
+
   &-icon {
     position: relative;
     top: 40px;
+    flex: 1 0 154px;
   }
 }
+
 .personal__bonuses {
   display: flex;
   flex-direction: column;

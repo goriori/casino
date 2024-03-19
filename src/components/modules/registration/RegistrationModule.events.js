@@ -2,6 +2,7 @@ import {
   pswrdHidden,
   pswrdCnfrmHidden,
   formReg,
+  targetEntity,
 } from '@/components/modules/registration/RegistrationModule.options.js'
 
 import { useSessionStore } from '@/store/session/sessionStore.js'
@@ -11,6 +12,7 @@ import {
   onValidForm,
 } from '@/components/modules/registration/RegistrationModule.valids.js'
 import { useStateStore } from '@/store/stateStore.js'
+import { generateRandomLogin } from '@/utils/helpers/generateRandomLogin.js'
 
 const sessionStore = useSessionStore()
 const stateStore = useStateStore()
@@ -30,8 +32,9 @@ const clearForm = () => {
 }
 export const onRegistration = async (router) => {
   try {
-    await onValidForm()
+    await onValidForm(targetEntity.value)
       .then((resultValid) => {
+        formReg.value.username = generateRandomLogin()
         sessionStore.registration(formReg.value)
       })
       .then(clearForm)
