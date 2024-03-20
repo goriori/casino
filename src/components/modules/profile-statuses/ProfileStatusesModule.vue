@@ -29,10 +29,11 @@ onMounted(async () => {
         <rect width="400" height="200" />
       </ContentLoader>
       <StatusTypeCard
-        v-for="status in settingStore.statuses"
+        v-for="(status, index) in settingStore.statuses"
         :key="status.id"
+        :statusId="status.id"
         :statusImage="urlAPI + status.icon"
-        :status-min-exp="status.exp"
+        :statusMinExp="status.exp"
         :statusRatio="status.ratio"
         :statusTitle="status.title"
       />
@@ -65,7 +66,5 @@ onMounted(async () => {
       max-height: 500px;
     }
   }
-
-
 }
 </style>

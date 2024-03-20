@@ -1,7 +1,14 @@
 <script setup>
 import CheckMarkIcon from '@/components/ui/icons/other/CheckMarkIcon.vue'
+import { ref } from 'vue'
+import { useSettingsStore } from '@/store/settings/settingStore.js'
+import { useSessionStore } from '@/store/session/sessionStore.js'
 
 const props = defineProps({
+  statusId: {
+    type: Number,
+    default: 0,
+  },
   statusImage: {
     type: String,
     default: '',
@@ -19,6 +26,33 @@ const props = defineProps({
     default: 0,
   },
 })
+
+const settingsStore = useSettingsStore()
+const sessionStore = useSessionStore()
+const userExp = sessionStore.session.profile.coins
+const indexStatus = settingsStore.statuses.findIndex(
+  (status) => status.id === props.statusId
+)
+const computedStatusMax = () => {
+  const nextIndexStatus = indexStatus + 1
+  if (settingsStore.statuses[nextIndexStatus] !== undefined) {
+    return settingsStore.statuses[nextIndexStatus].exp
+  } else {
+    return '∞'
+  }
+}
+const statusMaxExp = ref(computedStatusMax())
+const limitBar = () => {
+  const maxExp = statusMaxExp.value
+  if (maxExp === '∞') return 10000000
+  else return maxExp
+}
+const progressBar = ref(
+  (() => {
+    if (userExp > statusMaxExp.value) return '100%'
+    else return `${(sessionStore.session.profile.coins / limitBar())* 100}%`
+  })()
+)
 </script>
 
 <template>
@@ -30,7 +64,7 @@ const props = defineProps({
         <div class="exp-range">
           <p>{{ statusMinExp }}</p>
           <div></div>
-          <p>100</p>
+          <p>{{ statusMaxExp }}</p>
         </div>
       </div>
       <div class="profile__statuses-card-info">
@@ -75,6 +109,7 @@ const props = defineProps({
         gap: 5px;
 
         div {
+          position: relative;
           width: 120px;
           height: 10px;
           background: #1e1e1e;
@@ -84,9 +119,15 @@ const props = defineProps({
             display: block;
             content: '';
             background: #d5a748;
-            width: 50%;
+            width: v-bind(progressBar);
             height: 100%;
             border-radius: 36px;
+          }
+
+          &::after {
+            position: absolute;
+            content: '30';
+            display: block;
           }
         }
       }

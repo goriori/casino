@@ -80,7 +80,6 @@ const stateStore = useStateStore()
             placeholder="Ввести номер телефона"
             v-model="formReg.phone"
           />
-          <EmailIcon />
         </div>
       </div>
       <div class="form-field">

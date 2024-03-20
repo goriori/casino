@@ -1,4 +1,5 @@
 import { axiosInstance } from '@/utils/axios/axios'
+import { ERRORS } from '@/configs/errors.js'
 
 export default class AuthorizationService {
   static async authorization(formAuth) {
@@ -12,7 +13,7 @@ export default class AuthorizationService {
       sessionStorage.setItem('token', response.data.token)
       return response.data
     } catch (e) {
-      throw e
+      throw ERRORS.ERROR_AUTHORIZATION
     }
   }
 
@@ -26,7 +27,7 @@ export default class AuthorizationService {
       })
       return response.data
     } catch (e) {
-      throw e
+      throw ERRORS.ERROR_REGISTRATION
     }
   }
 }

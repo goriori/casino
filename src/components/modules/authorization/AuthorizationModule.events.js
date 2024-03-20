@@ -12,6 +12,7 @@ import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useSettingsStore } from '@/store/settings/settingStore.js'
 import { useStateStore } from '@/store/stateStore.js'
 import { useBonusSystemStore } from '@/store/bonus-system/bonusSystemStore.js'
+import { ERRORS } from '@/configs/errors.js'
 
 const settingStore = useSettingsStore()
 const sessionStore = useSessionStore()
@@ -36,8 +37,7 @@ export const onAuthorization = async (router) => {
     clearForm()
     stateStore.globalPopupsModules.authorization.visibility = false
   } catch (e) {
-    console.log('err object or boolean:', e)
-    if (e === false) onErrorValid()
+    if (e === ERRORS.ERROR_VALIDATION) onErrorValid()
     else onErrorMessage()
     clearForm()
   }

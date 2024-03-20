@@ -18,7 +18,7 @@ import { usePaymentStore } from '@/store/payments/paymentStore.js'
     </div>
 
     <div class="personal__bonuses-list">
-      <BonusCard v-for="card in 5" :key="card">
+      <BonusCard v-for="card in 5" :key="card" image="/images/roulette/prizes/bonus.png">
         <template #actions>
           <BaseButton color="primary" id="use-promo">
             <p>Использовать</p>

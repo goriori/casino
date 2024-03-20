@@ -1,10 +1,9 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useBonusSystemStore } from '@/store/bonus-system/bonusSystemStore.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
-import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
-import { is } from 'date-fns/locale'
 import { useStateStore } from '@/store/stateStore.js'
+import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
 
 const props = defineProps({
   isPopup: {
@@ -18,24 +17,13 @@ const stateStore = useStateStore()
 const rouletteRef = ref(null)
 const isSpin = ref(false)
 const emits = defineEmits(['close'])
-const segmentStyle = (index) => {
-  const totalSegments = bonusStore.roulette.prizes.length
-  const rotation = 360 / totalSegments
-
-  return {
-    color: '#000',
-    transform: `rotate(${rotation * index}deg)`,
-  }
-}
 const onSpinRoulette = async () => {
   startSpin()
     .then(bonusStore.spinRoulette)
     .then(handlerSuccessSpin)
     .catch(handlerErrorSpin)
 }
-
 const handlerSuccessSpin = (res) => {
-  console.log(res)
   setTimeout(() => {
     stopSpin().then(() => {
       stateStore.globalPopupsModules.winnPrize.visibility = true
@@ -44,7 +32,6 @@ const handlerSuccessSpin = (res) => {
   }, 2000)
 }
 const handlerErrorSpin = (e) => {
-  console.log(e)
   setTimeout(
     () =>
       stopSpin().then(() => {
@@ -61,7 +48,6 @@ const startSpin = async () => {
     isSpin.value = true
   }
 }
-
 const stopSpin = async () => {
   if (rouletteRef.value) {
     rouletteRef.value.classList.remove('spin')
@@ -85,14 +71,15 @@ onMounted(async () => {
       <CloseIcon @click="emits('close')" v-if="isPopup" />
     </div>
     <div ref="rouletteRef" class="wheel-of-fortune">
-      <div
-        :class="['wheel-segment', { coin: prize.type === 'coin' }]"
-        v-for="(prize, index) in bonusStore.roulette.prizes"
-        :key="index"
-        :style="segmentStyle(index)"
-      >
-        {{ prize.sum }}
-      </div>
+      <img src="/images/roulette/wheel.svg" alt="wheel" />
+      <ul class="wheel-prizes">
+        <li v-for="prize in bonusStore.roulette.prizes" :key="prize.id">
+          <p>+{{ prize.sum }}</p>
+          <strong
+            ><p>{{ prize.title }}</p></strong
+          >
+        </li>
+      </ul>
       <div
         :class="[
           'wheel-pay',
@@ -142,7 +129,8 @@ onMounted(async () => {
 }
 
 .wheel-pay {
-  position: relative;
+  width: 100%;
+  position: absolute;
   z-index: 10;
   top: 50%;
   left: 50%;
@@ -170,10 +158,16 @@ onMounted(async () => {
 
 .wheel-of-fortune {
   position: relative;
-  width: 500px;
-  height: 500px;
+  max-width: 500px;
+  max-height: 500px;
   border-radius: 50%;
   overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 
   &.spin {
     animation: spin 1s infinite linear;
@@ -188,23 +182,56 @@ onMounted(async () => {
   }
 }
 
-.wheel-segment {
+.wheel-prizes {
+  position: absolute;
+  top: 0;
   width: 100%;
   height: 100%;
-  position: absolute;
-  clip-path: polygon(0% -50%, 60% 50%, 0% 100%);
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  font-size: 1.5em;
-  background-color: #f8f9fa;
-  mask: url('/images/masks/slice.png');
-  mask-repeat: no-repeat;
-  mask-size: contain;
-  mask-position: center;
-}
+  z-index: 10;
+  color: #000;
+  text-align: center;
 
-.coin {
-  background-color: #d5a748;
+  li {
+    position: absolute;
+    display: block;
+    font-size: 16px;
+
+    &:nth-child(1) {
+      left: 150px;
+      top: 50px;
+      transform: rotate(0deg);
+    }
+
+    &:nth-child(2) {
+      left: 290px;
+      top: 70px;
+      transform: rotate(0deg);
+    }
+
+    &:nth-child(3) {
+      left: 380px;
+      top: 180px;
+    }
+
+    &:nth-child(4) {
+      left: 340px;
+      top: 320px;
+    }
+
+    &:nth-child(5) {
+      left: 190px;
+      top: 390px;
+    }
+
+    &:nth-child(6) {
+      left: 80px;
+      top: 330px;
+    }
+
+    &:nth-child(7) {
+      left: 30px;
+      top: 190px;
+    }
+  }
 }
 </style>

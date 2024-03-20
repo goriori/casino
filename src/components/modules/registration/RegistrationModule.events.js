@@ -13,6 +13,7 @@ import {
 } from '@/components/modules/registration/RegistrationModule.valids.js'
 import { useStateStore } from '@/store/stateStore.js'
 import { generateRandomLogin } from '@/utils/helpers/generateRandomLogin.js'
+import { ERRORS } from '@/configs/errors.js'
 
 const sessionStore = useSessionStore()
 const stateStore = useStateStore()
@@ -40,8 +41,7 @@ export const onRegistration = async (router) => {
       .then(clearForm)
       .then(openAuthorization)
   } catch (e) {
-    console.log('result valid:', e)
-    if (e === false) onErrorValid()
+    if (e === ERRORS.ERROR_VALIDATION) onErrorValid()
     else onErrorMessage()
   }
 }

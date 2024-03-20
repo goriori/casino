@@ -11,14 +11,15 @@ import {
   pswrdHidden,
   formAuth,
   authFields,
+  targetEntity,
 } from '@/components/modules/authorization/AuthorizationModule.options.js'
+import { useStateStore } from '@/store/stateStore.js'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import EmailIcon from '@/components/ui/icons/authorization/EmailIcon.vue'
 import HiddenIcon from '@/components/ui/icons/authorization/HiddenIcon.vue'
 import TelegramIcon from '@/components/ui/icons/authorization/TelegramIcon.vue'
 import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue'
 import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
-import { useStateStore } from '@/store/stateStore.js'
 
 const props = defineProps({
   isPopup: {
@@ -41,9 +42,34 @@ const stateStore = useStateStore()
       <h1>Вход</h1>
       <p>Введите свои учетные данные для доступа к вашему профилю</p>
     </div>
-
+    <div class="authorization-target">
+      <div
+        :class="['target-item ', { active: targetEntity === 'email' }]"
+        @click="targetEntity = 'email'"
+      >
+        Почта
+      </div>
+      <div
+        :class="['target-item ', { active: targetEntity === 'phone' }]"
+        @click="targetEntity = 'phone'"
+      >
+        Телефон
+      </div>
+    </div>
     <div class="authorization-form" ref="authFields">
-      <div class="form-field">
+      <div class="form-field" v-if="targetEntity === 'email'">
+        <div class="form-field-input">
+          <input
+            class="auth-field"
+            type="text"
+            id="auth-login"
+            placeholder="Ввести почту"
+            v-model="formAuth.username"
+          />
+          <EmailIcon />
+        </div>
+      </div>
+      <div class="form-field" v-if="targetEntity === 'phone'">
         <div class="form-field-input">
           <input
             class="auth-field"
@@ -52,7 +78,6 @@ const stateStore = useStateStore()
             placeholder="Ввести логин"
             v-model="formAuth.username"
           />
-          <EmailIcon />
         </div>
       </div>
       <div class="form-field">
