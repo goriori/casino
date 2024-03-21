@@ -4,6 +4,7 @@ import MenuModule from '@/components/modules/account/modules/menu/MenuModule.vue
 import PersonalAccountIcon from '@/components/ui/icons/account/PersonalAccountIcon.vue'
 import ProfileStatusModule from '@/components/modules/profile-status/ProfileStatusModule.vue'
 import ReferalPromoCodeModule from '@/components/modules/referal-code/ReferalPromoCodeModule.vue'
+import ProfileVerificationModule from '@/components/modules/profile-verification/ProfileVerificationModule.vue'
 
 const ProfileModule = defineAsyncComponent(() =>
   import('@/components/modules/account/modules/profile/ProfileModule.vue')
@@ -28,10 +29,12 @@ const ExchangePointsModule = defineAsyncComponent(() =>
       <div class="title">
         <PersonalAccountIcon color="white" />
         <h3>Личный кабинет</h3>
+
       </div>
 
       <div class="account-module-desktop-navigation">
-        <MenuModule />
+        <ProfileVerificationModule/>
+<!--        <MenuModule />-->
       </div>
     </div>
     <div class="account-module-desktop-items">
@@ -117,6 +120,7 @@ const ExchangePointsModule = defineAsyncComponent(() =>
       }
       @media (max-width: $md2 + px) {
         flex-direction: column;
+        max-height: none;
       }
       @media (max-width: $md4 + px) {
         display: none;

@@ -126,7 +126,7 @@ const progressBar = ref(
 
           &::after {
             position: absolute;
-            content: '30';
+            content: '';
             display: block;
           }
         }

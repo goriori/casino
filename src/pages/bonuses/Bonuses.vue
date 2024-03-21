@@ -35,7 +35,7 @@ const openWithdrawal = () => {
     <Header />
     <div class="page-container container">
       <section class="page-preview">
-        <h2>Пополнени счет <span>впервые</span> и получи дополнительно</h2>
+        <h2>Пополни счет <span>впервые</span> и получи дополнительно</h2>
         <img src="/images/bonuses/percent.png" alt="" />
         <div class="preview-actions">
           <BaseButton color="white" id="toBonusAccount" @click="toBonusAccount">
@@ -46,20 +46,22 @@ const openWithdrawal = () => {
           </BaseButton>
         </div>
       </section>
-      <div class="page-modules">
+      <section class="page-modules">
         <PersonalBonusesModule />
         <div class="modules-middle">
           <PromocodeModule />
           <SpinRoulette />
         </div>
         <LoyaltyProgramModule />
-      </div>
+      </section>
     </div>
     <Footer />
   </div>
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/scss/variables.scss';
+
 p {
   color: #fff;
   font-weight: bold;
@@ -73,6 +75,9 @@ p {
   p {
     font-size: 32px;
     color: #d5a748;
+    @media (max-width: $md3 + px) {
+      font-size: 20px;
+    }
   }
 }
 
@@ -86,6 +91,12 @@ p {
   display: flex;
   flex-direction: column;
   gap: 53px;
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
 
   &-modules {
     display: flex;
@@ -105,10 +116,36 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
     gap: 40px;
+    @media (max-width: $md1 + px) {
+      padding: 40px;
+    }
+    @media (max-width: $md3 + px) {
+      gap: 20px;
+    }
 
     h2 {
       font-size: 48px;
+      flex: 1 0 33%;
+      @media (max-width: $md3 + px) {
+        font-size: 36px;
+      }
+
+      @media (max-width: $md4 + px) {
+        font-size: 26px;
+      }
+    }
+
+    img {
+      flex: 1 0 33%;
+      object-fit: contain;
+      @media (max-width: $md1 + px) {
+        max-width: 550px;
+      }
+      @media (max-width: $md3 + px) {
+        max-width: 300px;
+      }
     }
 
     span {
@@ -125,6 +162,10 @@ p {
     align-items: center;
     flex-direction: column;
     gap: 40px;
+    flex: 1 0 33%;
+    @media (max-width: $md3 + px) {
+      gap: 20px;
+    }
   }
 }
 
@@ -133,6 +174,13 @@ p {
     display: flex;
     gap: 200px;
     padding: 0 200px;
+    @media (max-width: $md2 + px) {
+      padding:0;
+      gap: 35px;
+    }
+    @media (max-width: $md3 + px) {
+      flex-direction: column;
+    }
   }
 }
 </style>

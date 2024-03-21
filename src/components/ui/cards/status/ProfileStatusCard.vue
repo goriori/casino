@@ -17,8 +17,14 @@ const props = defineProps({
   },
 })
 
-const expProfile = ref(`${(100 / 100) * props.exp}%`)
-const statusBar = ref(props.exp)
+const expProfile = ref(
+  (() => {
+    const progress = (100 / 100) * props.exp
+    if (progress > 100) return '100%'
+    else return progress + '%'
+  })()
+)
+const statusBar = ref(`${props.exp}/100`)
 </script>
 
 <template>

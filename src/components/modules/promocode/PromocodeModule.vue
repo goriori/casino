@@ -67,7 +67,6 @@ const onSendPromocode = () => {
     border-radius: 36px;
     color: #fff;
     flex: 0 0 190px;
-    max-width: 587px;
     @media (max-width: $md4 + px) {
       flex-direction: column;
       gap: 10px;

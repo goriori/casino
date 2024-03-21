@@ -15,10 +15,10 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="mail__messages-module" >
-    <div class="mail__messages-icon" >
+  <div class="mail__messages-module">
+    <div class="mail__messages-icon">
       <div class="ellipse-notification"></div>
-      <MailMessagesIcon @click="changeIsOpen" />
+      <MailMessagesIcon @click="changeIsOpen" class="icon" />
     </div>
     <Transition name="fade">
       <div class="mail__messages-notification" v-if="isOpen">
@@ -38,9 +38,9 @@ onMounted(async () => {
               </div>
             </div>
             <div class="notification-actions">
-              <BaseButton>
-                <p>Удалить</p>
-              </BaseButton>
+<!--              <BaseButton>-->
+<!--                <p>Удалить</p>-->
+<!--              </BaseButton>-->
             </div>
           </article>
         </div>
@@ -50,8 +50,19 @@ onMounted(async () => {
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/scss/variables.scss';
+
 p {
   color: white;
+}
+
+.icon {
+  @media (max-width: $md4 + px) {
+    max-width: 30px;
+  }
+  @media (max-width: $md5 + px) {
+    display: none;
+  }
 }
 
 .mail__messages {
@@ -99,13 +110,14 @@ p {
     flex-direction: column;
     overflow-y: auto;
     padding: 0 15px 0 0;
+
     &::-webkit-scrollbar-thumb {
       background: #d5a748;
       border-radius: 36px;
     }
+
     &::-webkit-scrollbar-track {
       border-radius: 36px;
-
     }
 
     gap: 20px;
