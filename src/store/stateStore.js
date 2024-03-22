@@ -42,7 +42,18 @@ export const useStateStore = defineStore('stateStore', () => {
         this.errorText = ''
       },
     },
-    success: false,
+    success: {
+      successText: '',
+      visibility: false,
+      show: function (message) {
+        this.successText = message
+        this.visibility = true
+      },
+      close: function () {
+        this.visibility = false
+        this.successText = ''
+      },
+    },
     application: false,
     exchangeCoin: false,
   })

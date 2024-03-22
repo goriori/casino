@@ -78,15 +78,12 @@ const PopupRegistration = defineAsyncComponent(() =>
       <PopupError v-if="stateStore.globalPopupMessages.error.visibility" />
     </Transition>
     <Transition name="slide">
-      <PopupSuccess v-if="stateStore.globalPopupMessages.success" />
+      <PopupSuccess v-if="stateStore.globalPopupMessages.success.visibility" />
     </Transition>
     <Transition name="slide">
       <PopupApplicationProcessing
         v-if="stateStore.globalPopupMessages.application"
       />
-    </Transition>
-    <Transition name="slide">
-      <PopupExchangeCoins v-if="stateStore.globalPopupMessages.exchangeCoin" />
     </Transition>
   </Teleport>
 </template>

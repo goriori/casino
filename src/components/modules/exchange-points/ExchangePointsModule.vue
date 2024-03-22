@@ -7,6 +7,7 @@ import InfoTooltip from '@/components/ui/tooltips/info/InfoTooltip.vue'
 import ProfileStatusTooltipMessage from '@/components/modules/tooltip-messages/profile-status/ProfileStatusTooltipMessage.vue'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { ERRORS } from '@/configs/errors.js'
+import { SUCCESS } from '@/configs/success.js'
 
 const bonusSystemStore = useBonusSystemStore()
 const sessionStore = useSessionStore()
@@ -20,7 +21,9 @@ const onExchange = () => {
   validBonusOut()
     .then(() => bonusSystemStore.onExchangeCoins(bonusOut.value))
     .then(() => {
-      stateStore.globalPopupMessages.exchangeCoin = true
+      stateStore.globalPopupMessages.success.show(
+        SUCCESS.SUCCESS_EXCHANGE_COIN.MESSAGE
+      )
     })
     .catch((e) => {
       console.log(e)
