@@ -1,19 +1,17 @@
 <script setup>
+import { useStateStore } from '@/store/stateStore.js'
+import { defineAsyncComponent } from 'vue'
 import PopupApplicationProcessing from '@/components/globals/popups/popup-application-processing/PopupApplicationProcessing.vue'
 import PopupConnectNetwork from '@/components/globals/popups/popup-connect-network/PopupConnectNetwork.vue'
 import PopupReplenishment from '@/components/globals/popups/popup-replenishment/PopupReplenishment.vue'
 import PopupSuccess from '@/components/globals/popups/popup-success/PopupSuccess.vue'
 import PopupConclusion from '@/components/globals/popups/popup-conclusion/PopupConclusion.vue'
-import { useStateStore } from '@/store/stateStore.js'
-import { defineAsyncComponent } from 'vue'
 import PopupProfileEdit from '@/components/globals/popups/popup-profile-edit/PopupProfileEdit.vue'
 import PopupStatusList from '@/components/globals/popups/popup-status-list/PopupStatusList.vue'
-import PopupExchangeCoins from '@/components/globals/popups/popup-exchange-coins/PopupExchangeCoins.vue'
 import PopupRoulette from '@/components/globals/popups/popup-roulette/PopupRoulette.vue'
 import PopupError from '@/components/globals/popups/popup-error/PopupError.vue'
 import PopupWinnPrize from '@/components/globals/popups/popup-win-prize/PopupWinnPrize.vue'
 
-const stateStore = useStateStore()
 const PopupAuthorization = defineAsyncComponent(() =>
   import(
     '@/components/globals/popups/popup-authorization/PopupAuthorization.vue'
@@ -22,6 +20,7 @@ const PopupAuthorization = defineAsyncComponent(() =>
 const PopupRegistration = defineAsyncComponent(() =>
   import('@/components/globals/popups/popup-registration/PopupRegistration.vue')
 )
+const stateStore = useStateStore()
 </script>
 
 <template>

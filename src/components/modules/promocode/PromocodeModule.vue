@@ -16,11 +16,14 @@ const onSendPromocode = () => {
     stateStore.globalPopupsModules.authorization.visibility = true
   } else {
     paymentStore.sendPromocode(promocode.value).then((response) => {
-      if (response.error)
+      const error = response.error
+      if (error === 'Pincode not exist') {
         stateStore.globalPopupMessages.error.show(
-          ERRORS.ERROR_VALIDATION.MESSAGE
+          ERRORS.ERROR_NOT_FOUND_PROMOCODE.MESSAGE
         )
-      console.log(response)
+      } else {
+        stateStore.globalPopupMessages.error.show(ERRORS.ERROR_SERVER.MESSAGE)
+      }
     })
     promocode.value = ''
   }

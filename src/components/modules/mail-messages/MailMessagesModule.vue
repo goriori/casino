@@ -24,25 +24,28 @@ onMounted(async () => {
       <div class="mail__messages-notification" v-if="isOpen">
         <h4 class="notification-title">Уведомления</h4>
         <div class="notification-list">
-          <article
-            v-for="message in mailStore.messages"
-            :key="message"
-            class="notification-item"
-          >
-            <div class="notification-content">
-              <div class="content-icon">
-                <MessageIcons :type="message.type" />
+          <div v-if="mailStore.messages.length > 0">
+            <article
+              v-for="message in mailStore.messages"
+              :key="message"
+              class="notification-item"
+            >
+              <div class="notification-content">
+                <div class="content-icon">
+                  <MessageIcons :type="message.type" />
+                </div>
+                <div class="content-message">
+                  {{ message.title }}
+                </div>
               </div>
-              <div class="content-message">
-                {{ message.title }}
+              <div class="notification-actions">
+                <!--              <BaseButton>-->
+                <!--                <p>Удалить</p>-->
+                <!--              </BaseButton>-->
               </div>
-            </div>
-            <div class="notification-actions">
-              <!--              <BaseButton>-->
-              <!--                <p>Удалить</p>-->
-              <!--              </BaseButton>-->
-            </div>
-          </article>
+            </article>
+          </div>
+          <div v-else>У вас нет уведомлений</div>
         </div>
       </div>
     </Transition>

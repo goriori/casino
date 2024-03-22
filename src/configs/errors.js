@@ -11,6 +11,14 @@ export const ERRORS = {
     TYPE: 'error_verification',
     MESSAGE: 'Ваш аккаунт не верефицирован',
   },
+  ERROR_LOW_BALANCE: {
+    TYPE: 'error_low_balance',
+    MESSAGE: 'Недостаточно средств',
+  },
+  ERROR_NOT_FOUND_PROMOCODE: {
+    TYPE: 'error_not_found_promocode',
+    MESSAGE: 'Промокод не найден',
+  },
   ERROR_EXPIRED_TOKEN: {
     TYPE: 'error_expired_token',
     MESSAGE: 'Срок действия токена истек, пройдите повторную авторизацию',

@@ -1,4 +1,8 @@
-<script setup></script>
+<script setup>
+import { useSessionStore } from '@/store/session/sessionStore.js'
+
+const sessionStore = useSessionStore()
+</script>
 
 <template>
   <section class="profile__verification-module">
@@ -8,6 +12,7 @@
       height="45"
       viewBox="0 0 44 45"
       fill="none"
+      v-if="!sessionStore.session?.profile?.is_verified"
     >
       <rect y="0.528717" width="44" height="44" rx="22" fill="#D20000" />
       <g clip-path="url(#clip0_3714_1512)">
@@ -31,24 +36,40 @@
         </clipPath>
       </defs>
     </svg>
-    <!--    <svg-->
-    <!--      xmlns="http://www.w3.org/2000/svg"-->
-    <!--      width="44"-->
-    <!--      height="45"-->
-    <!--      viewBox="0 0 44 45"-->
-    <!--      fill="none"-->
-    <!--    >-->
-    <!--      <rect y="0.528717" width="44" height="44" rx="22" fill="#7AB816 " />-->
-    <!--      <path-->
-    <!--        d="M18 16.8144V20.243M26 16.8144V20.243M22 34.5287C15.3726 34.5287 10 29.1561 10 22.5287C10 15.9013 15.3726 10.5287 22 10.5287C28.6274 10.5287 34 15.9013 34 22.5287C34 29.1561 28.6274 34.5287 22 34.5287ZM22.42 23.6716H21.58C19.2309 23.6716 16.9194 23.0822 14.8571 21.9573H14.5714V22.5287C14.5714 26.6315 17.8973 29.9573 22 29.9573C26.1026 29.9573 29.4286 26.6315 29.4286 22.5287V21.9573H29.1429C27.0806 23.0822 24.769 23.6716 22.42 23.6716Z"-->
-    <!--        stroke="white"-->
-    <!--        stroke-width="0.7"-->
-    <!--      />-->
-    <!--    </svg>-->
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="44"
+      height="45"
+      viewBox="0 0 44 45"
+      fill="none"
+      v-if="sessionStore.session?.profile?.is_verified"
+    >
+      <rect y="0.528717" width="44" height="44" rx="22" fill="#7AB816 " />
+      <path
+        d="M18 16.8144V20.243M26 16.8144V20.243M22 34.5287C15.3726 34.5287 10 29.1561 10 22.5287C10 15.9013 15.3726 10.5287 22 10.5287C28.6274 10.5287 34 15.9013 34 22.5287C34 29.1561 28.6274 34.5287 22 34.5287ZM22.42 23.6716H21.58C19.2309 23.6716 16.9194 23.0822 14.8571 21.9573H14.5714V22.5287C14.5714 26.6315 17.8973 29.9573 22 29.9573C26.1026 29.9573 29.4286 26.6315 29.4286 22.5287V21.9573H29.1429C27.0806 23.0822 24.769 23.6716 22.42 23.6716Z"
+        stroke="white"
+        stroke-width="0.7"
+      />
+    </svg>
     <div class="profile__verification-message">
-      <h3 class="message-need-verification">Ваш аккаунт не верефицирован</h3>
-      <!--      <h3 class="message-success-verification">Ваш аккаунт верифицирован</h3>-->
-      <p class="message-info">Как верефицировать мой аккаунт?</p>
+      <h3
+        class="message-need-verification"
+        v-if="!sessionStore.session?.profile?.is_verified"
+      >
+        Ваш аккаунт не верефицирован
+      </h3>
+      <h3
+        class="message-success-verification"
+        v-if="sessionStore.session?.profile?.is_verified"
+      >
+        Ваш аккаунт верифицирован
+      </h3>
+      <p
+        class="message-info"
+        v-if="!sessionStore.session?.profile?.is_verified"
+      >
+        Как верефицировать мой аккаунт?
+      </p>
     </div>
   </section>
 </template>

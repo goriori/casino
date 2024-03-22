@@ -37,5 +37,5 @@ const onSpin = () => {
 </template>
 
 <style scoped lang="scss">
-
+@import 'SpinRoulette';
 </style>

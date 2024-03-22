@@ -3,9 +3,9 @@ import { onMounted, ref } from 'vue'
 import { useBonusSystemStore } from '@/store/bonus-system/bonusSystemStore.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useStateStore } from '@/store/stateStore.js'
+import { ERRORS } from '@/configs/errors.js'
 import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
 import CursorWheelIcon from '@/components/ui/icons/roulette/CursorWheelIcon.vue'
-import { ERRORS } from '@/configs/errors.js'
 
 const props = defineProps({
   isPopup: {
@@ -34,14 +34,23 @@ const handlerSuccessSpin = (res) => {
   }, 2000)
 }
 const handlerErrorSpin = (e) => {
-  setTimeout(
-    () =>
-      stopSpin().then(() => {
-        stateStore.globalPopupMessages.error.show(ERRORS.ERROR_SERVER.MESSAGE)
-        stateStore.globalPopupMessages.error.close()
-      }),
-    2000
-  )
+  const { details, status } = e.response.data
+  if (details === 'Недостаточно средств') {
+    stopSpin().then(() => {
+      stateStore.globalPopupMessages.error.show(
+        ERRORS.ERROR_LOW_BALANCE.MESSAGE
+      )
+    })
+  }
+  if (status === 500) {
+    setTimeout(
+      () =>
+        stopSpin().then(() => {
+          stateStore.globalPopupMessages.error.show(ERRORS.ERROR_SERVER.MESSAGE)
+        }),
+      2000
+    )
+  }
 }
 const startSpin = async () => {
   if (rouletteRef.value) {
