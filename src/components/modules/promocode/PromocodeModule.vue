@@ -5,6 +5,7 @@ import { usePaymentStore } from '@/store/payments/paymentStore.js'
 import CoinsIcon from '@/components/ui/icons/other/CoinsIcon.vue'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useStateStore } from '@/store/stateStore.js'
+import { ERRORS } from '@/configs/errors.js'
 
 const promocode = ref('')
 const paymentStore = usePaymentStore()
@@ -15,7 +16,10 @@ const onSendPromocode = () => {
     stateStore.globalPopupsModules.authorization.visibility = true
   } else {
     paymentStore.sendPromocode(promocode.value).then((response) => {
-      if (response.error) stateStore.globalPopupMessages.errorValid = true
+      if (response.error)
+        stateStore.globalPopupMessages.error.show(
+          ERRORS.ERROR_VALIDATION.MESSAGE
+        )
       console.log(response)
     })
     promocode.value = ''
