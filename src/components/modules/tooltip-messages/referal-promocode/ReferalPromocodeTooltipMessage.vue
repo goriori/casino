@@ -11,16 +11,5 @@
 </template>
 
 <style scoped lang="scss">
-.referal__promocode {
-
-  &-tooltip {
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    font-size: 14px;
-    color: #bbbbbb;
-    text-transform: none;
-  }
-}
+@import 'ReferalPromocodeTooltipMessage';
 </style>

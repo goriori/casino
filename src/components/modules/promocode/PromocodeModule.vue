@@ -39,51 +39,5 @@ const onSendPromocode = () => {
 </template>
 
 <style scoped lang="scss">
-@import '@/assets/scss/variables';
-
-.promocode__module {
-  display: flex;
-  flex-direction: column;
-
-  &-icon {
-    position: relative;
-    top: 40px;
-    flex: 1 0 154px;
-  }
-}
-
-.personal__bonuses {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-
-  &-promo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 75px;
-    padding: 90px 40px 40px 20px;
-    background: #d5a748;
-    border-radius: 36px;
-    color: #fff;
-    flex: 0 0 190px;
-    @media (max-width: $md4 + px) {
-      flex-direction: column;
-      gap: 10px;
-      width: 100%;
-    }
-
-    input {
-      background: none;
-      border-bottom: 1px solid white;
-      color: #fff;
-      font-size: 20px;
-      padding: 0 0 16px 0;
-
-      &::placeholder {
-        color: #fff;
-      }
-    }
-  }
-}
+@import 'PromocodeModule';
 </style>

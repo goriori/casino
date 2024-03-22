@@ -1,0 +1,14 @@
+@import '@/assets/scss/variables';
+
+.tooltip {
+  position: relative;
+
+  &-message {
+    position: absolute;
+    right: 0;
+    border-radius: 26px;
+    padding: 30px 40px;
+    background: $dark-gray;
+    font-size: 14px;
+  }
+}

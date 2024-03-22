@@ -18,20 +18,5 @@ const bonusSystemStore = useBonusSystemStore()
 </template>
 
 <style scoped lang="scss">
-.referal__code {
-  &-module {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  &-card {
-    display: flex;
-    gap: 20px;
-    border-radius: 26px;
-    background: #2c2c2c;
-    padding: 20px;
-    text-transform: uppercase;
-  }
-}
+@import 'ReferalPromoCodeModule';
 </style>

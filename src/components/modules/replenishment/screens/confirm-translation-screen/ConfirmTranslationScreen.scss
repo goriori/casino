@@ -6,7 +6,7 @@
     flex-direction: column;
     gap: 26px;
     padding: 36px 26px;
-    color: #fff;
+    color: $white;
 
     &-title {
       display: flex;
@@ -73,7 +73,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      color: #fff;
+      color: $white;
       font-size: 16px;
       font-weight: 600;
       border-radius: 0 0 26px 26px;
@@ -87,12 +87,12 @@
 }
 
 #alert-error {
-  background: #FF3939;
+  background: $light-err;
 
 }
 
 #alert-success {
-  background: #D5A748;
+  background: $dark-primary;
 }
 
 .title {
@@ -116,9 +116,9 @@
     align-items: center;
     gap: 6px;
     border-radius: 26px;
-    background: #1E1E1E;
+    background: $dark-gray;
     padding: 4px;
-    color: #fff;
+    color: $white;
   }
 }
 
@@ -134,7 +134,7 @@
       display: flex;
       flex-direction: column;
       border-radius: 26px;
-      background: #1E1E1E;
+      background: $dark-gray;
       padding: 12px 0;
 
       div {
@@ -192,7 +192,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    color: #fff;
+    color: $white;
 
     input {
       cursor: pointer;

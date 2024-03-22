@@ -32,10 +32,5 @@ const props = defineProps({
 </template>
 
 <style scoped lang="scss">
-
-img {
-  border-radius: 8px;
-  width: 100%;
-  object-fit: cover;
-}
+@import 'BaseSlider';
 </style>

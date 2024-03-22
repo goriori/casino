@@ -17,7 +17,7 @@
       justify-content: center;
       align-items: center;
       gap: 6px;
-      color: #fff;
+      color: $white;
 
       h3 {
         font-size: 16px;
@@ -27,7 +27,7 @@
       p {
         font-size: 12px;
         font-weight: 400;
-        color: #ff3939;
+        color: $light-err;
       }
     }
 
@@ -36,7 +36,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #1E1E1E;
+      background: $dark-gray;
       padding: 17px 0;
       border-radius: 26px;
       p {
@@ -51,7 +51,7 @@
         background: none;
         font-size: 40px;
         font-weight: 700;
-        color: #fff;
+        color: $white;
 
         &::-webkit-outer-spin-button,
         &::-webkit-inner-spin-button {
@@ -77,8 +77,8 @@
       text-align: center;
       border-radius: 26px;
       padding: 10px 25px;
-      background: #1E1E1E;
-      color: #fff;
+      background: $dark-gray;
+      color: $white;
       font-size: 20px;
       font-weight: 600;
     }
@@ -89,7 +89,7 @@
       bottom: 0;
       left: 0;
       text-align: center;
-      color: #fff;
+      color: $white;
     }
 
     &-alert {
@@ -97,7 +97,7 @@
       overflow: hidden;
       padding: 15px 0;
       border-radius: 0 0 26px 26px;
-      background: #D5A748;
+      background: $dark-primary;
       @media (max-width: $md4 + px) {
         border-radius: 26px;
         margin: auto 18px 18px;

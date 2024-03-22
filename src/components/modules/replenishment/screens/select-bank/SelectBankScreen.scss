@@ -1,3 +1,4 @@
+@import '@/assets/scss/variables';
 .select {
   &__bank-screen {
     display: flex;
@@ -13,11 +14,11 @@
       justify-content: space-between;
       align-items: center;
       border-radius: 26px;
-      background: #1E1E1E;
+      background: $dark-gray;
       padding: 25px 18px;
       font-size: 16px;
       font-weight: 600;
-      color: #fff;
+      color: $white;
     }
 
     &-select {
@@ -39,7 +40,7 @@
       justify-content: center;
       flex-direction: column;
       border-radius: 26px;
-      background: #1E1E1E;
+      background: $dark-gray;
       padding: 10px 0;
       div {
         &:nth-child(1) {
@@ -62,7 +63,7 @@
       h4 {
         font-size: 14px;
         font-weight: 600;
-        color: #fff;
+        color: $white;
       }
 
       img {

@@ -1,0 +1,43 @@
+@import '@/assets/scss/variables';
+#btn-edit {
+  p {
+    color: $white;
+  }
+}
+
+.profile_edit {
+  max-width: 612px;
+  width: 100%;
+  border-radius: 26px;
+  background: $gray;
+  padding: 32px 106px;
+
+  &-head {
+    display: flex;
+    justify-content: end;
+  }
+
+  &-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+
+    h2 {
+      text-align: center;
+      color: $white;
+      line-height: 120%;
+      margin: 0 0 10px 0;
+    }
+  }
+}
+
+.form {
+  &-field {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
