@@ -37,7 +37,7 @@ export const onAuthorization = async (router) => {
     clearForm()
     stateStore.globalPopupsModules.authorization.visibility = false
   } catch (e) {
-    if (e === ERRORS.ERROR_VALIDATION) onErrorValid()
+    if (e === ERRORS.ERROR_VALIDATION.TYPE) onErrorValid()
     else onErrorMessage()
     clearForm()
   }

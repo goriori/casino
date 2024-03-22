@@ -1,6 +1,7 @@
 import { useRegular } from '@/utils/useRegular.js'
 import { useStateStore } from '@/store/stateStore.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
+import { ERRORS } from '@/configs/errors.js'
 
 export function useValid(
   choiceOut,
@@ -22,15 +23,14 @@ export function useValid(
       !userInfo.email ||
       !userInfo.address
     )
-      throw 'error verification'
+      throw ERRORS.ERROR_VERIFICATION.TYPE
     if (withdrawalForm.value.sum < minCountWithdrawal) {
       validResults.value.sum = false
       setTimeout(() => (validResults.value.sum = true), 5000)
-      throw 'error valid'
+      throw ERRORS.ERROR_VALIDATION.TYPE
     }
-    if (withdrawalForm.value.sum > maxCountWithdrawal) throw 'error valid'
-    if (!cardTest(withdrawalForm.value.card) && choiceOut.value.bankCard)
-      throw 'error valid'
+    if (withdrawalForm.value.sum > maxCountWithdrawal) throw ERRORS.ERROR_VALIDATION.TYPE
+    if (!cardTest(withdrawalForm.value.card) && choiceOut.value.bankCard) throw ERRORS.ERROR_VALIDATION.TYPE
     return true
   }
   const setSuccessWithdrawal = () => {
@@ -42,24 +42,24 @@ export function useValid(
   }
   const setErrorWithdrawal = () => {
     const stateStore = useStateStore()
-    stateStore.globalPopupMessages.errorServer = true
+    stateStore.globalPopupMessages.error.show(ERRORS.ERROR_SERVER.MESSAGE)
     setTimeout(() => {
-      stateStore.globalPopupMessages.errorServer = false
+      stateStore.globalPopupMessages.error.close()
     }, timeClosePopup.value)
   }
   const setErrorValidWithdrawal = () => {
     const stateStore = useStateStore()
-    stateStore.globalPopupMessages.errorValid = true
+    stateStore.globalPopupMessages.error.show(ERRORS.ERROR_VALIDATION.MESSAGE)
     setTimeout(() => {
-      stateStore.globalPopupMessages.errorValid = false
+      stateStore.globalPopupMessages.error.close()
     }, timeClosePopup.value)
   }
 
   const setErrorVerification = () => {
     const stateStore = useStateStore()
-    stateStore.globalPopupMessages.errorVerification = true
+    stateStore.globalPopupMessages.error.show(ERRORS.ERROR_VERIFICATION.MESSAGE)
     setTimeout(() => {
-      stateStore.globalPopupMessages.errorVerification = false
+      stateStore.globalPopupMessages.error.close()
     }, timeClosePopup.value)
   }
   return {

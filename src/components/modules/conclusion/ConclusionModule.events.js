@@ -1,5 +1,6 @@
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
+import { ERRORS } from '@/configs/errors.js'
 
 export function useMethods(
   choiceOut,
@@ -22,9 +23,8 @@ export function useMethods(
       })
       .then(clearForm)
       .catch((e) => {
-        console.log(e)
-        if (e === 'error verification') setErrorVerification()
-        else if (e === 'error valid') setErrorValidWithdrawal()
+        if (e === ERRORS.ERROR_VERIFICATION.TYPE) setErrorVerification()
+        else if (e === ERRORS.ERROR_VALIDATION.TYPE) setErrorValidWithdrawal()
         else setErrorWithdrawal()
       })
   }

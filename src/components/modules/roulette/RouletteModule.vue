@@ -5,6 +5,7 @@ import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useStateStore } from '@/store/stateStore.js'
 import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
 import CursorWheelIcon from '@/components/ui/icons/roulette/CursorWheelIcon.vue'
+import { ERRORS } from '@/configs/errors.js'
 
 const props = defineProps({
   isPopup: {
@@ -36,9 +37,8 @@ const handlerErrorSpin = (e) => {
   setTimeout(
     () =>
       stopSpin().then(() => {
-        stateStore.globalPopupMessages.error.errorText =
-          'Произошла ошибка при прокрутке колеса. Пожалуйста, попробуйте позже!'
-        stateStore.globalPopupMessages.error.visibility = true
+        stateStore.globalPopupMessages.error.show(ERRORS.ERROR_SERVER.MESSAGE)
+        stateStore.globalPopupMessages.error.close()
       }),
     2000
   )
