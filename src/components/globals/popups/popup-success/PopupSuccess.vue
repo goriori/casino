@@ -5,7 +5,6 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import { useStateStore } from '@/store/stateStore.js'
 
 const stateStore = useStateStore()
-const message = window.MESSAGES_POPUP.WITHDRAWAL.SUCCESS
 </script>
 
 <template>
@@ -15,11 +14,11 @@ const message = window.MESSAGES_POPUP.WITHDRAWAL.SUCCESS
         <div class="window-container">
           <div class="window-content">
             <SuccessIcon />
-            <h3>Успешно</h3>
+            <h3>{{ stateStore.globalPopupMessages.success.successText }}</h3>
             <BaseButton
               color="primary"
               outline
-              @click="stateStore.globalPopupMessages.success = false"
+              @click="stateStore.globalPopupMessages.success.visibility = false"
             >
               <p>Хорошо</p>
             </BaseButton>

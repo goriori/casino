@@ -1,6 +1,7 @@
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useStateStore } from '@/store/stateStore.js'
+import { ERRORS } from '@/configs/errors.js'
 
 export function useMethods(
   fullName,
@@ -38,9 +39,9 @@ export function useMethods(
   }
 
   const onErrorServer = () => {
-    stateStore.globalPopupMessages.errorServer = true
+    stateStore.globalPopupMessages.error.show(ERRORS.ERROR_SERVER.MESSAGE)
     setTimeout(
-      () => (stateStore.globalPopupMessages.errorServer = false),
+      () => stateStore.globalPopupMessages.error.close(),
       timeClosePopup.value
     )
   }
