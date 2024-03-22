@@ -31,12 +31,17 @@ export const useStateStore = defineStore('stateStore', () => {
   })
   const globalPopupMessages = ref({
     error: {
-      errorText: 'Ошибка',
+      errorText: '',
       visibility: false,
+      show: function (message) {
+        this.errorText = message
+        this.visibility = true
+      },
+      close: function () {
+        this.visibility = false
+        this.errorText = ''
+      },
     },
-    errorServer: false,
-    errorVerification: false,
-    errorValid: false,
     success: false,
     application: false,
     exchangeCoin: false,
