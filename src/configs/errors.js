@@ -7,6 +7,10 @@ export const ERRORS = {
     TYPE: 'error_validation',
     MESSAGE: 'Ошибка валидации, пожалуйста проверьте веденные данные',
   },
+  ERROR_VERIFICATION: {
+    TYPE: 'error_verification',
+    MESSAGE: 'Ваш аккаунт не верефицирован',
+  },
   ERROR_EXPIRED_TOKEN: {
     TYPE: 'error_expired_token',
     MESSAGE: 'Срок действия токена истек, пройдите повторную авторизацию',
