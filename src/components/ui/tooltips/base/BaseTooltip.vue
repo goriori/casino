@@ -23,16 +23,5 @@ const showMessage = ref(false)
 </template>
 
 <style scoped lang="scss">
-.tooltip {
-  position: relative;
-
-  &-message {
-    position: absolute;
-    right: 0;
-    border-radius: 26px;
-    padding: 30px 40px;
-    background: #1e1e1e;
-    font-size: 14px;
-  }
-}
+@import 'BaseTooltip';
 </style>

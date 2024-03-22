@@ -1,6 +1,6 @@
-
+@import '@/assets/scss/variables';
 .page {
-  color: #fff;
+  color: $white;
 
   &-modules {
     display: flex;

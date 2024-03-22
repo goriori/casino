@@ -44,18 +44,5 @@ const sessionStore = useSessionStore()
 </template>
 
 <style scoped lang="scss">
-.profile__status {
-  &-tooltip {
-    display: flex;
-    justify-content: center;
-    width: 200px;
-    gap: 10px;
-  }
-
-  &-info {
-    span {
-      color: #d5a748;
-    }
-  }
-}
+@import 'ProfileStatusTooltipMessage';
 </style>

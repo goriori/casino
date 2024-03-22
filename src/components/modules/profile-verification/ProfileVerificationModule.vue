@@ -54,41 +54,5 @@
 </template>
 
 <style scoped lang="scss">
-.profile__verification {
-  &-module {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-  }
-
-  &-message {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-}
-
-.message {
-  &-need-verification {
-    color: #d20000;
-    font-size: 24px;
-    font-weight: 400;
-  }
-
-  &-success-verification {
-    color: #7ab816;
-    font-size: 24px;
-    font-weight: 400;
-  }
-
-  &-info {
-    font-weight: 400;
-    font-size: 14px;
-    color: #bbbbbb;
-    text-decoration: underline;
-    cursor: pointer;
-    text-align: end;
-  }
-}
+@import 'ProfileVerificationModule';
 </style>

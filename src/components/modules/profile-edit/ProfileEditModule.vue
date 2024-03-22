@@ -81,46 +81,5 @@ const onSendForm = async () => {
 </template>
 
 <style scoped lang="scss">
-#btn-edit {
-  p {
-    color: #fff;
-  }
-}
-
-.profile_edit {
-  max-width: 612px;
-  width: 100%;
-  border-radius: 26px;
-  background: #2c2c2c;
-  padding: 32px 106px;
-
-  &-head {
-    display: flex;
-    justify-content: end;
-  }
-
-  &-form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 24px;
-
-    h2 {
-      text-align: center;
-      color: #fff;
-      line-height: 120%;
-      margin: 0 0 10px 0;
-    }
-  }
-}
-
-.form {
-  &-field {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-}
+@import 'ProfileEditModule';
 </style>

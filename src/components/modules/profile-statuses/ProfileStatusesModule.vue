@@ -42,29 +42,5 @@ onMounted(async () => {
 </template>
 
 <style scoped lang="scss">
-.profile__statuses {
-  &-module {
-    border-radius: 36px;
-    padding: 40px;
-    background: #2c2c2c;
-
-    &-sections {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: #bbbbbb;
-      font-size: 14px;
-      font-weight: 400;
-      margin: 0 0 40px 0;
-    }
-
-    &-list {
-      display: flex;
-      flex-direction: column;
-      gap: 40px;
-      overflow-y: auto;
-      max-height: 500px;
-    }
-  }
-}
+@import 'ProfileStatusesModule';
 </style>

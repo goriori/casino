@@ -22,7 +22,5 @@ const props = defineProps({
 </template>
 
 <style scoped lang="scss">
-.tooltip__info {
-  cursor: pointer;
-}
+@import 'InfoTooltip';
 </style>

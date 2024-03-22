@@ -1,0 +1,38 @@
+@import '@/assets/scss/variables';
+.profile__verification {
+  &-module {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &-message {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.message {
+  &-need-verification {
+    color: $err;
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  &-success-verification {
+    color: $success;
+    font-size: 24px;
+    font-weight: 400;
+  }
+
+  &-info {
+    font-weight: 400;
+    font-size: 14px;
+    color: $light-gray;
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: end;
+  }
+}

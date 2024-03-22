@@ -15,10 +15,7 @@ const onOpenStatusList = () => {
   <div class="profile__status-module">
     <h2>Мой статус</h2>
     <div class="profile__status-card">
-      <ContentLoader
-        type="default-card"
-        v-if="!sessionStore.session.profile"
-      >
+      <ContentLoader type="default-card" v-if="!sessionStore.session.profile">
         <rect width="400" height="200" />
       </ContentLoader>
       <ProfileStatusCard
@@ -32,11 +29,5 @@ const onOpenStatusList = () => {
 </template>
 
 <style scoped lang="scss">
-.profile__status {
-  &-module {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-}
+@import 'ProfileStatusModule';
 </style>

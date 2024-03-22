@@ -4,7 +4,7 @@ import '@splidejs/vue-splide/css'
 import CaseCard from '@/components/ui/cards/case/CaseCard.vue'
 import PopularIcon from '@/components/ui/icons/popular/PopularIcon.vue'
 import { useCaseStore } from '@/store/cases/caseStore.js'
-import { onMounted, ref } from 'vue'
+import { onMounted } from 'vue'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useStateStore } from '@/store/stateStore.js'
 
@@ -63,40 +63,5 @@ onMounted(async () => {
 </template>
 
 <style scoped lang="scss">
-@import '@/assets/scss/mixins';
-@import '@/assets/scss/variables';
-
-::v-deep(.splide__track) {
-  transition: all 0.3s ease;
-  padding: 30px;
-}
-
-.slide {
-  padding: 20px;
-}
-
-.cases__module {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-
-  &-title {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 16px;
-    font-size: 32px;
-
-    @media (max-width: $md4 + px) {
-      font-size: 20px;
-    }
-  }
-
-  &-list {
-  }
-
-  &-item {
-  }
-}
+@import 'CasesModule';
 </style>
