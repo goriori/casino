@@ -32,8 +32,7 @@ export function useMethods(
   const onChangeFile = (event, emits) => {
     const files = event.target.files || event.dataTransfer.files
     if (!files.length) return
-    screenshot.value = files[0]
-    paymentStore.replObject.screenshot = screenshot.value
+    paymentStore.replObject.screenshot = files[0]
     paymentStore.replObject.user_id = sessionStore.session.profile.id
     onValidFullName(emits).then(onConfirmTranslation).catch(onErrorValid)
   }

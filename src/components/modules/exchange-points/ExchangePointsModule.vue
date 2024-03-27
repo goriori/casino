@@ -52,6 +52,7 @@ const convertateCoins = computed(() => {
           <TextTooltip
             text="История платежей"
             message="Пока здесь нет ничего"
+            class="tooltip"
           />
         </div>
         <div class="form-field">

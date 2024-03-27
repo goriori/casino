@@ -45,6 +45,12 @@
     align-items: center;
     cursor: pointer;
     color: #bbbbbb;
+    .tooltip {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 100%;
+    }
   }
 
   &-field {
@@ -69,3 +75,4 @@
     }
   }
 }
+

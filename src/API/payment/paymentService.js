@@ -1,13 +1,17 @@
 import { axiosInstance, validTokenExpired } from '@/utils/axios/axios'
 import apiConfig from '@/API/api.config.js'
+
 export default class PaymentService {
   static async setReplenishment(replObject) {
     try {
+      console.log(replObject.get('screenshot'))
+
       apiConfig.getToken()
       const response = await axiosInstance({
         url: '/ticketIn',
         headers: {
           Authorization: `Bearer ${apiConfig.token}`,
+          'Content-Type': 'multipart/form-data',
         },
         validateStatus: validTokenExpired,
         method: 'POST',
