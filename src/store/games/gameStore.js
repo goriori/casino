@@ -4,19 +4,41 @@ import GamesService from '@/API/games/gameService.js'
 
 export const useGameStore = defineStore('gameStore', () => {
   const games = ref([])
-  const filteredGame = ref([])
+  const filteredGame = ref({
+    categoryId: 17,
+    shortList: [],
+    fullList: [],
+  })
+  const popularGames = ref({
+    categoryId: 5,
+    shortList: [],
+    fullList: [],
+  })
+  const retroGames = ref({
+    categoryId: 1,
+    shortList: [],
+    fullList: [],
+  })
+  const newGames = ref({
+    categoryId: 2,
+    shortList: [],
+    fullList: [],
+  })
   const getGames = async () => {
+    const storeList = [filteredGame, popularGames, retroGames, newGames]
     const { data } = await GamesService.getGames()
     games.value = [...data]
-    filteredGame.value = games.value
-    filterGames(17)
+    storeList.forEach((store) => {
+      store.value.shortList.push(...filterGames(store.categoryId, true))
+      store.value.fullList.push(...filterGames(store.categoryId, false))
+    })
   }
 
-  const filterGames = (categoryPosition) => {
-    const filterData = games.value.filter((item) => {
+  const filterGames = (categoryPosition, shortList = false) => {
+    const filteredGames = games.value.filter((item) => {
       return item.category.find((category) => category === categoryPosition)
     })
-    filteredGame.value = [...filterData]
+    return shortList ? filteredGames.slice(0, 5) : filteredGames
   }
   const searchGames = (searchValue = '') => {
     const searchData = games.value.filter((game) =>
@@ -25,5 +47,14 @@ export const useGameStore = defineStore('gameStore', () => {
     console.log(searchData)
     filteredGame.value = [...searchData]
   }
-  return { games, filteredGame, getGames, filterGames, searchGames }
+  return {
+    games,
+    filteredGame,
+    popularGames,
+    retroGames,
+    newGames,
+    getGames,
+    filterGames,
+    searchGames,
+  }
 })

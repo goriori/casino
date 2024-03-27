@@ -18,6 +18,7 @@ import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 import ArrowIcon from '@/components/ui/icons/other/ArrowIcon.vue'
 import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
 import ReplenishmentModule from '@/components/modules/replenishment/ReplenishmentModule.vue'
+import BonusIcon from '@/components/ui/icons/balance/BonusIcon.vue'
 
 const router = useRouter()
 const sessionStore = useSessionStore()
@@ -47,7 +48,7 @@ const sessionStore = useSessionStore()
           <div class="balance-item">
             <div class="balance-item-name">Баллов</div>
             <div class="balance-item-content">
-              <CurrencyIcon />
+              <BonusIcon />
               <p>{{ sessionStore.session.profile?.bonus }} ₽</p>
             </div>
           </div>

@@ -2,6 +2,7 @@
 import { onMounted } from 'vue'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
+import BonusIcon from '@/components/ui/icons/balance/BonusIcon.vue'
 
 const sessionStore = useSessionStore()
 </script>
@@ -40,17 +41,18 @@ const sessionStore = useSessionStore()
           <CurrencyIcon />
           <p>{{ sessionStore.session.profile?.balance }}</p>
         </div>
+      </div>
+      <div class="balance-module-info-item">
+        <h4>Бонусы</h4>
         <div class="currency">
+          <BonusIcon/>
           <p>{{ sessionStore.session.profile?.bonus }}</p>
         </div>
       </div>
       <div class="balance-module-info-item">
-        <h4>Валюта</h4>
+        <h4>Валюта:</h4>
         <div class="currency">
           <p>RUB</p>
-        </div>
-        <div class="currency">
-          <p>Балы</p>
         </div>
       </div>
     </div>
@@ -101,7 +103,7 @@ const sessionStore = useSessionStore()
       justify-content: center;
       align-items: start;
       color: $white;
-      gap: 317px;
+      gap: 100px;
 
       @media (max-width: $md2 + px) {
         gap: 24px;

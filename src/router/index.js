@@ -9,6 +9,8 @@ const MainView = () => import('@/pages/main/Main.vue')
 const AccountView = () => import('@/pages/account/Account.vue')
 const Registration = () => import('@/pages/registration/Registration.vue')
 
+const GamesView = () => import('@/pages/games/Games.vue')
+
 const BonusesView = () => import('@/pages/bonuses/Bonuses.vue')
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -42,6 +44,11 @@ const router = createRouter({
       path: '/bonuses',
       name: 'bonuses',
       component: BonusesView,
+    },
+    {
+      path: '/games',
+      name: 'games',
+      component: GamesView,
     },
   ],
 })

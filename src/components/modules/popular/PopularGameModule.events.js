@@ -1,7 +1,6 @@
 import {
   isLoad,
   isLoadContent,
-  isShowAll,
 } from '@/components/modules/popular/PopularGameModule.options.js'
 import { useGameStore } from '@/store/games/gameStore.js'
 import { useStateStore } from '@/store/stateStore.js'
@@ -10,10 +9,6 @@ const gameStore = useGameStore()
 const stateStore = useStateStore()
 export const unAuthorizedCardClick = () => {
   stateStore.globalPopupsModules.authorization.visibility = true
-}
-
-export const showOrHiddenAll = () => {
-  isShowAll.value = !isShowAll.value
 }
 
 export const loadModule = async () => {
@@ -30,3 +25,5 @@ const changeLoadContent = () => {
     setTimeout(() => (isLoadContent.value = true), 500)
   else isLoadContent.value = false
 }
+
+
