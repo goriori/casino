@@ -6,6 +6,7 @@ import CoinsIcon from '@/components/ui/icons/other/CoinsIcon.vue'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useStateStore } from '@/store/stateStore.js'
 import { ERRORS } from '@/configs/errors.js'
+import { SUCCESS } from '@/configs/success.js'
 
 const promocode = ref('')
 const paymentStore = usePaymentStore()
@@ -17,9 +18,14 @@ const onSendPromocode = () => {
   } else {
     paymentStore.sendPromocode(promocode.value).then((response) => {
       const error = response.error
+      const success = response.success
       if (error === 'Pincode not exist') {
         stateStore.globalPopupMessages.error.show(
           ERRORS.ERROR_NOT_FOUND_PROMOCODE.MESSAGE
+        )
+      } else if (success === 'success') {
+        stateStore.globalPopupMessages.success.show(
+          SUCCESS.SUCCESS_PROMOCODE.MESSAGE
         )
       } else {
         stateStore.globalPopupMessages.error.show(ERRORS.ERROR_SERVER.MESSAGE)

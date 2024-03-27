@@ -7,6 +7,9 @@ import { useCaseStore } from '@/store/cases/caseStore.js'
 import { onMounted } from 'vue'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useStateStore } from '@/store/stateStore.js'
+import SpinRoulette from '@/components/modules/spin-roulette/SpinRoulette.vue'
+import RouletteIcon from '@/components/ui/icons/other/RouletteIcon.vue'
+import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 
 const stateStore = useStateStore()
 const sessionStore = useSessionStore()
@@ -14,8 +17,7 @@ const caseStore = useCaseStore()
 const splideOptions = {
   rewind: false,
   perPage: 3,
-  type: 'loop',
-  wheel: true,
+  wheel: false,
   breakpoints: {
     1240: {
       perPage: 2,
@@ -30,6 +32,13 @@ const onOpenCase = async (caseId) => {
   else stateStore.globalPopupsModules.authorization.visibility = true
 }
 
+const onSpin = () => {
+  if (!sessionStore.session.profile) {
+    stateStore.globalPopupsModules.authorization.visibility = true
+  } else {
+    stateStore.globalPopupsModules.roulette.visibility = true
+  }
+}
 onMounted(async () => {
   await caseStore.getCases()
 })
@@ -56,6 +65,25 @@ onMounted(async () => {
             :openHandler="onOpenCase"
             class="cases__module-item"
           />
+        </SplideSlide>
+        <SplideSlide  class="slide">
+          <div class="roulette__module">
+            <RouletteIcon class="roulette__module-icon" />
+            <div class="roulette__module-card">
+              <div class="card__content">
+                <div class="card__content-head">
+                  <h3>350 Р</h3>
+                  <p>Стоимость одного вращения</p>
+                </div>
+                <div class="card__content-section">
+                  <h2>Колесо фортуны</h2>
+                  <BaseButton @click="onSpin">
+                    <p>Вращать</p>
+                  </BaseButton>
+                </div>
+              </div>
+            </div>
+          </div>
         </SplideSlide>
       </Splide>
     </div>

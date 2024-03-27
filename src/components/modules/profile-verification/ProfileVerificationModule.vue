@@ -1,5 +1,6 @@
 <script setup>
 import { useSessionStore } from '@/store/session/sessionStore.js'
+import TextTooltip from '@/components/ui/tooltips/text/TextTooltip.vue'
 
 const sessionStore = useSessionStore()
 </script>
@@ -64,12 +65,11 @@ const sessionStore = useSessionStore()
       >
         Ваш аккаунт верифицирован
       </h3>
-      <p
-        class="message-info"
+      <TextTooltip
         v-if="!sessionStore.session?.profile?.is_verified"
-      >
-        Как верефицировать мой аккаунт?
-      </p>
+        text="Как верефицировать мой аккаунт?"
+        message="Cвяжитесь с техподдержкой для верификации и дальнейших инструкций"
+      />
     </div>
   </section>
 </template>

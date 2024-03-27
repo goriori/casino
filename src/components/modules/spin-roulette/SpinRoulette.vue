@@ -4,6 +4,7 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useStateStore } from '@/store/stateStore.js'
 
+
 const sessionStore = useSessionStore()
 const stateStore = useStateStore()
 const onSpin = () => {
@@ -17,7 +18,7 @@ const onSpin = () => {
 
 <template>
   <div class="roulette__module">
-    <h2>Вращать рулетку</h2>
+    <h2 >Вращать рулетку</h2>
     <RouletteIcon class="roulette__module-icon" />
     <div class="roulette__module-card">
       <div class="card__content">

@@ -1,6 +1,6 @@
 <script setup>
 import AccountIcon from '@/components/ui/icons/other/AccountIcon.vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
 const props = defineProps({
   actionHandler: {
@@ -15,6 +15,10 @@ const props = defineProps({
     type: Number,
     default: 0,
   },
+  statusBar: {
+    type: String,
+    default: '0/0',
+  },
 })
 
 const expProfile = ref(
@@ -24,7 +28,6 @@ const expProfile = ref(
     else return progress + '%'
   })()
 )
-const statusBar = ref(`${props.exp}/100`)
 </script>
 
 <template>
@@ -88,7 +91,7 @@ const statusBar = ref(`${props.exp}/100`)
 
     &:after {
       position: absolute;
-      content: '25/100';
+      content: v-bind(statusBar);
       top: 10px;
       right: 0;
       font-weight: 400;

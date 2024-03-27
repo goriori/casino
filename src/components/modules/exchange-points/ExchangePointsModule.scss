@@ -1,4 +1,5 @@
 @import '@/assets/scss/variables';
+
 #exchange_button {
   p {
     color: $white;
@@ -39,12 +40,11 @@
   }
 
   &-links {
-    p {
-      cursor: pointer;
-      color: #bbbbbb;
-      font-size: 14px;
-      text-decoration: underline;
-    }
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    color: #bbbbbb;
   }
 
   &-field {

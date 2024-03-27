@@ -44,9 +44,16 @@ const sessionStore = useSessionStore()
               <p>{{ sessionStore.session.profile?.balance }} ₽</p>
             </div>
           </div>
+          <div class="balance-item">
+            <div class="balance-item-name">Баллов</div>
+            <div class="balance-item-content">
+              <CurrencyIcon />
+              <p>{{ sessionStore.session.profile?.bonus }} ₽</p>
+            </div>
+          </div>
         </div>
         <div class="popup-navigation">
-          <div class="popup-navigation-authorized" >
+          <div class="popup-navigation-authorized">
             <div
               class="navigation-item"
               v-ripple

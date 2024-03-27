@@ -23,8 +23,8 @@ onMounted(async () => {
     <Transition name="fade">
       <div class="mail__messages-notification" v-if="isOpen">
         <h4 class="notification-title">Уведомления</h4>
-        <div class="notification-list">
-          <div v-if="mailStore.messages.length > 0">
+        <div>
+          <div v-if="mailStore.messages.length > 0" class="notification-list">
             <article
               v-for="message in mailStore.messages"
               :key="message"

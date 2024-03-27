@@ -69,8 +69,10 @@
   }
 
   &-balances {
-    display: flex;
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-content: start;
     align-items: center;
     padding: 12px 0 12px 36px;
     background-color: #D5A748;
@@ -80,6 +82,7 @@
 
 
 .balance {
+
   &-item {
     display: flex;
     flex-direction: column;

@@ -8,6 +8,7 @@ import ProfileStatusTooltipMessage from '@/components/modules/tooltip-messages/p
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { ERRORS } from '@/configs/errors.js'
 import { SUCCESS } from '@/configs/success.js'
+import TextTooltip from '@/components/ui/tooltips/text/TextTooltip.vue'
 
 const bonusSystemStore = useBonusSystemStore()
 const sessionStore = useSessionStore()
@@ -48,7 +49,10 @@ const convertateCoins = computed(() => {
           Ваши баллы: <span>{{ bonusSystemStore.bonusSystemState.coins }}</span>
         </h3>
         <div class="form-links">
-          <p>История платежей</p>
+          <TextTooltip
+            text="История платежей"
+            message="Пока здесь нет ничего"
+          />
         </div>
         <div class="form-field">
           <input

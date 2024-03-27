@@ -3,12 +3,36 @@ import ProfileStatusCard from '@/components/ui/cards/status/ProfileStatusCard.vu
 import { useStateStore } from '@/store/stateStore.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import ContentLoader from '@/components/ui/content-loader/ContentLoader.vue'
+import { computed, onMounted } from 'vue'
+import { useSettingsStore } from '@/store/settings/settingStore.js'
 
 const stateStore = useStateStore()
+const settingStore = useSettingsStore()
 const sessionStore = useSessionStore()
+const statusId = sessionStore.session.profile?.stair_status.id
 const onOpenStatusList = () => {
   stateStore.globalPopupsModules.statusesList.visibility = true
 }
+
+const endExp = computed(() => {
+  const countStatuses = settingStore.statuses.length - 1
+  const indexStatus = settingStore.statuses.findIndex(
+    (status) => status.id === statusId
+  )
+  console.log(indexStatus, countStatuses)
+  if (indexStatus === null || indexStatus === undefined) return '∞'
+  else if (indexStatus === countStatuses) return '∞'
+  else return settingStore.statuses[indexStatus + 1].exp
+})
+
+const statusBar = computed(() => {
+  const startExp = sessionStore.session.profile?.stair_status.exp
+  return `'${startExp} / ${endExp.value}'`
+})
+
+onMounted(async () => {
+  await settingStore.getStatuses()
+})
 </script>
 
 <template>
@@ -23,6 +47,7 @@ const onOpenStatusList = () => {
         :actionHandler="onOpenStatusList"
         :status="sessionStore.session.profile?.stair_status.title"
         :exp="sessionStore.session.profile?.stair_status.exp"
+        :statusBar="statusBar"
       />
     </div>
   </div>

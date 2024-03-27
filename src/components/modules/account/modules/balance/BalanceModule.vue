@@ -40,11 +40,17 @@ const sessionStore = useSessionStore()
           <CurrencyIcon />
           <p>{{ sessionStore.session.profile?.balance }}</p>
         </div>
+        <div class="currency">
+          <p>{{ sessionStore.session.profile?.bonus }}</p>
+        </div>
       </div>
       <div class="balance-module-info-item">
         <h4>Валюта</h4>
         <div class="currency">
           <p>RUB</p>
+        </div>
+        <div class="currency">
+          <p>Балы</p>
         </div>
       </div>
     </div>

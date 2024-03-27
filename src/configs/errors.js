@@ -32,4 +32,8 @@ export const ERRORS = {
     MESSAGE:
       'Ошибка регистрации, пожалуйста проверьте корректность веденных данных',
   },
+  ERROR_COPY_REFERALE_CODE: {
+    TYPE: 'error_copy_referale_code',
+    MESSAGE: 'Не удалось скопировать реферальный код ',
+  }
 }

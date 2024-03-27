@@ -1,5 +1,6 @@
 @import '@/assets/scss/mixins';
 @import '@/assets/scss/variables';
+@import '@/components/modules/spin-roulette/SpinRoulette';
 
 ::v-deep(.splide__track) {
   transition: all 0.3s ease;
@@ -32,5 +33,50 @@
   }
 
   &-item {
+  }
+}
+
+
+.roulette__module {
+  svg {
+    position: absolute;
+    top: -30px;
+    @media (max-width: $md1 + px) {
+      width: 120px;
+    }
+  }
+
+  &-card {
+    padding: 20px 40px;
+    flex: auto;
+  }
+}
+
+.card__content {
+  &-head {
+    color: #D5A848;
+    h3 {
+      @media (max-width: $md1 + px) {
+        font-size: 20px;
+        flex: 1 0 auto;
+      }
+    }
+  }
+
+  &-section {
+    h2 {
+      @media (max-width: $md1 + px) {
+        font-size: 20px;
+        flex: 1 0 auto;
+      }
+    }
+    @media (max-width: $md1 + px) {
+      gap: 10px;
+    }
+  }
+
+  gap: 70px;
+  @media (max-width: $md1 + px) {
+    gap: 30px;
   }
 }
