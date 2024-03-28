@@ -11,7 +11,6 @@ export const usePaymentStore = defineStore('paymentStore', () => {
     screenshot: null,
     fullname: '',
     user_id: '',
-    promo: '',
   })
   const targetRequisite = ref({})
   const requisites = ref([])
@@ -26,7 +25,7 @@ export const usePaymentStore = defineStore('paymentStore', () => {
     await PaymentService.setWithdrawal(withdrawalForm)
   }
   const sendPromocode = async (pincode) => {
-    return await PaymentService.sendPromocode(pincode)
+    await PaymentService.sendPromocode(pincode)
   }
   const getRequisiteCards = async () => {
     const response = await PaymentService.getRequisiteCards()
@@ -41,5 +40,6 @@ export const usePaymentStore = defineStore('paymentStore', () => {
     sendWithdrawal,
     sendPromocode,
     getRequisiteCards,
+
   }
 })

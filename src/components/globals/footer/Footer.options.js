@@ -1,10 +1,10 @@
 import { ref } from 'vue'
 
-export const isFAQOpen = ref(false)
-export const isAboutOpen = ref(false)
-
-export const isTermsConditionOpen = ref(false)
-export const isCombatingMoneyLaunderingOpen = ref(false)
+export const isPolicyOpen = ref(false)
+export const isGamingPolicyOpen = ref(false)
+export const isKYCPolicyOpen = ref(false)
+export const isFairnessPolicyOpen = ref(false)
+export const isRestraintPolicyOpen = ref(false)
 export const isAffiliatePolicyOpen = ref(false)
 export const isPrivacyPolicyOpen = ref(false)
 export const isTermsPolicyOpen = ref(false)

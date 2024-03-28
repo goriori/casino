@@ -1,13 +1,16 @@
 @import '@/assets/scss/variables';
 
 .page {
-  color: $white;
+  color: #fff;
 
   &-modules {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin: 24px 0;
+    padding: 24px 48px;
+    @media (max-width: $md2 + px) {
+      padding: 20px;
+    }
   }
 
   &-message {
@@ -30,5 +33,5 @@
 }
 
 .btn-text {
-  color: $white;
+  color: #fff;
 }

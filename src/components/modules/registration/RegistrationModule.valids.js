@@ -3,15 +3,11 @@ import {
   regMessages,
 } from '@/components/modules/registration/RegistrationModule.options.js'
 import { timeClosePopup } from '@/components/modules/authorization/AuthorizationModule.options.js'
-import { useStateStore } from '@/store/stateStore.js'
-import { useRegular } from '@/utils/useRegular.js'
-import { ERRORS } from '@/configs/errors.js'
 
 export const onErrorMessage = () => {
-  const stateStore = useStateStore()
-  stateStore.globalPopupMessages.error.show(ERRORS.ERROR_SERVER.MESSAGE)
+  regMessages.value.error = true
   setTimeout(() => {
-    stateStore.globalPopupMessages.error.close()
+    regMessages.value.error = false
   }, 3000)
 }
 export const onSuccessMessage = () => {
@@ -22,21 +18,18 @@ export const onSuccessMessage = () => {
 }
 
 export const onErrorValid = () => {
-  const stateStore = useStateStore()
-  stateStore.globalPopupMessages.error.show(ERRORS.ERROR_VALIDATION.MESSAGE)
+  regMessages.value.isValid = true
   setTimeout(() => {
-    stateStore.globalPopupMessages.error.close()
+    regMessages.value.isValid = false
   }, timeClosePopup.value)
 }
 
-export const onValidForm = async (targetEntity = 'email') => {
-  const { emailTest, phoneTest } = useRegular()
-  if (targetEntity === 'email' && formReg.value.email.trim().length === 0) throw ERRORS.ERROR_VALIDATION.TYPE
-  if (targetEntity === 'email' && !emailTest(formReg.value.email)) throw ERRORS.ERROR_VALIDATION.TYPE
-  else if (targetEntity === 'phone' && formReg.value.phone.trim().length === 0) throw ERRORS.ERROR_VALIDATION.TYPE
-  if (targetEntity === 'phone' && !phoneTest(formReg.value.phone)) throw ERRORS.ERROR_VALIDATION.TYPE
-  else if (formReg.value.password.trim().length === 0) throw ERRORS.ERROR_VALIDATION.TYPE
-  else if (formReg.value.password_confirmation.trim().length === 0) throw ERRORS.ERROR_VALIDATION.TYPE
-  else if ( formReg.value.password.trim() !== formReg.value.password_confirmation.trim()) throw ERRORS.ERROR_VALIDATION.TYPE
+export const onValidForm = async () => {
+  if (formReg.value.password.trim().length === 0) throw false
+  if (formReg.value.password_confirmation.trim().length === 0) throw false
+  if (
+    formReg.value.password.trim() !== formReg.value.password_confirmation.trim()
+  )
+    throw false
   return true
 }

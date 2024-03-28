@@ -58,10 +58,11 @@ const onErrorAuthorization = async (e, userId) => {
     status === 422 &&
     'username' in data &&
     data.username[0] === 'The username has already been taken.'
-  if (isHasUser) return await onAuthorizationUser(userId)
-  else if (isErrReg) {
+  if (isHasUser) {
+    console.log('isHasUser')
+    return await onAuthorizationUser(userId)
+  } else if (isErrReg) {
     console.log('Ошибка при регистрации. Не правильное тело запроса.')
-    return false
   }
 }
 const authorization = async () => {

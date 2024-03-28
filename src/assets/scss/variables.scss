@@ -1,20 +1,8 @@
 $font: 'Montserrat';
 
 $white:#fff;
-$primary: #D5A848;
+$primary: #5570fb;
 $secondary: #8a55fb;
-$err: #d20000;
-$success: #7ab816;
-$dark-primary: #d5a748;
-$light-err: #FF3939;
-$light-success: #45CC3A;
-$light-gray: #bbbbbb;
-$light-purple: #5570fb;
-$dark-gray: #1e1e1e;
-$gray: #2c2c2c;
-$purple: #2f3975;
-$opacity-black: rgba(0, 0, 0, 0.25);
-$black: #000;
 
 // buttons
 $button-gap-primary:8px;
@@ -28,7 +16,7 @@ $shadow-secondary:0px 3px 4px 0px rgba(173, 90, 255, 0.35);
 // cards
 $game-card-background:radial-gradient(86.78% 86.78% at 50% 50%, #36CFFF 0%, #E788FF 100%);
 
-$background: #262626;
+$background: rgba(13, 40, 57, 0.5);
 
 $md1: 1760;
 $md2: 1240;

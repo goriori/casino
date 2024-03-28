@@ -8,8 +8,6 @@ export const regMessages = ref({
   isValid: false,
 })
 
-export const targetEntity = ref('email')
-
 export const formReg = ref({
   username: '',
   password: '',
@@ -21,5 +19,4 @@ export const formReg = ref({
   // eslint-disable-next-line camelcase
   last_name: '',
   phone: '',
-  email: '',
 })

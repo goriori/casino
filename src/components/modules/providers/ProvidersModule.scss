@@ -30,7 +30,7 @@
       background: #1d2345;
       padding: 42px 18px;
       border-radius: 26px;
-      filter: drop-shadow(0px 0px 20px $opacity-black);
+      filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.25));
 
       @media (max-width: 1600px) {
         grid-template-columns: repeat(4, 1fr);

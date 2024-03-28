@@ -3,7 +3,6 @@ import { ref } from 'vue'
 export const pswrdHidden = ref(true)
 export const authFields = ref(null)
 
-export const targetEntity = ref('email')
 export const timeClosePopup = ref(15000)
 export const authMessages = ref({
   success: false,

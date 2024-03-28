@@ -4,7 +4,6 @@
 .btn {
   cursor: pointer;
   width: 100%;
-  height: 100%;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -20,12 +19,10 @@
     padding: 10px 16px;
   }
 
-  @media (max-width: $md5 + px) {
-    font-size: 10px;
-  }
+
   // Size
   &-small {
-    min-height: 28px;
+    min-height: 49px;
   }
 
   &-medium {
@@ -61,21 +58,20 @@
     background: $primary;
     border-color: $primary;
     color: $primary;
+
     &:hover {
       path {
         fill: $secondary;
       }
+
       color: $secondary;
       border-color: $secondary;
     }
   }
 
   &-secondary {
-    background: #262626;
+    background: #3E4C9D;
   }
-&-white {
-  background: #fff;
-}
 
   &-balance-primary {
     background: $primary;
