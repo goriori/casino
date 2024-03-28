@@ -6,20 +6,53 @@
   justify-content: space-between;
   align-items: center;
   padding: 24px 48px;
-  background: #1d2345;
+  background: #1E1E1E;
   border-radius: 0 0 36px 36px;
-z-index: 10;
-  &-account-icons {
-    display: none;
-    @media (max-width: $md4 + px) {
-      display: block;
+  z-index: 10;
+  min-height: 140px;
+
+    @media (max-width: $md5 + px) {
+      min-height: 80px;
+      padding: 11px 26px;
+    }
+  &-burger {
+    &-icons {
+      display: none;
+      @media (max-width: $md4 + px) {
+        display: block;
+        cursor: pointer;
+      }
+    }
+
+    &-menu {
+      position: absolute;
+      width: 100vw;
+      height: 100vh;
+      background: #262626;
+      left: 0;
+      top: 0;
+      z-index: 10;
+
+      &-item {
+        display: flex;
+        gap: 10px;
+      }
     }
   }
 
   &-logo {
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 100%;
+    display: flex;
+    align-items: center;
     img {
       @media (max-width: $md4 + px) {
+        top: 11px;
         max-width: 100px;
+        max-height: 54px;
       }
     }
 
@@ -31,8 +64,31 @@ z-index: 10;
     align-items: center;
     gap: 36px;
 
+    &-bonus {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      @media (max-width: $md4 + px) {
+        display: none;
+      }
+    }
+
+    &-support {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      @media (max-width: $md4 + px) {
+        display: none;
+      }
+    }
+
     &-account {
       display: flex;
+      align-items: center;
       gap: 36px;
     }
   }

@@ -1,17 +1,15 @@
 import { axiosInstance, validTokenExpired } from '@/utils/axios/axios'
 import apiConfig from '@/API/api.config.js'
 
-const queryString = '?shop_id=1&key=pLaHFj1OsSNDNclDjRN03OHHq'
 export default class PaymentService {
   static async setReplenishment(replObject) {
     try {
-      const tokenAuth = apiConfig.token || sessionStorage.getItem('token')
+      apiConfig.getToken()
       const response = await axiosInstance({
-        url: '/ticketIn' + queryString,
+        url: '/ticketIn',
         headers: {
+          Authorization: `Bearer ${apiConfig.token}`,
           'Content-Type': 'multipart/form-data',
-          Accept: 'application/json',
-          Authorization: `Bearer ${tokenAuth}`,
         },
         validateStatus: validTokenExpired,
         method: 'POST',
@@ -25,13 +23,11 @@ export default class PaymentService {
 
   static async setWithdrawal(withdrwlObject) {
     try {
-      const tokenAuth = apiConfig.token || sessionStorage.getItem('token')
+      apiConfig.getToken()
       const response = await axiosInstance({
-        url: '/ticketOut' + queryString,
+        url: '/ticketOut',
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          Authorization: `Bearer ${tokenAuth}`,
+          Authorization: `Bearer ${apiConfig.token}`,
         },
         method: 'POST',
         data: { ...withdrwlObject },
@@ -44,13 +40,11 @@ export default class PaymentService {
 
   static async getRequisiteCards() {
     try {
-      const tokenAuth = apiConfig.token || sessionStorage.getItem('token')
+      apiConfig.getToken()
       const response = await axiosInstance({
-        url: '/bankCards' + queryString,
+        url: '/bankCards',
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          Authorization: `Bearer ${tokenAuth}`,
+          Authorization: `Bearer ${apiConfig.token}`,
         },
         method: 'GET',
       })
@@ -62,13 +56,14 @@ export default class PaymentService {
 
   static async sendPromocode(promocode) {
     try {
-      const tokenAuth = apiConfig.token || sessionStorage.getItem('token')
+      apiConfig.getToken()
       const response = await axiosInstance({
-        url: '/pincode' + queryString + `&pincode=${promocode}`,
+        url: '/pincode',
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          Authorization: `Bearer ${tokenAuth}`,
+          Authorization: `Bearer ${apiConfig.token}`,
+        },
+        params: {
+          pincode: promocode,
         },
         method: 'GET',
       })

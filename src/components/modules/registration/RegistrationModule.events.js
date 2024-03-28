@@ -2,6 +2,7 @@ import {
   pswrdHidden,
   pswrdCnfrmHidden,
   formReg,
+  targetEntity,
 } from '@/components/modules/registration/RegistrationModule.options.js'
 
 import { useSessionStore } from '@/store/session/sessionStore.js'
@@ -10,9 +11,12 @@ import {
   onErrorValid,
   onValidForm,
 } from '@/components/modules/registration/RegistrationModule.valids.js'
+import { useStateStore } from '@/store/stateStore.js'
+import { generateRandomLogin } from '@/utils/helpers/generateRandomLogin.js'
+import { ERRORS } from '@/configs/errors.js'
 
 const sessionStore = useSessionStore()
-
+const stateStore = useStateStore()
 export const onChangeHiddenPassword = () =>
   (pswrdHidden.value = !pswrdHidden.value)
 
@@ -29,21 +33,23 @@ const clearForm = () => {
 }
 export const onRegistration = async (router) => {
   try {
-    await onValidForm()
+    await onValidForm(targetEntity.value)
       .then((resultValid) => {
+        formReg.value.username = generateRandomLogin()
         sessionStore.registration(formReg.value)
       })
       .then(clearForm)
-      .then(() => router.push('/authorization'))
+      .then(openAuthorization)
   } catch (e) {
-    console.log('result valid:', e)
-    if (e === false) onErrorValid()
+    if (e === ERRORS.ERROR_VALIDATION.TYPE) onErrorValid()
     else onErrorMessage()
-    clearForm()
-    router.push('/registration')
   }
 }
 
+export const openAuthorization = () => {
+  stateStore.globalPopupsModules.authorization.visibility = true
+  stateStore.globalPopupsModules.registration.visibility = false
+}
 export const onRegistrationTelegram = () => {
   const a = document.createElement('a')
   a.href = `https://t.me/momytest_bot`

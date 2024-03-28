@@ -1,19 +1,12 @@
 <script setup>
 import { useSessionStore } from '@/store/session/sessionStore.js'
-import { onMounted } from 'vue'
-import {
-  promocode,
-} from './ProfileModule.options.js'
-import {
-  onSendPromocode,
-} from '@/components/modules/account/modules/profile/ProfileModule.events.js'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
+import { useStateStore } from '@/store/stateStore.js'
 
+const stateStore = useStateStore()
 const sessionStore = useSessionStore()
-
-onMounted(async () => {
-  await sessionStore.getInfoSession()
-})
+const onEditProfile = () =>
+  (stateStore.globalPopupsModules.profileEdit.visibility = true)
 </script>
 
 <template>
@@ -25,7 +18,10 @@ onMounted(async () => {
     <div class="profile-module-info">
       <div class="info-item">
         <h4>Логин/ID</h4>
-        <p>{{ sessionStore.session.profile?.username }} / {{ sessionStore.session.profile?.id }}</p>
+        <p>
+          {{ sessionStore.session.profile?.username }} /
+          {{ sessionStore.session.profile?.id }}
+        </p>
       </div>
       <div class="info-item">
         <h4>Дата регистрации</h4>
@@ -38,12 +34,37 @@ onMounted(async () => {
         </p>
       </div>
       <div class="info-item">
-        <h4>Ввести промокод:</h4>
-        <input type="text" placeholder="Прмокод" v-model="promocode" />
-        <BaseButton color="primary" outline @click="onSendPromocode"
-          >Ввести промокод</BaseButton
-        >
+        <h4>Имя, Фамилия</h4>
+        <p>
+          {{
+            sessionStore.session.profile?.first_name || 'Имя'
+          }}
+          {{
+            sessionStore.session.profile?.last_name || 'Фамилия'
+          }}
+        </p>
       </div>
+      <div class="info-item">
+        <h4>Дата рождения</h4>
+        <p>
+          {{
+            new Date(
+              sessionStore.session.profile?.birthday
+            ).toLocaleDateString() || '00.00.0000'
+          }}
+        </p>
+      </div>
+      <div class="info-item">
+        <h4>Телефон</h4>
+        <p>
+          {{
+           sessionStore.session.profile?.phone || 'Не установлен'
+          }}
+        </p>
+      </div>
+      <BaseButton class="btn-edit" @click="onEditProfile">
+        <p>Редактировать</p>
+      </BaseButton>
     </div>
   </div>
 </template>

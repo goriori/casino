@@ -2,12 +2,9 @@
 import { onMounted } from 'vue'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
+import BonusIcon from '@/components/ui/icons/balance/BonusIcon.vue'
 
 const sessionStore = useSessionStore()
-
-onMounted(async () => {
-  await sessionStore.getInfoSession()
-})
 </script>
 
 <template>
@@ -42,11 +39,18 @@ onMounted(async () => {
         <h4>Основной</h4>
         <div class="currency">
           <CurrencyIcon />
-          <p>{{sessionStore.session.profile?.balance}}</p>
+          <p>{{ sessionStore.session.profile?.balance }}</p>
         </div>
       </div>
       <div class="balance-module-info-item">
-        <h4>Валюта</h4>
+        <h4>Бонусы</h4>
+        <div class="currency">
+          <BonusIcon/>
+          <p>{{ sessionStore.session.profile?.bonus }}</p>
+        </div>
+      </div>
+      <div class="balance-module-info-item">
+        <h4>Валюта:</h4>
         <div class="currency">
           <p>RUB</p>
         </div>
@@ -68,10 +72,11 @@ onMounted(async () => {
     justify-content: center;
     align-items: center;
     gap: 36px;
-    background: #1d2345;
+    background: #2c2c2c;
     border-radius: 26px;
     font-size: 24px;
-
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+    flex: 0 0 220px;
     @media (max-width: 1500px) {
       padding: 18px;
     }
@@ -88,6 +93,9 @@ onMounted(async () => {
       gap: 12px;
       color: $white;
       font-weight: 600;
+      @media (max-width: $md4 + px) {
+        font-size: 18px;
+      }
     }
 
     &-info {
@@ -95,7 +103,7 @@ onMounted(async () => {
       justify-content: center;
       align-items: start;
       color: $white;
-      gap: 317px;
+      gap: 100px;
 
       @media (max-width: $md2 + px) {
         gap: 24px;
@@ -114,6 +122,9 @@ onMounted(async () => {
           font-size: 20px;
           gap: 18px;
         }
+        @media (max-width: $md4 + px) {
+          font-size: 14px;
+        }
 
         h4 {
           font-weight: 500;
@@ -130,7 +141,7 @@ onMounted(async () => {
   gap: 8px;
 
   p {
-    color: #5570fb;
+    color: #d5a748;
     font-weight: 700;
   }
 }

@@ -1,0 +1,78 @@
+@import '@/assets/scss/variables';
+
+#exchange_button {
+  p {
+    color: $white;
+  }
+}
+
+.exchange__points {
+  &-module {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &-card {
+    display: flex;
+    gap: 36px;
+    padding: 20px;
+    background: #2c2c2c;
+    border-radius: 26px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    flex: 1 0 350px;
+  }
+}
+
+.form {
+  &-title {
+    font-size: 24px;
+
+    span {
+      color: $primary;
+    }
+  }
+
+  &-links {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    color: #bbbbbb;
+    .tooltip {
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 100%;
+    }
+  }
+
+  &-field {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+
+    input {
+      border-radius: 36px;
+      max-width: 200px;
+      padding: 10px 20px;
+      font-size: 14px;
+    }
+
+    p {
+      color: #d5a748;
+      font-size: 32px;
+      max-width: 80px;
+      white-space: nowrap;
+      overflow-x: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+

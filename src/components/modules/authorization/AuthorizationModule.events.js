@@ -10,11 +10,14 @@ import {
 } from '@/components/modules/authorization/AuthorizationModule.valids.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useSettingsStore } from '@/store/settings/settingStore.js'
-
+import { useStateStore } from '@/store/stateStore.js'
+import { useBonusSystemStore } from '@/store/bonus-system/bonusSystemStore.js'
+import { ERRORS } from '@/configs/errors.js'
 
 const settingStore = useSettingsStore()
 const sessionStore = useSessionStore()
-
+const bonusSystemStore = useBonusSystemStore()
+const stateStore = useStateStore()
 export const onChangeHiddenPassword = () =>
   (pswrdHidden.value = !pswrdHidden.value)
 
@@ -28,11 +31,13 @@ export const onAuthorization = async (router) => {
   try {
     await onValidForm()
     await sessionStore.authorization(formAuth.value)
+    await sessionStore.getInfoSession()
+    await sessionStore.getStatusPay()
+    bonusSystemStore.onInitBonusSystemAccount(sessionStore.session.profile)
     clearForm()
-    router.push('/')
+    stateStore.globalPopupsModules.authorization.visibility = false
   } catch (e) {
-    console.log('err object or boolean:', e)
-    if (e === false) onErrorValid()
+    if (e === ERRORS.ERROR_VALIDATION.TYPE) onErrorValid()
     else onErrorMessage()
     clearForm()
   }
@@ -45,6 +50,11 @@ export const onRecoveryPassword = () => {
   a.target = '_blank'
   a.click()
 }
+export const onRegistration = () => {
+  stateStore.globalPopupsModules.authorization.visibility = false
+  stateStore.globalPopupsModules.registration.visibility = true
+}
+
 export const onAuthTelegram = () => {
   const a = document.createElement('a')
   a.href = `https://t.me/momytest_bot`

@@ -1,77 +1,86 @@
 <script setup>
 import { useRouter } from 'vue-router'
-
 import {
   onChangeHiddenPassword,
   onAuthorization,
   onAuthTelegram,
   onRecoveryPassword,
+  onRegistration,
 } from '@/components/modules/authorization/AuthorizationModule.events.js'
 import {
   pswrdHidden,
   formAuth,
   authFields,
-  authMessages,
+  targetEntity,
 } from '@/components/modules/authorization/AuthorizationModule.options.js'
-
+import { useStateStore } from '@/store/stateStore.js'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import EmailIcon from '@/components/ui/icons/authorization/EmailIcon.vue'
 import HiddenIcon from '@/components/ui/icons/authorization/HiddenIcon.vue'
 import TelegramIcon from '@/components/ui/icons/authorization/TelegramIcon.vue'
-import PopupSuccessAuthorization from '@/components/modules/authorization/popups/popup-success/PopupSuccessAuthorization.vue'
-import PopupErrorAuthorization from '@/components/modules/authorization/popups/popup-error-server/PopupErrorServerAuthorization.vue'
 import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue'
-import PopupErrorValidAuthorization from '@/components/modules/authorization/popups/popup-error-valid/PopupErrorValidAuthorization.vue'
+import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
 
+const props = defineProps({
+  isPopup: {
+    type: Boolean,
+    default: false,
+  },
+})
 const router = useRouter()
+const stateStore = useStateStore()
 </script>
 
 <template>
   <div class="authorization-module">
-    <div class="authorization-popups">
-      <Teleport to="body">
-        <Transition name="slide">
-          <PopupSuccessAuthorization
-            v-if="authMessages.success"
-            @close="authMessages.success = false"
-          />
-        </Transition>
-        <Transition name="slide">
-          <PopupErrorAuthorization
-            v-if="authMessages.error"
-            @close="authMessages.error = false"
-          />
-        </Transition>
-        <Transition name="slide">
-          <PopupErrorValidAuthorization
-            v-if="authMessages.isValid"
-            @close="authMessages.isValid = false"
-          />
-        </Transition>
-      </Teleport>
+    <div class="authorization-head" v-if="isPopup">
+      <CloseIcon
+        @click="stateStore.globalPopupsModules.authorization.visibility = false"
+      />
     </div>
-
     <div class="authorization-info">
       <h1>Вход</h1>
       <p>Введите свои учетные данные для доступа к вашему профилю</p>
     </div>
-
+    <div class="authorization-target">
+      <div
+        :class="['target-item ', { active: targetEntity === 'email' }]"
+        @click="targetEntity = 'email'"
+      >
+        Почта
+      </div>
+      <div
+        :class="['target-item ', { active: targetEntity === 'phone' }]"
+        @click="targetEntity = 'phone'"
+      >
+        Телефон
+      </div>
+    </div>
     <div class="authorization-form" ref="authFields">
-      <div class="form-field">
-        <label>Логин</label><br />
+      <div class="form-field" v-if="targetEntity === 'email'">
         <div class="form-field-input">
           <input
-            class="auth-field "
+            class="auth-field"
             type="text"
             id="auth-login"
-            placeholder="Ввести логин"
+            placeholder="Ввести почту"
             v-model="formAuth.username"
           />
           <EmailIcon />
         </div>
       </div>
+      <div class="form-field" v-if="targetEntity === 'phone'">
+        <div class="form-field-input">
+          <input
+            class="auth-field"
+            type="text"
+            id="auth-login"
+            placeholder="Ввести логин"
+            v-model="formAuth.username"
+          />
+        </div>
+      </div>
       <div class="form-field">
-        <label>Пароль</label><br />
         <div class="form-field-input">
           <input
             class="auth-field"
@@ -107,7 +116,7 @@ const router = useRouter()
     <div class="authorization-registration">
       <div class="authorization-registration-info">
         У вас нет профиля?
-        <span @click="router.push('/registration')">Создать профиль</span>
+        <span @click="onRegistration">Создать профиль</span>
       </div>
       <BaseButton color="primary" outline @click="onAuthTelegram">
         <div class="btn-registration">

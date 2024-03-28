@@ -1,17 +1,41 @@
 import { axiosInstance } from '@/utils/axios/axios'
 import apiConfig from '@/API/api.config.js'
 
-const queryString = '?shop_id=1&key=pLaHFj1OsSNDNclDjRN03OHHq'
 export default class SettingService {
   static async getSettings() {
     try {
-      const tokenAuth = apiConfig.token || sessionStorage.getItem('token')
       const response = await axiosInstance({
-        url: '/settings' + queryString,
+        url: '/settings',
+        method: 'GET',
+      })
+      return response.data
+    } catch (e) {
+      throw e
+    }
+  }
+
+  static async getStatistics() {
+    try {
+      apiConfig.getToken()
+      const response = await axiosInstance({
+        url: '/statistic',
         headers: {
-          'Content-Type': 'application/json',
-          Accept: 'application/json',
-          Authorization: `Bearer ${tokenAuth}`,
+          Authorization: `Bearer ${apiConfig.token}`,
+        },
+        method: 'GET',
+      })
+      return response.data
+    } catch (e) {
+      throw e
+    }
+  }
+  static async getStatuses() {
+    try {
+      apiConfig.getToken()
+      const response = await axiosInstance({
+        url: '/statuses',
+        headers: {
+          Authorization: `Bearer ${apiConfig.token}`,
         },
         method: 'GET',
       })

@@ -1,17 +1,14 @@
 import {
-  alertMessage,
   isLoad,
   isLoadContent,
 } from '@/components/modules/popular/PopularGameModule.options.js'
 import { useGameStore } from '@/store/games/gameStore.js'
+import { useStateStore } from '@/store/stateStore.js'
 
 const gameStore = useGameStore()
+const stateStore = useStateStore()
 export const unAuthorizedCardClick = () => {
-  alertMessage.value = 'unauthorized'
-  clearAlert()
-}
-export const clearAlert = () => {
-  setTimeout(() => (alertMessage.value = 'none'), 1500)
+  stateStore.globalPopupsModules.authorization.visibility = true
 }
 
 export const loadModule = async () => {
@@ -28,3 +25,5 @@ const changeLoadContent = () => {
     setTimeout(() => (isLoadContent.value = true), 500)
   else isLoadContent.value = false
 }
+
+

@@ -4,30 +4,37 @@
 .message {
   &-success {
     position: absolute;
-    background: #45CC3A;
+    background: $light-success;
     padding: 20px;
     width: 100%;
     border-radius: 26px;
   }
+
   &-error {
     position: absolute;
-    background: #FF3939;
+    background: $light-err;
     padding: 20px;
     width: 100%;
     border-radius: 26px;
   }
 }
+
 .authorization {
+  &-head {
+    display: flex;
+    justify-content: flex-end;
+  }
+
   &-module {
+    color: $white;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 32px;
+    gap: 20px;
     border-radius: 26px;
-    background: #1d2345;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+    background: $gray;
+    box-shadow: 0 0 20px 0 $opacity-black;
     padding: 32px 28px;
   }
 
@@ -38,6 +45,14 @@
     width: 100%;
     text-align: center;
 
+  }
+
+  &-target {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    min-height: 30px;
   }
 
   &-info {
@@ -144,7 +159,7 @@
 
 
 span {
-  color: #5570FB;
+  color: $dark-primary;
   cursor: pointer;
   font-size: 14px;
 }
@@ -161,9 +176,7 @@ span {
 
     &-input {
       width: 100%;
-      border: 1px solid #5570FB;
-      border-radius: 36px;
-      background: #fff;
+      border-bottom: 1px solid $dark-primary;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -183,6 +196,8 @@ span {
       padding: 0 5px;
       border-radius: 36px;
       font-weight: 400;
+      background: none;
+      color: $white;
     }
   }
 }
@@ -192,7 +207,7 @@ span {
   align-items: center;
   justify-content: center;
   flex: 1 0 100%;
-  color: #fff
+  color: $white;
 }
 
 
@@ -201,7 +216,7 @@ span {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  color: #fff;
+  color: $white;
 
   p {
     font-size: 12px;
@@ -213,6 +228,23 @@ span {
   span {
     @media (max-width: $md5 + px) {
       font-size: 10px;
+    }
+  }
+
+}
+
+
+.target {
+  &-item {
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease-in-out;
+
+    &.active {
+      padding: 5px 10px;
+      transition: all 0.1s ease-in-out;
+      background:  $dark-primary;
+      border-radius: 36px;
     }
   }
 

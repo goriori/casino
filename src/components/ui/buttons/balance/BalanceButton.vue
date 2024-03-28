@@ -34,6 +34,8 @@ const buttonHandler = () => {
   <div class="balance">
     <BaseButton
       color="balance-primary"
+      rounded="full"
+      size="small"
       @click="buttonHandler"
       :is-active="btnActive"
     >

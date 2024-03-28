@@ -41,6 +41,7 @@ const props = defineProps({
         {
           'btn-primary': props.color === 'primary',
           'btn-secondary': props.color === 'secondary',
+          'btn-white': props.color === 'white',
           'btn-balance-primary': props.color === 'balance-primary',
           'btn-cashier-primary': props.color === 'cashier-primary',
           'btn-withdrawal-primary': props.color === 'withdrawal-primary',

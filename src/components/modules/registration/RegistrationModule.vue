@@ -5,12 +5,13 @@ import {
   onChangeHiddenPasswordConfirm,
   onRegistration,
   onRegistrationTelegram,
+  openAuthorization,
 } from '@/components/modules/registration/RegistrationModule.events.js'
 import {
   pswrdHidden,
   formReg,
   pswrdCnfrmHidden,
-  regMessages,
+  targetEntity,
 } from '@/components/modules/registration/RegistrationModule.options.js'
 
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
@@ -18,36 +19,25 @@ import EmailIcon from '@/components/ui/icons/authorization/EmailIcon.vue'
 import HiddenIcon from '@/components/ui/icons/authorization/HiddenIcon.vue'
 import TelegramIcon from '@/components/ui/icons/authorization/TelegramIcon.vue'
 import NotHiddenIcon from '@/components/ui/icons/authorization/NotHiddenIcon.vue'
-import PopupSuccessRegistration from '@/components/modules/registration/popups/popup-success/PopupSuccessRegistration.vue'
-import PopupErrorServerRegistration from '@/components/modules/registration/popups/popup-error-server/PopupErrorServerRegistration.vue'
-import PopupErrorValidRegistration from '@/components/modules/registration/popups/popup-error-valid/PopupErrorValidRegistration.vue'
+import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
+import { useStateStore } from '@/store/stateStore.js'
 
+const props = defineProps({
+  isPopup: {
+    type: Boolean,
+    default: false,
+  },
+})
 const router = useRouter()
+const stateStore = useStateStore()
 </script>
 
 <template>
   <div class="authorization-module">
-    <div class="authorization-popups">
-      <Teleport to="body">
-        <Transition name="slide">
-          <PopupSuccessRegistration
-            v-if="regMessages.success"
-            @close="regMessages.success = false"
-          />
-        </Transition>
-        <Transition name="slide">
-          <PopupErrorServerRegistration
-            v-if="regMessages.error"
-            @close="regMessages.error = false"
-          />
-        </Transition>
-        <Transition name="slide">
-          <PopupErrorValidRegistration
-            v-if="regMessages.isValid"
-            @close="regMessages.isValid = false"
-          />
-        </Transition>
-      </Teleport>
+    <div class="authorization-head" v-if="isPopup">
+      <CloseIcon
+        @click="stateStore.globalPopupsModules.registration.visibility = false"
+      />
     </div>
     <div class="authorization-info">
       <h1>Регистрация</h1>
@@ -56,18 +46,42 @@ const router = useRouter()
         для создания вашего профиля
       </p>
     </div>
-
+    <div class="authorization-target">
+      <div
+        :class="['target-item ', { active: targetEntity === 'email' }]"
+        @click="targetEntity = 'email'"
+      >
+        Почта
+      </div>
+      <div
+        :class="['target-item ', { active: targetEntity === 'phone' }]"
+        @click="targetEntity = 'phone'"
+      >
+        Телефон
+      </div>
+    </div>
     <div class="authorization-form">
-      <div class="form-field">
-        <label>Логин</label><br />
+      <div class="form-field" v-if="targetEntity === 'email'">
+        <label>Почта</label><br />
         <div class="form-field-input">
           <input
             type="text"
+
             placeholder="Ввести логин"
             id="reg-login"
             v-model="formReg.username"
           />
           <EmailIcon />
+        </div>
+      </div>
+      <div class="form-field" v-if="targetEntity === 'phone'">
+        <label>Телефон</label><br />
+        <div class="form-field-input">
+          <input
+            type="text"
+            placeholder="Ввести номер телефона"
+            v-model="formReg.phone"
+          />
         </div>
       </div>
       <div class="form-field">
@@ -125,7 +139,7 @@ const router = useRouter()
       <div class="authorization-registration-info">
         <p>
           У вас уже есть профиль?
-          <span @click="router.push('/authorization')">Войти</span>
+          <span @click="openAuthorization">Войти</span>
         </p>
       </div>
 

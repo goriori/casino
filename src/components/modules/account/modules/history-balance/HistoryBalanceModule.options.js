@@ -9,7 +9,8 @@ export const filteredHistory = computed(() => {
   if (dateStart.value && dateEnd.value) {
     const filteredCopyHistory = [...sessionStore.session.history]
     const history = filteredCopyHistory.filter(
-      (item) => new Date(item.created_at).toLocaleDateString() >= dateStart.value
+      (item) =>
+        new Date(item.created_at).toLocaleDateString() >= dateStart.value
     )
     return history
   }

@@ -1,16 +1,23 @@
 @import '@/assets/scss/variables';
 
+.btn-edit {
+  p {
+    color: #fff;
+  }
+}
+
 .profile {
   &-module {
     width: 100%;
     padding: 18px 48px;
     display: flex;
     flex-direction: column;
+    flex: 1 0 424px;
     gap: 36px;
-    background: #1d2345;
+    background: #2C2C2C;
     border-radius: 26px;
     font-size: 24px;
-
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
     @media (max-width: 1500px) {
       padding: 18px;
     }
@@ -18,6 +25,9 @@
     @media (max-width: $md2 + px) {
       gap: 24px;
       font-size: 20px;
+    }
+    @media (max-width: $md4 + px) {
+      font-size: 14px;
     }
 
     &-title {
@@ -27,6 +37,9 @@
       gap: 12px;
       color: $white;
       font-weight: 600;
+      @media (max-width: $md4 + px) {
+        font-size: 18px;
+      }
     }
 
     &-info {
@@ -34,7 +47,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 36px;
+      gap: 30px;
 
       @media (max-width: $md2 + px) {
         gap: 24px;
@@ -47,30 +60,16 @@
   &-item {
     display: flex;
     flex-direction: column;
-    gap: 26px;
+    gap: 8px;
     text-align: center;
     line-height: 145%;
-
-    input {
-      width: 100%;
-      font-size: 14px;
-      padding: 10px;
-      border-radius: 6px 0 0 6px;
-      border: 1px solid #5570fb;
-    }
-
-    @media (max-width: $md2 + px) {
-      gap: 24px;
-    }
-
     h4 {
       color: #bbb;
       font-weight: 500;
     }
-
     p {
       cursor: pointer;
-      color: #5570fb;
+      color: #D5A748;
       font-weight: 700;
     }
   }
@@ -82,6 +81,7 @@
     display: flex;
     align-items: center;
   }
+
   &-action {
     cursor: pointer;
     position: relative;
@@ -95,6 +95,7 @@
     background: #5570fb;
     font-size: 14px;
     transition: 0.15s all ease-in-out;
+
     &:hover {
       background: #8a55fb;
     }

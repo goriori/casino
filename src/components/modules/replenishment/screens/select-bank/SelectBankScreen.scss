@@ -1,0 +1,75 @@
+@import '@/assets/scss/variables';
+.select {
+  &__bank-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 36px;
+    padding: 36px 38px;
+
+    &-sum {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 26px;
+      background: $dark-gray;
+      padding: 25px 18px;
+      font-size: 16px;
+      font-weight: 600;
+      color: $white;
+    }
+
+    &-select {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      gap: 14px;
+
+      p {
+        font-size: 16px;
+        font-weight: 400;
+        color: #bbb;
+      }
+    }
+
+    &-items {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      border-radius: 26px;
+      background: $dark-gray;
+      padding: 10px 0;
+      div {
+        &:nth-child(1) {
+          border: none;
+        }
+      }
+    }
+
+    &-item {
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      justify-content: start;
+      align-items: center;
+      gap: 16px;
+      border-top: 1px solid #ccc;
+      padding: 4px 20px 15px 20px;
+
+      h4 {
+        font-size: 14px;
+        font-weight: 600;
+        color: $white;
+      }
+
+      img {
+        max-width: 38px;
+        max-height: 38px;
+      }
+    }
+  }
+}

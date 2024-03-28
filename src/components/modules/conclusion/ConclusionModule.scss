@@ -1,0 +1,131 @@
+@import '@/assets/scss/variables';
+
+.withdrawal {
+  &-module {
+    position: relative;
+    width: 100%;
+    padding: 18px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 36px;
+    background: #2C2C2C;
+    border-radius: 26px;
+    font-size: 24px;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
+    @media (max-width: 1500px) {
+      padding: 18px;
+    }
+
+    @media (max-width: $md2 + px) {
+      gap: 24px;
+      font-size: 20px;
+    }
+
+    &-head {
+      display: flex;
+      justify-content: flex-start;
+      align-items: start;
+    }
+
+    &-choice {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &-title {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    &-info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 36px;
+      @media (max-width: $md2 + px) {
+        gap: 24px;
+      }
+    }
+  }
+}
+
+.info {
+  &-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    text-align: center;
+
+    h4:nth-child(1) {
+      color: #bbb;
+      font-weight: 400;
+      font-size: 14px;
+      @media (max-width: 1500px) {
+        font-size: 20px;
+      }
+    }
+
+    p {
+      font-weight: 400;
+      font-size: 14px;
+      color: #FF3939;
+    }
+
+    input {
+      color: rgba(213, 167, 72, 0.6);
+      width: 100%;
+      font-size: 14px;
+      padding: 10px;
+      background: none;
+      border-bottom: 1px solid white;
+
+      &::placeholder {
+        color: rgba(213, 167, 72, 0.6);
+      }
+    }
+  }
+}
+
+.withdrawal-module-action {
+  max-width: 260px;
+  margin: 0 auto;
+
+  @media (max-width: $md4 + px) {
+    max-width: none;
+    width: 100%;
+  }
+
+  &-text {
+    color: #fff;
+  }
+}
+
+.input-currency {
+  display: flex;
+
+  input {
+    border: none;
+    text-align: center;
+    font-size: 40px;
+    font-weight: 700;
+    background: #1E1E1E;
+    border-radius: 26px;
+    min-height: 82px;
+    appearance: none;
+    color: #fff;
+
+    &::placeholder {
+      color: #fff;
+      font-size: 25px;
+    }
+  }
+}

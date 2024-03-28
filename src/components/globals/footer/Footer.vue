@@ -1,62 +1,50 @@
 <script setup>
 import { useRouter } from 'vue-router'
 import {
-  openGamingPolicy,
-  openPolicy,
-  openKYCPolicy,
-  openFairnessPolicy,
-  openRestraintPolicy,
+  openAbout,
+  openFAQ,
+  openPrivileges,
+  openTermCondition,
+  openCombatingMoneyLaundering,
   openPrivacyPolicy,
-  openTermsPolicy,
 } from './Footer.events.js'
 import {
-  isPolicyOpen,
-  isGamingPolicyOpen,
-  isKYCPolicyOpen,
-  isFairnessPolicyOpen,
-  isRestraintPolicyOpen,
+  isFAQOpen,
+  isAboutOpen,
+  isTermsConditionOpen,
   isPrivacyPolicyOpen,
-  isTermsPolicyOpen,
+  isCombatingMoneyLaunderingOpen,
 } from './Footer.options.js'
 import SupportModule from '@/components/modules/support/SupportModule.vue'
-import PopupPolicy from '@/components/ui/popups/popup-policy/PopupPolicy.vue'
-import PopupGamingPolicy from '@/components/ui/popups/popup-gaming-policy/PopupGamingPolicy.vue'
-import PopupKYCPolicy from '@/components/ui/popups/popup-kyc-policy/popupKYCPolicy.vue'
-import PopupFairnessPolicy from '@/components/ui/popups/popup-fairness-policy/PopupFairnessPolicy.vue'
-import PopupRestraintPolicy from '@/components/ui/popups/popup-restraint-policy/PopupRestraintPolicy.vue'
+import PopupFAQ from '@/components/ui/popups/popup-faq/PopupFAQ.vue'
+import PopupAbout from '@/components/ui/popups/popup-about/PopupAbout.vue'
+import PopupTermsCondition from '@/components/ui/popups/popup-term-conditions/PopupTermsCondition.vue'
+import PopupCombatingMoneyLaundering from '@/components/ui/popups/popup-combating-money-laundering/PopupCombatingMoneyLaundering.vue'
 import PopupPrivacyPolicy from '@/components/ui/popups/popup-privacy-policy/PopupPrivacyPolicy.vue'
-import PopupTermsPolicy from '@/components/ui/popups/popup-terms-policy/PopupTermsPolicy.vue'
-
 
 const router = useRouter()
-
 </script>
 
 <template>
   <footer class="footer">
     <TransitionGroup name="fade">
-      <PopupPolicy v-if="isPolicyOpen" />
-      <PopupGamingPolicy v-if="isGamingPolicyOpen" />
-      <PopupKYCPolicy v-if="isKYCPolicyOpen" />
-      <PopupFairnessPolicy v-if="isFairnessPolicyOpen" />
-      <PopupRestraintPolicy v-if="isRestraintPolicyOpen" />
+      <PopupFAQ v-if="isFAQOpen" />
+      <PopupAbout v-if="isAboutOpen" />
+      <PopupTermsCondition v-if="isTermsConditionOpen" />
+      <PopupCombatingMoneyLaundering v-if="isCombatingMoneyLaunderingOpen" />
       <PopupPrivacyPolicy v-if="isPrivacyPolicyOpen" />
-      <PopupTermsPolicy v-if="isTermsPolicyOpen" />
     </TransitionGroup>
     <h3>Legacy</h3>
     <div class="footer-links">
       <div class="footer-links-item">
-        <p @click="openPolicy">Dispute Resolution Policy</p>
-        <p @click="openGamingPolicy">Responsible Gaming Policy</p>
-        <p @click="openKYCPolicy">KYC Policy</p>
+        <p @click="openFAQ">FAQ</p>
+        <p @click="openAbout">О нас</p>
+        <p @click="openPrivileges">Привелегии</p>
       </div>
       <div class="footer-links-item">
-        <p @click="openFairnessPolicy">Fairness Policy</p>
-        <p @click="openRestraintPolicy">Self-Restraint Policy</p>
-      </div>
-      <div class="footer-links-item">
-        <p @click="openPrivacyPolicy">Privacy Notice</p>
-        <p @click="openTermsPolicy">Terms and Conditions</p>
+        <p @click="openTermCondition">Правила и условия</p>
+        <p @click="openPrivacyPolicy">Политика конфиденциальности</p>
+        <p @click="openCombatingMoneyLaundering">Борьба с отмыванием денег</p>
       </div>
     </div>
     <hr />
