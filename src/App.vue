@@ -1,44 +1,31 @@
 <script setup>
 import { useRoute } from 'vue-router'
 import { useStateStore } from '@/store/stateStore'
-import { useSessionStore } from '@/store/session/sessionStore.js'
+import {useSessionStore} from '@/store/session/sessionStore.js'
 import { useGameStore } from '@/store/games/gameStore.js'
 import { useProviderStore } from '@/store/providers/providerStore.js'
-import { useSettingsStore } from '@/store/settings/settingStore.js'
 import MoveUpModule from '@/components/modules/move-up/MoveUpModule.vue'
 import VLoader from '@/components/VLoader.vue'
-import PopupsGlobal from '@/components/globals/popups/PopupsGlobal.vue'
-import { useBonusSystemStore } from '@/store/bonus-system/bonusSystemStore.js'
-import { onMounted } from 'vue'
+import { useSettingsStore } from '@/store/settings/settingStore.js'
+import PopupConnectNetwork from '@/components/globals/popups/popup-connect-network/PopupConnectNetwork.vue'
 
 const route = useRoute()
+
 const stateStore = useStateStore()
 const settingStore = useSettingsStore()
 const sessionStore = useSessionStore()
 const gameStore = useGameStore()
 const providerStore = useProviderStore()
-const bonusSystemStore = useBonusSystemStore()
 
-const fetchEntityData = async () => {
-  const hasToken = sessionStore.session.token
-  if (hasToken) {
-    await Promise.all([
-      sessionStore.getInfoSession(),
-      sessionStore.getStatusPay(),
-    ]).then(() =>
-      bonusSystemStore.onInitBonusSystemAccount(sessionStore.session.profile)
-    )
-  }
-}
-
-onMounted(async () => {
-  await fetchEntityData()
-})
 </script>
 
 <template>
   <main class="main">
-    <PopupsGlobal />
+    <Teleport to="body">
+      <Transition name="slide">
+        <PopupConnectNetwork/>
+      </Transition>
+    </Teleport>
     <RouterView v-slot="{ Component }">
       <template v-if="Component">
         <transition name="fade-page" mode="out-in">
@@ -46,7 +33,7 @@ onMounted(async () => {
             <component :is="Component" :key="route.fullPath"></component>
           </suspense>
         </transition>
-        <MoveUpModule />
+        <MoveUpModule/>
       </template>
     </RouterView>
     <VLoader v-if="stateStore.isLoading" />

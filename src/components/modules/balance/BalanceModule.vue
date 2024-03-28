@@ -9,6 +9,7 @@ import {
 import {
   btnActive,
   navigationAuthorized,
+  navigationNotAuthorized,
   popupReplenishment,
   popupSetting,
 } from '@/components/modules/balance/BalanceModule.options.js'
@@ -16,9 +17,8 @@ import { useSessionStore } from '@/store/session/sessionStore.js'
 import BalanceButton from '@/components/ui/buttons/balance/BalanceButton.vue'
 import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 import ArrowIcon from '@/components/ui/icons/other/ArrowIcon.vue'
+import WithdrawalPopup from '@/components/modules/balance/popups/withdrawal/WithdrawalPopup.vue'
 import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
-import ReplenishmentModule from '@/components/modules/replenishment/ReplenishmentModule.vue'
-import BonusIcon from '@/components/ui/icons/balance/BonusIcon.vue'
 
 const router = useRouter()
 const sessionStore = useSessionStore()
@@ -45,16 +45,29 @@ const sessionStore = useSessionStore()
               <p>{{ sessionStore.session.profile?.balance }} ₽</p>
             </div>
           </div>
-          <div class="balance-item">
-            <div class="balance-item-name">Баллов</div>
-            <div class="balance-item-content">
-              <BonusIcon />
-              <p>{{ sessionStore.session.profile?.bonus }} ₽</p>
-            </div>
-          </div>
         </div>
         <div class="popup-navigation">
-          <div class="popup-navigation-authorized">
+          <div
+            class="popup-navigation-no_authorized"
+            v-if="!sessionStore.session.token || !sessionStore.session?.profile"
+          >
+            <div
+              class="navigation-item"
+              v-ripple
+              v-for="nav in navigationNotAuthorized"
+              :key="nav.id"
+              @click="nav.handler(router)"
+            >
+              <div class="navigation-item-content">
+                <img :src="`/images/icons/${nav.icon}.svg`" alt="" />
+                <p>{{ nav.title }}</p>
+              </div>
+              <div class="navigation-item-action">
+                <ArrowIcon />
+              </div>
+            </div>
+          </div>
+          <div class="popup-navigation-authorized" v-else>
             <div
               class="navigation-item"
               v-ripple
@@ -76,7 +89,7 @@ const sessionStore = useSessionStore()
     </Transition>
     <Teleport to="body">
       <Transition name="fade">
-        <ReplenishmentModule
+        <WithdrawalPopup
           :setting="popupSetting"
           @close="closePopupReplenishment"
           v-if="popupReplenishment"

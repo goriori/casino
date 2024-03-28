@@ -8,7 +8,6 @@
     width: 100%;
     border-radius: 26px;
   }
-
   &-error {
     position: absolute;
     background: #FF3939;
@@ -19,32 +18,18 @@
 }
 
 .authorization {
-  &-head {
-    display: flex;
-    justify-content: flex-end;
-  }
-
   &-module {
-    color: #fff;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 32px;
     border-radius: 26px;
-    background: #2C2C2C;
+    background: #1d2345;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
     padding: 32px 28px;
   }
-
-  &-target {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    min-height: 30px;
-  }
-
   &-message {
     position: absolute;
     top: 0;
@@ -53,7 +38,6 @@
     text-align: center;
 
   }
-
   &-info {
     display: flex;
     flex-direction: column;
@@ -98,8 +82,7 @@
 
     &-info {
       font-size: 14px;
-
-      span {
+      span{
         text-decoration: underline;
       }
     }
@@ -126,7 +109,7 @@
     align-items: center;
     gap: 8px;
 
-    &.checkbox {
+    &.checkbox{
       padding: 0 50px;
       @media (max-width: $md4 + px) {
         padding: 0;
@@ -138,10 +121,13 @@
       width: 100%;
       max-width: 24px;
       min-height: 24px;
+      border: 1px solid transparent;
+
     }
 
     label {
       font-size: 14px;
+
       @media (max-width: $md5 + px) {
         font-size: 12px;
       }
@@ -155,7 +141,7 @@
 
 
 span {
-  color: #D5A748;
+  color: #5570FB;
   cursor: pointer;
   font-size: 14px;
 }
@@ -172,16 +158,21 @@ span {
 
     &-input {
       width: 100%;
-      border-bottom: 1px solid #D5A748;
+      border: 1px solid #5570FB;
+      border-radius: 36px;
+      background: #fff;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 12px;
       padding: 16px;
+
+
     }
 
     label {
       font-weight: 500;
+
     }
 
     input {
@@ -189,12 +180,6 @@ span {
       padding: 0 5px;
       border-radius: 36px;
       font-weight: 400;
-      background: none;
-      color: #fff;
-
-      &:target {
-        background: none;
-      }
     }
   }
 }
@@ -221,26 +206,9 @@ span {
       font-size: 8px;
     }
   }
-
-  span {
+  span{
     @media (max-width: $md5 + px) {
       font-size: 10px;
     }
   }
-}
-
-.target {
-  &-item {
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease-in-out;
-
-    &.active {
-      padding: 5px 10px;
-      transition: all 0.1s ease-in-out;
-      background: #d5a748;
-      border-radius: 36px;
-    }
-  }
-
 }

@@ -14,5 +14,21 @@ import RegistrationModule from '@/components/modules/registration/RegistrationMo
 </template>
 
 <style scoped lang="scss">
-@import 'Registration';
+@import '@/assets/scss/variables';
+.page {
+  color: #fff;
+
+  &-modules {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 48px 28px;
+
+    @media (max-width: $md2 + px) {
+      padding: 20px;
+    }
+  }
+}
 </style>

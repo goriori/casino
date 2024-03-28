@@ -1,50 +1,52 @@
 import {
-  isFAQOpen,
-  isAboutOpen,
-  isTermsConditionOpen,
-  isCombatingMoneyLaunderingOpen,
+  isPolicyOpen,
+  isGamingPolicyOpen,
+  isKYCPolicyOpen,
+  isFairnessPolicyOpen,
+  isRestraintPolicyOpen,
   isAffiliatePolicyOpen,
   isPrivacyPolicyOpen,
   isTermsPolicyOpen,
 } from './Footer.options.js'
-import { useStateStore } from '@/store/stateStore.js'
 
-export const openFAQ = () => {
-  isFAQOpen.value = true
+export const openPolicy = () => {
+  isPolicyOpen.value = true
 }
 
-export const closeFAQ = () => {
-  isFAQOpen.value = false
+export const closePolicy = () => {
+  isPolicyOpen.value = false
 }
 
-export const openAbout = () => {
-  isAboutOpen.value = true
+export const openGamingPolicy = () => {
+  isGamingPolicyOpen.value = true
 }
 
-export const closeAbout = () => {
-  isAboutOpen.value = false
+export const closeGamingPolicy = () => {
+  isGamingPolicyOpen.value = false
 }
 
-export const openPrivileges = () => {
-  const stateStore = useStateStore()
-  stateStore.globalPopupsModules.statusesList.visibility = true
+export const openKYCPolicy = () => {
+  isKYCPolicyOpen.value = true
 }
 
-
-export const openTermCondition = () => {
-  isTermsConditionOpen.value = true
+export const closeKYCPolicy = () => {
+  isKYCPolicyOpen.value = false
 }
 
-export const closeTermCondition = () => {
-  isTermsConditionOpen.value = false
+export const openFairnessPolicy = () => {
+  isFairnessPolicyOpen.value = true
 }
 
-export const openCombatingMoneyLaundering = () => {
-  isCombatingMoneyLaunderingOpen.value = true
+export const closeFairnessPolicy = () => {
+  isFairnessPolicyOpen.value = false
 }
 
-export const closeCombatingMoneyLaundering = () => {
-  isCombatingMoneyLaunderingOpen.value = false
+export const openRestraintPolicy = () => {
+  isRestraintPolicyOpen.value = true
+}
+
+export const closeRestraintPolicy = () => {
+  isRestraintPolicyOpen.value = false
 }
 
 export const openAffiliatePolicy = () => {

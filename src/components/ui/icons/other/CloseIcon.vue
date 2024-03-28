@@ -1,4 +1,6 @@
-<script setup></script>
+<script setup>
+
+</script>
 
 <template>
   <svg
@@ -20,7 +22,5 @@
 </template>
 
 <style scoped lang="scss">
-svg {
-  cursor: pointer;
-}
+
 </style>

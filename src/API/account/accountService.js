@@ -1,14 +1,17 @@
-import { axiosInstance, validTokenExpired } from '@/utils/axios/axios'
+import { axiosInstance , validTokenExpired} from '@/utils/axios/axios'
 import apiConfig from '@/API/api.config.js'
 
+const queryString = '?shop_id=1&key=pLaHFj1OsSNDNclDjRN03OHHq'
 export default class AccountService {
   static async getInfoAccount() {
     try {
-      apiConfig.getToken()
+      const tokenAuth = apiConfig.token || sessionStorage.getItem('token')
       const response = await axiosInstance({
-        url: '/me',
+        url: '/me' + queryString,
         headers: {
-          Authorization: `Bearer ${apiConfig.token}`,
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Authorization: `Bearer ${tokenAuth}`,
         },
         validateStatus: validTokenExpired,
         method: 'GET',
@@ -21,46 +24,13 @@ export default class AccountService {
 
   static async getInfoStatusPay() {
     try {
-      apiConfig.getToken()
+      const tokenAuth = apiConfig.token || sessionStorage.getItem('token')
       const response = await axiosInstance({
-        url: '/stats/pay',
+        url: '/stats/pay' + queryString,
         headers: {
-          Authorization: `Bearer ${apiConfig.token}`,
-        },
-        validateStatus: validTokenExpired,
-        method: 'GET',
-      })
-      return response.data
-    } catch (e) {
-      throw e
-    }
-  }
-
-  static async updateInfoAccount(formUpdate) {
-    try {
-      apiConfig.getToken()
-      const response = await axiosInstance({
-        url: '/me/details',
-        headers: {
-          Authorization: `Bearer ${apiConfig.token}`,
-        },
-        validateStatus: validTokenExpired,
-        method: 'POST',
-        data: { ...formUpdate },
-      })
-      return response.data
-    } catch (e) {
-      throw e
-    }
-  }
-
-  static async getMessagesAccount() {
-    try {
-      apiConfig.getToken()
-      const response = await axiosInstance({
-        url: '/messages',
-        headers: {
-          Authorization: `Bearer ${apiConfig.token}`,
+          'Content-Type': 'application/json',
+          Accept: 'application/json',
+          Authorization: `Bearer ${tokenAuth}`,
         },
         validateStatus: validTokenExpired,
         method: 'GET',

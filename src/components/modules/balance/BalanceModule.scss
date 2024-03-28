@@ -20,7 +20,7 @@
       width: 100%;
       max-width: 104px;
       min-height: 95px;
-      background: #262626;
+      background: #3e4c9d;
       clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
       @media (max-width: $md5 + px) {
         min-height: 0;
@@ -30,7 +30,7 @@
 
     width: 100%;
     max-width: 500px;
-    background: #262626;
+    background: #3e4c9d;
     filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     border-radius: 26px;
 
@@ -69,20 +69,17 @@
   }
 
   &-balances {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    justify-content: start;
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
     padding: 12px 0 12px 36px;
-    background-color: #D5A748;
+    background-color: #2F3975;
   }
 
 }
 
 
 .balance {
-
   &-item {
     display: flex;
     flex-direction: column;
@@ -107,7 +104,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 31px 36px;
-    border-top: 1px solid #fff;
+    border-top: 1px solid #2F3975;
 
     &-content {
       display: flex;

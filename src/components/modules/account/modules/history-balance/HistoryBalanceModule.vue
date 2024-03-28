@@ -1,8 +1,16 @@
 <script setup>
 import { useSessionStore } from '@/store/session/sessionStore.js'
-import { filteredHistory } from '@/components/modules/account/modules/history-balance/HistoryBalanceModule.options.js'
+import { onMounted } from 'vue'
+import {
+  dateEnd,
+  dateStart, filteredHistory
+} from '@/components/modules/account/modules/history-balance/HistoryBalanceModule.options.js'
 
 const sessionStore = useSessionStore()
+
+onMounted(async () => {
+  await sessionStore.getStatusPay()
+})
 </script>
 
 <template>
@@ -23,8 +31,14 @@ const sessionStore = useSessionStore()
       </svg>
     </div>
     <div class="history__balance-module-content">
+<!--      <div class="history__balance-module-target">-->
+<!--        <p>с</p>-->
+<!--        <input type="date" v-model="dateStart" />-->
+<!--        <p>по</p>-->
+<!--        <input type="date" v-model="dateEnd" />-->
+<!--      </div>-->
       <hr />
-      <div class="history__balance-module-desktop-info">
+      <div class="history__balance-module-info">
         <table>
           <tr class="info-title-items">
             <td class="info-title">Дата</td>
@@ -40,37 +54,16 @@ const sessionStore = useSessionStore()
             :key="history.id"
           >
             <td class="info-content">
-              {{ new Date(history?.created_at).toLocaleDateString() || '0' }}
+              {{ new Date(history.created_at).toLocaleDateString() }}
             </td>
             <td class="info-content">
-              {{ history?.type === 'add' ? 'Зачисление' : 'Отправление' }}
+              {{ history.type === 'add' ? 'Зачисление' : 'Отправление' }}
             </td>
             <td class="info-content">evoplay</td>
-            <td class="info-content">{{ history?.summ }} Р</td>
+            <td class="info-content">{{ history.summ }} Р</td>
             <td class="info-content">Успешно</td>
           </tr>
         </table>
-      </div>
-      <div class="history__balance-module-mobile-info">
-        <div
-          class="info-item"
-          v-for="history in filteredHistory"
-          :key="history.id"
-        >
-          <div class="info-item-head">
-            <p>
-              {{ new Date(history?.created_at).toLocaleDateString() || '0' }}
-            </p>
-            <p>Успешно</p>
-          </div>
-          <div class="info-item-type">
-            <p>{{ history?.type === 'add' ? 'Зачисление' : 'Отправление' }}</p>
-            <p>evoplay</p>
-          </div>
-          <div class="info-item-sum">
-            <p>{{ history?.summ }} Р</p>
-          </div>
-        </div>
       </div>
     </div>
   </div>
@@ -78,7 +71,6 @@ const sessionStore = useSessionStore()
 
 <style scoped lang="scss">
 @import '@/assets/scss/variables';
-@import '@/assets/scss/mixins';
 
 hr {
   height: 1px;
@@ -94,13 +86,10 @@ hr {
       display: flex;
       flex-direction: column;
       gap: 36px;
-      background: #2c2c2c;
+      background: #1d2345;
       border-radius: 26px;
       font-size: 24px;
-      box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.25);
-      flex: 0 0 461px;
-      overflow: auto;
-      @include no-scroll();
+
       @media (max-width: 1500px) {
         padding: 18px;
       }
@@ -117,9 +106,6 @@ hr {
         gap: 12px;
         color: $white;
         font-weight: 600;
-        @media (max-width: $md4 + px) {
-          font-size: 18px;
-        }
       }
 
       &-target {
@@ -153,10 +139,7 @@ hr {
         gap: 12px;
       }
 
-      &-content {
-      }
-
-      &-desktop-info {
+      &-info {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -164,7 +147,6 @@ hr {
         gap: 20px;
 
         @media (max-width: $md4 + px) {
-          display: none;
           overflow-x: scroll;
           align-items: flex-start;
           padding-bottom: 18px;
@@ -182,18 +164,6 @@ hr {
           }
         }
       }
-
-      &-mobile-info {
-        display: none;
-        @media (max-width: $md4 + px) {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-          max-height: 500px;
-
-          @include no-scroll();
-        }
-      }
     }
   }
 }
@@ -202,7 +172,7 @@ hr {
   &-title {
     font-size: 14px;
     font-weight: 400;
-    color: #d5a748;
+    color: #5570fb;
   }
 
   &-content-items {
@@ -213,62 +183,6 @@ hr {
   &-content-item {
     color: #fff;
     font-size: 14px;
-  }
-}
-
-.info-item {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  border-bottom: 1px solid #bbbbbb;
-  padding: 0 0 20px 0;
-
-  &-head {
-    display: flex;
-    justify-content: flex-start;
-    gap: 10px;
-    font-size: 10px;
-    font-weight: 400;
-
-    p:nth-child(1) {
-      padding: 2px 6px;
-      border-radius: 300px;
-      color: #fff;
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    p:nth-child(2) {
-      padding: 2px 6px;
-      border-radius: 300px;
-      color: #45cc3a;
-      background: rgba(255, 255, 255, 0.05);
-    }
-  }
-
-  &-type {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
-    p:nth-child(1) {
-      font-weight: 600;
-      font-size: 14px;
-      color: #d5a748;
-    }
-
-    p:nth-child(2) {
-      font-weight: 400;
-      font-size: 12px;
-      color: #bbbbbb;
-    }
-  }
-
-  &-sum {
-    p {
-      font-weight: 600;
-      font-size: 14px;
-      color: #d5a748;
-    }
   }
 }
 

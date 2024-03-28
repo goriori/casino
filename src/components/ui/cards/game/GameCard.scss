@@ -2,37 +2,122 @@
 
 .card {
   width: 100%;
+
   &-game {
     cursor: pointer;
-    min-height: 229px;
-    border-radius: 4px;
+    position: relative;
+    overflow: hidden;
+    max-width: 200px;
+    min-height: 276px;
+    border-radius: 26px;
+    border: 3px solid rgba(85, 112, 251, 0.8);
+    background: $game-card-background;
+    padding: 30px 0 0;
     transition: 0.15s all ease-in-out;
+    box-shadow: 0 0 20px 0 rgba(255, 255, 255, 0.35);
     display: flex;
+    flex-direction: column;
 
-    @media (max-width: $md1 + px) {
-      min-height:200px ;
+    @media (max-width: $md2 + px) {
+      padding: 15px 0;
     }
     @media (max-width: $md3 + px) {
-      min-height:190px ;
+      min-height:150px ;
+      padding: 10px 0;
+      border-radius: 16px;
+    }
+    @media (max-width: $md4 + px) {
+      padding: 10px 0;
+      border-radius: 16px;
     }
     @media (max-width: $md5 + px) {
       min-height:120px ;
+      border-radius: 16px;
     }
     &:hover {
-      transform: scale(1.005);
-      box-shadow: 0 0 20px 0 #D5A748;
+      transform: scale(1.2);
+      box-shadow: 0 0 20px 0 #e788ff;
+
+      @media (max-width: $md2 + px) {
+        transform: scale(1.1);
+      }
     }
 
     img {
       z-index: 1;
       width: 100%;
-      border-radius: 4px;
+      object-fit: cover;
+      max-height: 216px;
+      margin: 0 auto;
       @media (max-width: $md2 + px) {
         position: static;
         transform: none;
       }
+      @media (max-width: $md4 + px) {
+        max-width: 65px;
 
+      }
     }
 
+    &-title {
+      position: relative;
+      width: 100%;
+      min-height: 86px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2;
+      flex:  1 1 100%;
+
+      @media (max-width: $md2 + px) {
+        min-height: 42px;
+      }
+
+      @media (max-width: $md4 + px) {
+        min-height: 30px;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        z-index: 3;
+        width: 100%;
+        min-height: 100%;
+        border-radius: 0 0 26px 26px;
+        background: linear-gradient(
+                        180deg,
+                        rgba(97, 97, 97, 0.25) -36.78%,
+                        rgba(209, 209, 209, 0.15) 136.78%
+        );
+        filter: blur(7px);
+        backdrop-filter: blur(2px);
+
+        @media (max-width: $md4 + px) {
+          border-radius: 0 0 10px 10px;
+        }
+      }
+
+      p {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        position: relative;
+        z-index: 4;
+        color: $white;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-align: center;
+        font-size: calc(5px + (10 + 10 * 0.7) * ((100vw - 320px)/1920));
+        @media (max-width: $md4 + px) {
+          max-width: 50px;
+          font-size: calc(6px + (10 + 10 * 0.7) * ((100vw - 320px)/1920));
+        }
+
+      }
+    }
   }
+
+
 }

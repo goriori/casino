@@ -6,13 +6,7 @@ import imagemin from 'unplugin-imagemin/vite'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue({
-      template: {
-        compilerOptions: {
-          isCustomElement: (tag) => tag.startsWith('swiper-'),
-        },
-      },
-    }),
+    vue(),
     // imagemin({
     //   // Default mode sharp. support squoosh and sharp
     //   mode: 'sharp',
