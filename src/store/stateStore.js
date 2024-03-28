@@ -28,6 +28,9 @@ export const useStateStore = defineStore('stateStore', () => {
     winnPrize: {
       visibility: false,
     },
+    caseOpen: {
+      visibility: true,
+    },
   })
   const globalPopupMessages = ref({
     error: {

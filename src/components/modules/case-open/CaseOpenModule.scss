@@ -1,0 +1,97 @@
+@import '@/assets/scss/variables';
+
+.case {
+  background: $gray;
+  border-radius: 36px;
+  max-height: 1000px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80px;
+  overflow: scroll;
+
+  &-card {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: 1fr;
+    gap: 40px;
+  }
+
+  &-head {
+    max-width: 356px;
+    background: $background;
+    border-radius: 36px;
+    padding: 20px 40px;
+    text-align: center;
+    border: 2px solid $primary;
+    box-shadow: 0 2px 15px 0 $shadow-primary-case;
+    user-select: none;
+    margin-bottom: 80px;
+    font-weight: 700;
+    font-size: 40px;
+    color: $white;
+  }
+
+  &-fortune {
+
+    max-height: 247px;
+    background: #2C2C2C;
+    margin-bottom: 80px;
+    padding: 40px;
+    border-radius: 40px;
+    position: relative;
+    background: $background;
+  }
+
+  &-winner {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  &-action {
+    display: flex;
+    align-items: center;
+  }
+
+  &-price {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    font-size: 32px;
+    font-weight: 700;
+    color: $primary;
+    margin-right: 40px;
+
+    &:after {
+      content: 'Цена ключа';
+      color: $light-gray;
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+
+  &-about {
+    &-title {
+      max-width: 341px;
+      padding: 20px 40px;
+      background: $background;
+      border: 2px solid $primary;
+      border-radius: 36px;
+      margin: 80px auto 0;
+      box-shadow: 0 2px 15px 0 $shadow-primary-case;
+      font-size: 24px;
+      font-weight: 700;
+      color: $white;
+    }
+
+    &-body {
+      margin-top: 80px;
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 47px;
+    }
+  }
+}

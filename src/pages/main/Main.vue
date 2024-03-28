@@ -7,11 +7,11 @@ import { startItems } from '@/pages/main/Main.options.js'
 import AboutInfoIcon from '@/components/ui/icons/other/AboutInfoIcon.vue'
 import StatisticsModule from '@/components/modules/statistics/StatisticsModule.vue'
 import CasesModule from '@/components/modules/cases/CasesModule.vue'
+import CaseOpenModule from '@/components/modules/case-open/CaseOpenModule.vue'
 
 const PopularGameModule = defineAsyncComponent(() =>
   import('@/components/modules/popular/PopularGameModule.vue')
 )
-
 </script>
 <template>
   <div class="page">
