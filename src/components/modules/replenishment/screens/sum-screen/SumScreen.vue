@@ -5,12 +5,13 @@ import { useValid } from '@/components/modules/replenishment/screens/sum-screen/
 
 const emits = defineEmits(['replenish'])
 const minCountPay = window.MESSAGES_POPUP.SUM_SCREEN.MIN_COUNT_PAY
-const { balance, isValid, timeClosePopup } = useData()
+const { balance, isValid, timeClosePopup, promo } = useData()
 const { errorValid, validSum } = useValid(balance, isValid, timeClosePopup)
 const { onChangeSlotBalance, onConfirmSum } = useMethods(
   balance,
   errorValid,
-  validSum
+  validSum,
+  promo
 )
 </script>
 
@@ -75,6 +76,10 @@ const { onChangeSlotBalance, onConfirmSum } = useMethods(
         >
           10000Р
         </div>
+      </div>
+      <div class="popup-screen-promo">
+        <label for="promo">Реферальный промокод:</label><br />
+        <input type="text" id="promo" class="field" v-model="promo" />
       </div>
     </div>
     <div class="popup-screen-alerts">
