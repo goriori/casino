@@ -1,21 +1,16 @@
 @import '@/assets/scss/variables';
+@import '@/assets/scss/mixins';
 
 .case {
   background: $gray;
   border-radius: 36px;
-  max-height: 1000px;
+  max-height: 800px;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 80px;
   overflow: scroll;
-
-  &-card {
-    display: grid;
-    grid-template-columns: repeat(8, 1fr);
-    grid-template-rows: 1fr;
-    gap: 40px;
-  }
+  @include no-scroll();
 
   &-head {
     max-width: 356px;
@@ -94,4 +89,8 @@
       gap: 47px;
     }
   }
+}
+
+.slide {
+  max-width: 200px;
 }

@@ -1,6 +1,7 @@
 <script setup>
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import CasePrizeCard from '@/components/ui/cards/case/CasePrizeCard.vue'
+import { Splide, SplideSlide } from '@splidejs/vue-splide'
 
 const props = defineProps({
   price: {
@@ -8,6 +9,21 @@ const props = defineProps({
     default: '7000₽',
   },
 })
+
+const splideOption = {
+  type: 'loop',
+  rewind: false,
+  perPage: 10,
+  wheel: true,
+  breakpoints: {
+    1240: {
+      perPage: 2,
+    },
+    600: {
+      perPage: 1,
+    },
+  },
+}
 
 const prizes = [
   {
@@ -67,13 +83,15 @@ const prizes = [
     <div class="case-fortune">
       <img class="case-winner" src="/images/cases/prizes/winner.svg" />
       <div class="case-card">
-        <CasePrizeCard
-          v-for="prize in prizes"
-          :key="prize.id"
-          :color="prize.color"
-          :url="prize.img"
-          :title="prize.title"
-        />
+        <Splide :options="splideOption">
+          <SplideSlide v-for="prize in prizes" :key="prize.id" class="slide">
+            <CasePrizeCard
+              :color="prize.color"
+              :url="prize.img"
+              :title="prize.title"
+            />
+          </SplideSlide>
+        </Splide>
       </div>
     </div>
     <div class="case-action">
