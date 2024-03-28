@@ -1,14 +1,16 @@
 @import "@/assets/scss/variables";
+
 .popup {
   &-screen {
     padding: 36px 0;
+    color: $white;
 
     &-sum {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      gap: 100px;
+      gap: 60px;
     }
 
     &-title {
@@ -39,6 +41,7 @@
       background: $dark-gray;
       padding: 17px 0;
       border-radius: 26px;
+
       p {
         font-size: 40px;
         font-weight: 700;
@@ -58,6 +61,28 @@
           -webkit-appearance: none;
           margin: 0;
         }
+      }
+    }
+
+    &-bonus {
+      max-width: 400px;
+      font-size: 15px;
+      .bonus {
+        color: #d5a748;
+      }
+    }
+
+    &-promo {
+      display: flex;
+      flex-direction: column;
+      color: $white;
+      font-size: 16px;
+
+      .field {
+        background: #1e1e1e;
+        padding: 10px 20px;
+        border-radius: 36px;
+        color: $white;
       }
     }
 

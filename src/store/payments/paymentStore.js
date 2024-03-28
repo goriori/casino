@@ -11,6 +11,7 @@ export const usePaymentStore = defineStore('paymentStore', () => {
     screenshot: null,
     fullname: '',
     user_id: '',
+    promo: '',
   })
   const targetRequisite = ref({})
   const requisites = ref([])

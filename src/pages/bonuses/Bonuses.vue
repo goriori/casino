@@ -10,6 +10,7 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useStateStore } from '@/store/stateStore.js'
 import { useRouter } from 'vue-router'
+import { onBeforeMount, onMounted } from 'vue'
 
 const stateStore = useStateStore()
 const sessionStore = useSessionStore()
@@ -28,13 +29,16 @@ const openWithdrawal = () => {
     stateStore.globalPopupsModules.replenishment.visibility = true
   }
 }
+onMounted(async () => {
+  await sessionStore.getStatusPay()
+})
 </script>
 
 <template>
   <div class="page">
     <Header />
     <div class="page-container container">
-      <section class="page-preview">
+      <section class="page-preview" v-if="sessionStore.session.history?.length === 0">
         <h2>Пополни счет <span>впервые</span> и получи дополнительно</h2>
         <img src="/images/bonuses/percent.png" alt="" />
         <div class="preview-actions">

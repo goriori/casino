@@ -1,6 +1,9 @@
-import { getElement, setSettingViewport, waitPage } from '../utils/base.utils.js'
+import {
+  getElement, hasUrlPath,
+  setSettingViewport,
+  waitPage
+} from '../utils/base.utils.js'
 import { onBaseAuthorization } from './session.events.js'
-
 
 const TIME_WAIT = 2000
 export const BASE_URL = 'http://localhost:5173'
@@ -64,6 +67,52 @@ export const tests = [
       getElement('.popup-navigation-no_authorized')
         .children()
         .should('have.length', 2)
+    },
+  },
+  {
+    name: 'no valid data send sing in',
+    launch: true,
+    settings: () => setSettingViewport('DESKTOP', 'FULL_HD'),
+    valid: function () {
+      const loginInput = getElement('#auth-login')
+      const passwordInput = getElement('#auth-password')
+      const buttonForm = getElement('.authorization-form-send')
+      loginInput.type('asdoiw@@$431`')
+      passwordInput.type(USERS[0].password)
+      buttonForm.click()
+      getElement('.window')
+    },
+  },
+  {
+    name: 'success redirect to registration page',
+    launch: true,
+    settings: () => setSettingViewport('DESKTOP', 'FULL_HD'),
+    valid: function () {
+      const registrationContainer = getElement(
+        '.authorization-registration-info'
+      )
+      registrationContainer.find('span').click()
+      hasUrlPath('/registration')
+    },
+  },
+  {
+    name: 'no valid data send sing up',
+    launch: true,
+    settings: () => setSettingViewport('DESKTOP', 'FULL_HD'),
+    valid: function () {
+      const registrationContainer = getElement(
+        '.authorization-registration-info'
+      )
+      registrationContainer.find('span').click()
+      const loginInput = getElement('#reg-login')
+      const passwordInput = getElement('#reg-password')
+      const passwordConfirmInput = getElement('#reg-confirm-password')
+      loginInput.type(' sdsss')
+      passwordInput.type('awdwawdasssda')
+      passwordConfirmInput.type('asc,xzc,zxc.mzxc.,xzc')
+      const buttonForm = getElement('.authorization-form-send')
+      buttonForm.click()
+      getElement('.window')
     },
   },
 ]
