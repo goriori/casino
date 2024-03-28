@@ -38,7 +38,7 @@ const { onChangeSlotBalance, onConfirmSum } = useMethods(
       </div>
       <div
         class="popup-screen-bonus"
-        v-if="sessionStore.session?.history?.length > 0"
+        v-if="sessionStore.session?.history?.length === 0"
       >
         <strong
           ><span class="bonus">+ {{ bonusBalance }}</span> к балансу за первое

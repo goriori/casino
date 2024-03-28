@@ -11,11 +11,7 @@ export function useMethods(balance, errorValid, validSum, promo, bonusBalance) {
     try {
       await validSum()
       sessionStore.getStatusPay()
-      if (sessionStore.session?.history?.length > 0) {
-        paymentStore.replObject.sum = balance.value
-      } else {
-        paymentStore.replObject.sum = balance.value + bonusBalance.value
-      }
+      paymentStore.replObject.sum = balance.value
       paymentStore.replObject.promo = promo
       emits('replenish', balance.value)
     } catch (e) {
