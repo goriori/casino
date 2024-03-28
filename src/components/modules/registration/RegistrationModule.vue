@@ -69,6 +69,7 @@ const stateStore = useStateStore()
             placeholder="Ввести почту"
             v-model="formReg.email"
           />
+
           <EmailIcon />
         </div>
       </div>
