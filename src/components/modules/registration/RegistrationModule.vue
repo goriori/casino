@@ -66,8 +66,10 @@ const stateStore = useStateStore()
         <div class="form-field-input">
           <input
             type="text"
-            placeholder="Ввести почту"
-            v-model="formReg.email"
+
+            placeholder="Ввести логин"
+            id="reg-login"
+            v-model="formReg.username"
           />
 
           <EmailIcon />
@@ -89,6 +91,7 @@ const stateStore = useStateStore()
           <input
             :type="pswrdHidden ? 'password' : 'text'"
             placeholder="Ввести пароль"
+            id="reg-password"
             v-model="formReg.password"
           />
           <NotHiddenIcon v-if="!pswrdHidden" @click="onChangeHiddenPassword" />
@@ -101,6 +104,7 @@ const stateStore = useStateStore()
           <input
             :type="pswrdCnfrmHidden ? 'password' : 'text'"
             placeholder="Ввести пароль"
+            id="reg-confirm-password"
             v-model="formReg.password_confirmation"
           />
           <NotHiddenIcon
