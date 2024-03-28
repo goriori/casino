@@ -3,13 +3,14 @@
 .popup {
   &-screen {
     padding: 36px 0;
+    color: $white;
 
     &-sum {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      gap: 100px;
+      gap: 60px;
     }
 
     &-title {
@@ -63,11 +64,20 @@
       }
     }
 
+    &-bonus {
+      max-width: 400px;
+      font-size: 15px;
+      .bonus {
+        color: #d5a748;
+      }
+    }
+
     &-promo {
       display: flex;
       flex-direction: column;
       color: $white;
       font-size: 16px;
+
       .field {
         background: #1e1e1e;
         padding: 10px 20px;

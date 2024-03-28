@@ -2,16 +2,19 @@
 import { useData } from '@/components/modules/replenishment/screens/sum-screen/SumScreen.options.js'
 import { useMethods } from '@/components/modules/replenishment/screens/sum-screen/SumScreen.events.js'
 import { useValid } from '@/components/modules/replenishment/screens/sum-screen/SumScreen.valids.js'
+import { useSessionStore } from '@/store/session/sessionStore.js'
 
 const emits = defineEmits(['replenish'])
 const minCountPay = window.MESSAGES_POPUP.SUM_SCREEN.MIN_COUNT_PAY
-const { balance, isValid, timeClosePopup, promo } = useData()
+const sessionStore = useSessionStore()
+const { balance, isValid, timeClosePopup, promo, bonusBalance } = useData()
 const { errorValid, validSum } = useValid(balance, isValid, timeClosePopup)
 const { onChangeSlotBalance, onConfirmSum } = useMethods(
   balance,
   errorValid,
   validSum,
-  promo
+  promo,
+  bonusBalance
 )
 </script>
 
@@ -32,6 +35,15 @@ const { onChangeSlotBalance, onConfirmSum } = useMethods(
           />
           <p>₽</p>
         </div>
+      </div>
+      <div
+        class="popup-screen-bonus"
+        v-if="sessionStore.session?.history?.length > 0"
+      >
+        <strong
+          ><span class="bonus">+ {{ bonusBalance }}</span> к балансу за первое
+          пополнение</strong
+        >
       </div>
       <div class="popup-screen-fastCount">
         <div

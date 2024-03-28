@@ -1,7 +1,7 @@
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 
-export function useMethods(balance, errorValid, validSum, promo) {
+export function useMethods(balance, errorValid, validSum, promo, bonusBalance) {
   const paymentStore = usePaymentStore()
   const sessionStore = useSessionStore()
   const onChangeSlotBalance = (slot) => {
@@ -14,7 +14,7 @@ export function useMethods(balance, errorValid, validSum, promo) {
       if (sessionStore.session?.history?.length > 0) {
         paymentStore.replObject.sum = balance.value
       } else {
-        paymentStore.replObject.sum = balance.value + (balance.value / 100) * 50
+        paymentStore.replObject.sum = balance.value + bonusBalance.value
       }
       paymentStore.replObject.promo = promo
       emits('replenish', balance.value)
