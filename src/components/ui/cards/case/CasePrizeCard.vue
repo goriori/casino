@@ -1,6 +1,8 @@
 <script setup>
+import { computed, ref } from 'vue'
+
 const props = defineProps({
-  url: {
+  type: {
     type: String,
     required: true,
   },
@@ -8,20 +10,27 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  color: {
-    type: String,
-    required: true,
-  },
+})
+const imgUrl = computed(() => {
+  return {
+    roulette: '/images/cases/prizes/roulette.png',
+    balance: '/images/cases/prizes/exp.png',
+    coin: '/images/cases/prizes/exp.png',
+  }[props.type]
+})
+console.log(imgUrl.value, props.type)
+const color = computed(() => {
+  return {
+    roulette: 'brown',
+    balance: 'green',
+    coin: 'orange',
+  }[props.type]
 })
 </script>
 
 <template>
   <article :class="['cardPrize', `${color}`]">
-    <img
-      :src="`/images/cases/prizes/${url}`"
-      alt="imgPrize"
-      class="cardPrize-img"
-    />
+    <img :src="imgUrl" alt="imgPrize" class="cardPrize-img" />
     <h1 class="cardPrize-title">{{ title }}</h1>
   </article>
 </template>

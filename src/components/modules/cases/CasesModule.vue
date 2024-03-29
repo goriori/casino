@@ -27,8 +27,10 @@ const splideOptions = {
     },
   },
 }
-const onOpenCase = async (caseId) => {
+const onOpenCase = async (caseId, prizes = []) => {
   if (sessionStore.session.token) {
+    stateStore.globalPopupsModules.caseOpen.caseId = caseId
+    stateStore.globalPopupsModules.caseOpen.prizes = [...prizes]
     stateStore.globalPopupsModules.caseOpen.visibility = true
   } else stateStore.globalPopupsModules.authorization.visibility = true
 }

@@ -12,6 +12,7 @@ import PopupRoulette from '@/components/globals/popups/popup-roulette/PopupRoule
 import PopupError from '@/components/globals/popups/popup-error/PopupError.vue'
 import PopupWinnPrize from '@/components/globals/popups/popup-win-prize/PopupWinnPrize.vue'
 import PopupCaseOpen from '@/components/globals/popups/popup-case-open/PopupCaseOpen.vue'
+import PopupCasePrize from '@/components/globals/popups/popup-case-prize/PopupCasePrize.vue'
 
 const PopupAuthorization = defineAsyncComponent(() =>
   import(
@@ -72,6 +73,12 @@ const stateStore = useStateStore()
       <PopupWinnPrize
         @close="stateStore.globalPopupsModules.winnPrize.visibility = false"
         v-if="stateStore.globalPopupsModules.winnPrize.visibility"
+      />
+    </Transition>
+    <Transition name="slide">
+      <PopupCasePrize
+        @close="stateStore.globalPopupsModules.casePrize.visibility = false"
+        v-if="stateStore.globalPopupsModules.casePrize.visibility"
       />
     </Transition>
     <Transition>
