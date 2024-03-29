@@ -2,6 +2,8 @@
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import CasePrizeCard from '@/components/ui/cards/case/CasePrizeCard.vue'
 import { Splide, SplideSlide } from '@splidejs/vue-splide'
+import { AutoScroll } from '@splidejs/splide-extension-auto-scroll'
+import { onMounted, ref } from 'vue'
 
 const props = defineProps({
   price: {
@@ -9,12 +11,19 @@ const props = defineProps({
     default: '7000₽',
   },
 })
-
+const splideRef = ref(null)
+const extensions = { AutoScroll }
 const splideOption = {
   type: 'loop',
   rewind: false,
   perPage: 10,
   wheel: true,
+  interval: 1000,
+  autoScroll: {
+    speed: 5,
+    autoStart: false,
+    pauseOnHover: false,
+  },
   breakpoints: {
     1240: {
       perPage: 2,
@@ -75,6 +84,12 @@ const prizes = [
     img: 'exp.png',
   },
 ]
+
+const onStartPlay = (e) => {
+ console.log(splideRef.value)
+}
+
+
 </script>
 
 <template>
@@ -83,8 +98,12 @@ const prizes = [
     <div class="case-fortune">
       <img class="case-winner" src="/images/cases/prizes/winner.svg" />
       <div class="case-card">
-        <Splide :options="splideOption">
-          <SplideSlide v-for="prize in prizes" :key="prize.id" class="slide">
+        <Splide
+          :options="splideOption"
+          :extensions="extensions"
+          ref="splideRef"
+        >
+          <SplideSlide v-for="prize in prizes"  :key="prize.id" class="slide">
             <CasePrizeCard
               :color="prize.color"
               :url="prize.img"
@@ -96,7 +115,7 @@ const prizes = [
     </div>
     <div class="case-action">
       <div class="case-price">{{ price }}</div>
-      <BaseButton size="small" class="case-btn">Крутить</BaseButton>
+      <BaseButton size="small" class="case-btn" @click="onStartPlay">Крутить</BaseButton>
     </div>
     <div class="case-about">
       <div class="case-about-title">Содержание кейса</div>
