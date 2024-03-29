@@ -4,18 +4,20 @@ import CaseService from '@/API/cases/caseService.js'
 
 export const useCaseStore = defineStore('caseStore', () => {
   const cases = ref([])
+  const casePrize = ref({})
 
   const getCases = async () => {
     cases.value = await CaseService.fetchCases()
   }
 
   const openCase = async (caseId) => {
-    const response = await CaseService.fetchOpenCase(caseId)
-    console.log(response)
+    const {result} = await CaseService.fetchOpenCase(caseId)
+    casePrize.value = { ...result }
   }
 
   return {
     cases,
+    casePrize,
     getCases,
     openCase,
   }

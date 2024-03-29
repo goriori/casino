@@ -88,7 +88,7 @@ const showPrizeDescription = (id) => {
           <strong>{{ casePrice }} Р</strong>
           <p>Цена ключа</p>
         </div>
-        <BaseButton color="primary" id="open_keys" @click="openHandler(caseId)">
+        <BaseButton color="primary" id="open_keys" @click="openHandler(caseId, casePrizes)">
           <p>Открыть</p>
         </BaseButton>
       </div>

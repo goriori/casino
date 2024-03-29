@@ -27,9 +27,12 @@ const splideOptions = {
     },
   },
 }
-const onOpenCase = async (caseId) => {
-  if (sessionStore.session.token) await caseStore.openCase(caseId)
-  else stateStore.globalPopupsModules.authorization.visibility = true
+const onOpenCase = async (caseId, prizes = []) => {
+  if (sessionStore.session.token) {
+    stateStore.globalPopupsModules.caseOpen.caseId = caseId
+    stateStore.globalPopupsModules.caseOpen.prizes = [...prizes]
+    stateStore.globalPopupsModules.caseOpen.visibility = true
+  } else stateStore.globalPopupsModules.authorization.visibility = true
 }
 
 const onSpin = () => {
@@ -66,7 +69,7 @@ onMounted(async () => {
             class="cases__module-item"
           />
         </SplideSlide>
-        <SplideSlide  class="slide">
+        <SplideSlide class="slide">
           <div class="roulette__module">
             <RouletteIcon class="roulette__module-icon" />
             <div class="roulette__module-card">
