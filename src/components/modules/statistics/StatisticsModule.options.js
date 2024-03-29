@@ -37,11 +37,11 @@ export const slides = ref([
   {
     id: 2,
     slideName: 'Welcome',
-    path: '/images/statistics/slide_1.png',
+    path: '/images/statistics/slide_2.jpg',
   },
   {
     id: 3,
     slideName: 'Welcome',
-    path: '/images/statistics/slide_1.png',
+    path: '/images/statistics/slide_3.jpg',
   },
 ])
