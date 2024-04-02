@@ -9,7 +9,6 @@ import { useSettingsStore } from '@/store/settings/settingStore.js'
 const stateStore = useStateStore()
 const settingStore = useSettingsStore()
 const sessionStore = useSessionStore()
-const statusId = sessionStore.session.profile?.stair_status.id
 const onOpenStatusList = () => {
   stateStore.globalPopupsModules.statusesList.visibility = true
 }
@@ -17,8 +16,9 @@ const onOpenStatusList = () => {
 const endExp = computed(() => {
   const countStatuses = settingStore.statuses.length - 1
   const indexStatus = settingStore.statuses.findIndex(
-    (status) => status.id === statusId
+    (status) => status.id === sessionStore.session.profile.stair_status?.id
   )
+  console.log(indexStatus)
   if (indexStatus === null || indexStatus === undefined) return '∞'
   else if (indexStatus === countStatuses) return '∞'
   else return settingStore.statuses[indexStatus + 1].exp

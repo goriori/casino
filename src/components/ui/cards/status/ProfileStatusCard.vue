@@ -21,8 +21,8 @@ const expProfile = computed(() => {
   const exps = props.statusBar.split('/')
   const expUser = exps[0].replace("'", '')
   const finishExp = exps[1].trim().replace("'", '')
-  const progress = (finishExp / 100) * expUser
-  if (progress > 100) return '100%'
+  const progress = expUser/(finishExp / 100)
+  if (expUser > finishExp) return '100%'
   else return progress + '%'
 })
 </script>
