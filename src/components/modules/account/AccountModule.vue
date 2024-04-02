@@ -105,15 +105,12 @@ const ExchangePointsModule = defineAsyncComponent(() =>
     }
 
     &-desktop-items {
-      display: flex;
+      display: grid;
+      grid-template-columns: 25% 50% 25%;
       justify-content: center;
-      flex: 1 1 auto;
       gap: 48px;
-      max-height: 730px;
 
-      div:nth-child(3) {
-        flex: 1 0 424px;
-      }
+
 
       @media (max-width: 1500px) {
         gap: 24px;

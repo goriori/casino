@@ -1,12 +1,24 @@
 <script setup>
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { filteredHistory } from '@/components/modules/account/modules/history-balance/HistoryBalanceModule.options.js'
+import ContentLoader from '@/components/ui/content-loader/ContentLoader.vue'
+import { onMounted, ref } from 'vue'
 
 const sessionStore = useSessionStore()
+const loadModule = ref(true)
+onMounted(() => {
+  setTimeout(() => {
+    if (sessionStore.session?.history) loadModule.value = false
+    else loadModule.value = false
+  }, 2000)
+})
 </script>
 
 <template>
-  <div class="history__balance-module">
+  <ContentLoader type="default-card" v-if="loadModule">
+    <rect width="400" height="800" />
+  </ContentLoader>
+  <div class="history__balance-module" v-else>
     <div class="history__balance-module-title">
       <p>История балланса</p>
       <svg

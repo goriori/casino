@@ -1,12 +1,27 @@
 <script setup>
 import { useSessionStore } from '@/store/session/sessionStore.js'
+import { onMounted, ref } from 'vue'
+import ContentLoader from '@/components/ui/content-loader/ContentLoader.vue'
 import TextTooltip from '@/components/ui/tooltips/text/TextTooltip.vue'
 
 const sessionStore = useSessionStore()
+const loadModule = ref(true)
+
+onMounted(() => {
+  setTimeout(() => {
+    if (sessionStore.session?.profile) loadModule.value = false
+    else loadModule.value = false
+  }, 2000)
+})
 </script>
 
 <template>
-  <section class="profile__verification-module">
+  <section v-if="loadModule">
+    <ContentLoader type="default-card">
+      <rect width="200" height="100" />
+    </ContentLoader>
+  </section>
+  <section class="profile__verification-module" v-else>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="44"

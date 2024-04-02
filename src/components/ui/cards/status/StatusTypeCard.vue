@@ -50,7 +50,7 @@ const limitBar = () => {
 const progressBar = ref(
   (() => {
     if (userExp > statusMaxExp.value) return '100%'
-    else return `${(sessionStore.session.profile.coins / limitBar())* 100}%`
+    else return `${sessionStore.session.profile.coins / (limitBar() / 100)}%`
   })()
 )
 </script>
@@ -69,13 +69,17 @@ const progressBar = ref(
       </div>
       <div class="profile__statuses-card-info">
         <strong>{{ statusTitle }}</strong>
-        <div
-          class="profile__statuses-card-info-item"
-          v-for="item in 2"
-          :key="item"
-        >
+        <div class="profile__statuses-card-info-item">
           <CheckMarkIcon />
           <p>Круглосуточная поддержка</p>
+        </div>
+        <div class="profile__statuses-card-info-item">
+          <CheckMarkIcon />
+          <p>Бонус 5% (на первый депозит 50%)</p>
+        </div>
+        <div class="profile__statuses-card-info-item">
+          <CheckMarkIcon />
+          <p>Удвоение баллов на 1 час</p>
         </div>
       </div>
     </div>

@@ -38,11 +38,9 @@ const { onChangeSlotBalance, onConfirmSum } = useMethods(
       </div>
       <div
         class="popup-screen-bonus"
-        v-if="sessionStore.session?.history?.length === 0"
       >
         <strong
-          ><span class="bonus">+ {{ bonusBalance }}</span> к балансу за первое
-          пополнение</strong
+          ><span class="bonus">+ {{ bonusBalance }}</span> к балансу </strong
         >
       </div>
       <div class="popup-screen-fastCount">
@@ -89,7 +87,7 @@ const { onChangeSlotBalance, onConfirmSum } = useMethods(
           10000Р
         </div>
       </div>
-      <div class="popup-screen-promo">
+      <div class="popup-screen-promo" v-if="sessionStore.session?.history.length === 0">
         <label for="promo">Реферальный промокод:</label><br />
         <input type="text" id="promo" class="field" v-model="promo" />
       </div>

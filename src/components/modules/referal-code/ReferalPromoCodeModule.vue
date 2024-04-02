@@ -2,17 +2,20 @@
 import { useBonusSystemStore } from '@/store/bonus-system/bonusSystemStore.js'
 import InfoTooltip from '@/components/ui/tooltips/info/InfoTooltip.vue'
 import ReferalPromocodeTooltipMessage from '@/components/modules/tooltip-messages/referal-promocode/ReferalPromocodeTooltipMessage.vue'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useStateStore } from '@/store/stateStore.js'
 import { SUCCESS } from '@/configs/success.js'
 import { ERRORS } from '@/configs/errors.js'
+import ContentLoader from '@/components/ui/content-loader/ContentLoader.vue'
+import { useSessionStore } from '@/store/session/sessionStore.js'
 
+const sessionStore = useSessionStore()
 const bonusSystemStore = useBonusSystemStore()
 const stateStore = useStateStore()
-const referalCode = ref(bonusSystemStore.bonusSystemState.promo || null)
+const loadModule = ref(true)
 const copyBufferContent = () => {
-  if (referalCode.value) {
-    navigator.clipboard.writeText(referalCode.value)
+  if (sessionStore.session.profile?.promo) {
+    navigator.clipboard.writeText(sessionStore.session.profile?.promo)
     stateStore.globalPopupMessages.success.show(
       SUCCESS.SUCCESS_COPY_REFERAL_CODE.MESSAGE
     )
@@ -25,14 +28,23 @@ const copyBufferContent = () => {
 const onClick = () => {
   copyBufferContent()
 }
+onMounted(async () => {
+  if (sessionStore.session.profile?.promo) loadModule.value = false
+  setTimeout(() => {
+    loadModule.value = false
+  }, 3000)
+})
 </script>
 
 <template>
   <div class="referal__code-module">
     <h2>Реферальный код</h2>
-    <div class="referal__code-card" @click="onClick">
+    <ContentLoader type="default-card" v-if="loadModule">
+      <rect width="400" height="200" />
+    </ContentLoader>
+    <div class="referal__code-card" @click="onClick" v-else>
       <InfoTooltip :message="ReferalPromocodeTooltipMessage" />
-      <p>{{ referalCode || 'Отсутствует' }}</p>
+      <p>{{ bonusSystemStore.bonusSystemState?.promo || 'Отсутствует' }}</p>
     </div>
   </div>
 </template>

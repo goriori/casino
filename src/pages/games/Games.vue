@@ -19,6 +19,7 @@ const onValidQueries = () => {
   if (!title || !entity) return router.push('/')
 }
 onBeforeMount(() => {
+  window.scroll(0, 0)
   onValidQueries()
 })
 </script>

@@ -1,14 +1,28 @@
 <script setup>
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 import BonusIcon from '@/components/ui/icons/balance/BonusIcon.vue'
+import ContentLoader from '@/components/ui/content-loader/ContentLoader.vue'
 
 const sessionStore = useSessionStore()
+const loadModule = ref(true)
+onMounted(() => {
+  setTimeout(() => {
+    if (sessionStore.session?.profile) loadModule.value = false
+    else loadModule.value = false
+  }, 2500)
+})
 </script>
 
 <template>
-  <div class="balance-module">
+  <div v-if="loadModule">
+    <ContentLoader type="default-card">
+      <rect width="1000" height="800" />
+    </ContentLoader>
+  </div>
+
+  <div class="balance-module" v-else>
     <div class="balance-module-title">
       <p>Балланс</p>
       <svg
@@ -45,7 +59,7 @@ const sessionStore = useSessionStore()
       <div class="balance-module-info-item">
         <h4>Бонусы</h4>
         <div class="currency">
-          <BonusIcon/>
+          <BonusIcon />
           <p>{{ sessionStore.session.profile?.bonus }}</p>
         </div>
       </div>

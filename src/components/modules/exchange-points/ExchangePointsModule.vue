@@ -1,19 +1,21 @@
 <script setup>
-import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
-import { computed, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useBonusSystemStore } from '@/store/bonus-system/bonusSystemStore.js'
 import { useStateStore } from '@/store/stateStore.js'
-import InfoTooltip from '@/components/ui/tooltips/info/InfoTooltip.vue'
-import ProfileStatusTooltipMessage from '@/components/modules/tooltip-messages/profile-status/ProfileStatusTooltipMessage.vue'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { ERRORS } from '@/configs/errors.js'
 import { SUCCESS } from '@/configs/success.js'
+import InfoTooltip from '@/components/ui/tooltips/info/InfoTooltip.vue'
+import ProfileStatusTooltipMessage from '@/components/modules/tooltip-messages/profile-status/ProfileStatusTooltipMessage.vue'
 import TextTooltip from '@/components/ui/tooltips/text/TextTooltip.vue'
+import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
+import ContentLoader from '@/components/ui/content-loader/ContentLoader.vue'
 
 const bonusSystemStore = useBonusSystemStore()
 const sessionStore = useSessionStore()
 const stateStore = useStateStore()
 const bonusOut = ref(0)
+const loadModule = ref(true)
 const validBonusOut = async () => {
   if (bonusOut.value < 10) throw false
   return true
@@ -37,10 +39,22 @@ const convertateCoins = computed(() => {
   const ratioAccountTarget = sessionStore.session.profile?.stair_status?.ratio
   return bonusOut.value / ratioAccountTarget
 })
+
+onMounted(() => {
+  setTimeout(() => {
+    if (bonusSystemStore.bonusSystemStat?.bonus) loadModule.value = false
+    else loadModule.value = false
+  }, 2800)
+})
 </script>
 
 <template>
-  <div class="exchange__points-module">
+  <div v-if="loadModule">
+    <ContentLoader type="default-card">
+      <rect width="1000" height="800" />
+    </ContentLoader>
+  </div>
+  <div class="exchange__points-module" v-else>
     <h2>Обмен баллов</h2>
     <div class="exchange__points-card">
       <InfoTooltip :message="ProfileStatusTooltipMessage" />

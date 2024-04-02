@@ -1,5 +1,4 @@
 <script setup>
-import CheckMarkIcon from '@/components/ui/icons/other/CheckMarkIcon.vue'
 import { useSettingsStore } from '@/store/settings/settingStore.js'
 import { onMounted } from 'vue'
 import ContentLoader from '@/components/ui/content-loader/ContentLoader.vue'
