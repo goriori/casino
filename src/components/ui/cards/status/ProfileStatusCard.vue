@@ -1,6 +1,6 @@
 <script setup>
 import AccountIcon from '@/components/ui/icons/other/AccountIcon.vue'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 const props = defineProps({
   actionHandler: {
@@ -11,23 +11,20 @@ const props = defineProps({
     type: String,
     default: 'Новичок',
   },
-  exp: {
-    type: Number,
-    default: 0,
-  },
   statusBar: {
     type: String,
     default: '0/0',
   },
 })
 
-const expProfile = ref(
-  (() => {
-    const progress = (100 / 100) * props.exp
-    if (progress > 100) return '100%'
-    else return progress + '%'
-  })()
-)
+const expProfile = computed(() => {
+  const exps = props.statusBar.split('/')
+  const expUser = exps[0].replace("'", '')
+  const finishExp = exps[1].trim().replace("'", '')
+  const progress = (finishExp / 100) * expUser
+  if (progress > 100) return '100%'
+  else return progress + '%'
+})
 </script>
 
 <template>

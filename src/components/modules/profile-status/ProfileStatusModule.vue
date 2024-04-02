@@ -19,14 +19,13 @@ const endExp = computed(() => {
   const indexStatus = settingStore.statuses.findIndex(
     (status) => status.id === statusId
   )
-  console.log(indexStatus, countStatuses)
   if (indexStatus === null || indexStatus === undefined) return '∞'
   else if (indexStatus === countStatuses) return '∞'
   else return settingStore.statuses[indexStatus + 1].exp
 })
 
 const statusBar = computed(() => {
-  const startExp = sessionStore.session.profile?.stair_status.exp
+  const startExp = sessionStore.session.profile?.coins
   return `'${startExp} / ${endExp.value}'`
 })
 
@@ -46,7 +45,6 @@ onMounted(async () => {
         v-else
         :actionHandler="onOpenStatusList"
         :status="sessionStore.session.profile?.stair_status.title"
-        :exp="sessionStore.session.profile?.stair_status.exp"
         :statusBar="statusBar"
       />
     </div>
