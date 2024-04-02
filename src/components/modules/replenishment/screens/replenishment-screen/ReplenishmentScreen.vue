@@ -3,16 +3,23 @@ import WalletIcon from '@/components/ui/icons/other/WalletIcon.vue'
 import USDTIcon from '@/components/ui/icons/other/USDTIcon.vue'
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
 import { cryptocurrencyList } from '@/components/modules/replenishment/screens/replenishment-screen/ReplenishmentScreen.options.js'
+import { useStateStore } from '@/store/stateStore.js'
+import { ERRORS } from '@/configs/errors.js'
 
 const emits = defineEmits(['method'])
 const paymentStore = usePaymentStore()
+const stateStore = useStateStore()
 const onChoiceMethodPayment = (method, crypto) => {
-  paymentStore.replObject.type = method
   if (method === 'crypto') {
-    paymentStore.replObject.name = crypto.name
-    paymentStore.replObject.platform = crypto.platform
+    stateStore.globalPopupMessages.error.show(
+      ERRORS.ERROR_NO_TEMPORARILY_ACCESS_MODULE.MESSAGE
+    )
+    // paymentStore.replObject.name = crypto.name
+    //   paymentStore.replObject.platform = crypto.platform
+  } else if (method === 'bank') {
+    paymentStore.replObject.type = method
+    emits('method', method)
   }
-  emits('method', method)
 }
 </script>
 
@@ -21,7 +28,7 @@ const onChoiceMethodPayment = (method, crypto) => {
     <div class="deposit">
       <div class="deposit-card">
         <p>Депозит с банковской карты:</p>
-        <div class="deposit-card-pay"  v-ripple>
+        <div class="deposit-card-pay" v-ripple>
           <WalletIcon />
           <div
             class="deposit-card-pay-content"

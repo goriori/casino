@@ -35,5 +35,9 @@ export const ERRORS = {
   ERROR_COPY_REFERALE_CODE: {
     TYPE: 'error_copy_referale_code',
     MESSAGE: 'Не удалось скопировать реферальный код ',
-  }
+  },
+  ERROR_NO_TEMPORARILY_ACCESS_MODULE: {
+    TYPE: 'error_no_temporarily_access_module',
+    MESSAGE: 'Данный модуль временно не доступен',
+  },
 }

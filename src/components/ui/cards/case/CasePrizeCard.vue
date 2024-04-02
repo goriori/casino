@@ -18,7 +18,6 @@ const imgUrl = computed(() => {
     coin: '/images/cases/prizes/exp.png',
   }[props.type]
 })
-console.log(imgUrl.value, props.type)
 const color = computed(() => {
   return {
     roulette: 'brown',
@@ -39,7 +38,7 @@ const color = computed(() => {
 @import '@/assets/scss/variables';
 
 .cardPrize {
-  width: 167px;
+  max-width: 167px;
   height: 167px;
   border-radius: 36px;
   display: flex;

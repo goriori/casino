@@ -66,7 +66,6 @@ const stateStore = useStateStore()
         <div class="form-field-input">
           <input
             type="text"
-
             placeholder="Ввести логин"
             id="reg-login"
             v-model="formReg.username"
@@ -81,7 +80,7 @@ const stateStore = useStateStore()
           <input
             type="text"
             placeholder="Ввести номер телефона"
-            v-model="formReg.phone"
+            v-model="formReg.username"
           />
         </div>
       </div>

@@ -6,8 +6,13 @@ import { AutoScroll } from '@splidejs/splide-extension-auto-scroll'
 import { onMounted, ref } from 'vue'
 import { useStateStore } from '@/store/stateStore.js'
 import { useCaseStore } from '@/store/cases/caseStore.js'
+import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
 
 const props = defineProps({
+  isPopup: {
+    type: Boolean,
+    default: false,
+  },
   price: {
     required: true,
     default: '7000₽',
@@ -15,13 +20,12 @@ const props = defineProps({
 })
 const stateStore = useStateStore()
 const caseStore = useCaseStore()
-console.log(stateStore.globalPopupsModules.caseOpen.prizes)
 const splideRef = ref(null)
 const extensions = { AutoScroll }
 const splideOption = ref({
   type: 'loop',
   rewind: true,
-  perPage: 10,
+  perPage: 6,
   wheel: true,
   autoScroll: {
     speed: 0,
@@ -40,19 +44,27 @@ const splideOption = ref({
 
 const onStartPlay = (e) => {
   if (splideRef.value) {
-    splideRef.value.options.autoScroll.speed = 100
+    splideRef.value.options.autoScroll.speed = 90
     caseStore.openCase(stateStore.globalPopupsModules.caseOpen.caseId)
-    setTimeout(() => {
-      splideRef.value.options.autoScroll.speed = 0
-      stateStore.globalPopupsModules.casePrize.visibility = true
-      stateStore.globalPopupsModules.caseOpen.visibility = false
-    }, 3000)
+    const timerRoulette = setInterval(() => {
+      if (splideRef.value.options.autoScroll.speed === 0) {
+        stateStore.globalPopupsModules.casePrize.visibility = true
+        stateStore.globalPopupsModules.caseOpen.visibility = false
+        clearInterval(timerRoulette)
+      }
+      splideRef.value.options.autoScroll.speed -= 10
+    }, 1000)
   }
 }
 </script>
 
 <template>
   <div class="case">
+    <section class="case-close" v-if="isPopup">
+      <CloseIcon
+        @click="stateStore.globalPopupsModules.caseOpen.visibility = false"
+      />
+    </section>
     <div class="case-head">Ультра кейс</div>
     <Transition name="fade">
       <div class="case-fortune">
@@ -61,6 +73,7 @@ const onStartPlay = (e) => {
           <Splide
             :options="splideOption"
             :extensions="extensions"
+            class="slider"
             ref="splideRef"
             @splide:autoplay:play="onStartPlay"
           >
@@ -73,6 +86,7 @@ const onStartPlay = (e) => {
                 :color="prize.color"
                 :type="prize.type"
                 :title="prize.title"
+                class="case-card-prize"
               />
             </SplideSlide>
           </Splide>

@@ -6,8 +6,7 @@ import CaseOpenModule from '@/components/modules/case-open/CaseOpenModule.vue'
 <template>
   <PopupBase size="full">
     <template #window>
-      <CaseOpenModule
-      price="7 000"/>
+      <CaseOpenModule isPopup price="7 000" />
     </template>
   </PopupBase>
 </template>

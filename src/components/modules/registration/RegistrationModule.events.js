@@ -12,7 +12,6 @@ import {
   onValidForm,
 } from '@/components/modules/registration/RegistrationModule.valids.js'
 import { useStateStore } from '@/store/stateStore.js'
-import { generateRandomLogin } from '@/utils/helpers/generateRandomLogin.js'
 import { ERRORS } from '@/configs/errors.js'
 
 const sessionStore = useSessionStore()
@@ -35,7 +34,6 @@ export const onRegistration = async (router) => {
   try {
     await onValidForm(targetEntity.value)
       .then((resultValid) => {
-        formReg.value.username = generateRandomLogin()
         sessionStore.registration(formReg.value)
       })
       .then(clearForm)

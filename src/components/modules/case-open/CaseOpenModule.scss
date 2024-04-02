@@ -12,6 +12,13 @@
   overflow: scroll;
   @include no-scroll();
 
+  &-close {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
   &-head {
     max-width: 356px;
     background: $background;
@@ -28,7 +35,7 @@
   }
 
   &-fortune {
-
+    max-width: 100%;
     max-height: 247px;
     background: #2C2C2C;
     margin-bottom: 80px;
@@ -91,6 +98,9 @@
   }
 }
 
+
+
+
 .slide {
-  max-width: 200px;
+  max-width: 300px;
 }

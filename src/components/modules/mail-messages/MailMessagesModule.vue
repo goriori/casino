@@ -35,7 +35,8 @@ onMounted(async () => {
                   <MessageIcons :type="message.type" />
                 </div>
                 <div class="content-message">
-                  {{ message.title }}
+                  <p class="message">{{ message.title }}</p>
+                  <p class="description">{{ message.message }}</p>
                 </div>
               </div>
               <div class="notification-actions">

@@ -95,12 +95,18 @@ p {
 
 .content {
   &-message {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     font-size: 16px;
     max-width: 290px;
     line-height: 23.2px;
-
     strong {
       color: $dark-primary;
+    }
+    .description {
+      color: #bbbbbb;
+      font-size: 12px;
     }
   }
 }
