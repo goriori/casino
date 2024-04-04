@@ -34,7 +34,7 @@ const { onActiveSelect, onSearch, handlerFilter } = useMethods(
       />
     </div>
     <div class="filters-item search">
-      <input placeholder="Поиск слотов" name="search" v-model="searchValue" />
+      <input placeholder="Поиск слотов" name="search" v-model="searchValue" @keyup.enter="onSearch"  />
       <SearchIcon @click="onSearch" />
     </div>
   </div>

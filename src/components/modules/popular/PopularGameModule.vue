@@ -31,11 +31,6 @@ onMounted(async () => {
 
 <template>
   <div class="popular__game-module">
-    <Transition name="fade">
-      <div class="popular__game-alert" v-if="alertMessage === 'unauthorized'">
-        Пожалуйста, войдите в аккаунт
-      </div>
-    </Transition>
     <PopularGameFilters />
     <div class="popular__game-module-item">
       <div class="popular__game-module-title">
@@ -105,7 +100,7 @@ onMounted(async () => {
         <div v-if="isLoadContent">
           <div
             :class="['popular__game-module-items', { all: isShowAll }]"
-            v-if="gameStore.filteredGame.shortList.length > 0"
+            v-if="gameStore.popularGames.shortList.length > 0"
           >
             <GameCard
               v-for="game in gameStore.popularGames.shortList"
@@ -145,7 +140,7 @@ onMounted(async () => {
         <div v-if="isLoadContent">
           <div
             :class="['popular__game-module-items', { all: isShowAll }]"
-            v-if="gameStore.filteredGame.shortList.length > 0"
+            v-if="gameStore.retroGames.shortList.length > 0"
           >
             <GameCard
               v-for="game in gameStore.retroGames.shortList"
@@ -181,7 +176,7 @@ onMounted(async () => {
         <div v-if="isLoadContent">
           <div
             :class="['popular__game-module-items', { all: isShowAll }]"
-            v-if="gameStore.filteredGame.shortList.length > 0"
+            v-if="gameStore.newGames.shortList.length > 0"
           >
             <GameCard
               v-for="game in gameStore.newGames.shortList"

@@ -24,8 +24,8 @@ export const useGameStore = defineStore('gameStore', () => {
     shortList: [],
     fullList: [],
   })
+  const storeList = [games, filteredGame, popularGames, retroGames, newGames]
   const getGames = async () => {
-    const storeList = [filteredGame, popularGames, retroGames, newGames]
     const { data } = await GamesService.getGames()
     games.value = [...data]
     storeList.forEach((store) => {
@@ -40,11 +40,23 @@ export const useGameStore = defineStore('gameStore', () => {
     })
     return shortList ? filteredGames.slice(0, 5) : filteredGames
   }
-  const searchGames = (searchValue = '') => {
-    const searchData = games.value.filter((game) =>
-      game.title.includes(searchValue)
-    )
-    filteredGame.value = [...searchData]
+  const filterGameCategories = (categoryPosition) => {
+    storeList.forEach((store) => {
+      store.value.shortList = store.value.fullList
+        .filter((item) => {
+          return item.category.find((category) => category === categoryPosition)
+        })
+        .slice(0, 5)
+    })
+  }
+  const searchGames =  (searchValue = '') => {
+    storeList.forEach((store) => {
+      store.value.shortList = store.value.fullList
+        .filter((item) => {
+          return item.title.includes(searchValue)
+        })
+        .slice(0, 5)
+    })
   }
   return {
     games,
@@ -53,7 +65,7 @@ export const useGameStore = defineStore('gameStore', () => {
     retroGames,
     newGames,
     getGames,
-    filterGames,
+    filterGameCategories,
     searchGames,
   }
 })

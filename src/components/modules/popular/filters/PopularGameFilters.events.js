@@ -1,15 +1,17 @@
 import { onMounted } from 'vue'
 import { useProviderStore } from '@/store/providers/providerStore.js'
 import { useGameStore } from '@/store/games/gameStore.js'
+import { useStateStore } from '@/store/stateStore.js'
 
 // eslint-disable-next-line func-style
 export function useMethods(filters, searchValue) {
   const gameStore = useGameStore()
+  const stateStore = useStateStore()
   const clearSearch = () => {
     searchValue.value = ''
   }
   const handlerFilter = async (categoryPosition) => {
-    await gameStore.filterGames(categoryPosition)
+    await gameStore.filterGameCategories(categoryPosition)
   }
 
   const onActiveSelect = (filterActive) => {
@@ -22,8 +24,10 @@ export function useMethods(filters, searchValue) {
   }
 
   const onSearch = async () => {
+    stateStore.isLoading = true
     gameStore.searchGames(searchValue.value)
     clearSearch()
+    stateStore.isLoading = false
   }
   onMounted(async () => {
     const providerStore = useProviderStore()
