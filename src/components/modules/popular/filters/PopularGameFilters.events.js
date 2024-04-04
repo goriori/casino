@@ -16,13 +16,16 @@ export function useMethods(filters, searchValue) {
 
   const onActiveSelect = (filterActive) => {
     const filterNames = Object.keys(filters.value)
-    filterNames.forEach((filter) =>
-      filter === filterActive
-        ? (filters.value[filter].active = !filters.value[filter].active)
-        : (filters.value[filter].active = false)
-    )
+    filterNames.forEach((filter) => {
+      const element = filters.value[filter]
+      const elementActive = filters.value[filter].active
+      if (filter === filterActive) {
+        element.active = !elementActive
+      } else {
+        element.active = false
+      }
+    })
   }
-
   const onSearch = async () => {
     stateStore.isLoading = true
     gameStore.searchGames(searchValue.value)
