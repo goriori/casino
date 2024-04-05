@@ -17,7 +17,7 @@ onMounted(async () => {
 <template>
   <div class="mail__messages-module">
     <div class="mail__messages-icon">
-      <div class="ellipse-notification"></div>
+      <div class="ellipse-notification" v-if="mailStore.messages.length > 0"></div>
       <MailMessagesIcon @click="changeIsOpen" class="icon" />
     </div>
     <Transition name="fade">

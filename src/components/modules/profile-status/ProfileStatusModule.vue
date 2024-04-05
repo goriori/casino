@@ -18,7 +18,6 @@ const endExp = computed(() => {
   const indexStatus = settingStore.statuses.findIndex(
     (status) => status.id === sessionStore.session.profile.stair_status?.id
   )
-  console.log(indexStatus)
   if (indexStatus === null || indexStatus === undefined) return '∞'
   else if (indexStatus === countStatuses) return '∞'
   else return settingStore.statuses[indexStatus + 1].exp

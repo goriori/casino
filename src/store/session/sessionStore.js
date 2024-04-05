@@ -30,6 +30,7 @@ export const useSessionStore = defineStore('sessionStore', () => {
   const updateInfoAccount = async (formUpdate) => {
     await AccountService.updateInfoAccount(formUpdate)
   }
+
   return {
     session,
     authorization,
