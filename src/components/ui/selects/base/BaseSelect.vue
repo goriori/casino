@@ -7,6 +7,10 @@ const props = defineProps({
     type: String,
     default: '',
   },
+  icon: {
+    type: Object,
+    default: () => {},
+  },
   items: {
     type: Array,
     default: [],
@@ -38,7 +42,10 @@ const onChange = (category) => {
 <template>
   <div class="select" @click="onSelect">
     <div class="select-title">
-      <p>{{ targetElement }}</p>
+      <div class="select-title-container">
+        <component v-if="icon" :is="icon" />
+        <p>{{ targetElement }}</p>
+      </div>
       <ArrowSelectIcon />
     </div>
     <Transition name="bounce">
@@ -73,6 +80,12 @@ const onChange = (category) => {
     justify-content: space-between;
     align-items: center;
     gap: 50px;
+
+    &-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
   }
 
   &-list {
