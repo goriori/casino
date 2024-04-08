@@ -47,6 +47,7 @@
           cursor: pointer;
           color: #bbbbbb;
           transition: 0.1s all ease-in-out;
+
           &:hover {
             opacity: 0.7;
           }
@@ -137,5 +138,20 @@
 
   @media (max-width: $md4 + px) {
     font-size: 20px;
+  }
+}
+
+.item {
+  &-button {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 326px;
+  }
+}
+
+.see_more {
+  display: none;
+  @media (max-width: $md4 + px) {
+    display: flex;
   }
 }
