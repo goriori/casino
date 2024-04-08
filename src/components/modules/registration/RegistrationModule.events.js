@@ -50,7 +50,9 @@ export const openAuthorization = () => {
 }
 export const onRegistrationTelegram = () => {
   const a = document.createElement('a')
-  a.href = `https://t.me/momytest_bot`
+  const urlTelegramBot = window.TG_BOT
+  a.href = urlTelegramBot
   a.target = '_blank'
   a.click()
+
 }

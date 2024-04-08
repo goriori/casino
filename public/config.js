@@ -1,4 +1,5 @@
 window.API = 'https://api.gamesoffutures.ru'
+window.TG_BOT = 'https://t.me/slotspincity_bot'
 window.CEF = false
 window.TIMEOUT = 90
 window.IS_DEV = true

@@ -6,10 +6,9 @@ import { axiosInstance } from '@/utils/axios/axios.js'
 import Header from '@/components/globals/header/Header.vue'
 import Footer from '@/components/globals/footer/Footer.vue'
 
-
 const router = useRouter()
 const sessionStore = useSessionStore()
-
+const userId = ref('')
 const generatePassword = () => {
   const characters =
     'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*'
@@ -50,7 +49,6 @@ const onAuthorizationUser = async (userId) => {
   await router.push('/')
 }
 const onErrorAuthorization = async (e, userId) => {
-  console.log(e)
   const { response } = e
   const { status, data } = response
   const isErrReg = data.username[0] === 'The username field is required.'
@@ -74,7 +72,11 @@ const authorization = async () => {
     .catch((e) => onErrorAuthorization(e, userId))
 }
 
-onMounted(async () => await authorization())
+onMounted(async () => {
+  const tg = window.Telegram?.WebApp
+  userId.value = tg.initDataUnsafe.user?.id
+  await authorization()
+})
 </script>
 
 <template>
@@ -85,7 +87,6 @@ onMounted(async () => await authorization())
         <div class="page-logo">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
             width="800px"
             height="800px"
             viewBox="0 0 256 256"
