@@ -88,7 +88,11 @@ const showPrizeDescription = (id) => {
           <strong>{{ casePrice }} Р</strong>
           <p>Цена ключа</p>
         </div>
-        <BaseButton color="primary" id="open_keys" @click="openHandler(caseId, casePrizes)">
+        <BaseButton
+          color="primary"
+          id="open_keys"
+          @click="openHandler(caseId, casePrizes)"
+        >
           <p>Открыть</p>
         </BaseButton>
       </div>
@@ -107,6 +111,10 @@ const showPrizeDescription = (id) => {
   display: flex;
   justify-content: space-between;
   gap: 10px;
+
+  @media (max-width: $md4 + px) {
+    padding: 10px 20px;
+  }
 
   &-active {
     flex-direction: column;
@@ -181,7 +189,6 @@ const showPrizeDescription = (id) => {
     text-align: end;
 
     .card_case-title {
-
     }
 
     &-active {

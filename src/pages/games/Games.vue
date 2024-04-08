@@ -65,6 +65,12 @@ onBeforeMount(() => {
     justify-content: start;
     align-items: center;
     gap: 20px;
+    @media (max-width: $md4 + px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @media (max-width: $md5 + px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
 </style>

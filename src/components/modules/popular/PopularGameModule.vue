@@ -40,7 +40,6 @@ onMounted(async () => {
         <div class="title">
           <PopularIcon />
           <h3>Топ слоты</h3>
-          <p>(+ 50000 слотов)</p>
         </div>
       </div>
       <div class="popular__game-module-items" v-if="!isLoadContent">
