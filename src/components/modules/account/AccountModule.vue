@@ -52,6 +52,8 @@ const ExchangePointsModule = defineAsyncComponent(() =>
     <div class="account-module-mobile-items">
       <MenuModule />
       <BalanceModule />
+      <ExchangePointsModule />
+      <ProfileStatusModule />
       <div class="items-middle">
         <ProfileModule />
         <HistoryBalanceModule />
@@ -83,7 +85,6 @@ const ExchangePointsModule = defineAsyncComponent(() =>
       display: flex;
       justify-content: space-between;
       align-items: center;
-
       .title {
         display: flex;
         align-items: center;

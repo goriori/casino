@@ -120,12 +120,16 @@ const expProfile = computed(() => {
     gap: 10px;
 
     p:nth-child(1) {
+      width: 100%;
+      max-width: 100px;
       font-size: 14px;
       font-weight: 400;
       color: #bbbbbb;
     }
 
     p:nth-child(2) {
+      width: 100%;
+      max-width: 130px;
       font-size: 18px;
       font-weight: 700;
       color: #d5a748;

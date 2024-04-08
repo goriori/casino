@@ -7,6 +7,10 @@
 
   p {
     color: $white;
+    @media (max-width: $md4 + px) {
+      font-weight: 600;
+      font-size: 16px;
+    }
   }
 }
 
@@ -37,6 +41,9 @@
 .form {
   &-title {
     font-size: 24px;
+    @media (max-width: $md4 + px) {
+      font-size: 18px;
+    }
 
     span {
       color: $primary;
@@ -68,6 +75,9 @@
       max-width: 200px;
       padding: 10px 20px;
       font-size: 14px;
+      @media (max-width: $md4 + px) {
+        max-width: 137px;
+      }
     }
 
     p {
