@@ -1,6 +1,7 @@
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { ERRORS } from '@/configs/errors.js'
+import { useStateStore } from '@/store/stateStore.js'
 
 export function useMethods(
   choiceOut,
@@ -11,6 +12,7 @@ export function useMethods(
   setErrorVerification,
   validForm
 ) {
+  const stateStore = useStateStore()
   const paymentStore = usePaymentStore()
   const sessionStore = useSessionStore()
   const onSendWithdrawal = async () => {
@@ -44,11 +46,24 @@ export function useMethods(
   }
   const choicePay = (choiceValue) => {
     const valuesChoice = Object.keys(choiceOut.value)
-    valuesChoice.forEach((choice) => {
-      choice === choiceValue
-        ? (choiceOut.value[choice] = true)
-        : (choiceOut.value[choice] = false)
-    })
+    const switchChoice = () => {
+      valuesChoice.forEach((choice) => {
+        choice === choiceValue
+          ? (choiceOut.value[choice] = true)
+          : (choiceOut.value[choice] = false)
+      })
+    }
+    return {
+      bankCard: () => {
+        switchChoice()
+      },
+      crypto: () => {
+        // switchChoice()
+        stateStore.globalPopupMessages.error.show(
+          ERRORS.ERROR_NO_TEMPORARILY_ACCESS_MODULE.MESSAGE
+        )
+      },
+    }[choiceValue].apply(this, [])
   }
   const rebuildForm = () => {
     const sessionStore = useSessionStore()
