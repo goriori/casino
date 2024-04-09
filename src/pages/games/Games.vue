@@ -18,9 +18,18 @@ const unAuthorizedCardClick = () => {
 const onValidQueries = () => {
   if (!title || !entity) return router.push('/')
 }
-onBeforeMount(() => {
+const validOnGamesEmpty = () => {
+  return gameStore[entity].fullList.length > 0
+}
+onBeforeMount(async () => {
   window.scroll(0, 0)
-  onValidQueries()
+  await onValidQueries()
+  if (!validOnGamesEmpty()) {
+    Promise.resolve()
+      .then(() => (stateStore.isLoading = true))
+      .then(() => gameStore.getGames())
+      .finally(() => (stateStore.isLoading = false))
+  }
 })
 </script>
 
@@ -33,7 +42,7 @@ onBeforeMount(() => {
       </h2>
       <div class="page-game-list">
         <GameCard
-          v-for="game in gameStore[entity].fullList"
+          v-for="game in gameStore[entity]?.fullList"
           :key="game"
           :gameItem="game"
           @unauthorized="unAuthorizedCardClick"
