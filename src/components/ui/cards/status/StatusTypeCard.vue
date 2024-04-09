@@ -75,7 +75,7 @@ const progressBar = ref(
         </div>
         <div class="profile__statuses-card-info-item">
           <CheckMarkIcon />
-          <p>Бонус 5% (на первый депозит 50%)</p>
+          <p>Бонус 5% </p>
         </div>
         <div class="profile__statuses-card-info-item">
           <CheckMarkIcon />
