@@ -5,7 +5,6 @@ import { onMounted, ref } from 'vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import ContentLoader from '@/components/ui/content-loader/ContentLoader.vue'
 
-
 const stateStore = useStateStore()
 const sessionStore = useSessionStore()
 const loadModule = ref(true)
@@ -59,11 +58,7 @@ onMounted(() => {
       <div class="info-item">
         <h4>Дата рождения</h4>
         <p>
-          {{
-            new Date(
-              sessionStore.session.profile?.birthday
-            ).toLocaleDateString() || '00.00.0000'
-          }}
+          {{ sessionStore.session.profile?.birthday || '00.00.0000' }}
         </p>
       </div>
       <div class="info-item">

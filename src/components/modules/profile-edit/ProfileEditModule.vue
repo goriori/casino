@@ -45,14 +45,7 @@ const onSendForm = async () => {
           v-model="formUpdate.first_name"
         />
       </div>
-      <div class="form-field">
-        <BaseInput
-          placeholder="Фамилия"
-          type="text"
-          v-model="formUpdate.last_name"
-        />
-      </div>
-      <div class="form-field">
+        <div class="form-field">
         <BaseInput
           placeholder="Дата рождения"
           type="date"
@@ -64,13 +57,6 @@ const onSendForm = async () => {
           placeholder="Телефон"
           type="tel"
           v-model="formUpdate.phone"
-        />
-      </div>
-      <div class="form-field">
-        <BaseInput
-          placeholder="Аддресс"
-          type="text"
-          v-model="formUpdate.address"
         />
       </div>
       <BaseButton color="primary" id="btn-edit" @click="onSendForm">
