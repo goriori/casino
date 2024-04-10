@@ -14,7 +14,7 @@ const props = defineProps({
 const imgUrl = computed(() => {
   return {
     roulette: '/images/cases/prizes/roulette.png',
-    balance: '/images/cases/prizes/exp.png',
+    balance: '/images/cases/prizes/money.png',
     coin: '/images/cases/prizes/exp.png',
   }[props.type]
 })

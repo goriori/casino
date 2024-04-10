@@ -8,8 +8,7 @@ import ListIcon from '@/components/ui/icons/popular/ListIcon.vue'
 import ChangeIcon from '@/components/ui/icons/popular/ChangeIcon.vue'
 
 const providerStore = useProviderStore()
-
-const { filters, searchValue } = useData()
+const { filters, searchValue, colorSearchIcon } = useData()
 const { onActiveSelect, onSearch, handlerFilter } = useMethods(
   filters,
   searchValue
@@ -44,7 +43,11 @@ const { onActiveSelect, onSearch, handlerFilter } = useMethods(
         v-model="searchValue"
         @keyup.enter="onSearch"
       />
-      <SearchIcon @click="onSearch" />
+      <SearchIcon
+        @click="onSearch"
+        :fill="colorSearchIcon"
+        :class="['icon-search', { active: searchValue.length > 0 }]"
+      />
     </div>
   </div>
 </template>

@@ -23,7 +23,7 @@ export function useValid(
       !userInfo.email ||
       !userInfo.address
     )
-      throw ERRORS.ERROR_VERIFICATION.TYPE
+      throw ERRORS.ERROR_NOT_FILLED_FIELDS.TYPE
     if (withdrawalForm.value.sum < minCountWithdrawal) {
       validResults.value.sum = false
       setTimeout(() => (validResults.value.sum = true), 5000)
@@ -55,18 +55,11 @@ export function useValid(
     }, timeClosePopup.value)
   }
 
-  const setErrorVerification = () => {
-    const stateStore = useStateStore()
-    stateStore.globalPopupMessages.error.show(ERRORS.ERROR_VERIFICATION.MESSAGE)
-    setTimeout(() => {
-      stateStore.globalPopupMessages.error.close()
-    }, timeClosePopup.value)
-  }
+
   return {
     validForm,
     setSuccessWithdrawal,
     setErrorWithdrawal,
     setErrorValidWithdrawal,
-    setErrorVerification,
   }
 }

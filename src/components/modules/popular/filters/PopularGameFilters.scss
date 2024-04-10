@@ -68,3 +68,12 @@ input {
   color: $white;
   font-size: 20px;
 }
+
+.icon {
+  &-search {
+    transition: 0.3s all ease-in-out;
+    &.active {
+      transform: scale(1.5);
+    }
+  }
+}

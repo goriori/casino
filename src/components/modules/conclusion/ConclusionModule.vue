@@ -26,7 +26,6 @@ const {
   setErrorValidWithdrawal,
   setErrorWithdrawal,
   setSuccessWithdrawal,
-  setErrorVerification,
 } = useValid(choiceOut, timeClosePopup, validResults, withdrawalForm)
 const { choicePay, onSendWithdrawal } = useMethods(
   choiceOut,
@@ -34,7 +33,6 @@ const { choicePay, onSendWithdrawal } = useMethods(
   setErrorValidWithdrawal,
   setErrorWithdrawal,
   setSuccessWithdrawal,
-  setErrorVerification,
   validForm
 )
 </script>

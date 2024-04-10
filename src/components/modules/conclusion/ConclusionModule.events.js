@@ -9,7 +9,6 @@ export function useMethods(
   setErrorValidWithdrawal,
   setErrorWithdrawal,
   setSuccessWithdrawal,
-  setErrorVerification,
   validForm
 ) {
   const stateStore = useStateStore()
@@ -27,6 +26,10 @@ export function useMethods(
       .catch((e) => {
         if (e === ERRORS.ERROR_VERIFICATION.TYPE) setErrorVerification()
         else if (e === ERRORS.ERROR_VALIDATION.TYPE) setErrorValidWithdrawal()
+        else if (e === ERRORS.ERROR_NOT_FILLED_FIELDS.TYPE)
+          stateStore.globalPopupMessages.error.show(
+            ERRORS.ERROR_NOT_FILLED_FIELDS.MESSAGE
+          )
         else setErrorWithdrawal()
       })
   }

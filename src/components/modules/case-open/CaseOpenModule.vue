@@ -108,6 +108,7 @@ const onStartPlay = (e) => {
           :key="prize.id"
           :type="prize.type"
           :title="prize.title"
+          class="case-about-item"
         />
       </div>
     </div>

@@ -91,7 +91,7 @@ const showPrizeDescription = (id) => {
         <BaseButton
           color="primary"
           id="open_keys"
-          @click="openHandler(caseId, casePrizes)"
+          @click="openHandler(caseId, casePrice, casePrizes)"
         >
           <p>Открыть</p>
         </BaseButton>

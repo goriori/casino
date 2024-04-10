@@ -40,4 +40,13 @@ export const ERRORS = {
     TYPE: 'error_no_temporarily_access_module',
     MESSAGE: 'Данный модуль временно не доступен',
   },
+  ERROR_NOT_FILLED_FIELDS: {
+    TYPE: 'error_not_filled_fields',
+    MESSAGE: 'Заполните все поля вашего профиля',
+  },
+  ERROR_VALID_PARAMS: {
+    TYPE: 'error_valid_params',
+    MESSAGE:
+      'Произошла непредвиденная ошибка. Попробуйте воспользоваться модулем позднее.',
+  },
 }

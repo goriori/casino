@@ -13,6 +13,7 @@ export const useCaseStore = defineStore('caseStore', () => {
   const openCase = async (caseId) => {
     const {result} = await CaseService.fetchOpenCase(caseId)
     casePrize.value = { ...result }
+    console.log(result)
   }
 
   return {
