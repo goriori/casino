@@ -41,15 +41,14 @@ const splideOption = ref({
     },
   },
 })
-
+const visibilityPrize = ref(false)
 const onStartPlay = (e) => {
   if (splideRef.value) {
     splideRef.value.options.autoScroll.speed = 90
     caseStore.openCase(stateStore.globalPopupsModules.caseOpen.caseId)
     const timerRoulette = setInterval(() => {
       if (splideRef.value.options.autoScroll.speed === 0) {
-        stateStore.globalPopupsModules.casePrize.visibility = true
-        stateStore.globalPopupsModules.caseOpen.visibility = false
+        visibilityPrize.value = true
         clearInterval(timerRoulette)
       }
       splideRef.value.options.autoScroll.speed -= 10
@@ -65,9 +64,9 @@ const onStartPlay = (e) => {
         @click="stateStore.globalPopupsModules.caseOpen.visibility = false"
       />
     </section>
-    <div class="case-head">Ультра кейс</div>
+    <section class="case-head">Ультра кейс</section>
     <Transition name="fade">
-      <div class="case-fortune">
+      <section class="case-fortune">
         <img class="case-winner" src="/images/cases/prizes/winner.svg" />
         <div class="case-card">
           <Splide
@@ -91,16 +90,26 @@ const onStartPlay = (e) => {
             </SplideSlide>
           </Splide>
         </div>
-      </div>
+      </section>
     </Transition>
-
-    <div class="case-action">
+    <Transition name="fade">
+      <section
+        class="case-prize"
+        v-if="visibilityPrize && caseStore.casePrize.title"
+      >
+        <p class="prize-title">
+          Вы выйграли:
+          <mark class="prize-name">{{ caseStore.casePrize.title }}</mark>
+        </p>
+      </section>
+    </Transition>
+    <section class="case-action">
       <div class="case-price">{{ price }}</div>
       <BaseButton size="small" class="case-btn" @click="onStartPlay"
         >Крутить
       </BaseButton>
-    </div>
-    <div class="case-about">
+    </section>
+    <section class="case-about">
       <div class="case-about-title">Содержание кейса</div>
       <div class="case-about-body">
         <CasePrizeCard
@@ -111,7 +120,7 @@ const onStartPlay = (e) => {
           class="case-about-item"
         />
       </div>
-    </div>
+    </section>
   </div>
 </template>
 

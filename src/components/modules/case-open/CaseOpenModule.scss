@@ -52,6 +52,10 @@
     transform: translate(-50%, 0);
   }
 
+  &-prize {
+    margin: 0 0 40px 0;
+  }
+
   &-action {
     display: flex;
     align-items: center;
@@ -109,8 +113,22 @@
 }
 
 
-
-
 .slide {
   max-width: 300px;
+}
+
+
+.prize {
+
+  &-title {
+    color: white;
+  }
+
+  &-name {
+    color: white;
+    border-radius: 16px;
+    padding: 5px 20px;
+    background-color: #7ab816;
+
+  }
 }
