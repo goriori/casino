@@ -51,12 +51,12 @@ onMounted(async () => {
         </div>
       </section>
       <section class="page-modules">
-        <PersonalBonusesModule />
+<!--        <PersonalBonusesModule />-->
         <div class="modules-middle">
           <PromocodeModule />
           <SpinRoulette />
         </div>
-        <LoyaltyProgramModule />
+<!--        <LoyaltyProgramModule />-->
       </section>
     </div>
     <Footer />

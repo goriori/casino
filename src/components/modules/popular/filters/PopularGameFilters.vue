@@ -4,7 +4,6 @@ import { useData } from '@/components/modules/popular/filters/PopularGameFilters
 import { useProviderStore } from '@/store/providers/providerStore.js'
 import SearchIcon from '@/components/ui/icons/other/SearchIcon.vue'
 import BaseSelect from '@/components/ui/selects/base/BaseSelect.vue'
-import ListIcon from '@/components/ui/icons/popular/ListIcon.vue'
 import ChangeIcon from '@/components/ui/icons/popular/ChangeIcon.vue'
 
 const providerStore = useProviderStore()
@@ -19,20 +18,12 @@ const { onActiveSelect, onSearch, handlerFilter } = useMethods(
   <div class="popular__game-filters">
     <div class="filters-item">
       <BaseSelect
-        name="category"
-        :icon="ListIcon"
-        :items="filters.category.values"
-        :active="filters.category.active"
-        @changeActive="onActiveSelect"
-      />
-      <BaseSelect
         name="providers"
         v-if="providerStore.providers.length > 0"
         :icon="ChangeIcon"
         :items="providerStore.providers"
         :active="filters.providers.active"
         :handler="handlerFilter"
-        default-target-element="Ka-Gaming"
         @changeActive="onActiveSelect"
       />
     </div>

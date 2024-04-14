@@ -14,20 +14,26 @@ import AuthorizationModule from '@/components/modules/authorization/Authorizatio
 import BurgerHeaderIocn from '@/components/ui/icons/header/BurgerHeaderIocn.vue'
 import BurgerMenu from '@/components/globals/header/components/burger/BurgerMenu.vue'
 import MailMessagesModule from '@/components/modules/mail-messages/MailMessagesModule.vue'
+import { useStateStore } from '@/store/stateStore.js'
 
 const route = useRoute()
 const router = useRouter()
 const page = ref(route.name)
 
+const stateStore = useStateStore()
 const settingStore = useSettingsStore()
 const sessionStore = useSessionStore()
 const isAuthorized = computed(
   () => sessionStore.session?.token || sessionStore.session?.profile
 )
+const redirectToBonuses = () => {
+  if (sessionStore.session?.profile) router.push('/bonuses')
+  else stateStore.globalPopupsModules.authorization.visibility = true
+}
 const redirectToSupports = () => {
-  const telegramLink = 'https://t.me/'
+  const telegramLink = window.TG_BOT
   const a = document.createElement('a')
-  a.href = telegramLink + settingStore.settings.tg_id
+  a.href = telegramLink
   a.target = '_blank'
   a.click()
 }
@@ -41,7 +47,7 @@ onMounted(async () => {
   <header class="header">
     <BurgerMenu />
     <div class="header-actions">
-      <div class="header-actions-bonus" @click="router.push('/bonuses')">
+      <div class="header-actions-bonus" @click="redirectToBonuses">
         <BonusHeaderIcon />
         <p>Бонусы</p>
       </div>

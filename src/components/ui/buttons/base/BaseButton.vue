@@ -24,6 +24,10 @@ const props = defineProps({
     type: Boolean,
     default: false,
   },
+  disabled: {
+    type: Boolean,
+    default: false,
+  },
 })
 </script>
 
@@ -61,6 +65,7 @@ const props = defineProps({
           'btn-active': props.isActive,
         },
       ]"
+      :disabled="disabled"
     >
       <div class="btn-content">
         <slot />

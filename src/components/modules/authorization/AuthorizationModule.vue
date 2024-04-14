@@ -97,10 +97,10 @@ const stateStore = useStateStore()
 
     <div class="authorization-accept">
       <div class="authorization-accept-item">
-        <div class="accept-item-field">
-          <input type="checkbox" />
-          <label>Напомнить через 30 дней</label>
-        </div>
+<!--        <div class="accept-item-field">-->
+<!--          <input type="checkbox" />-->
+<!--          <label>Напомнить через 30 дней</label>-->
+<!--        </div>-->
         <div class="accept-item-support" @click="onRecoveryPassword">
           <span>Забыли пароль?</span>
         </div>

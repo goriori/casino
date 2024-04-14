@@ -42,14 +42,14 @@ export const useGameStore = defineStore('gameStore', () => {
   }
   const filterGameCategories = (categoryPosition) => {
     storeList.forEach((store) => {
-      store.value.shortList = store.value.fullList
+      store.value.fullList = games.value
         .filter((item) => {
           return item.category.find((category) => category === categoryPosition)
         })
         .slice(0, 5)
     })
   }
-  const searchGames =  (searchValue = '') => {
+  const searchGames = (searchValue = '') => {
     storeList.forEach((store) => {
       store.value.shortList = store.value.fullList
         .filter((item) => {

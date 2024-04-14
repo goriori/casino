@@ -2,9 +2,11 @@ import { onMounted } from 'vue'
 import { useProviderStore } from '@/store/providers/providerStore.js'
 import { useGameStore } from '@/store/games/gameStore.js'
 import { useStateStore } from '@/store/stateStore.js'
+import { useRouter } from 'vue-router'
 
 // eslint-disable-next-line func-style
 export function useMethods(filters, searchValue) {
+  const router = useRouter()
   const gameStore = useGameStore()
   const stateStore = useStateStore()
   const clearSearch = () => {

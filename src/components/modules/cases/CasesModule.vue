@@ -1,15 +1,14 @@
 <script setup>
 import { Splide, SplideSlide } from '@splidejs/vue-splide'
-import '@splidejs/vue-splide/css'
-import CaseCard from '@/components/ui/cards/case/CaseCard.vue'
-import PopularIcon from '@/components/ui/icons/popular/PopularIcon.vue'
 import { useCaseStore } from '@/store/cases/caseStore.js'
 import { onMounted } from 'vue'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useStateStore } from '@/store/stateStore.js'
-import SpinRoulette from '@/components/modules/spin-roulette/SpinRoulette.vue'
+import CaseCard from '@/components/ui/cards/case/CaseCard.vue'
+import PopularIcon from '@/components/ui/icons/popular/PopularIcon.vue'
 import RouletteIcon from '@/components/ui/icons/other/RouletteIcon.vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
+import '@splidejs/vue-splide/css'
 
 const stateStore = useStateStore()
 const sessionStore = useSessionStore()

@@ -20,6 +20,7 @@ const props = defineProps({
 })
 const stateStore = useStateStore()
 const caseStore = useCaseStore()
+const activeSpin = ref(false)
 const splideRef = ref(null)
 const extensions = { AutoScroll }
 const splideOption = ref({
@@ -44,11 +45,13 @@ const splideOption = ref({
 const visibilityPrize = ref(false)
 const onStartPlay = (e) => {
   if (splideRef.value) {
+    activeSpin.value = true
     splideRef.value.options.autoScroll.speed = 90
     caseStore.openCase(stateStore.globalPopupsModules.caseOpen.caseId)
     const timerRoulette = setInterval(() => {
       if (splideRef.value.options.autoScroll.speed === 0) {
         visibilityPrize.value = true
+        activeSpin.value = false
         clearInterval(timerRoulette)
       }
       splideRef.value.options.autoScroll.speed -= 10
@@ -105,7 +108,11 @@ const onStartPlay = (e) => {
     </Transition>
     <section class="case-action">
       <div class="case-price">{{ price }}</div>
-      <BaseButton size="small" class="case-btn" @click="onStartPlay"
+      <BaseButton
+        size="small"
+        class="case-btn"
+        @click="onStartPlay"
+        :disabled="activeSpin"
         >Крутить
       </BaseButton>
     </section>

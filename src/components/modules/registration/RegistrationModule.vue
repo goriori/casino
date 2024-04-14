@@ -143,12 +143,12 @@ const stateStore = useStateStore()
         </p>
       </div>
 
-      <div class="authorization-registration-info">
-        <p>
-          Я прочитал и согласен с
-          <span>Правилами Использования Сервиса</span>
-        </p>
-      </div>
+<!--      <div class="authorization-registration-info">-->
+<!--        <p>-->
+<!--          Я прочитал и согласен с-->
+<!--          <span>Правилами Использования Сервиса</span>-->
+<!--        </p>-->
+<!--      </div>-->
       <BaseButton color="primary" outline @click="onRegistrationTelegram">
         <div class="btn-registration">
           <p>Зарегестрироваться через</p>

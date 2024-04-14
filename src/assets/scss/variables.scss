@@ -1,6 +1,6 @@
 $font: 'Montserrat';
 
-$white:#fff;
+$white: #fff;
 $primary: #D5A848;
 $secondary: #8a55fb;
 $err: #d20000;
@@ -21,17 +21,22 @@ $light-green-card: #ABE055;
 $orange-card: #FF9F05;
 $brown-card: #794713;
 
-// buttons
-$button-gap-primary:8px;
-$cashier-primary:linear-gradient(270deg, #FB8755 6.43%, rgba(231, 81, 255, 0.78) 100%);
-$cashier-secondary:linear-gradient(270deg, #5584FB 6.43%, rgba(204, 11, 236, 0.78) 100%);
 
-$shadow-primary:0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-$shadow-secondary:0px 3px 4px 0px rgba(173, 90, 255, 0.35);
+// space
+
+$space-blocks: 80px;
+
+// buttons
+$button-gap-primary: 8px;
+$cashier-primary: linear-gradient(270deg, #FB8755 6.43%, rgba(231, 81, 255, 0.78) 100%);
+$cashier-secondary: linear-gradient(270deg, #5584FB 6.43%, rgba(204, 11, 236, 0.78) 100%);
+
+$shadow-primary: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+$shadow-secondary: 0px 3px 4px 0px rgba(173, 90, 255, 0.35);
 
 
 // cards
-$game-card-background:radial-gradient(86.78% 86.78% at 50% 50%, #36CFFF 0%, #E788FF 100%);
+$game-card-background: radial-gradient(86.78% 86.78% at 50% 50%, #36CFFF 0%, #E788FF 100%);
 
 $background: #262626;
 
