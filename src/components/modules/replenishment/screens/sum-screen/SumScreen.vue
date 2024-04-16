@@ -30,8 +30,6 @@ const { onChangeSlotBalance, onConfirmSum } = useMethods(
             name="balance"
             autocomplete="off"
             v-model.number="balance"
-            min="1"
-            max="100"
           />
           <p>₽</p>
         </div>

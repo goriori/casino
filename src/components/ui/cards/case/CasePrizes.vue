@@ -39,6 +39,8 @@ const showPrizeDescription = (prize) => {
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/scss/variables';
+
 .card_case {
   &-prizes {
     display: flex;
@@ -52,6 +54,10 @@ const showPrizeDescription = (prize) => {
     align-items: start;
     justify-content: start;
     gap: 20px;
+
+    @media (max-width: $md5 + px) {
+      grid-template-columns: repeat(2, 130px);
+    }
   }
 
   &-prize {
@@ -66,9 +72,9 @@ const showPrizeDescription = (prize) => {
     justify-content: space-between;
     align-items: center;
     gap: 20px;
-
-    p {
-      font-size: 16px;
+    font-size: 16px;
+    @media (max-width: $md5 + px) {
+      font-size: 10px;
     }
   }
 

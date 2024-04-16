@@ -49,10 +49,9 @@ onMounted(() => {
         </p>
       </div>
       <div class="info-item">
-        <h4>Имя, Фамилия</h4>
+        <h4>Имя</h4>
         <p>
           {{ sessionStore.session.profile?.first_name || 'Имя' }}
-          {{ sessionStore.session.profile?.last_name || 'Фамилия' }}
         </p>
       </div>
       <div class="info-item">
