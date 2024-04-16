@@ -142,7 +142,6 @@ const stateStore = useStateStore()
           <span @click="openAuthorization">Войти</span>
         </p>
       </div>
-
 <!--      <div class="authorization-registration-info">-->
 <!--        <p>-->
 <!--          Я прочитал и согласен с-->

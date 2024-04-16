@@ -7,6 +7,7 @@ import { onMounted, ref } from 'vue'
 import { useStateStore } from '@/store/stateStore.js'
 import { useCaseStore } from '@/store/cases/caseStore.js'
 import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
+import { useSessionStore } from '@/store/session/sessionStore.js'
 
 const props = defineProps({
   isPopup: {
@@ -20,6 +21,7 @@ const props = defineProps({
 })
 const stateStore = useStateStore()
 const caseStore = useCaseStore()
+const sessionStore = useSessionStore()
 const activeSpin = ref(false)
 const splideRef = ref(null)
 const extensions = { AutoScroll }
@@ -52,6 +54,7 @@ const onStartPlay = (e) => {
       if (splideRef.value.options.autoScroll.speed === 0) {
         visibilityPrize.value = true
         activeSpin.value = false
+        sessionStore.getInfoSession()
         clearInterval(timerRoulette)
       }
       splideRef.value.options.autoScroll.speed -= 10

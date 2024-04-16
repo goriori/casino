@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import ArrowSelectIcon from '@/components/ui/icons/other/ArrowSelectIcon.vue'
+import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
 
 const props = defineProps({
   name: {
@@ -29,13 +30,20 @@ const props = defineProps({
   },
 })
 const targetElement = ref(props.defaultTargetElement)
-const emits = defineEmits(['changeActive'])
-const onSelect = (category) => {
+const emits = defineEmits(['changeActive', 'clear'])
+const onSelect = (e) => {
+  console.log(e)
   emits('changeActive', props.name)
 }
 const onChange = (category) => {
-  if (props.handler) props.handler(category.position)
-  targetElement.value = category.title
+  if (category !== -1 && props.handler) {
+    props.handler(category.position, category.title)
+    targetElement.value = category.title
+  }
+}
+const onClear = () => {
+  targetElement.value = 'Не выбрано'
+  emits('clear')
 }
 </script>
 
@@ -46,7 +54,13 @@ const onChange = (category) => {
         <component v-if="icon" :is="icon" />
         <p>{{ targetElement }}</p>
       </div>
-      <ArrowSelectIcon />
+      <ArrowSelectIcon
+        v-if="targetElement === 'Не выбрано'"
+      />
+      <CloseIcon
+        v-if="targetElement !== 'Не выбрано'"
+        @click="onClear"
+      />
     </div>
     <Transition name="bounce">
       <div class="select-list" v-if="active">

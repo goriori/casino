@@ -13,7 +13,7 @@ export default class AuthorizationService {
       sessionStorage.setItem('token', response.data.token)
       return response.data
     } catch (e) {
-      throw ERRORS.ERROR_AUTHORIZATION
+      throw { ...ERRORS.ERROR_AUTHORIZATION, error: e }
     }
   }
 
@@ -27,7 +27,7 @@ export default class AuthorizationService {
       })
       return response.data
     } catch (e) {
-      throw ERRORS.ERROR_REGISTRATION
+      throw { ...ERRORS.ERROR_REGISTRATION, error: e }
     }
   }
 }

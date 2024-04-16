@@ -1,29 +1,20 @@
 <script setup>
 import { useGameStore } from '@/store/games/gameStore.js'
 import { unAuthorizedCardClick } from '@/components/modules/popular/PopularGameModule.events.js'
-import SeeMoreCard from '@/components/ui/cards/see-more/SeeMoreCard.vue'
 import GameCard from '@/components/ui/cards/game/GameCard.vue'
-
-defineProps({
-  typeGame: {
-    type: String,
-    default: 'filteredGame',
-  },
-})
 
 const gameStore = useGameStore()
 </script>
 
 <template>
-  <section class="shortlist">
-    <div class="shortlist-items">
+  <section class="filterList">
+    <div class="filterList-items">
       <GameCard
-        v-for="game in gameStore[typeGame].shortList"
+        v-for="game in gameStore.filteredGame.fullList"
         :key="game"
         :gameItem="game"
         @unauthorized="unAuthorizedCardClick"
       />
-      <SeeMoreCard class="see_more" />
     </div>
   </section>
 </template>
@@ -31,16 +22,15 @@ const gameStore = useGameStore()
 <style scoped lang="scss">
 @import '@/assets/scss/variables';
 
-.shortlist {
+.filterList {
   display: flex;
   flex-direction: column;
   gap: 25px;
+
   &-items {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 25px;
-    max-height: 1100px;
-    overflow: hidden;
     @media (max-width: 1640px) {
       gap: 32px;
     }
@@ -59,13 +49,4 @@ const gameStore = useGameStore()
     }
   }
 }
-
-.see_more {
-  display: none;
-  @media (max-width: $md4 + px) {
-    display: flex;
-  }
-}
-
-
 </style>

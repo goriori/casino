@@ -46,7 +46,7 @@ const sessionStore = useSessionStore()
             </div>
           </div>
           <div class="balance-item">
-            <div class="balance-item-name">Баллов</div>
+            <div class="balance-item-name">Бонусов</div>
             <div class="balance-item-content">
               <BonusIcon />
               <p>{{ sessionStore.session.profile?.bonus }} ₽</p>

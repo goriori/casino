@@ -13,7 +13,6 @@ import { onMounted } from 'vue'
 
 const route = useRoute()
 const stateStore = useStateStore()
-const settingStore = useSettingsStore()
 const sessionStore = useSessionStore()
 const gameStore = useGameStore()
 const providerStore = useProviderStore()

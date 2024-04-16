@@ -12,6 +12,14 @@ const { onActiveSelect, onSearch, handlerFilter } = useMethods(
   filters,
   searchValue
 )
+const emits = defineEmits(['onFilter', 'onClear'])
+const onFilter = (categoryPosition) => {
+  handlerFilter(categoryPosition)
+  emits('onFilter')
+}
+const onClear = () => {
+  emits('onClear')
+}
 </script>
 
 <template>
@@ -23,8 +31,9 @@ const { onActiveSelect, onSearch, handlerFilter } = useMethods(
         :icon="ChangeIcon"
         :items="providerStore.providers"
         :active="filters.providers.active"
-        :handler="handlerFilter"
+        :handler="onFilter"
         @changeActive="onActiveSelect"
+        @clear="onClear"
       />
     </div>
     <div class="filters-item search">

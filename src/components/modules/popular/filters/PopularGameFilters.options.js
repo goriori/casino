@@ -4,7 +4,6 @@ const searchValue = ref('')
 const filters = ref({
   providers: {
     active: false,
-    values: [],
   },
 })
 
