@@ -1,8 +1,6 @@
 <script setup>
-import { onMounted, ref, defineModel } from 'vue'
+import { onMounted, ref } from 'vue'
 import ArrowSelectIcon from '@/components/ui/icons/other/ArrowSelectIcon.vue'
-import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
-import { is } from 'date-fns/locale'
 
 const props = defineProps({
   modelValue: {
@@ -96,10 +94,13 @@ onMounted(() => {
     background-color: #303030;
     padding: 20px 28px;
     border-radius: 5px;
+
   }
 
   &-list {
     width: 100%;
+    max-height: 400px;
+    overflow: auto;
     position: absolute;
     z-index: 2;
     display: flex;

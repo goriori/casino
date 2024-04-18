@@ -1,35 +1,41 @@
 <script setup>
-import BaseCard from '@/components/ui/cards/base/BaseCard.vue'
 import SeeMoreIcon from '@/components/ui/icons/other/SeeMoreIcon.vue'
 </script>
 
 <template>
-  <BaseCard class="card-see_more">
-    <template #content>
+  <article class="see-more">
+    <div class="see-container">
       <SeeMoreIcon color="#d5a848" />
       <p>Посмотреть еще</p>
-    </template>
-  </BaseCard>
+    </div>
+  </article>
 </template>
 
 <style scoped lang="scss">
-::v-deep(.card-content) {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  text-align: center;
-  font-size: 12px;
-}
+.see {
+  &-more {
+    width: 100%;
+    background-color: #1e1e1e;
+    border-radius: 4px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    &:active {
+      transition: 0.1s opacity ease-in-out;
+      opacity: 0.5;
+    }
+  }
 
-.card-see_more {
-  cursor: pointer;
-  color: #d5a848;
-  background-color: #1e1e1e;
-  border-radius: 4px;
-  padding: 0;
-  transition: 0.3s all ease-in-out;
-  &:active {
-    opacity: 0.6;
+  &-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    flex: 1 0 100px;
+    color: #d5a848;
   }
 }
 </style>

@@ -1,26 +1,36 @@
 <script setup>
+import { computed } from 'vue'
+
 const props = defineProps({
   modelValue: {
     type: String,
     default: '',
   },
 })
-const emits = defineEmits(['update:modelValue', 'onChange'])
-const onChange = (event) => {
+const emits = defineEmits(['update:modelValue', 'onInput', 'onSend'])
+const activeSearch = computed(() => props.modelValue.length > 0)
+const onInput = (event) => {
   emits('update:modelValue', event.target.value)
-  emits('onChange', event.target.value)
+  emits('onInput', event.target.value)
+}
+const onSend = () => {
+  emits('onSend')
 }
 </script>
 
 <template>
-  <form class="search">
+  <form class="search" @submit.prevent>
     <input
+      :value="modelValue"
       type="search"
       placeholder="Поиск слотов"
       class="search-field"
-      @change="onChange"
+      @input="onInput"
     />
-    <div class="search-icon"></div>
+    <div
+      :class="['search-icon', { 'active-search': activeSearch }]"
+      @click="onSend"
+    ></div>
   </form>
 </template>
 
@@ -39,6 +49,7 @@ const onChange = (event) => {
     border-bottom: 1px solid #ffffff99;
     padding: 10px;
     color: #ffffff99;
+
     &:focus {
       transition: 0.2s border-bottom-color ease-in-out;
       border-bottom-color: #d5a848;
@@ -54,11 +65,21 @@ const onChange = (event) => {
     background-repeat: no-repeat;
     width: 24px;
     height: 24px;
+    transition: 0.3s all ease-in-out;
+
+    &:hover {
+      transition: 0.3s all ease-in-out;
+      transform: scale(1.2);
+    }
   }
 }
 
 input[type='search']::-webkit-search-cancel-button {
   -webkit-appearance: none;
   appearance: none;
+}
+
+.active-search {
+  transform: scale(1.5);
 }
 </style>

@@ -16,13 +16,13 @@ import BurgerMenu from '@/components/globals/header/components/burger/BurgerMenu
 import MailMessagesModule from '@/components/modules/mail-messages/MailMessagesModule.vue'
 import { useStateStore } from '@/store/stateStore.js'
 
-const route = useRoute()
-const router = useRouter()
-const page = ref(route.name)
-
 const stateStore = useStateStore()
 const settingStore = useSettingsStore()
 const sessionStore = useSessionStore()
+const route = useRoute()
+const router = useRouter()
+const page = ref(route.name)
+const serverUrl = window.API
 const isAuthorized = computed(
   () => sessionStore.session?.token || sessionStore.session?.profile
 )
@@ -57,7 +57,7 @@ onMounted(async () => {
       </div>
     </div>
     <div class="header-logo" @click="router.push('/')">
-      <img src="https://api.gamesoffutures.ru/logo/logo.png" alt="" />
+      <img :src="serverUrl + '/logo/logo.png'" alt="" />
     </div>
     <div class="header-actions">
       <div class="header-actions-account">

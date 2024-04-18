@@ -1,14 +1,14 @@
 <script setup>
+import { startItems } from '@/pages/main/Main.options.js'
 import Header from '@/components/globals/header/Header.vue'
 import Footer from '@/components/globals/footer/Footer.vue'
 import ArrowHowStartIcon from '@/components/ui/icons/other/ArrowHowStartIcon.vue'
-import { startItems } from '@/pages/main/Main.options.js'
 import AboutInfoIcon from '@/components/ui/icons/other/AboutInfoIcon.vue'
 import StatisticsModule from '@/components/modules/statistics/StatisticsModule.vue'
 import CasesModule from '@/components/modules/cases/CasesModule.vue'
 import CategoryList from '@/components/modules/category-list/CategoryList.vue'
-
-
+import FilterCategoriesModule from '@/components/modules/filter-categories/FilterCategoriesModule.vue'
+import SearchGamesModule from '@/components/modules/search-games/SearchGamesModule.vue'
 </script>
 <template>
   <div class="page">
@@ -17,6 +17,10 @@ import CategoryList from '@/components/modules/category-list/CategoryList.vue'
       <div class="page-modules">
         <StatisticsModule />
         <CasesModule />
+        <div class="modules-filters">
+          <FilterCategoriesModule />
+          <SearchGamesModule />
+        </div>
         <div class="modules-categories">
           <CategoryList />
         </div>

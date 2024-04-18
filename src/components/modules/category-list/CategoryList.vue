@@ -6,6 +6,7 @@ import GameCard from '@/components/ui/cards/game/GameCard.vue'
 import SeeMoreButton from '@/components/ui/buttons/see-more/SeeMoreButton.vue'
 import PopularIcon from '@/components/ui/icons/popular/PopularIcon.vue'
 import { useRouter } from 'vue-router'
+import SeeMoreCard from '@/components/ui/cards/see-more/SeeMoreCard.vue'
 
 const categories = window.CATEGORIES
 const providerStore = useProviderStore()
@@ -54,15 +55,19 @@ onMounted(async () => {
             v-for="game in category?.games"
             :key="game.id"
             :game-item="game"
+            class="item-card"
           />
+          <SeeMoreCard class="action-card " />
         </div>
-        <SeeMoreButton class="action" @click="onClick" />
+        <SeeMoreButton class="action-button" @click="onClick" />
       </section>
     </article>
   </section>
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/scss/variables';
+
 .category {
   &-list {
     display: flex;
@@ -82,17 +87,36 @@ onMounted(async () => {
     gap: 16px;
     font-weight: 700;
     font-size: 32px;
+    @media (max-width: $md4 + px) {
+      font-size: 20px;
+    }
   }
 
   &-shortlist {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, 340px);
     gap: 25px;
+    @media (max-width: $md4 + px) {
+      grid-template-columns: repeat(2, 153px);
+    }
   }
 }
 
 .action {
-  max-width: 326px;
-  margin: 0 auto;
+  &-button {
+    max-width: 326px;
+    margin: 0 auto;
+    @media (max-width: $md4 + px) {
+      display: none;
+    }
+  }
+
+  &-card {
+    display: none;
+    height: 120px;
+    @media (max-width: $md4 + px) {
+      display: block;
+    }
+  }
 }
 </style>

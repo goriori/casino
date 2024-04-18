@@ -157,3 +157,16 @@
 
   }
 }
+
+.modules {
+  &-filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 100px;
+    @media (max-width: $md4 + px) {
+      flex-direction: column;
+      gap: 30px;
+    }
+  }
+}
