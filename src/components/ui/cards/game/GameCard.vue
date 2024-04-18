@@ -1,6 +1,7 @@
 <script setup>
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { computed, onMounted, ref } from 'vue'
+import { useStateStore } from '@/store/stateStore.js'
 
 const props = defineProps({
   gameItem: {
@@ -8,8 +9,8 @@ const props = defineProps({
     default: {},
   },
 })
-const emits = defineEmits(['unauthorized'])
 const sessionStore = useSessionStore()
+const stateStore = useStateStore()
 const generateImgLink = `${window.API}/frontend/Default/ico/${props.gameItem.name}.jpg`
 
 const redirectLink = computed(
@@ -22,7 +23,7 @@ const onClickGame = () => {
   if (sessionStore.session.token) {
     redirectToGame()
   } else {
-    emits('unauthorized')
+    stateStore.globalPopupsModules.authorization.visibility = true
   }
 }
 </script>

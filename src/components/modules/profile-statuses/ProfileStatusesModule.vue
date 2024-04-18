@@ -32,6 +32,7 @@ onMounted(async () => {
         :key="status.id"
         :statusId="status.id"
         :statusImage="urlAPI + status.icon"
+        :statusBonus="status.bonus"
         :statusMinExp="status.exp"
         :statusRatio="status.ratio"
         :statusTitle="status.title"

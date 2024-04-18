@@ -10,10 +10,8 @@ export function useValid(
   withdrawalForm
 ) {
   const { cardTest } = useRegular()
-  const minCountWithdrawal =
-    window.MESSAGES_POPUP.WITHDRAWAL.MIN_COUNT_WITHDRAWAL
-  const maxCountWithdrawal =
-    window.MESSAGES_POPUP.WITHDRAWAL.MAX_COUNT_WITHDRAWAL
+  const minCountWithdrawal = window.MIN_COUNT_WITHDRAWAL
+  const maxCountWithdrawal = window.MAX_COUNT_WITHDRAWAL
   const sessionStore = useSessionStore()
   const validForm = async () => {
     const userInfo = sessionStore.session.profile
@@ -29,8 +27,10 @@ export function useValid(
       setTimeout(() => (validResults.value.sum = true), 5000)
       throw ERRORS.ERROR_VALIDATION.TYPE
     }
-    if (withdrawalForm.value.sum > maxCountWithdrawal) throw ERRORS.ERROR_VALIDATION.TYPE
-    if (!cardTest(withdrawalForm.value.card) && choiceOut.value.bankCard) throw ERRORS.ERROR_VALIDATION.TYPE
+    if (withdrawalForm.value.sum > maxCountWithdrawal)
+      throw ERRORS.ERROR_VALIDATION.TYPE
+    if (!cardTest(withdrawalForm.value.card) && choiceOut.value.bankCard)
+      throw ERRORS.ERROR_VALIDATION.TYPE
     return true
   }
   const setSuccessWithdrawal = () => {
@@ -54,7 +54,6 @@ export function useValid(
       stateStore.globalPopupMessages.error.close()
     }, timeClosePopup.value)
   }
-
 
   return {
     validForm,

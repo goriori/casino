@@ -1,74 +1,78 @@
 <script setup>
-import { ref } from 'vue'
+import { onMounted, ref, defineModel } from 'vue'
 import ArrowSelectIcon from '@/components/ui/icons/other/ArrowSelectIcon.vue'
 import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
+import { is } from 'date-fns/locale'
 
 const props = defineProps({
-  name: {
+  modelValue: {
     type: String,
     default: '',
+  },
+  titles: {
+    type: Array,
+    default: () => [],
   },
   icon: {
     type: Object,
     default: () => {},
   },
-  items: {
-    type: Array,
-    default: [],
-  },
-  active: {
-    type: Boolean,
-    default: false,
-  },
-  handler: {
-    type: Function,
-    required: false,
-  },
-  defaultTargetElement: {
-    type: String,
-    default: 'Не выбрано',
-  },
 })
-const targetElement = ref(props.defaultTargetElement)
-const emits = defineEmits(['changeActive', 'clear'])
-const onSelect = (e) => {
-  console.log(e)
-  emits('changeActive', props.name)
+const emits = defineEmits(['update:modelValue'])
+const isOpen = ref(false)
+const list = ref([
+  {
+    id: 0,
+    title: 'Не выбрано',
+    isSelect: false,
+    onSelect: function () {
+      this.isSelect = true
+    },
+  },
+])
+const openSelect = () => (isOpen.value = !isOpen.value)
+const onSelect = (item) => {
+  const { id } = item
+  list.value.find((listItem) => listItem.id === id).onSelect()
+  isOpen.value = false
 }
-const onChange = (category) => {
-  if (category !== -1 && props.handler) {
-    props.handler(category.position, category.title)
-    targetElement.value = category.title
-  }
+const buildSelectData = () => {
+  list.value.push(
+    ...props.titles.map((title, index) => {
+      return {
+        id: index + 1,
+        title,
+        isSelect: false,
+        onSelect: function () {
+          this.isSelect = true
+          emits('update:modelValue', this.title)
+        },
+      }
+    })
+  )
+  emits('update:modelValue', list.value[0].title)
 }
-const onClear = () => {
-  targetElement.value = 'Не выбрано'
-  emits('clear')
-}
+
+
+onMounted(() => {
+  buildSelectData()
+})
 </script>
 
 <template>
-  <div class="select" @click="onSelect">
-    <div class="select-title">
-      <div class="select-title-container">
-        <component v-if="icon" :is="icon" />
-        <p>{{ targetElement }}</p>
-      </div>
-      <ArrowSelectIcon
-        v-if="targetElement === 'Не выбрано'"
-      />
-      <CloseIcon
-        v-if="targetElement !== 'Не выбрано'"
-        @click="onClear"
-      />
+  <div class="select">
+    <div class="select-title" @click="openSelect">
+      <component v-if="icon" :is="icon" />
+      <p>{{ modelValue }}</p>
+      <ArrowSelectIcon />
     </div>
     <Transition name="bounce">
-      <div class="select-list" v-if="active">
+      <div class="select-list" v-if="isOpen">
         <p
           class="select-list-item"
-          v-for="item in items"
+          v-for="item in list"
           :key="item"
-          @click="onChange(item)"
+          @click="onSelect(item)"
         >
           {{ item.title }}
         </p>
@@ -82,47 +86,41 @@ const onClear = () => {
 
 .select {
   position: relative;
-  cursor: pointer;
   width: 100%;
-  height: 100%;
-  background: #303030;
-  padding: 20px 28px;
-  border-radius: 4px;
 
   &-title {
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 50px;
-
-    &-container {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
+    background-color: #303030;
+    padding: 20px 28px;
+    border-radius: 5px;
   }
 
   &-list {
-    position: absolute;
-    z-index: 100;
     width: 100%;
-    border-radius: 8px;
-    left: 0;
-    max-height: 372px;
-    overflow: auto;
-    background: #303030;
-    margin: 30px 0 0 0;
-    padding: 10px;
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #303030;
+    padding: 20px 28px;
   }
 
   &-list-item {
-    padding: 28px 36px;
-    border-bottom: 1px solid #fff;
+    cursor: pointer;
     width: 100%;
-    transition: 0.15s all ease-in-out;
 
     &:hover {
-      background: #d5a748;
+      transition: 0.2s opacity ease-in-out;
+      opacity: 0.7;
+    }
+
+    &:active {
+      transition: 0.2s opacity ease-in-out;
+      opacity: 0.5;
     }
   }
 }

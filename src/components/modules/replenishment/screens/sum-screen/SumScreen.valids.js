@@ -1,5 +1,5 @@
 export function useValid(balance, isValid, timeClosePopup) {
-  const minCountBalance = window.MESSAGES_POPUP.SUM_SCREEN.MIN_COUNT_PAY
+  const minCountBalance = window.MIN_COUNT_WITHDRAWAL
   const validSum = async () => {
     if (balance.value < minCountBalance) throw false
   }

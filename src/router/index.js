@@ -10,6 +10,10 @@ const AccountView = () => import('@/pages/account/Account.vue')
 const Registration = () => import('@/pages/registration/Registration.vue')
 
 const BonusesView = () => import('@/pages/bonuses/Bonuses.vue')
+
+const UiView = () => import('@/pages/ui/Ui.vue')
+
+const GamesView = () => import('@/pages/games/Games.vue')
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
@@ -42,6 +46,16 @@ const router = createRouter({
       path: '/bonuses',
       name: 'bonuses',
       component: BonusesView,
+    },
+    {
+      path: '/games',
+      name: 'games',
+      component: GamesView,
+    },
+    {
+      path: '/ui',
+      name: 'ui',
+      component: UiView,
     },
   ],
 })

@@ -19,6 +19,7 @@ const props = defineProps({
 })
 
 const paymentStore = usePaymentStore()
+const serverUrl = window.API
 const { currentTime, isFinished, startTimer } = useTimer(15 * 60 * 1000)
 const { screenshot, timeClosePopup, translationMessages, fullName } = useData()
 const { onValidFullName, onErrorValid } = useValids(fullName, timeClosePopup)
@@ -48,7 +49,7 @@ onUnmounted(() => clearOptions())
       <div class="title-target-bank">
         <img
           :src="
-            'https://api.gamesoffutures.ru' +
+            serverUrl +
             paymentStore.targetRequisite.bankIcon
           "
           alt=""

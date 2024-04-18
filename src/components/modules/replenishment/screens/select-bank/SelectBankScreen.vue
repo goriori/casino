@@ -13,6 +13,7 @@ const props = defineProps({
 const emits = defineEmits(['select-bank'])
 const paymentStore = usePaymentStore()
 const { onSelectBank } = useMethods()
+const serverUrl = window.API
 </script>
 
 <template>
@@ -30,7 +31,7 @@ const { onSelectBank } = useMethods()
           @click="onSelectBank(bank, emits)"
           v-ripple
         >
-          <img :src="'https://api.gamesoffutures.ru' + bank.icon" alt="">
+          <img :src="serverUrl + bank.icon" alt="">
           <h4>{{ bank.title }}</h4>
         </div>
       </div>

@@ -39,6 +39,7 @@ export const onRegistration = async (router) => {
       .then(clearForm)
       .then(openAuthorization)
   } catch (e) {
+    console.log(e)
     if (e === ERRORS.ERROR_VALIDATION.TYPE) onErrorValid()
     else onErrorMessage()
   }

@@ -11,6 +11,9 @@
   padding: 80px;
   overflow: scroll;
   @include no-scroll();
+  @media (max-width: $md5 + px) {
+    padding: 20px;
+  }
 
   &-close {
     width: 100%;
@@ -32,6 +35,11 @@
     font-weight: 700;
     font-size: 40px;
     color: $white;
+    @media (max-width: $md5 + px) {
+      padding: 7px 15px;
+      max-width: 140px;
+      font-size: 16px;
+    }
   }
 
   &-fortune {
@@ -50,6 +58,10 @@
     top: 0;
     left: 50%;
     transform: translate(-50%, 0);
+    @media (max-width: $md5 + px) {
+      width: 15px;
+      height: 10px;
+    }
   }
 
   &-prize {
@@ -69,6 +81,9 @@
     font-weight: 700;
     color: $primary;
     margin-right: 40px;
+    @media (max-width: $md5 + px) {
+      font-size: 20px;
+    }
 
     &:after {
       content: 'Цена ключа';
@@ -79,7 +94,8 @@
   }
 
   &-about {
-    width:100%;
+    width: 100%;
+
     &-title {
       max-width: 341px;
       padding: 20px 40px;
@@ -91,6 +107,11 @@
       font-size: 24px;
       font-weight: 700;
       color: $white;
+      @media (max-width: $md5 + px) {
+        padding: 7px 15px;
+        max-width: 140px;
+        font-size: 10px;
+      }
     }
 
     &-body {
@@ -102,8 +123,8 @@
       max-width: 1650px;
       gap: 47px;
     }
+
     &-item {
-      flex: 1 0 167px;
     }
   }
 }
@@ -117,7 +138,13 @@
 .prize {
 
   &-title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
     color: white;
+    @media (max-width: $md5 + px) {
+      font-size: 10px;
+    }
   }
 
   &-name {

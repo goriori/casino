@@ -47,6 +47,7 @@ const splideOption = ref({
 const visibilityPrize = ref(false)
 const onStartPlay = (e) => {
   if (splideRef.value) {
+    visibilityPrize.value = false
     activeSpin.value = true
     splideRef.value.options.autoScroll.speed = 90
     caseStore.openCase(stateStore.globalPopupsModules.caseOpen.caseId)
@@ -116,7 +117,8 @@ const onStartPlay = (e) => {
         class="case-btn"
         @click="onStartPlay"
         :disabled="activeSpin"
-        >Крутить
+        >
+        {{ visibilityPrize ? 'Крутить еще раз' : 'Крутить'}}
       </BaseButton>
     </section>
     <section class="case-about">

@@ -4,7 +4,10 @@
     border-radius: 36px;
     padding: 40px;
     background: $gray;
+    @media (max-width: $md4 + px) {
+      padding: 20px;
 
+    }
     &-sections {
       display: flex;
       justify-content: space-between;
@@ -13,6 +16,9 @@
       font-size: 14px;
       font-weight: 400;
       margin: 0 0 40px 0;
+      @media (max-width: $md4 + px) {
+        font-size: 6px;
+      }
     }
 
     &-list {

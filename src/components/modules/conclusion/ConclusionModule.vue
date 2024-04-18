@@ -1,14 +1,15 @@
 <script setup>
+import { useStateStore } from '@/store/stateStore.js'
+import { useData } from '@/components/modules/conclusion/ConclusionModule.options.js'
+import { useMethods } from '@/components/modules/conclusion/ConclusionModule.events.js'
+import { useValid } from '@/components/modules/conclusion/ConclusionModule.valids.js'
+import { onKeyPress } from '@/utils/helpers/numberKeyPress.js'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import CardIcon from '@/components/ui/icons/other/CardIcon.vue'
 import ChoicePayCard from '@/components/ui/cards/choice-pay/ChoicePayCard.vue'
 import CryptoPayIcon from '@/components/ui/icons/pay/CryptoPayIcon.vue'
 import BankCardPayIcon from '@/components/ui/icons/pay/BankCardPayIcon.vue'
 import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
-import { useStateStore } from '@/store/stateStore.js'
-import { useData } from '@/components/modules/conclusion/ConclusionModule.options.js'
-import { useMethods } from '@/components/modules/conclusion/ConclusionModule.events.js'
-import { useValid } from '@/components/modules/conclusion/ConclusionModule.valids.js'
 
 const props = defineProps({
   isPopup: {
@@ -17,8 +18,8 @@ const props = defineProps({
   },
 })
 const emits = defineEmits(['success', 'error'])
-const minCountWithdrawal = window.MESSAGES_POPUP.WITHDRAWAL.MIN_COUNT_WITHDRAWAL
-const maxCountWithdrawal = window.MESSAGES_POPUP.WITHDRAWAL.MAX_COUNT_WITHDRAWAL
+const minCountWithdrawal = window.MIN_COUNT_WITHDRAWAL
+const maxCountWithdrawal = window.MAX_COUNT_WITHDRAWAL
 const stateStore = useStateStore()
 const { choiceOut, validResults, withdrawalForm, timeClosePopup } = useData()
 const {
@@ -35,6 +36,8 @@ const { choicePay, onSendWithdrawal } = useMethods(
   setSuccessWithdrawal,
   validForm
 )
+
+
 </script>
 
 <template>
@@ -84,6 +87,7 @@ const { choicePay, onSendWithdrawal } = useMethods(
             :min="minCountWithdrawal"
             :max="maxCountWithdrawal"
             v-model="withdrawalForm.sum"
+            @keypress="onKeyPress"
           />
         </div>
       </div>
@@ -95,6 +99,7 @@ const { choicePay, onSendWithdrawal } = useMethods(
           autocomplete="off"
           placeholder="Введите номер банковской карты"
           v-model.trim="withdrawalForm.card"
+          @keypress="onKeyPress"
         />
       </div>
       <div class="info-item" v-if="choiceOut.crypto">

@@ -45,8 +45,20 @@ const color = computed(() => {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  padding: 28px 42px;
+
+  @media (max-width: $md5 + px) {
+    width: 65px;
+    height: 65px;
+  }
 
   &-img {
+    width: 95px;
+    max-height: 65px;
+    @media (max-width: $md5 + px) {
+      width: 36px;
+      max-height: 25px;
+    }
   }
 
   &-title {
@@ -57,25 +69,21 @@ const color = computed(() => {
 }
 
 .brown {
-  padding: 28px 42px;
   border-bottom: 2px solid $brown-card;
   background: linear-gradient(180deg, $dark-gray 44.21%, $brown-card 384.43%);
 }
 
 .green {
-  padding: 29px 25px;
   border-bottom: 2px solid $green-card;
   background: linear-gradient(180deg, $dark-gray 44.21%, $green-card 384.43%);
 }
 
 .orange {
-  padding: 28px 9px 30px;
   border-bottom: 2px solid $orange-card;
   background: linear-gradient(180deg, $dark-gray 44.21%, $orange-card 384.43%);
 }
 
 .light-green {
-  padding: 28px 18px 14px;
   border-bottom: 2px solid $light-green-card;
   background: linear-gradient(
     180deg,

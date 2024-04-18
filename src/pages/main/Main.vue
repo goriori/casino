@@ -1,5 +1,4 @@
 <script setup>
-import { defineAsyncComponent } from 'vue'
 import Header from '@/components/globals/header/Header.vue'
 import Footer from '@/components/globals/footer/Footer.vue'
 import ArrowHowStartIcon from '@/components/ui/icons/other/ArrowHowStartIcon.vue'
@@ -7,11 +6,9 @@ import { startItems } from '@/pages/main/Main.options.js'
 import AboutInfoIcon from '@/components/ui/icons/other/AboutInfoIcon.vue'
 import StatisticsModule from '@/components/modules/statistics/StatisticsModule.vue'
 import CasesModule from '@/components/modules/cases/CasesModule.vue'
-import CaseOpenModule from '@/components/modules/case-open/CaseOpenModule.vue'
+import CategoryList from '@/components/modules/category-list/CategoryList.vue'
 
-const PopularGameModule = defineAsyncComponent(() =>
-  import('@/components/modules/popular/PopularGameModule.vue')
-)
+
 </script>
 <template>
   <div class="page">
@@ -20,8 +17,8 @@ const PopularGameModule = defineAsyncComponent(() =>
       <div class="page-modules">
         <StatisticsModule />
         <CasesModule />
-        <div class="modules-popular">
-          <PopularGameModule />
+        <div class="modules-categories">
+          <CategoryList />
         </div>
       </div>
       <div class="page-how_start">

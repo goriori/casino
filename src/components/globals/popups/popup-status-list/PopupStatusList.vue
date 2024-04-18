@@ -28,6 +28,8 @@ const emits = defineEmits(['close'])
 </template>
 
 <style scoped lang="scss">
+@import '@/assets/scss/variables';
+
 .popup {
   &-window {
     display: flex;
@@ -46,12 +48,18 @@ const emits = defineEmits(['close'])
 
       h1 {
         font-size: 32px;
+        @media (max-width: $md4 + px) {
+          font-size: 20px;
+        }
       }
     }
 
     p {
       font-size: 20px;
       font-weight: 40;
+      @media (max-width: $md4 + px) {
+        font-size: 10px;
+      }
     }
   }
 }

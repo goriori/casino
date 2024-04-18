@@ -1,13 +1,13 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useBonusSystemStore } from '@/store/bonus-system/bonusSystemStore.js'
 import { useStateStore } from '@/store/stateStore.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { ERRORS } from '@/configs/errors.js'
 import { SUCCESS } from '@/configs/success.js'
+import { onKeyPress } from '@/utils/helpers/numberKeyPress.js'
 import InfoTooltip from '@/components/ui/tooltips/info/InfoTooltip.vue'
 import ProfileStatusTooltipMessage from '@/components/modules/tooltip-messages/profile-status/ProfileStatusTooltipMessage.vue'
-import TextTooltip from '@/components/ui/tooltips/text/TextTooltip.vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import ContentLoader from '@/components/ui/content-loader/ContentLoader.vue'
 
@@ -16,6 +16,11 @@ const sessionStore = useSessionStore()
 const stateStore = useStateStore()
 const bonusOut = ref(0)
 const loadModule = ref(true)
+
+watch(bonusOut, (newValue) => {
+  if (newValue < 0) bonusOut.value = 0
+})
+
 const validBonusOut = async () => {
   if (bonusOut.value < 10) throw false
   return true
@@ -62,18 +67,12 @@ onMounted(() => {
         <h3 class="form-title">
           Ваши баллы: <span>{{ bonusSystemStore.bonusSystemState.coins }}</span>
         </h3>
-        <div class="form-links">
-          <TextTooltip
-            text="История платежей"
-            message="Пока здесь нет ничего"
-            class="tooltip"
-          />
-        </div>
         <div class="form-field">
           <input
             type="number"
             placeholder="Количество баллов"
-            v-model="bonusOut"
+            @keypress="onKeyPress"
+            v-model.trim.number="bonusOut"
           />
           <svg
             xmlns="http://www.w3.org/2000/svg"

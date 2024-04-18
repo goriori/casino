@@ -21,7 +21,10 @@ onMounted(() => {
       <rect width="200" height="100" />
     </ContentLoader>
   </section>
-  <section class="profile__verification-module" v-else>
+  <section
+    class="profile__verification-module"
+    v-if="!loadModule && sessionStore.session?.profile?.show_verified"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="44"

@@ -39,7 +39,6 @@ export const useBonusSystemStore = defineStore('bonusSystemStore', () => {
     await BonusSystemService.exchangeCoins(coins)
   }
   const onInitBonusSystemAccount = (profile) => {
-    console.log('init bonus system')
     const { bonus, coins, free_spins, promo, promo_activated } = profile
     bonusSystemState.value = {
       bonus,

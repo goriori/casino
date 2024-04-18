@@ -1,37 +1,26 @@
-window.API = 'https://api.gamesoffutures.ru'
+window.API = 'https://api.slots-spincity.com'
 window.TG_BOT = 'https://t.me/slotspincity_bot'
 window.CEF = false
 window.TIMEOUT = 90
 window.IS_DEV = true
-window.MESSAGES_POPUP = {
-  AUTHORIZATION: {
-    SUCCESS: 'Вы успешно вошли в аккаунт',
-    ERROR_VALIDATION: 'Поля заполнены не правильно!',
-    ERROR_SERVER:
-      'Во время авторизации произошла ошибка! Пожалуйста попробуйте позже!',
+window.MIN_COUNT_WITHDRAWAL = 5000
+window.MAX_COUNT_WITHDRAWAL = 100000
+
+
+window.CATEGORIES = [
+  {
+    id: 1,
+    title: 'Топ слоты',
+    games: [560, 407, 327, 328, 476],
   },
-  REGISTRATION: {
-    SUCCESS: 'Вы успешно создали аккаунт',
-    ERROR_VALIDATION: 'Поля заполнены не правильно!',
-    ERROR_SERVER:
-      'Во время регистрации произошла ошибка! Пожалуйста попробуйте позже!',
+  {
+    id: 2,
+    title: 'Популярные',
+    games: [501, 695, 327, 328, 476],
   },
-  SUM_SCREEN: {
-    MIN_COUNT_PAY: 500,
-    ERROR_VALIDATION: 'Минимальная сумма для пополнения! ',
+  {
+    id: 3,
+    title: 'Новинки',
+    games: [4, 9, 327, 501, 84],
   },
-  CONFIRM_TRANSLATION: {
-    ERROR_VALIDATION: 'Поля заполнены не правильно!',
-    ERROR_SERVER:
-      'Во время подтверждения  произошла ошибка! Пожалуйста попробуйте позже!',
-  },
-  WITHDRAWAL: {
-    MIN_COUNT_WITHDRAWAL: 500,
-    MAX_COUNT_WITHDRAWAL: 1000000000,
-    SUCCESS:
-      'Вы успешно создали заявку на вывод средств! Пожалуйста ожидайте ее расмотрения!',
-    ERROR_VALIDATION: 'Поля заполнены не правильно!',
-    ERROR_SERVER:
-      'Во время вывода средст произошла ошибка! Пожалуйста попробуйте позже!',
-  },
-}
+]
