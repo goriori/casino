@@ -42,32 +42,43 @@ const splideOption = ref({
 const visibilityPrize = ref(false)
 
 const initSplideOption = () => {
+  console.log('init splide option')
   Object.assign(splideRef.value.options, splideOption.value)
 }
 const onSpinWheel = () => {
+  console.log('init option auto scroll start')
   splideRef.value.options.autoScroll = {
     speed: 90,
     autoStart: true,
     pauseOnHover: false,
   }
+  splideRef.value.splide.Components.AutoScroll.play()
 }
 const onStopWheel = () => {
-  splideRef.value.options.autoScroll = {
-    speed: 0,
-    autoStart: false,
-    pauseOnHover: false,
-  }
-  splideRef.value.go(1)
+  console.log('init option auto scroll stop')
+  return new Promise((resolve, reject) => {
+    if (caseStore.casePrize?.title) return resolve()
+    return reject()
+  }).then(() => {
+    setTimeout(() => {
+      splideRef.value.splide.Components.AutoScroll.pause()
+      splideRef.value.go(1)
+      showPrize()
+    }, 5000)
+  })
 }
 const hidePrize = () => {
   visibilityPrize.value = false
   activeSpin.value = true
 }
 const showPrize = () => {
+  caseStore.casePrize = {}
   visibilityPrize.value = true
   activeSpin.value = false
+  console.log('show prize')
 }
 const getPrize = () => {
+  console.log('get prize')
   caseStore.openCase(stateStore.globalPopupsModules.caseOpen.caseId)
 }
 const updateUserInfo = () => {
@@ -75,13 +86,18 @@ const updateUserInfo = () => {
 }
 const onStartPlay = (e) => {
   if (splideRef.value) {
+    console.log(splideRef.value.splide)
     Promise.resolve()
       .then(hidePrize)
       .then(onSpinWheel)
       .then(getPrize)
       .then(onStopWheel)
-      .then(showPrize)
-      .then(updateUserInfo)
+      .finally(updateUserInfo)
+      .catch(() => {
+        stateStore.globalPopupMessages.error.show(
+          'При прокрутке произошла ошибка '
+        )
+      })
   }
 }
 
