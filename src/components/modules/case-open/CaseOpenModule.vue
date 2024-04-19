@@ -29,12 +29,7 @@ const splideOption = ref({
   type: 'loop',
   rewind: true,
   perPage: 6,
-  wheel: true,
-  autoScroll: {
-    speed: 0,
-    autoStart: true,
-    pauseOnHover: false,
-  },
+  wheel: false,
   breakpoints: {
     1240: {
       perPage: 2,
@@ -45,23 +40,54 @@ const splideOption = ref({
   },
 })
 const visibilityPrize = ref(false)
-const onStartPlay = (e) => {
-  if (splideRef.value) {
-    visibilityPrize.value = false
-    activeSpin.value = true
-    splideRef.value.options.autoScroll.speed = 90
-    caseStore.openCase(stateStore.globalPopupsModules.caseOpen.caseId)
-    const timerRoulette = setInterval(() => {
-      if (splideRef.value.options.autoScroll.speed === 0) {
-        visibilityPrize.value = true
-        activeSpin.value = false
-        sessionStore.getInfoSession()
-        clearInterval(timerRoulette)
-      }
-      splideRef.value.options.autoScroll.speed -= 10
-    }, 1000)
+
+const initSplideOption = () => {
+  Object.assign(splideRef.value.options, splideOption.value)
+}
+const onSpinWheel = () => {
+  splideRef.value.options.autoScroll = {
+    speed: 90,
+    autoStart: true,
+    pauseOnHover: false,
   }
 }
+const onStopWheel = () => {
+  splideRef.value.options.autoScroll = {
+    speed: 0,
+    autoStart: false,
+    pauseOnHover: false,
+  }
+  splideRef.value.go(1)
+}
+const hidePrize = () => {
+  visibilityPrize.value = false
+  activeSpin.value = true
+}
+const showPrize = () => {
+  visibilityPrize.value = true
+  activeSpin.value = false
+}
+const getPrize = () => {
+  caseStore.openCase(stateStore.globalPopupsModules.caseOpen.caseId)
+}
+const updateUserInfo = () => {
+  sessionStore.getInfoSession()
+}
+const onStartPlay = (e) => {
+  if (splideRef.value) {
+    Promise.resolve()
+      .then(hidePrize)
+      .then(onSpinWheel)
+      .then(getPrize)
+      .then(onStopWheel)
+      .then(showPrize)
+      .then(updateUserInfo)
+  }
+}
+
+onMounted(() => {
+  if (splideRef.value) initSplideOption()
+})
 </script>
 
 <template>
@@ -86,6 +112,7 @@ const onStartPlay = (e) => {
             <SplideSlide
               v-for="prize in stateStore.globalPopupsModules.caseOpen.prizes"
               :key="prize.id"
+              :data-id="prize.id"
               class="slide"
             >
               <CasePrizeCard
@@ -117,8 +144,8 @@ const onStartPlay = (e) => {
         class="case-btn"
         @click="onStartPlay"
         :disabled="activeSpin"
-        >
-        {{ visibilityPrize ? 'Крутить еще раз' : 'Крутить'}}
+      >
+        {{ visibilityPrize ? 'Крутить еще раз' : 'Крутить' }}
       </BaseButton>
     </section>
     <section class="case-about">
