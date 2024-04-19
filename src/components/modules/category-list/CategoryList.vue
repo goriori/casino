@@ -96,6 +96,12 @@ onMounted(async () => {
     display: grid;
     grid-template-columns: repeat(5, 340px);
     gap: 25px;
+    @media (max-width: $md2 + px) {
+      grid-template-columns: repeat(4, 200px);
+    }
+    @media (max-width: $md3 + px) {
+      grid-template-columns: repeat(3, 200px);
+    }
     @media (max-width: $md4 + px) {
       grid-template-columns: repeat(2, 153px);
     }

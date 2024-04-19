@@ -1,6 +1,8 @@
 <script setup>
 import { Splide, SplideSlide } from '@splidejs/vue-splide'
 import '@splidejs/vue-splide/css'
+import { ref } from 'vue'
+
 const props = defineProps({
   images: {
     type: Array,
@@ -16,14 +18,25 @@ const props = defineProps({
   },
   breakpoints: {
     type: Object,
-    default: {},
+    default: () => {},
+  },
+  autoplay: {
+    type: Boolean,
+    default: false,
   },
 })
+const splide = ref(null)
 </script>
 
 <template>
   <div class="slider">
-    <Splide>
+    <Splide
+      :options="{
+        rewind: true,
+        autoplay,
+      }"
+      ref="splide"
+    >
       <SplideSlide v-for="image in images" :key="image">
         <img :src="image.path" alt="" :class="['slider']" />
       </SplideSlide>

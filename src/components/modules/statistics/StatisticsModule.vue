@@ -22,7 +22,7 @@ onMounted(() => {
 <template>
   <div class="statistics_module">
     <div class="statistics_module-slider">
-      <BaseSlider :pagination="true" :navigation="true" :images="slides" />
+      <BaseSlider :pagination="true" :navigation="true" :images="slides" autoplay/>
     </div>
     <div class="statistics_module-list">
       <div
