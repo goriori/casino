@@ -11,8 +11,12 @@ export const SUCCESS = {
     TYPE: 'success_copy_referal_code',
     MESSAGE: 'Код успешно скопирован',
   },
-  SUCCESS_PROMOCODE:{
+  SUCCESS_PROMOCODE: {
     TYPE: 'success_promocode',
     MESSAGE: 'Промокод успешно применен',
-  }
+  },
+  SUCCESS_CONVERTATION: {
+    TYPE: 'success_convertation',
+    MESSAGE: 'Конвертация прошла успешно',
+  },
 }

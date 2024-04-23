@@ -26,8 +26,7 @@ export const useBonusSystemStore = defineStore('bonusSystemStore', () => {
         if (type === ENTITY_PRIZES.COINS) return 'к опыту'
         else if (type === ENTITY_PRIZES.BALANCE) return 'к балансу'
         else if (type === ENTITY_PRIZES.BONUS) return 'к бонусам'
-        else if (type === ENTITY_PRIZES.FREE_SPIN)
-          return 'к вращениям'
+        else if (type === ENTITY_PRIZES.FREE_SPIN) return 'к вращениям'
         else return ''
       },
     }))
@@ -37,6 +36,9 @@ export const useBonusSystemStore = defineStore('bonusSystemStore', () => {
   }
   const onExchangeCoins = async (coins) => {
     await BonusSystemService.exchangeCoins(coins)
+  }
+  const onExchangeBonus = async () => {
+    await BonusSystemService.exchangeBonus()
   }
   const onInitBonusSystemAccount = (profile) => {
     const { bonus, coins, free_spins, promo, promo_activated } = profile
@@ -56,5 +58,6 @@ export const useBonusSystemStore = defineStore('bonusSystemStore', () => {
     spinRoulette,
     onExchangeCoins,
     onInitBonusSystemAccount,
+    onExchangeBonus,
   }
 })

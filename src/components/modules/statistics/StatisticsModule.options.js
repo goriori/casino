@@ -1,11 +1,10 @@
 import { ref } from 'vue'
 
-
 export const statistics = ref([
   {
     id: 1,
     image: '/images/statistics/1.png',
-    title: 'Топ выйгрыш за сутки',
+    title: 'Топ выигрыш за сутки',
     keyValue: 'top',
   },
   {
@@ -23,7 +22,7 @@ export const statistics = ref([
   {
     id: 4,
     image: '/images/statistics/4.png',
-    title: 'Среднее время вылаты',
+    title: 'Среднее время выплаты',
     keyValue: 'pay',
   },
 ])

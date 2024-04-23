@@ -42,11 +42,9 @@ const splideOption = ref({
 const visibilityPrize = ref(false)
 
 const initSplideOption = () => {
-  console.log('init splide option')
   Object.assign(splideRef.value.options, splideOption.value)
 }
 const onSpinWheel = () => {
-  console.log('init option auto scroll start')
   splideRef.value.options.autoScroll = {
     speed: 90,
     autoStart: true,
@@ -54,50 +52,42 @@ const onSpinWheel = () => {
   }
   splideRef.value.splide.Components.AutoScroll.play()
 }
-const onStopWheel = () => {
-  console.log('init option auto scroll stop')
-  return new Promise((resolve, reject) => {
-    if (caseStore.casePrize?.title) return resolve()
-    return reject()
-  }).then(() => {
-    setTimeout(() => {
-      splideRef.value.splide.Components.AutoScroll.pause()
-      splideRef.value.go(1)
-      showPrize()
-    }, 5000)
-  })
+const onStopWheel = async () => {
+  setTimeout(() => {
+    const prizeId = caseStore.casePrize.id
+    splideRef.value.go(prizeId)
+    splideRef.value.splide.Components.AutoScroll.pause()
+    showPrize()
+  }, 5000)
 }
 const hidePrize = () => {
+  caseStore.casePrize = {}
   visibilityPrize.value = false
   activeSpin.value = true
 }
 const showPrize = () => {
-  caseStore.casePrize = {}
   visibilityPrize.value = true
   activeSpin.value = false
-  console.log('show prize')
 }
-const getPrize = () => {
-  console.log('get prize')
-  caseStore.openCase(stateStore.globalPopupsModules.caseOpen.caseId)
+const getPrize = async () => {
+  await caseStore.openCase(stateStore.globalPopupsModules.caseOpen.caseId)
 }
 const updateUserInfo = () => {
   sessionStore.getInfoSession()
 }
 const onStartPlay = (e) => {
   if (splideRef.value) {
-    console.log(splideRef.value.splide)
     Promise.resolve()
       .then(hidePrize)
       .then(onSpinWheel)
       .then(getPrize)
       .then(onStopWheel)
-      .finally(updateUserInfo)
-      .catch(() => {
+      .catch((e) => {
         stateStore.globalPopupMessages.error.show(
           'При прокрутке произошла ошибка '
         )
       })
+      .finally(updateUserInfo)
   }
 }
 

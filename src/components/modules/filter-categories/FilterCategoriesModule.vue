@@ -1,10 +1,12 @@
 <script setup>
 import { useProviderStore } from '@/store/providers/providerStore.js'
-import { onBeforeMount, ref } from 'vue'
+import { onBeforeMount, ref, watch } from 'vue'
 import ChangeIcon from '@/components/ui/icons/popular/ChangeIcon.vue'
 import BaseSelect from '@/components/ui/selects/base/BaseSelect.vue'
+import { useGameStore } from '@/store/games/gameStore.js'
 
 const providersStore = useProviderStore()
+const gameStore = useGameStore()
 const targetSelect = ref()
 const categories = ref([])
 
@@ -14,6 +16,11 @@ const initCategories = () => {
   )
 }
 
+watch(targetSelect, (newValue, oldValue) => {
+  if (newValue === 'Не выбрано') return gameStore.resetFilteredGames()
+  const category = providersStore.providers.find((category) => category.title === newValue)
+  gameStore.filterGameCategory(category.id)
+})
 onBeforeMount(async () => {
   await providersStore.getProviders().then(initCategories)
 })

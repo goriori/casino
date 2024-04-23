@@ -15,12 +15,7 @@ export function useValid(
   const sessionStore = useSessionStore()
   const validForm = async () => {
     const userInfo = sessionStore.session.profile
-    if (
-      !userInfo.birthday ||
-      !userInfo.phone ||
-      !userInfo.email ||
-      !userInfo.address
-    )
+    if (!userInfo.birthday || !userInfo.first_name || !userInfo.phone)
       throw ERRORS.ERROR_NOT_FILLED_FIELDS.TYPE
     if (withdrawalForm.value.sum < minCountWithdrawal) {
       validResults.value.sum = false

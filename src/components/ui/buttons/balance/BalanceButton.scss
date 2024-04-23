@@ -30,6 +30,7 @@ svg {
   }
 
   .arrow-active {
+    transition: 0.3s all ease-in-out;
     transform: rotate(180deg);
   }
 }

@@ -26,6 +26,7 @@ const onSend = () => {
       placeholder="Поиск слотов"
       class="search-field"
       @input="onInput"
+      @keypress.enter="onSend"
     />
     <div
       :class="['search-icon', { 'active-search': activeSearch }]"

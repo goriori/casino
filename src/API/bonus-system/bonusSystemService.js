@@ -18,4 +18,20 @@ export default class BonusSystemService {
       throw e
     }
   }
+
+  static async exchangeBonus() {
+    try {
+      apiConfig.getToken()
+      const response = await axiosInstance({
+        url: '/exchangebonus',
+        headers: {
+          Authorization: `Bearer ${apiConfig.token}`,
+        },
+        method: 'POST',
+      })
+      return response.data
+    } catch (e) {
+      throw e
+    }
+  }
 }

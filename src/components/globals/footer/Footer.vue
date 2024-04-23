@@ -39,7 +39,7 @@ const router = useRouter()
       <div class="footer-links-item">
         <p @click="openFAQ">FAQ</p>
         <p @click="openAbout">О нас</p>
-        <p @click="openPrivileges">Привелегии</p>
+        <p @click="openPrivileges">Привилегии</p>
       </div>
       <div class="footer-links-item">
         <p @click="openTermCondition">Правила и условия</p>

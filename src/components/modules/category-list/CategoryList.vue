@@ -1,11 +1,11 @@
 <script setup>
 import { useProviderStore } from '@/store/providers/providerStore.js'
+import { useRouter } from 'vue-router'
 import { onMounted, ref } from 'vue'
 import { useGameStore } from '@/store/games/gameStore.js'
 import GameCard from '@/components/ui/cards/game/GameCard.vue'
 import SeeMoreButton from '@/components/ui/buttons/see-more/SeeMoreButton.vue'
 import PopularIcon from '@/components/ui/icons/popular/PopularIcon.vue'
-import { useRouter } from 'vue-router'
 import SeeMoreCard from '@/components/ui/cards/see-more/SeeMoreCard.vue'
 
 const categories = window.CATEGORIES
@@ -13,20 +13,19 @@ const providerStore = useProviderStore()
 const gamesStore = useGameStore()
 const router = useRouter()
 const categoriesGames = ref([])
-const seeMoreGames = () => {
-  router.push('/')
+const seeMoreGames = (type) => {
+  router.push(`/?type=${type}`)
 }
-const onClick = () => {
-  seeMoreGames()
+const onClick = (type) => {
+  seeMoreGames(type)
 }
 const buildCategoriesGameData = () => {
   categories.forEach((category) => {
     categoriesGames.value.push({
       title: category.title,
+      type: category.type,
       games: category.games
-        .map((id) => {
-          return gamesStore.games.find((game) => game.id === id)
-        })
+        .map((id) => gamesStore.games.find((game) => game.id === id))
         .filter((item) => item),
     })
   })
@@ -57,9 +56,9 @@ onMounted(async () => {
             :game-item="game"
             class="item-card"
           />
-          <SeeMoreCard class="action-card " />
+          <SeeMoreCard class="action-card" />
         </div>
-        <SeeMoreButton class="action-button" @click="onClick" />
+        <SeeMoreButton class="action-button" @click="onClick(category.type)" />
       </section>
     </article>
   </section>
@@ -94,16 +93,16 @@ onMounted(async () => {
 
   &-shortlist {
     display: grid;
-    grid-template-columns: repeat(5, 340px);
+    grid-template-columns: repeat(5, 1fr);
     gap: 25px;
     @media (max-width: $md2 + px) {
-      grid-template-columns: repeat(4, 200px);
+      grid-template-columns: repeat(4, 1fr);
     }
     @media (max-width: $md3 + px) {
-      grid-template-columns: repeat(3, 200px);
+      grid-template-columns: repeat(3, 1fr);
     }
     @media (max-width: $md4 + px) {
-      grid-template-columns: repeat(2, 153px);
+      grid-template-columns: repeat(2, 1fr);
     }
   }
 }

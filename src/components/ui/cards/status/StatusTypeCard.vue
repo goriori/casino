@@ -1,8 +1,8 @@
 <script setup>
-import CheckMarkIcon from '@/components/ui/icons/other/CheckMarkIcon.vue'
-import { ref } from 'vue'
+import { onBeforeMount, onMounted, ref } from 'vue'
 import { useSettingsStore } from '@/store/settings/settingStore.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
+import CheckMarkIcon from '@/components/ui/icons/other/CheckMarkIcon.vue'
 
 const props = defineProps({
   statusId: {
@@ -14,6 +14,10 @@ const props = defineProps({
     default: '',
   },
   statusMinExp: {
+    type: Number,
+    default: 0,
+  },
+  statusPircent: {
     type: Number,
     default: 0,
   },
@@ -33,7 +37,9 @@ const props = defineProps({
 
 const settingsStore = useSettingsStore()
 const sessionStore = useSessionStore()
-const userExp = sessionStore.session.profile.coins
+const statusMaxExp = ref()
+const progressBar = ref('')
+const userExp = ref(0)
 const indexStatus = settingsStore.statuses.findIndex(
   (status) => status.id === props.statusId
 )
@@ -45,18 +51,28 @@ const computedStatusMax = () => {
     return '∞'
   }
 }
-const statusMaxExp = ref(computedStatusMax())
+
 const limitBar = () => {
   const maxExp = statusMaxExp.value
   if (maxExp === '∞') return 10000000
   else return maxExp
 }
-const progressBar = ref(
-  (() => {
-    if (userExp > statusMaxExp.value) return '100%'
-    else return `${sessionStore.session.profile.coins / (limitBar() / 100)}%`
-  })()
-)
+
+onBeforeMount(() => {
+  const isAuth = !sessionStore.session?.profile
+  statusMaxExp.value = computedStatusMax()
+  if (isAuth) {
+    progressBar.value = '0%'
+  } else if (!isAuth) {
+    userExp.value = sessionStore.session?.profile.coins
+  } else if (userExp.value > statusMaxExp.value) {
+    progressBar.value = '100%'
+  } else {
+    progressBar.value = `${
+      sessionStore.session?.profile?.coins / (limitBar() / 100)
+    }%`
+  }
+})
 </script>
 
 <template>
@@ -78,14 +94,14 @@ const progressBar = ref(
       </div>
       <div class="profile__statuses-card-info-item">
         <CheckMarkIcon class="check-mark" />
-        <p>Бонус {{ statusBonus }}%</p>
+        <p>Бонус {{ statusPircent }}%</p>
       </div>
       <div class="profile__statuses-card-info-item">
         <CheckMarkIcon class="check-mark" />
         <p>Удвоение баллов на 1 час</p>
       </div>
     </div>
-    <div class="status__statuses-card-bonus">{{ statusBonus }}%</div>
+    <div class="status__statuses-card-bonus">{{ statusBonus }} Р</div>
     <strong class="profile__statuses-card-course">{{ statusRatio }}:1</strong>
   </article>
 </template>
@@ -113,8 +129,8 @@ const progressBar = ref(
       gap: 20px;
       @media (max-width: $md4 + px) {
         max-width: 110px;
-
       }
+
       img {
         max-width: 92px;
         max-height: 92px;
@@ -169,6 +185,7 @@ const progressBar = ref(
       @media (max-width: $md4 + px) {
         gap: 8px;
       }
+
       &-item {
         display: flex;
         align-items: center;
@@ -197,7 +214,7 @@ const progressBar = ref(
   width: 100%;
   max-width: 200px;
   @media (max-width: $md4 + px) {
-    max-width: 120px;
+    max-width: 80px;
   }
 }
 </style>

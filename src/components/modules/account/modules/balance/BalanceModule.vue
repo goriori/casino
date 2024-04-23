@@ -4,6 +4,8 @@ import { useSessionStore } from '@/store/session/sessionStore.js'
 import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 import BonusIcon from '@/components/ui/icons/balance/BonusIcon.vue'
 import ContentLoader from '@/components/ui/content-loader/ContentLoader.vue'
+import InfoTooltip from '@/components/ui/tooltips/info/InfoTooltip.vue'
+import BonusSystemTooltipMessage from '@/components/modules/tooltip-messages/bonus-system/BonusSystemTooltipMessage.vue'
 
 const sessionStore = useSessionStore()
 const loadModule = ref(true)
@@ -50,21 +52,28 @@ onMounted(() => {
     </div>
     <div class="balance-module-info">
       <div class="balance-module-info-item">
-        <h4>Основной</h4>
+        <div class="item-title">
+          <h4>Основной</h4>
+        </div>
         <div class="currency">
           <CurrencyIcon />
           <p>{{ sessionStore.session.profile?.balance }}</p>
         </div>
       </div>
       <div class="balance-module-info-item">
-        <h4>Бонусы</h4>
+        <div class="item-title">
+          <InfoTooltip :message="BonusSystemTooltipMessage" class="tooltip" />
+          <h4>Бонусы</h4>
+        </div>
         <div class="currency">
           <BonusIcon />
           <p>{{ sessionStore.session.profile?.bonus }}</p>
         </div>
       </div>
       <div class="balance-module-info-item">
-        <h4>Валюта:</h4>
+        <div class="item-title">
+          <h4>Валюта:</h4>
+        </div>
         <div class="currency">
           <p>RUB</p>
         </div>
@@ -150,7 +159,7 @@ onMounted(() => {
 
 .currency {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 8px;
 
@@ -159,4 +168,15 @@ onMounted(() => {
     font-weight: 700;
   }
 }
+
+.item {
+  &-title {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+  }
+}
+
 </style>
