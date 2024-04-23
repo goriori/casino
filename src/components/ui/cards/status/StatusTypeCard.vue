@@ -57,21 +57,16 @@ const limitBar = () => {
   if (maxExp === '∞') return 10000000
   else return maxExp
 }
-
-onBeforeMount(() => {
+const computedProgressBar = () => {
+  progressBar.value = `${userExp.value / (limitBar() / 100)}%`
+}
+onMounted(() => {
   const isAuth = !sessionStore.session?.profile
+  if (isAuth) progressBar.value = '0%'
   statusMaxExp.value = computedStatusMax()
-  if (isAuth) {
-    progressBar.value = '0%'
-  } else if (!isAuth) {
-    userExp.value = sessionStore.session?.profile.coins
-  } else if (userExp.value > statusMaxExp.value) {
-    progressBar.value = '100%'
-  } else {
-    progressBar.value = `${
-      sessionStore.session?.profile?.coins / (limitBar() / 100)
-    }%`
-  }
+  userExp.value = sessionStore.session?.profile?.coins
+  if (userExp.value > statusMaxExp.value) progressBar.value = '100%'
+  else computedProgressBar()
 })
 </script>
 
