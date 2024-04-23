@@ -111,7 +111,6 @@ const showPrizeDescription = (id) => {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-
   @media (max-width: $md4 + px) {
     padding: 10px 20px;
   }

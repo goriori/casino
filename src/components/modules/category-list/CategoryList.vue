@@ -120,7 +120,9 @@ onMounted(async () => {
     display: none;
     height: 120px;
     @media (max-width: $md4 + px) {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
 }

@@ -3,80 +3,104 @@
 @import '@/components/modules/spin-roulette/SpinRoulette';
 
 ::v-deep(.splide__track) {
-  transition: all 0.3s ease;
-  padding: 30px;
+	transition: all 0.3s ease;
+	padding: 30px;
 }
 
 .slide {
-  padding: 20px;
+	padding: 20px;
 }
 
 .cases__module {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 40px;
 
-  &-title {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 16px;
-    font-size: 32px;
+	&-title {
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+		gap: 16px;
+		font-size: 32px;
 
-    @media (max-width: $md4 + px) {
-      font-size: 20px;
-    }
-  }
+		@media (max-width: $md4 + px) {
+			font-size: 20px;
+		}
+	}
 
-  &-list {
-  }
+	&-list {
+	}
 
-  &-item {
-  }
+	&-item {
+	}
 }
 
 
 .roulette__module {
-  svg {
-    position: absolute;
-    top: -30px;
-    @media (max-width: $md1 + px) {
-      width: 120px;
-    }
-  }
+	height: 100%;
+	svg {
+		position: absolute;
+		top: -30px;
+		@media (max-width: $md1 + px) {
+			width: 120px;
+		}
+		@media(max-width: $md4 + px) {
+			top: -70px;
+			width: 100px;
+		}
+	}
 
-  &-card {
-    padding: 20px 40px;
-    flex: auto;
-  }
+	&-card {
+		padding: 20px 40px;
+		flex: auto;
+		display: flex;
+		flex-direction: column;
+		.card__content {
+			flex-grow: 1;
+			&-section {
+				margin-top: auto;
+			}
+		}
+		@media (max-width: $md4 + px) {
+			padding: 10px 20px;
+		}
+	}
 }
 
 .card__content {
-  &-head {
-    color: #D5A848;
-    h3 {
-      @media (max-width: $md1 + px) {
-        font-size: 20px;
-        flex: 1 0 auto;
-      }
-    }
-  }
+	&-head {
+		color: #D5A848;
 
-  &-section {
-    h2 {
-      @media (max-width: $md1 + px) {
-        font-size: 20px;
-        flex: 1 0 auto;
-      }
-    }
-    @media (max-width: $md1 + px) {
-      gap: 10px;
-    }
-  }
+		h3 {
+			@media (max-width: $md1 + px) {
+				font-size: 20px;
+				flex: 1 0 auto;
+			}
+			@media(max-width: $md4 + px) {
+				font-size: 15px;
+			}
+		}
+	}
 
-  gap: 70px;
-  @media (max-width: $md1 + px) {
-    gap: 30px;
-  }
+	&-section {
+		h2 {
+			@media (max-width: $md1 + px) {
+				font-size: 20px;
+				flex: 1 0 auto;
+			}
+			@media(max-width: $md4 + px) {
+				font-size: 15px;
+			}
+		}
+
+		@media (max-width: $md1 + px) {
+			gap: 10px;
+		}
+	}
+
+	gap: 70px;
+	@media (max-width: $md1 + px) {
+		gap: 30px;
+	}
 }

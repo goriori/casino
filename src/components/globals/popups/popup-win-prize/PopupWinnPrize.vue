@@ -34,7 +34,7 @@ const prizeName = computed(() => {
     <template #window>
       <div class="winn__prize">
         <div class="winn__prize-title">
-          <strong> Выйгрыш </strong>
+          <strong> Выигрыш </strong>
           <CloseIcon
             @click="stateStore.globalPopupsModules.winnPrize.visibility = false"
           />
@@ -43,15 +43,16 @@ const prizeName = computed(() => {
           <div class="winn__prize-icon">
             <img :src="icon" alt="image prize" />
           </div>
-          <div class="winn__prize-title">Вы выйграли приз!</div>
+          <div class="winn__prize-title">Вы выиграли приз!</div>
           <section>
             <h3>Ваш вприз:</h3>
             <span>+{{ bonusStore.winPrize.sum }} {{ prizeName }}</span>
           </section>
           <BaseButton
             @click="stateStore.globalPopupsModules.winnPrize.visibility = false"
-            ><p>Закрыть</p></BaseButton
           >
+            <p>Закрыть</p>
+          </BaseButton>
         </div>
       </div>
     </template>
@@ -71,6 +72,10 @@ p {
   display: flex;
   flex-direction: column;
   gap: 30px;
+  @media (max-width: 767px) {
+    padding: 30px;
+    width: calc(100dvw - 40px);
+  }
 
   &-title {
     display: flex;
@@ -86,6 +91,7 @@ p {
 
   &-icon {
     max-width: 500px;
+
     img {
       width: 100%;
       border-radius: 16px;

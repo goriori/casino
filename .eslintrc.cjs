@@ -25,7 +25,6 @@ module.exports = {
     'arrow-body-style': ['error', 'as-needed'],
     'arrow-parens': ['error', 'always'],
     'arrow-spacing': ['error', { before: true, after: true }],
-    camelcase: ['error'],
     'func-style': ['error', 'expression'],
     'max-depth': ['error', 3],
     'no-alert': ['error'],
