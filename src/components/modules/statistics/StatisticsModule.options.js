@@ -46,7 +46,7 @@ export const slides = ref([
     slideName: 'Welcome',
     path: '/images/statistics/slide_3.jpg',
     srcSet:
-      '/images/statistics/slide_3.jpg 1920w, /images/statistics/slide_3_mb.png 500w',
+      '/images/statistics/slide_3.jpg 1920w, /images/statistics/slide_3_mb.jpg 500w',
   },
   {
     id: 3,

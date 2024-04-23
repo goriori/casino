@@ -12,9 +12,9 @@ const router = useRouter()
 const visibility = ref(false)
 const changeVisibility = () => (visibility.value = !visibility.value)
 const redirectToSupports = () => {
-  const telegramLink = 'https://t.me/'
+  const telegramLink = window.TG_BOT
   const a = document.createElement('a')
-  a.href = telegramLink + settingStore.settings.tg_id
+  a.href = telegramLink
   a.target = '_blank'
   a.click()
 }

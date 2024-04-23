@@ -27,12 +27,16 @@ const splideRef = ref(null)
 const extensions = { AutoScroll }
 const splideOption = ref({
   type: 'loop',
-  rewind: true,
   control: false,
   perPage: 6,
+  start: 0,
+  drag: false,
   arrows: false,
   pagination: false,
   wheel: false,
+  autoScroll: {
+    pauseOnHover: false,
+  },
   breakpoints: {
     1240: {
       perPage: 3,
@@ -65,10 +69,16 @@ const onSpinWheel = () => {
 }
 const onStopWheel = async () => {
   setTimeout(() => {
-    splideRef.value.options.perPage = computedPeerPage()
     const prizeId = caseStore.casePrize.id
-    splideRef.value.go(prizeId)
+    let targetIndex
+    splideRef.value.options.perPage = computedPeerPage()
     splideRef.value.splide.Components.AutoScroll.pause()
+    const splideList = document.querySelectorAll('.case-item')
+    splideList.forEach((item) => {
+      if (item.dataset.id == prizeId) return (targetIndex = Number(item.dataset.index))
+    })
+    console.log(targetIndex)
+    splideRef.value.go(targetIndex)
     showPrize()
   }, 5000)
 }
@@ -125,13 +135,16 @@ onMounted(() => {
             :extensions="extensions"
             class="slider"
             ref="splideRef"
+            id="slider-case"
             @splide:autoplay:play="onStartPlay"
           >
             <SplideSlide
-              v-for="prize in stateStore.globalPopupsModules.caseOpen.prizes"
+              v-for="(prize, index) in stateStore.globalPopupsModules.caseOpen
+                .prizes"
               :key="prize.id"
               :data-id="prize.id"
-              class="slide"
+              :data-index="index"
+              class="slide case-item"
             >
               <CasePrizeCard
                 :color="prize.color"
