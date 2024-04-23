@@ -34,15 +34,17 @@ const splideOption = ref({
   arrows: false,
   pagination: false,
   wheel: false,
+  gap: 10,
+  focus: 'center',
   autoScroll: {
     pauseOnHover: false,
   },
   breakpoints: {
     1240: {
-      perPage: 3,
+      perPage: 4,
     },
     600: {
-      perPage: 2,
+      perPage: 4,
     },
   },
 })
@@ -50,9 +52,10 @@ const visibilityPrize = ref(false)
 
 function computedPeerPage() {
   const windowSize = window.innerWidth
-  if (windowSize > 1000) return 6
+  if (windowSize > 1241) return 6
+  else if (windowSize > 1000) return 4
   else if (windowSize > 500) return 4
-  else if (windowSize > 300) return 3
+  else if (windowSize > 300) return 4
   else return 2
 }
 
@@ -61,9 +64,10 @@ const initSplideOption = () => {
 }
 const onSpinWheel = () => {
   splideRef.value.options.autoScroll = {
-    speed: 90,
+    speed: 10,
     autoStart: true,
     pauseOnHover: false,
+    direction: 'ltr',
   }
   splideRef.value.splide.Components.AutoScroll.play()
 }
@@ -75,10 +79,10 @@ const onStopWheel = async () => {
     splideRef.value.splide.Components.AutoScroll.pause()
     const splideList = document.querySelectorAll('.case-item')
     splideList.forEach((item) => {
-      if (item.dataset.id == prizeId) return (targetIndex = Number(item.dataset.index))
+      if (+item.dataset.id === +prizeId) targetIndex = +item.dataset.index
     })
-    console.log(targetIndex)
     splideRef.value.go(targetIndex)
+    splideRef.value.options.focus = 'center'
     showPrize()
   }, 5000)
 }

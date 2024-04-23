@@ -38,7 +38,7 @@ const color = computed(() => {
 @import '@/assets/scss/variables';
 
 .cardPrize {
-  max-width: 167px;
+  width: 90%;
   height: 167px;
   border-radius: 36px;
   display: flex;
