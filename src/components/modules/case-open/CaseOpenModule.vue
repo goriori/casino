@@ -28,18 +28,29 @@ const extensions = { AutoScroll }
 const splideOption = ref({
   type: 'loop',
   rewind: true,
+  control: false,
   perPage: 6,
+  arrows: false,
+  pagination: false,
   wheel: false,
   breakpoints: {
     1240: {
-      perPage: 2,
+      perPage: 3,
     },
     600: {
-      perPage: 1,
+      perPage: 2,
     },
   },
 })
 const visibilityPrize = ref(false)
+
+function computedPeerPage() {
+  const windowSize = window.innerWidth
+  if (windowSize > 1000) return 6
+  else if (windowSize > 500) return 4
+  else if (windowSize > 300) return 3
+  else return 2
+}
 
 const initSplideOption = () => {
   Object.assign(splideRef.value.options, splideOption.value)
@@ -54,6 +65,7 @@ const onSpinWheel = () => {
 }
 const onStopWheel = async () => {
   setTimeout(() => {
+    splideRef.value.options.perPage = computedPeerPage()
     const prizeId = caseStore.casePrize.id
     splideRef.value.go(prizeId)
     splideRef.value.splide.Components.AutoScroll.pause()

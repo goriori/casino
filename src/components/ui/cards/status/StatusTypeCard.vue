@@ -21,6 +21,10 @@ const props = defineProps({
     type: Number,
     default: 0,
   },
+  statusPrivilage: {
+    type: String,
+    default: '',
+  },
   statusBonus: {
     type: Number,
     default: 0,
@@ -40,6 +44,8 @@ const sessionStore = useSessionStore()
 const statusMaxExp = ref()
 const progressBar = ref('')
 const userExp = ref(0)
+const privilages = props.statusPrivilage.split('\r\n')
+console.log(privilages)
 const indexStatus = settingsStore.statuses.findIndex(
   (status) => status.id === props.statusId
 )
@@ -83,17 +89,13 @@ onMounted(() => {
     </div>
     <div class="profile__statuses-card-info">
       <strong>{{ statusTitle }}</strong>
-      <div class="profile__statuses-card-info-item">
+      <div
+        class="profile__statuses-card-info-item"
+        v-for="privilege in privilages"
+        :key="privilege"
+      >
         <CheckMarkIcon class="check-mark" />
-        <p>Круглосуточная поддержка</p>
-      </div>
-      <div class="profile__statuses-card-info-item">
-        <CheckMarkIcon class="check-mark" />
-        <p>Бонус {{ statusPircent }}%</p>
-      </div>
-      <div class="profile__statuses-card-info-item">
-        <CheckMarkIcon class="check-mark" />
-        <p>Удвоение баллов на 1 час</p>
+        <p>{{ privilege }}</p>
       </div>
     </div>
     <div class="status__statuses-card-bonus">{{ statusBonus }} Р</div>

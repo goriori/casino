@@ -22,7 +22,12 @@ onMounted(() => {
 <template>
   <div class="statistics_module">
     <div class="statistics_module-slider">
-      <BaseSlider :pagination="true" :navigation="true" :images="slides" autoplay/>
+      <BaseSlider
+        :pagination="true"
+        :navigation="true"
+        :images="slides"
+        autoplay
+      />
     </div>
     <div class="statistics_module-list">
       <div
@@ -31,7 +36,7 @@ onMounted(() => {
         :key="statistic.id"
       >
         <div class="list-icon">
-          <img :src="statistic.image" alt="" />
+          <img :src="statistic.image"  alt="" />
         </div>
         <div class="list-content">
           <div class="list-title">{{ statistic.title }}</div>

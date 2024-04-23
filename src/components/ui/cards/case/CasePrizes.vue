@@ -21,7 +21,7 @@ const showPrizeDescription = (prize) => {
     <div class="card_case-content">
       <div class="card_case-prize" v-for="prize in prizes" :key="prize.id">
         <div class="card_case-prize-title" @click="showPrizeDescription(prize)">
-          <component :is="prize.icon" />
+          <component :is="prize.icon" class="prize-icon"/>
           <p>{{ prize.title }}</p>
           <DropdownIcon v-if="prize.haveContent" />
         </div>
@@ -56,7 +56,7 @@ const showPrizeDescription = (prize) => {
     gap: 20px;
 
     @media (max-width: $md5 + px) {
-      grid-template-columns: repeat(2, 130px);
+      grid-template-columns: repeat(2, 150px);
     }
   }
 
@@ -69,18 +69,26 @@ const showPrizeDescription = (prize) => {
 
   &-prize-title {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     gap: 20px;
     font-size: 16px;
     @media (max-width: $md5 + px) {
       font-size: 10px;
+      gap: 10px;
     }
   }
 
   &-prize-description {
     font-size: 12px;
     color: #bbbbbb;
+  }
+}
+
+.prize{
+  &-icon {
+    width: 100%;
+    max-width: 20px;
   }
 }
 </style>

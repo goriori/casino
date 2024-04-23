@@ -44,12 +44,17 @@ const color = computed(() => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  text-align: center;
   padding: 28px 42px;
+  gap: 25px;
 
   @media (max-width: $md5 + px) {
     width: 65px;
     height: 65px;
+    padding: 10px 11px;
+    border-radius: 12px;
+    gap: 8px;
   }
 
   &-img {
@@ -65,6 +70,9 @@ const color = computed(() => {
     font-size: 16px;
     font-weight: 400;
     color: $white;
+    @media (max-width: $md5 + px) {
+      font-size: 6px;
+    }
   }
 }
 

@@ -19,7 +19,7 @@ onMounted(async () => {
       <p>Бонус</p>
       <p>Курс обмена</p>
     </div>
-    <div >
+    <div>
       <ContentLoader
         type="status-card"
         color="secondary"
@@ -28,13 +28,17 @@ onMounted(async () => {
         <rect width="400" height="200" />
       </ContentLoader>
       <Transition name="fade">
-        <div class="profile__statuses-module-list" v-if="settingStore?.statuses">
+        <div
+          class="profile__statuses-module-list"
+          v-if="settingStore?.statuses"
+        >
           <StatusTypeCard
             v-for="status in settingStore.statuses"
             :key="status.id"
             :statusId="status.id"
             :statusImage="urlAPI + status.icon"
             :statusPircent="status.bonus"
+            :statusPrivilage="status.text"
             :statusBonus="status.pay_bonus"
             :statusMinExp="status.exp"
             :statusRatio="status.ratio"

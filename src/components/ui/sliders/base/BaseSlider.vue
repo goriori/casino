@@ -38,7 +38,12 @@ const splide = ref(null)
       ref="splide"
     >
       <SplideSlide v-for="image in images" :key="image">
-        <img :src="image.path" alt="" :class="['slider']" />
+        <img
+          :src="image.path"
+          alt=""
+          :srcset="image?.srcSet"
+          :class="['slider']"
+        />
       </SplideSlide>
     </Splide>
   </div>

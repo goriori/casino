@@ -23,7 +23,7 @@ export default class BonusSystemService {
     try {
       apiConfig.getToken()
       const response = await axiosInstance({
-        url: '/exchangebonus',
+        url: '/exchangeBonus',
         headers: {
           Authorization: `Bearer ${apiConfig.token}`,
         },

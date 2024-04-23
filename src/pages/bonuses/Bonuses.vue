@@ -44,6 +44,8 @@ const onExchangeBonus = async () => {
       return success.show(SUCCESS.SUCCESS_CONVERTATION.MESSAGE)
     }
   } catch (e) {
+    const { data } = e.response
+    if (data.details !== undefined) return error.show(data.details)
     return error.show(ERRORS.ERROR_SERVER.MESSAGE)
   }
 }
