@@ -72,12 +72,13 @@ export function useMethods(
     const sessionStore = useSessionStore()
     withdrawalForm.value.username = sessionStore.session.profile.username
     withdrawalForm.value.user_id = sessionStore.session.profile.id
-    withdrawalForm.value.date = Date.now()
+    withdrawalForm.value.date = new Date()
   }
   const clearForm = () => {
     withdrawalForm.value = {
-      card: '',
+      props: '',
       sum: '',
+      type: 'bank',
       date: '',
       tg_id: '',
       user_id: '',

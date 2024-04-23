@@ -1,21 +1,21 @@
 import { ref } from 'vue'
 
- const timeClosePopup = ref(15000)
- const choiceOut = ref({
+const timeClosePopup = ref(15000)
+const choiceOut = ref({
   bankCard: true,
-  crypto: false,
+  crypto: false
 })
- const withdrawalForm = ref({
-  card: '',
-  cryptoWallet: '',
+const withdrawalForm = ref({
+  props: '',
   sum: '0',
+  type: 'bank',
   date: '',
-  user_id: '',
+  user_id: ''
 })
- const validResults = ref({
+const validResults = ref({
   sum: true,
   bankCard: true,
-  cryptoAddress: true,
+  cryptoAddress: true
 })
 
 

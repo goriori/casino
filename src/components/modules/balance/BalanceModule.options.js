@@ -2,9 +2,12 @@ import { ref } from 'vue'
 
 import { useSettingsStore } from '@/store/settings/settingStore.js'
 import { useStateStore } from '@/store/stateStore.js'
+import { ERRORS } from '@/configs/errors.js'
+import { useSessionStore } from '@/store/session/sessionStore.js'
 
 const stateStore = useStateStore()
 const settingStore = useSettingsStore()
+const sessionStore = useSessionStore()
 export const btnActive = ref(false)
 
 export const popupReplenishment = ref(false)
@@ -37,6 +40,11 @@ export const navigationAuthorized = [
     icon: 'conclusion',
     title: 'Вывод средств',
     handler: function () {
+      if (!sessionStore.session.profile.is_verified) {
+        return stateStore.globalPopupMessages.error.show(
+          ERRORS.ERROR_VERIFICATION.MESSAGE
+        )
+      }
       stateStore.globalPopupsModules.conclusion.visibility = true
     },
   },

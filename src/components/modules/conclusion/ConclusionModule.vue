@@ -98,7 +98,7 @@ const { choicePay, onSendWithdrawal } = useMethods(
           name="numberCard"
           autocomplete="off"
           placeholder="Введите номер банковской карты"
-          v-model.trim="withdrawalForm.card"
+          v-model.trim="withdrawalForm.props"
           @keypress="onKeyPress"
         />
       </div>
@@ -109,7 +109,7 @@ const { choicePay, onSendWithdrawal } = useMethods(
           name="addressWallet"
           autocomplete="off"
           placeholder="Введите адрес кошелька USDTTRC20"
-          v-model.trim="withdrawalForm.cryptoWallet"
+          v-model.trim="withdrawalForm.props"
         />
       </div>
       <div class="withdrawal-module-action">

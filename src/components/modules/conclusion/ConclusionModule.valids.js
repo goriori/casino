@@ -24,7 +24,7 @@ export function useValid(
     }
     if (withdrawalForm.value.sum > maxCountWithdrawal)
       throw ERRORS.ERROR_VALIDATION.TYPE
-    if (!cardTest(withdrawalForm.value.card) && choiceOut.value.bankCard)
+    if (!cardTest(withdrawalForm.value.props) && choiceOut.value.bankCard)
       throw ERRORS.ERROR_VALIDATION.TYPE
     return true
   }
