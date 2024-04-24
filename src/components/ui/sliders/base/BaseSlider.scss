@@ -1,5 +1,10 @@
+.slider {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
 img {
   border-radius: 8px;
   width: 100%;
-  object-fit: cover;
+  height: 100%;
 }
