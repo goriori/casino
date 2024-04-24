@@ -17,18 +17,10 @@ export const useGameStore = defineStore('gameStore', () => {
   const getGames = async () => {
     const { data } = await GamesService.getGames()
     const { isMobile } = useDeviceType()
-    if (isMobile)
-      deviceGames.value = [...filterGameDevice(TYPES_DEVICE.MOBILE, data)]
-    else deviceGames.value = [...filterGameDevice(TYPES_DEVICE.DESKTOP, data)]
+    games.value = clearDuplicateGames([...data])
+    if (isMobile) deviceGames.value = [...filterGameDevice(TYPES_DEVICE.MOBILE, games.value)]
+    else deviceGames.value = [...filterGameDevice(TYPES_DEVICE.DESKTOP, games.value)]
     filteredGames.value = [...deviceGames.value]
-    games.value = [...data]
-    const res = Object.values(
-      games.value.reduce((acc, val) => {
-        acc[val.id] = Object.assign(acc[val.id] ?? {}, val)
-        return acc
-      }, {})
-    )
-    console.log(res)
   }
   const filterGameDevice = (device, games) => {
     const mobileAndDesktopGames = games.filter(
@@ -39,6 +31,7 @@ export const useGameStore = defineStore('gameStore', () => {
     )
     return [...deviceGames, ...mobileAndDesktopGames]
   }
+
   const filterGameCategory = (categoryId) => {
     filteredGames.value = deviceGames.value.filter((game) => {
       const haveCategory = game.categories.find(
@@ -57,6 +50,14 @@ export const useGameStore = defineStore('gameStore', () => {
     })
   }
 
+  const clearDuplicateGames = (games) => {
+    return Object.values(
+      games.reduce((acc, val) => {
+        acc[val.id] = Object.assign(acc[val.id] ?? {}, val)
+        return acc
+      }, {})
+    )
+  }
   const resetFilteredGames = () => {
     filteredGames.value = [...deviceGames.value]
   }
