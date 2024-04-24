@@ -24,9 +24,6 @@ const emits = defineEmits(['isActive'])
 const buttonHandler = () => {
   btnActive.value = !btnActive.value
   emits('isActive', btnActive.value)
-  btnActive.value
-    ? btnRef.value.classList.remove('arrow-active')
-    : btnRef.value.classList.add('arrow-active')
 }
 </script>
 
@@ -44,7 +41,7 @@ const buttonHandler = () => {
         <div class="balance-currency">
           <CurrencyIcon v-if="country === 'ru'" />
         </div>
-        <button ref="btnRef">
+        <button :class="{ 'arrow-active': btnActive }">
           <ArrowIcon />
         </button>
       </div>

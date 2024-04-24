@@ -24,6 +24,7 @@ const caseStore = useCaseStore()
 const sessionStore = useSessionStore()
 const activeSpin = ref(false)
 const splideRef = ref(null)
+const splideAutoScroll = ref(null)
 const extensions = { AutoScroll }
 const splideOption = ref({
   type: 'loop',
@@ -61,6 +62,7 @@ function computedPeerPage() {
 
 const initSplideOption = () => {
   Object.assign(splideRef.value.options, splideOption.value)
+  splideAutoScroll.value = splideRef.value.splide.Components.AutoScroll
 }
 const onSpinWheel = () => {
   splideRef.value.options.autoScroll = {
@@ -69,14 +71,14 @@ const onSpinWheel = () => {
     pauseOnHover: false,
     direction: 'ltr',
   }
-  splideRef.value.splide.Components.AutoScroll.play()
+  splideAutoScroll.value.play()
 }
 const onStopWheel = async () => {
   setTimeout(() => {
     const prizeId = caseStore.casePrize.id
     let targetIndex
     splideRef.value.options.perPage = computedPeerPage()
-    splideRef.value.splide.Components.AutoScroll.pause()
+    splideAutoScroll.value.pause()
     const splideList = document.querySelectorAll('.case-item')
     splideList.forEach((item) => {
       if (+item.dataset.id === +prizeId) targetIndex = +item.dataset.index
@@ -109,6 +111,7 @@ const onStartPlay = (e) => {
       .then(getPrize)
       .then(onStopWheel)
       .catch((e) => {
+        splideAutoScroll.value.pause()
         stateStore.globalPopupMessages.error.show(
           'При прокрутке произошла ошибка '
         )
