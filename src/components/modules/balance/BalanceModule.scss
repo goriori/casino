@@ -68,58 +68,10 @@
     }
   }
 
-  &-balances {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-    justify-content: start;
-    align-items: center;
-    padding: 12px 0 12px 36px;
-    background-color: #D5A748;
-  }
 
 }
 
 
-.balance {
 
-  &-item {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
 
-    &-content {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 8px;
-
-    }
-  }
-}
-
-.navigation {
-  &-item {
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 31px 36px;
-    border-top: 1px solid #fff;
-
-    &-content {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-
-    }
-
-    &-action {
-      transform: rotate(90deg);
-    }
-  }
-}
 

@@ -13,18 +13,14 @@ const props = defineProps({
     type: String,
     default: 'ru',
   },
-  isActive: {
+  modelValue: {
     type: Boolean,
     default: false,
   },
 })
-const btnActive = ref(props.isActive)
 const btnRef = ref(null)
-const emits = defineEmits(['isActive'])
-const buttonHandler = () => {
-  btnActive.value = !btnActive.value
-  emits('isActive', btnActive.value)
-}
+const emits = defineEmits(['update:modelValue'])
+const onClick = () => emits('update:modelValue', !props.modelValue)
 </script>
 
 <template>
@@ -33,15 +29,15 @@ const buttonHandler = () => {
       color="balance-primary"
       rounded="full"
       size="small"
-      @click="buttonHandler"
-      :is-active="btnActive"
+      @click="onClick"
+      :is-active="modelValue"
     >
       <div class="balance-info">
         <div class="balance-count">{{ Math.floor(balance) }} ₽</div>
         <div class="balance-currency">
           <CurrencyIcon v-if="country === 'ru'" />
         </div>
-        <button :class="{ 'arrow-active': btnActive }">
+        <button :class="{ 'arrow-active': modelValue }">
           <ArrowIcon />
         </button>
       </div>

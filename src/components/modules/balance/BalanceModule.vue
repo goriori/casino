@@ -8,27 +8,25 @@ import {
 } from '@/components/modules/balance/BalanceModule.events.js'
 import {
   btnActive,
-  navigationAuthorized,
   popupReplenishment,
   popupSetting,
 } from '@/components/modules/balance/BalanceModule.options.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import BalanceButton from '@/components/ui/buttons/balance/BalanceButton.vue'
-import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
-import ArrowIcon from '@/components/ui/icons/other/ArrowIcon.vue'
 import CloseIcon from '@/components/ui/icons/other/CloseIcon.vue'
 import ReplenishmentModule from '@/components/modules/replenishment/ReplenishmentModule.vue'
-import BonusIcon from '@/components/ui/icons/balance/BonusIcon.vue'
+import ActionList from '@/components/modules/balance/ActionList.vue'
+import Balance from '@/components/modules/balance/Balance.vue'
 
 const router = useRouter()
 const sessionStore = useSessionStore()
+
 </script>
 
 <template>
   <div class="balance-module" v-outside="testOutside" @click.stop>
     <BalanceButton
-      @is-active="updateStateButton"
-      :is-active="btnActive"
+      v-model="btnActive"
       :balance="sessionStore.session.profile?.balance"
     />
     <Transition name="fade">
@@ -38,39 +36,10 @@ const sessionStore = useSessionStore()
           <CloseIcon @click="onCloseMenu" class="popup-title-close" />
         </div>
         <div class="popup-balances">
-          <div class="balance-item">
-            <div class="balance-item-name">Основной</div>
-            <div class="balance-item-content">
-              <CurrencyIcon />
-              <p>{{ sessionStore.session.profile?.balance }} ₽</p>
-            </div>
-          </div>
-          <div class="balance-item">
-            <div class="balance-item-name">Бонусов</div>
-            <div class="balance-item-content">
-              <BonusIcon />
-              <p>{{ sessionStore.session.profile?.bonus }} ₽</p>
-            </div>
-          </div>
+          <Balance />
         </div>
         <div class="popup-navigation">
-          <div class="popup-navigation-authorized">
-            <div
-              class="navigation-item"
-              v-ripple
-              v-for="nav in navigationAuthorized"
-              :key="nav.id"
-              @click="nav.handler(router)"
-            >
-              <div class="navigation-item-content">
-                <img :src="`/images/icons/${nav.icon}.svg`" alt="" />
-                <p>{{ nav.title }}</p>
-              </div>
-              <div class="navigation-item-action">
-                <ArrowIcon />
-              </div>
-            </div>
-          </div>
+          <ActionList />
         </div>
       </div>
     </Transition>
