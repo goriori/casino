@@ -7,6 +7,10 @@ export const ERRORS = {
     TYPE: 'error_validation',
     MESSAGE: 'Ошибка валидации, пожалуйста проверьте веденные данные',
   },
+  ERROR_VALID_PHONE: {
+    TYPE: 'error_valid_phone',
+    MESSAGE: 'Неверный формат номера телефона',
+  },
   ERROR_VERIFICATION: {
     TYPE: 'error_verification',
     MESSAGE: 'Ваш аккаунт не верефицирован',

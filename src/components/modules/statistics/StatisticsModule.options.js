@@ -29,12 +29,6 @@ export const statistics = ref([
 
 export const slides = ref([
   {
-    id: 1,
-    slideName: 'Welcome',
-    path: '/images/statistics/slide_1.png',
-    srcSet: '/images/statistics/slide_1_mb.png 500w',
-  },
-  {
     id: 2,
     slideName: 'Welcome',
     path: '/images/statistics/slide_2.jpg',

@@ -14,7 +14,8 @@ const bonusSystemStore = useBonusSystemStore()
 const stateStore = useStateStore()
 
 const loadModule = ref(true)
-const referalCode = computed(()=> bonusSystemStore.bonusSystemState?.promo || 'Отсутствует')
+const referalCode = computed(() =>  sessionStore.session.profile?.promo || 'Отсутствует'
+ )
 const copyBufferContent = () => {
   if (sessionStore.session.profile?.promo) {
     navigator.clipboard.writeText(sessionStore.session.profile?.promo)

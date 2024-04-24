@@ -6,9 +6,11 @@ import { axiosInstance } from '@/utils/axios/axios.js'
 import Header from '@/components/globals/header/Header.vue'
 import Footer from '@/components/globals/footer/Footer.vue'
 import TelegramIcon from '@/components/ui/icons/socials/TelegramIcon.vue'
+import { usePaymentStore } from '@/store/payments/paymentStore.js'
 
 const router = useRouter()
 const sessionStore = useSessionStore()
+const paymentStore = usePaymentStore()
 const userId = ref('')
 const tgSession = ref(null)
 const err = ref(null)
@@ -50,6 +52,7 @@ const onAuthorizationUser = async (userId) => {
     tg: 1,
   })
   await sessionStore.getInfoSession()
+  await paymentStore.getRequisiteCards()
   await router.push('/')
 }
 const onErrorAuthorization = async (e, userId) => {

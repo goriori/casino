@@ -5,10 +5,13 @@ import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import { ref } from 'vue'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useStateStore } from '@/store/stateStore.js'
+import { useRegular } from '@/utils/useRegular.js'
+import { ERRORS } from '@/configs/errors.js'
 
 const emits = defineEmits(['close'])
 const sessionStore = useSessionStore()
 const stateSession = useStateStore()
+const { phoneTest } = useRegular()
 console.log(sessionStore.session.profile)
 const formUpdate = ref({
   first_name: sessionStore.session.profile?.first_name,
@@ -18,10 +21,29 @@ const formUpdate = ref({
   address: sessionStore.session.profile?.address,
 })
 
-const onSendForm = async () => {
-  await sessionStore
-    .updateInfoAccount(formUpdate.value)
-    .catch(() => {
+const validPhone = (phone) => phoneTest(phone)
+
+const onValidForm = () => {
+  return new Promise((resolve, reject) => {
+    const isValidPhone = validPhone(formUpdate.value.phone)
+    if (!isValidPhone) reject(ERRORS.ERROR_VALID_PHONE.TYPE)
+    return resolve()
+  })
+}
+const onSendForm = () => {
+  onValidForm()
+    .then(() => sessionStore.updateInfoAccount(formUpdate.value))
+    .catch((e) => {
+      if (e === ERRORS.ERROR_VALID_PHONE.TYPE) {
+        stateSession.globalPopupMessages.error.show(
+          ERRORS.ERROR_VALID_PHONE.MESSAGE
+        )
+      }
+      if (e === ERRORS.ERROR_VALIDATION.TYPE) {
+        stateSession.globalPopupMessages.error.show(
+          ERRORS.ERROR_VALIDATION.MESSAGE
+        )
+      }
       stateSession.globalPopupMessages.errorServer = true
     })
     .finally(async () => {
@@ -45,7 +67,7 @@ const onSendForm = async () => {
           v-model="formUpdate.first_name"
         />
       </div>
-        <div class="form-field">
+      <div class="form-field">
         <BaseInput
           placeholder="Дата рождения"
           type="date"
