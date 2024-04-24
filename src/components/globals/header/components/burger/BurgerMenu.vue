@@ -66,11 +66,7 @@ svg {
 
 .header {
   &-burger {
-    display: none;
-    @media (max-width: $md4 + px) {
-      display: block;
-      cursor: pointer;
-    }
+
     &-menu {
       position: fixed;
       width: 100vw;

@@ -1,9 +1,9 @@
 <script setup>
-import MailMessagesIcon from '@/components/ui/icons/header/MailMessagesIcon.vue'
-import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 import { onMounted, ref } from 'vue'
 import { useMailStore } from '@/store/mail/mailStore.js'
+import MailMessagesIcon from '@/components/ui/icons/header/MailMessagesIcon.vue'
 import MessageIcons from '@/components/ui/icons/mail-messages/MessageIcons.vue'
+
 
 const isOpen = ref(false)
 const mailStore = useMailStore()
@@ -17,11 +17,14 @@ onMounted(async () => {
 <template>
   <div class="mail__messages-module">
     <div class="mail__messages-icon">
-      <div class="ellipse-notification" v-if="mailStore.messages.length > 0"></div>
+      <div
+        class="ellipse-notification"
+        v-if="mailStore.messages.length > 0"
+      ></div>
       <MailMessagesIcon @click="changeIsOpen" class="icon" />
     </div>
     <Transition name="fade">
-      <div class="mail__messages-notification" v-if="isOpen">
+      <div :class="['mail__messages-notification']" v-if="isOpen">
         <h4 class="notification-title">Уведомления</h4>
         <div>
           <div v-if="mailStore.messages.length > 0" class="notification-list">

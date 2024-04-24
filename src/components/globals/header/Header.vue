@@ -45,7 +45,10 @@ onMounted(async () => {
 
 <template>
   <header class="header">
-    <BurgerMenu />
+    <section class="mobile-left">
+      <BurgerMenu />
+      <MailMessagesModule />
+    </section>
     <div class="header-actions">
       <div class="header-actions-bonus" @click="redirectToBonuses">
         <BonusHeaderIcon />

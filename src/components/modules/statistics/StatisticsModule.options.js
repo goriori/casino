@@ -33,7 +33,7 @@ export const slides = ref([
     slideName: 'Welcome',
     path: '/images/statistics/slide_1.png',
     srcSet:
-      '/images/statistics/slide_1.png 1920w, /images/statistics/slide_1_mb.png 500w',
+      '/images/statistics/slide_1.png 1920w, /images/statistics/slide_1_mb.png 800w',
   },
   {
     id: 2,
@@ -46,12 +46,12 @@ export const slides = ref([
     slideName: 'Welcome',
     path: '/images/statistics/slide_3.jpg',
     srcSet:
-      '/images/statistics/slide_3.jpg 1920w, /images/statistics/slide_3_mb.jpg 500w',
+      '/images/statistics/slide_3.jpg 1920w, /images/statistics/slide_3_mb.jpg 800w',
   },
   {
     id: 3,
     slideName: 'Welcome',
     path: '/images/statistics/slide_4.jpg',
-    srcSet: '/images/statistics/slide_4.jpg 1920w, /images/statistics/slide_4_mb.jpg 500w,',
+    srcSet: '/images/statistics/slide_4.jpg 1920w, /images/statistics/slide_4_mb.jpg 800w,',
   },
 ])
