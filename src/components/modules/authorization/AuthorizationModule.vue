@@ -56,63 +56,66 @@ const stateStore = useStateStore()
         Телефон
       </div>
     </div>
-    <div class="authorization-form" ref="authFields">
-      <div class="form-field" v-if="targetEntity === 'email'">
-        <div class="form-field-input">
-          <input
-            class="auth-field"
-            type="text"
-            id="auth-login"
-            placeholder="Ввести почту"
-            v-model="formAuth.username"
-          />
-          <EmailIcon />
+    <form @submit.prevent class="authorization" >
+      <div class="authorization-form" ref="authFields">
+        <div class="form-field" v-if="targetEntity === 'email'">
+          <div class="form-field-input">
+            <input
+              class="auth-field"
+              type="text"
+              id="auth-login"
+              placeholder="Ввести почту"
+              v-model="formAuth.username"
+            />
+            <EmailIcon />
+          </div>
+        </div>
+        <div class="form-field" v-if="targetEntity === 'phone'">
+          <div class="form-field-input">
+            <input
+              class="auth-field"
+              type="text"
+              id="auth-login"
+              placeholder="Ввести логин"
+              v-model="formAuth.username"
+            />
+          </div>
+        </div>
+        <div class="form-field">
+          <div class="form-field-input">
+            <input
+              class="auth-field"
+              id="auth-password"
+              :type="pswrdHidden ? 'password' : 'text'"
+              placeholder="Ввести пароль"
+              v-model="formAuth.password"
+            />
+            <NotHiddenIcon
+              v-if="!pswrdHidden"
+              @click="onChangeHiddenPassword"
+            />
+            <HiddenIcon v-else @click="onChangeHiddenPassword" />
+          </div>
         </div>
       </div>
-      <div class="form-field" v-if="targetEntity === 'phone'">
-        <div class="form-field-input">
-          <input
-            class="auth-field"
-            type="text"
-            id="auth-login"
-            placeholder="Ввести логин"
-            v-model="formAuth.username"
-          />
-        </div>
-      </div>
-      <div class="form-field">
-        <div class="form-field-input">
-          <input
-            class="auth-field"
-            id="auth-password"
-            :type="pswrdHidden ? 'password' : 'text'"
-            placeholder="Ввести пароль"
-            v-model="formAuth.password"
-          />
-          <NotHiddenIcon v-if="!pswrdHidden" @click="onChangeHiddenPassword" />
-          <HiddenIcon v-else @click="onChangeHiddenPassword" />
-        </div>
-      </div>
-    </div>
 
-    <div class="authorization-accept">
-      <div class="authorization-accept-item">
-<!--        <div class="accept-item-field">-->
-<!--          <input type="checkbox" />-->
-<!--          <label>Напомнить через 30 дней</label>-->
-<!--        </div>-->
-        <div class="accept-item-support" @click="onRecoveryPassword">
-          <span>Забыли пароль?</span>
+      <div class="authorization-accept">
+        <div class="authorization-accept-item">
+          <!--        <div class="accept-item-field">-->
+          <!--          <input type="checkbox" />-->
+          <!--          <label>Напомнить через 30 дней</label>-->
+          <!--        </div>-->
+          <div class="accept-item-support" @click="onRecoveryPassword">
+            <span>Забыли пароль?</span>
+          </div>
         </div>
       </div>
-    </div>
-
-    <div class="authorization-form-send">
-      <BaseButton color="primary" @click="onAuthorization(router)">
-        <div class="btn-send-form">Войти в профиль</div>
-      </BaseButton>
-    </div>
-
+      <div class="authorization-form-send">
+        <BaseButton color="primary" @click="onAuthorization(router)">
+          <div class="btn-send-form">Войти в профиль</div>
+        </BaseButton>
+      </div>
+    </form>
     <div class="authorization-registration">
       <div class="authorization-registration-info">
         У вас нет профиля?

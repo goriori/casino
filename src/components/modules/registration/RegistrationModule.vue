@@ -60,81 +60,85 @@ const stateStore = useStateStore()
         Телефон
       </div>
     </div>
-    <div class="authorization-form">
-      <div class="form-field" v-if="targetEntity === 'email'">
-        <label>Почта</label><br />
-        <div class="form-field-input">
-          <input
-            type="text"
-            placeholder="Ввести логин"
-            id="reg-login"
-            v-model="formReg.username"
-          />
+    <form @submit.prevent class="authorization">
+      <div class="authorization-form">
+        <div class="form-field" v-if="targetEntity === 'email'">
+          <label>Почта</label><br />
+          <div class="form-field-input">
+            <input
+              type="text"
+              placeholder="Ввести логин"
+              id="reg-login"
+              v-model="formReg.username"
+            />
 
-          <EmailIcon />
+            <EmailIcon />
+          </div>
         </div>
-      </div>
-      <div class="form-field" v-if="targetEntity === 'phone'">
-        <label>Телефон</label><br />
-        <div class="form-field-input">
-          <input
-            type="text"
-            placeholder="Ввести номер телефона"
-            v-model="formReg.username"
-          />
+        <div class="form-field" v-if="targetEntity === 'phone'">
+          <label>Телефон</label><br />
+          <div class="form-field-input">
+            <input
+              type="text"
+              placeholder="Ввести номер телефона"
+              v-model="formReg.username"
+            />
+          </div>
         </div>
-      </div>
-      <div class="form-field">
-        <label>Пароль</label><br />
-        <div class="form-field-input">
-          <input
-            :type="pswrdHidden ? 'password' : 'text'"
-            placeholder="Ввести пароль"
-            id="reg-password"
-            v-model="formReg.password"
-          />
-          <NotHiddenIcon v-if="!pswrdHidden" @click="onChangeHiddenPassword" />
-          <HiddenIcon v-else @click="onChangeHiddenPassword" />
+        <div class="form-field">
+          <label>Пароль</label><br />
+          <div class="form-field-input">
+            <input
+              :type="pswrdHidden ? 'password' : 'text'"
+              placeholder="Ввести пароль"
+              id="reg-password"
+              v-model="formReg.password"
+            />
+            <NotHiddenIcon
+              v-if="!pswrdHidden"
+              @click="onChangeHiddenPassword"
+            />
+            <HiddenIcon v-else @click="onChangeHiddenPassword" />
+          </div>
         </div>
-      </div>
-      <div class="form-field">
-        <label>Подтвердите пароль</label><br />
-        <div class="form-field-input">
-          <input
-            :type="pswrdCnfrmHidden ? 'password' : 'text'"
-            placeholder="Ввести пароль"
-            id="reg-confirm-password"
-            v-model="formReg.password_confirmation"
-          />
-          <NotHiddenIcon
-            v-if="!pswrdCnfrmHidden"
-            @click="onChangeHiddenPasswordConfirm"
-          />
-          <HiddenIcon v-else @click="onChangeHiddenPasswordConfirm" />
-        </div>
-      </div>
-    </div>
-
-    <div class="authorization-accept">
-      <div class="authorization-accept-item">
-        <div class="accept-item-field checkbox">
-          <input type="checkbox" />
-          <div class="authorization-registration-info">
-            <p>
-              Я прочитал и согласен с
-              <span>Правилами Использования Сервиса</span>
-            </p>
+        <div class="form-field">
+          <label>Подтвердите пароль</label><br />
+          <div class="form-field-input">
+            <input
+              :type="pswrdCnfrmHidden ? 'password' : 'text'"
+              placeholder="Ввести пароль"
+              id="reg-confirm-password"
+              v-model="formReg.password_confirmation"
+            />
+            <NotHiddenIcon
+              v-if="!pswrdCnfrmHidden"
+              @click="onChangeHiddenPasswordConfirm"
+            />
+            <HiddenIcon v-else @click="onChangeHiddenPasswordConfirm" />
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="authorization-form-send">
-      <BaseButton color="primary" @click="onRegistration(router)">
-        <div class="btn-send-form">Зарегистрироваться</div>
-      </BaseButton>
-    </div>
+      <div class="authorization-accept">
+        <div class="authorization-accept-item">
+          <div class="accept-item-field checkbox">
+            <input type="checkbox" />
+            <div class="authorization-registration-info">
+              <p>
+                Я прочитал и согласен с
+                <span>Правилами Использования Сервиса</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <div class="authorization-form-send">
+        <BaseButton color="primary" @click="onRegistration(router)">
+          <div class="btn-send-form">Зарегистрироваться</div>
+        </BaseButton>
+      </div>
+    </form>
     <div class="authorization-registration">
       <div class="authorization-registration-info">
         <p>
@@ -142,12 +146,12 @@ const stateStore = useStateStore()
           <span @click="openAuthorization">Войти</span>
         </p>
       </div>
-<!--      <div class="authorization-registration-info">-->
-<!--        <p>-->
-<!--          Я прочитал и согласен с-->
-<!--          <span>Правилами Использования Сервиса</span>-->
-<!--        </p>-->
-<!--      </div>-->
+      <!--      <div class="authorization-registration-info">-->
+      <!--        <p>-->
+      <!--          Я прочитал и согласен с-->
+      <!--          <span>Правилами Использования Сервиса</span>-->
+      <!--        </p>-->
+      <!--      </div>-->
       <BaseButton color="primary" outline @click="onRegistrationTelegram">
         <div class="btn-registration">
           <p>Зарегестрироваться через</p>
