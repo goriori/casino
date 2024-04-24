@@ -49,9 +49,9 @@ const color = computed(() => {
   padding: 28px 42px;
   gap: 25px;
 
-  @media (max-width: $md5 + px) {
-    width: 65px;
-    height: 65px;
+  @media (max-width: $md4 + px) {
+    width: 90px;
+    height: 90px;
     padding: 10px 11px;
     border-radius: 12px;
     gap: 8px;
@@ -60,7 +60,7 @@ const color = computed(() => {
   &-img {
     width: 95px;
     max-height: 65px;
-    @media (max-width: $md5 + px) {
+    @media (max-width: $md4 + px) {
       width: 36px;
       max-height: 25px;
     }
@@ -68,10 +68,11 @@ const color = computed(() => {
 
   &-title {
     font-size: 16px;
+    line-height: 120%;
     font-weight: 400;
     color: $white;
-    @media (max-width: $md5 + px) {
-      font-size: 6px;
+    @media (max-width: $md4 + px) {
+      font-size: 10px;
     }
   }
 }

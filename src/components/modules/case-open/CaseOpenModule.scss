@@ -40,10 +40,11 @@
     font-weight: 700;
     font-size: 40px;
     color: $white;
-    @media (max-width: $md5 + px) {
+    @media (max-width: $md4 + px) {
       padding: 7px 15px;
       max-width: 140px;
       font-size: 16px;
+      margin: 0 0 32px;
     }
   }
 
@@ -56,8 +57,10 @@
     border-radius: 40px;
     position: relative;
     background: $background;
-    @media (max-width: $md5 + px) {
-      margin-bottom: 50px;
+    @media (max-width: $md4 + px) {
+      padding: 20px 0;
+      margin-bottom: 24px;
+      overflow: hidden;
     }
   }
 
@@ -115,8 +118,8 @@
       font-size: 24px;
       font-weight: 700;
       color: $white;
-      @media (max-width: $md5 + px) {
-        margin: 50px auto 0;
+      @media (max-width: $md4 + px) {
+        margin: 32px auto 0;
         padding: 7px 15px;
         max-width: 140px;
         font-size: 10px;

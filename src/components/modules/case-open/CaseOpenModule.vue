@@ -44,8 +44,8 @@ const splideOption = ref({
     1240: {
       perPage: 4,
     },
-    600: {
-      perPage: 4,
+    900: {
+      perPage: 3,
     },
   },
 })
@@ -55,9 +55,7 @@ function computedPeerPage() {
   const windowSize = window.innerWidth
   if (windowSize > 1241) return 6
   else if (windowSize > 1000) return 4
-  else if (windowSize > 500) return 4
-  else if (windowSize > 300) return 4
-  else return 2
+  else if (windowSize > 320) return 3
 }
 
 const initSplideOption = () => {
@@ -65,6 +63,7 @@ const initSplideOption = () => {
   splideAutoScroll.value = splideRef.value.splide.Components.AutoScroll
 }
 const onSpinWheel = () => {
+  splideRef.value.options.perPage = computedPeerPage()
   splideRef.value.options.autoScroll = {
     speed: 10,
     autoStart: true,
