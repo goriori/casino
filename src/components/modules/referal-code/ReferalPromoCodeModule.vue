@@ -2,7 +2,7 @@
 import { useBonusSystemStore } from '@/store/bonus-system/bonusSystemStore.js'
 import InfoTooltip from '@/components/ui/tooltips/info/InfoTooltip.vue'
 import ReferalPromocodeTooltipMessage from '@/components/modules/tooltip-messages/referal-promocode/ReferalPromocodeTooltipMessage.vue'
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useStateStore } from '@/store/stateStore.js'
 import { SUCCESS } from '@/configs/success.js'
 import { ERRORS } from '@/configs/errors.js'
@@ -12,7 +12,9 @@ import { useSessionStore } from '@/store/session/sessionStore.js'
 const sessionStore = useSessionStore()
 const bonusSystemStore = useBonusSystemStore()
 const stateStore = useStateStore()
+
 const loadModule = ref(true)
+const referalCode = computed(()=> bonusSystemStore.bonusSystemState?.promo || 'Отсутствует')
 const copyBufferContent = () => {
   if (sessionStore.session.profile?.promo) {
     navigator.clipboard.writeText(sessionStore.session.profile?.promo)
@@ -29,7 +31,6 @@ const onClick = () => {
   copyBufferContent()
 }
 onMounted(async () => {
-  if (sessionStore.session.profile?.promo) loadModule.value = false
   setTimeout(() => {
     loadModule.value = false
   }, 3000)
@@ -44,7 +45,7 @@ onMounted(async () => {
     </ContentLoader>
     <div class="referal__code-card" @click="onClick" v-else>
       <InfoTooltip :message="ReferalPromocodeTooltipMessage" />
-      <p>{{ bonusSystemStore.bonusSystemState?.promo || 'Отсутствует' }}</p>
+      <p>{{ referalCode }}</p>
     </div>
   </div>
 </template>

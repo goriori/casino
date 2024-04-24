@@ -26,6 +26,18 @@ export const useGameStore = defineStore('gameStore', () => {
       'find game id 3: ',
       filteredGames.value.find((game) => game.id === 3)
     )
+    // console.log(
+    //   'filtered games: ',
+    //   filteredGames.value.filter((game) =>
+    //     game.categories.find((category) => category.category_id === 27)
+    //   )
+    // )
+    // console.log(
+    //   ' games filtered: ',
+    //   games.value.map((game) =>
+    //     game.categories.find((category) => category.category_id === 27)
+    //   )
+    // )
   }
   const filterGameDevice = (device, games) => {
     const mobileAndDesktopGames = games.filter(

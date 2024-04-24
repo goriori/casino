@@ -8,32 +8,47 @@ import SeeMoreButton from '@/components/ui/buttons/see-more/SeeMoreButton.vue'
 import PopularIcon from '@/components/ui/icons/popular/PopularIcon.vue'
 import SeeMoreCard from '@/components/ui/cards/see-more/SeeMoreCard.vue'
 
-const categories = window.CATEGORIES
+const categoriesId = [27, 28, 29]
 const providerStore = useProviderStore()
 const gamesStore = useGameStore()
 const router = useRouter()
-const categoriesGames = ref([])
+const categoriesGames = ref()
 const seeMoreGames = (type) => {
   router.push(`/?type=${type}`)
 }
 const onClick = (type) => {
   seeMoreGames(type)
 }
-const buildCategoriesGameData = () => {
-  categories.forEach((category) => {
-    categoriesGames.value.push({
-      title: category.title,
-      type: category.type,
-      games: category.games
-        .map((id) => gamesStore.games.find((game) => game.id === id))
-        .filter((item) => item),
+
+const getCategories = () => {
+  return categoriesId.map((categoryId) =>
+    providerStore.providers.find((provider) =>
+      provider.id === categoryId ? provider : false
+    )
+  )
+}
+const getGamesCategory = (categoryId) => {
+  return gamesStore.deviceGames
+    .map((game) => {
+      const { categories } = game
+      const findCategory = categories.filter((categoryGame) => {
+        if (categoryGame.category_id === categoryId) return categoryGame
+      })
+      if (findCategory.length > 0) return game
     })
-  })
+    .filter((game) => game)
+}
+const buildCategoryList = () => {
+  const categories = getCategories()
+  categoriesGames.value = categories.map((category) => ({
+    ...category,
+    games: getGamesCategory(category.id),
+  }))
 }
 onMounted(async () => {
   await providerStore.getProviders()
   await gamesStore.getGames()
-  buildCategoriesGameData()
+  buildCategoryList()
 })
 </script>
 

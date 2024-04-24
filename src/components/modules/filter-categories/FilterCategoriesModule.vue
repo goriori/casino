@@ -1,9 +1,9 @@
 <script setup>
 import { useProviderStore } from '@/store/providers/providerStore.js'
 import { onBeforeMount, ref, watch } from 'vue'
+import { useGameStore } from '@/store/games/gameStore.js'
 import ChangeIcon from '@/components/ui/icons/popular/ChangeIcon.vue'
 import BaseSelect from '@/components/ui/selects/base/BaseSelect.vue'
-import { useGameStore } from '@/store/games/gameStore.js'
 
 const providersStore = useProviderStore()
 const gameStore = useGameStore()

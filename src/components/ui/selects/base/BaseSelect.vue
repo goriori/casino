@@ -25,6 +25,7 @@ const list = ref([
     isSelect: false,
     onSelect: function () {
       this.isSelect = true
+      emits('update:modelValue', this.title)
     },
   },
 ])

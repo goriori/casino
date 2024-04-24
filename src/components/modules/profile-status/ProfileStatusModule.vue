@@ -3,12 +3,13 @@ import ProfileStatusCard from '@/components/ui/cards/status/ProfileStatusCard.vu
 import { useStateStore } from '@/store/stateStore.js'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import ContentLoader from '@/components/ui/content-loader/ContentLoader.vue'
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useSettingsStore } from '@/store/settings/settingStore.js'
 
 const stateStore = useStateStore()
 const settingStore = useSettingsStore()
 const sessionStore = useSessionStore()
+const loadModule = ref(true)
 const onOpenStatusList = () => {
   stateStore.globalPopupsModules.statusesList.visibility = true
 }
@@ -30,6 +31,9 @@ const statusBar = computed(() => {
 
 onMounted(async () => {
   await settingStore.getStatuses()
+  setTimeout(() => {
+    loadModule.value = false
+  }, 3000)
 })
 </script>
 
@@ -37,7 +41,7 @@ onMounted(async () => {
   <div class="profile__status-module">
     <h2>Мой статус</h2>
     <div class="profile__status-card">
-      <ContentLoader type="default-card" v-if="!sessionStore.session.profile">
+      <ContentLoader type="default-card" v-if="loadModule">
         <rect width="400" height="200" />
       </ContentLoader>
       <ProfileStatusCard
