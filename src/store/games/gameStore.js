@@ -4,11 +4,11 @@ import GamesService from '@/API/games/gameService.js'
 import { useDeviceType } from '@/utils/useDeviceType.js'
 
 export const useGameStore = defineStore('gameStore', () => {
-  const typesDevice = {
-    mobile: 0,
-    desktop: 1,
-    mobileAndDesktop: 2,
-    all: '',
+  const TYPES_DEVICE = {
+    MOBILE: 0,
+    DESKTOP: 1,
+    MOBILE_AND_DESKTOP: 2,
+    ALL: '',
   }
   const games = ref([])
   const deviceGames = ref([])
@@ -18,8 +18,8 @@ export const useGameStore = defineStore('gameStore', () => {
     const { data } = await GamesService.getGames()
     const { isMobile } = useDeviceType()
     if (isMobile)
-      deviceGames.value = [...filterGameDevice(typesDevice.mobile, data)]
-    else deviceGames.value = [...filterGameDevice(typesDevice.desktop, data)]
+      deviceGames.value = [...filterGameDevice(TYPES_DEVICE.MOBILE, data)]
+    else deviceGames.value = [...filterGameDevice(TYPES_DEVICE.DESKTOP, data)]
     filteredGames.value = [...deviceGames.value]
     games.value = [...data]
   }
