@@ -39,10 +39,11 @@ const splide = ref(null)
     >
       <SplideSlide v-for="image in images" :key="image">
         <img
-          :src="image.path"
           alt=""
-          :srcset="image?.srcSet"
+          :src="image.path"
+          :srcset="image.srcSet"
           :class="['slider']"
+          sizes="(max-width: 768px) 300px"
         />
       </SplideSlide>
     </Splide>
