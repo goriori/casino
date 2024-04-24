@@ -49,6 +49,7 @@ const onAuthorizationUser = async (userId) => {
     password: '',
     tg: 1,
   })
+  await sessionStore.getInfoSession()
   await router.push('/')
 }
 const onErrorAuthorization = async (e, userId) => {

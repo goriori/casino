@@ -37,7 +37,7 @@ export const useGameStore = defineStore('gameStore', () => {
     return [...deviceGames, ...mobileAndDesktopGames]
   }
   const filterGameCategory = (categoryId) => {
-    filteredGames.value = games.value.filter((game) => {
+    filteredGames.value = deviceGames.value.filter((game) => {
       const haveCategory = game.categories.find(
         (category) => category.category_id === categoryId
       )

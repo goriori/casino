@@ -56,6 +56,7 @@ const ExchangePointsModule = defineAsyncComponent(() =>
       <ProfileStatusModule />
       <div class="items-middle">
         <ProfileModule />
+        <ReferalPromoCodeModule />
         <HistoryBalanceModule />
       </div>
     </div>
