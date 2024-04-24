@@ -71,9 +71,9 @@ onMounted(async () => {
             :game-item="game"
             class="item-card"
           />
-          <SeeMoreCard class="action-card" @click="onClick(category.type)" />
+          <SeeMoreCard class="action-card" @click="onClick(category.href)" />
         </div>
-        <SeeMoreButton class="action-button" @click="onClick(category.type)" />
+        <SeeMoreButton class="action-button" @click="onClick(category.href)" />
       </section>
     </article>
   </section>
