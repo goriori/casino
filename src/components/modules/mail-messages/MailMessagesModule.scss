@@ -52,6 +52,11 @@ p {
       top: 50px;
       left: 0;
     }
+    @media (max-width: $md5 + px) {
+      min-width:275px;
+      top: 50px;
+      left: 0;
+    }
   }
 }
 

@@ -45,7 +45,9 @@ onMounted(async () => {
       <rect width="400" height="200" />
     </ContentLoader>
     <div class="referal__code-card" @click="onClick" v-else>
-      <InfoTooltip :message="ReferalPromocodeTooltipMessage" />
+      <div class="card-icon">
+        <InfoTooltip :message="ReferalPromocodeTooltipMessage" />
+      </div>
       <p>{{ referalCode }}</p>
     </div>
   </div>

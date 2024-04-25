@@ -62,39 +62,41 @@ onMounted(() => {
   <div class="exchange__points-module" v-else>
     <h2>Обмен баллов</h2>
     <div class="exchange__points-card">
-      <InfoTooltip :message="ProfileStatusTooltipMessage" />
-      <form class="exchange__points-form" @submit.prevent>
-        <h3 class="form-title">
-          Ваши баллы: <span>{{ bonusSystemStore.bonusSystemState.coins }}</span>
-        </h3>
-        <div class="form-field">
-          <input
-            type="number"
-            placeholder="Количество баллов"
-            @keypress="onKeyPress"
-            v-model.trim.number="bonusOut"
-          />
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="9"
-            height="14"
-            viewBox="0 0 9 14"
-            fill="none"
-          >
-            <path
-              d="M1.93365 13L7.93365 7L1.93365 1"
-              stroke="white"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+      <div class="exchange__points-card-container">
+        <InfoTooltip :message="ProfileStatusTooltipMessage" />
+        <form class="exchange__points-form" @submit.prevent>
+          <h3 class="form-title">
+            Ваши баллы: <span>{{ bonusSystemStore.bonusSystemState.coins }}</span>
+          </h3>
+          <div class="form-field">
+            <input
+              type="number"
+              placeholder="Количество баллов"
+              @keypress="onKeyPress"
+              v-model.trim.number="bonusOut"
             />
-          </svg>
-          <p>{{ convertateCoins }} Р</p>
-        </div>
-        <BaseButton id="exchange_button" @click="onExchange">
-          <p>Обменять</p>
-        </BaseButton>
-      </form>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="9"
+              height="14"
+              viewBox="0 0 9 14"
+              fill="none"
+            >
+              <path
+                d="M1.93365 13L7.93365 7L1.93365 1"
+                stroke="white"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+            <p>{{ convertateCoins }} Р</p>
+          </div>
+          <BaseButton id="exchange_button" @click="onExchange">
+            <p>Обменять</p>
+          </BaseButton>
+        </form>
+      </div>
     </div>
   </div>
 </template>

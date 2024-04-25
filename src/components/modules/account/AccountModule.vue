@@ -51,6 +51,7 @@ const ExchangePointsModule = defineAsyncComponent(() =>
     </div>
     <div class="account-module-mobile-items">
       <MenuModule />
+      <ProfileVerificationModule/>
       <BalanceModule />
       <ExchangePointsModule />
       <ProfileStatusModule />
@@ -112,12 +113,11 @@ const ExchangePointsModule = defineAsyncComponent(() =>
       justify-content: center;
       gap: 48px;
 
-
-
       @media (max-width: 1500px) {
         gap: 24px;
       }
       @media (max-width: $md2 + px) {
+        display: flex;
         flex-direction: column;
         max-height: none;
       }

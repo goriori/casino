@@ -148,7 +148,9 @@ onMounted(() => {
         @media (max-width: $md4 + px) {
           font-size: 14px;
         }
-
+        @media (max-width: $md5 + px) {
+          font-size: 10px;
+        }
         h4 {
           font-weight: 500;
         }
@@ -176,6 +178,9 @@ onMounted(() => {
     justify-content: flex-start;
     align-items: center;
     gap: 8px;
+    @media (max-width: $md4 + px) {
+      max-height: 10px;
+    }
   }
 }
 

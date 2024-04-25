@@ -44,12 +44,15 @@ onMounted(async () => {
       <ContentLoader type="default-card" v-if="loadModule">
         <rect width="400" height="200" />
       </ContentLoader>
-      <ProfileStatusCard
-        v-else
-        :actionHandler="onOpenStatusList"
-        :status="sessionStore.session.profile?.stair_status.title"
-        :statusBar="statusBar"
-      />
+      <div v-else class="profile__status-container">
+        <ProfileStatusCard
+
+          :actionHandler="onOpenStatusList"
+          :status="sessionStore.session.profile?.stair_status.title"
+          :statusBar="statusBar"
+        />
+      </div>
+
     </div>
   </div>
 </template>

@@ -3,11 +3,20 @@ import { ref } from 'vue'
 import BaseSelect from '@/components/ui/selects/base/BaseSelect.vue'
 import ChangeIcon from '@/components/ui/icons/popular/ChangeIcon.vue'
 import Search from '@/components/ui/search/base/Search.vue'
+import InfoTooltip from '@/components/ui/tooltips/info/InfoTooltip.vue'
+import BonusSystemTooltipMessage from '@/components/modules/tooltip-messages/bonus-system/BonusSystemTooltipMessage.vue'
+import TextTooltip from '@/components/ui/tooltips/text/TextTooltip.vue'
+import BaseInput from '@/components/ui/inputs/base/BaseInput.vue'
 
 const targetSelectOne = ref('')
 const targetSelectTwo = ref('')
 const targetSelectThree = ref('')
 const titles = ['Хот', 'Ретро', 'Поплуряные']
+const inputModels = ref({
+  login: '',
+  phone: '',
+  email: '',
+})
 </script>
 
 <template>
@@ -36,6 +45,30 @@ const titles = ['Хот', 'Ретро', 'Поплуряные']
         <h3>Search:</h3>
         <Search />
       </section>
+      <section class="list">
+        <h3>Tooltips Info:</h3>
+        <InfoTooltip :message="BonusSystemTooltipMessage" />
+        <InfoTooltip :message="BonusSystemTooltipMessage" />
+        <InfoTooltip :message="BonusSystemTooltipMessage" />
+      </section>
+      <section class="list">
+        <h3>Tooltips Text:</h3>
+        <TextTooltip
+          text="Наведи курсор на меня"
+          message="Вот оно я - сообщение"
+        />
+        <TextTooltip
+          text="Наведи курсор на меня тоже!"
+          message="Вот оно я - сообщение"
+        />
+        <TextTooltip text="И на меня!!!" message="Вот оно я - сообщение" />
+      </section>
+      <section class="list">
+        <h3>Inpus:</h3>
+        <BaseInput v-model="inputModels.login" type="text" placeholder="Введи логин" />
+        <BaseInput v-model="inputModels.email" type="email" placeholder="Тут почту" />
+        <BaseInput v-model="inputModels.phone" type="phone" placeholder="Уже номер" />
+      </section>
     </div>
   </div>
 </template>
@@ -44,6 +77,7 @@ const titles = ['Хот', 'Ретро', 'Поплуряные']
 .page {
   color: white;
   height: 100vh;
+
   &-container {
     display: flex;
     flex-direction: column;

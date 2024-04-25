@@ -4,4 +4,16 @@
     flex-direction: column;
     gap: 20px;
   }
+
+  &-card {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &-container {
+    width: 100%;
+    display: flex;
+    align-content: center;
+  }
 }
