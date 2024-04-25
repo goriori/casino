@@ -2,6 +2,7 @@ import { ref } from 'vue'
 import { defineStore } from 'pinia'
 import GamesService from '@/API/games/gameService.js'
 import { useDeviceType } from '@/utils/useDeviceType.js'
+import { checkDeviceType } from '@/utils/helpers/checkDeviceType.js'
 
 export const useGameStore = defineStore('gameStore', () => {
   const TYPES_DEVICE = {
@@ -16,7 +17,8 @@ export const useGameStore = defineStore('gameStore', () => {
   const gamesCategories = ref({})
   const getGames = async () => {
     const { data } = await GamesService.getGames()
-    const { isMobile } = useDeviceType()
+    const userAgent = navigator.userAgent
+    const isMobile = checkDeviceType(userAgent)
     games.value = clearDuplicateGames([...data])
     if (isMobile) deviceGames.value = [...filterGameDevice(TYPES_DEVICE.MOBILE, games.value)]
     else deviceGames.value = [...filterGameDevice(TYPES_DEVICE.DESKTOP, games.value)]

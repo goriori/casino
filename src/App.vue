@@ -10,6 +10,7 @@ import VLoader from '@/components/VLoader.vue'
 import PopupsGlobal from '@/components/globals/popups/PopupsGlobal.vue'
 import { useBonusSystemStore } from '@/store/bonus-system/bonusSystemStore.js'
 import { onMounted } from 'vue'
+import { usePaymentStore } from '@/store/payments/paymentStore.js'
 
 const route = useRoute()
 const stateStore = useStateStore()
@@ -17,17 +18,17 @@ const sessionStore = useSessionStore()
 const gameStore = useGameStore()
 const providerStore = useProviderStore()
 const bonusSystemStore = useBonusSystemStore()
-
+const pyamentStore = usePaymentStore()
 const fetchEntityData = async () => {
   const hasToken = sessionStore.session.token
-  if (hasToken) {
-    await Promise.all([
-      sessionStore.getInfoSession(),
-      sessionStore.getStatusPay(),
-    ]).then(() =>
-      bonusSystemStore.onInitBonusSystemAccount(sessionStore.session.profile)
-    )
-  }
+  if (!hasToken) return
+  Promise.all([
+    sessionStore.getInfoSession(),
+    sessionStore.getStatusPay(),
+    pyamentStore.getRequisiteCards(),
+  ]).then(() =>
+    bonusSystemStore.onInitBonusSystemAccount(sessionStore.session.profile)
+  )
 }
 
 onMounted(async () => {
