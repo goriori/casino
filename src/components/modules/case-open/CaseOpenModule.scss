@@ -106,7 +106,9 @@
 
   &-about {
     width: 100%;
-
+    &-item {
+      max-width: 167px;
+    }
     &-title {
       max-width: 341px;
       padding: 20px 40px;
@@ -133,6 +135,8 @@
       align-items: center;
       flex-wrap: wrap;
       max-width: 1650px;
+      max-height: 200px;
+      overflow: auto;
       gap: 47px;
       @media (max-width: $md5 + px) {
         margin-top: 20px;
