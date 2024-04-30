@@ -126,15 +126,14 @@ onMounted(async () => {
   &-button {
     max-width: 326px;
     margin: 0 auto;
-    @media (max-width: $md4 + px) {
+    @media (max-width: $md2 + px) {
       display: none;
     }
   }
 
   &-card {
     display: none;
-    height: 120px;
-    @media (max-width: $md4 + px) {
+    @media (max-width: $md2 + px) {
       display: flex;
       align-items: center;
       justify-content: center;

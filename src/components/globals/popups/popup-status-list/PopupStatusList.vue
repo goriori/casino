@@ -19,7 +19,7 @@ const emits = defineEmits(['close'])
           получаете 1 очко опыта и 1 балл. Чем больше опыта, тем выше ваш
           уровень и дороже награда.
         </p>
-        <div>
+        <div class="statuses">
           <ProfileStatusesModule />
         </div>
       </div>
@@ -40,7 +40,9 @@ const emits = defineEmits(['close'])
     padding: 20px;
     color: #fff;
     max-width: 1200px;
-
+    @media (max-width: $md4 + px) {
+      max-height: 600px;
+    }
     &-header {
       display: flex;
       justify-content: space-between;
@@ -63,4 +65,6 @@ const emits = defineEmits(['close'])
     }
   }
 }
+
+
 </style>

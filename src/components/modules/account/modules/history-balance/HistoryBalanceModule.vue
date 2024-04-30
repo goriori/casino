@@ -301,7 +301,7 @@ tr {
     margin-top: 0;
   }
 
-  @media (max-width: 1500px) {
+  @media (max-width: $md1 + px) {
     gap: 60px;
   }
   @media (max-width: $md2 + px) {
