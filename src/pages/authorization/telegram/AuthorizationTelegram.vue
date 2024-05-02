@@ -78,7 +78,7 @@ const authorization = async () => {
     .then(() => sendTelegramMessage(newPassword, userId))
     .then(() => onAuthorizationUser(userId))
     .catch((e) => onErrorAuthorization(e, userId))
-    .finally(window.location.reload)
+    .finally(() => router.go())
 }
 
 onMounted(async () => {
