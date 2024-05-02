@@ -27,6 +27,7 @@ const onChoiceMethodPayment = (method, crypto) => {
   <div class="popup-withdrawal-replenishment">
     <div class="deposit">
       <div class="deposit-card">
+        <h3>Не отыгранный бонусный баланс обнуляется</h3>
         <p>Депозит с банковской карты:</p>
         <div class="deposit-card-pay" v-ripple>
           <WalletIcon />

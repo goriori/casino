@@ -111,7 +111,7 @@ onMounted(async () => {
     grid-template-columns: repeat(5, 1fr);
     gap: 25px;
     @media (max-width: $md2 + px) {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
     }
     @media (max-width: $md3 + px) {
       grid-template-columns: repeat(3, 1fr);

@@ -95,12 +95,18 @@ onMounted(async () => {
               Примечание: При следующем депозите неотыгранный бонус обнуляется,
               новый применяется автоматически.
             </p>
+            <p id="note">
+              <strong>
+                Примечание: При следующем депозите неотыгранный бонус
+                обнуляется, новый применяется автоматически.
+              </strong>
+            </p>
           </div>
         </div>
         <div class="exchange">
           <article class="exchange-bonus">
             <h4 class="exchange-title">
-              Ваш бонус:
+              Вы отыграли:
               <mark
                 >{{ sessionStore.session?.profile?.show_out_balance?.current }}
               </mark>
@@ -123,8 +129,8 @@ onMounted(async () => {
                 class="exchange-range"
               />
               <BaseButton
-                v-if="
-                  sessionStore.session?.profile?.show_out_balance
+                :disabled="
+                  !sessionStore.session?.profile?.show_out_balance
                     ?.show_exchange_button
                 "
                 @click="onExchangeBonus"
