@@ -31,7 +31,7 @@ const redirectToBonuses = () => {
   else stateStore.globalPopupsModules.authorization.visibility = true
 }
 const redirectToSupports = () => {
-  const telegramLink = window.TG_BOT
+  const telegramLink = window.TG_SUPPORT
   const a = document.createElement('a')
   a.href = telegramLink
   a.target = '_blank'
