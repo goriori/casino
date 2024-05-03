@@ -70,4 +70,21 @@ export default class AccountService {
       throw e
     }
   }
+
+  static async readMessageAccount(messageId) {
+    try {
+      apiConfig.getToken()
+      const response = await axiosInstance({
+        url: `/messages/view/${messageId}`,
+        headers: {
+          Authorization: `Bearer ${apiConfig.token}`,
+        },
+        validateStatus: validTokenExpired,
+        method: 'GET',
+      })
+      return response.data
+    } catch (e) {
+      throw e
+    }
+  }
 }

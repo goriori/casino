@@ -3,12 +3,20 @@ import { onMounted, ref } from 'vue'
 import { useMailStore } from '@/store/mail/mailStore.js'
 import MailMessagesIcon from '@/components/ui/icons/header/MailMessagesIcon.vue'
 import MessageIcons from '@/components/ui/icons/mail-messages/MessageIcons.vue'
-
+import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
+import { useStateStore } from '@/store/stateStore.js'
 
 const isOpen = ref(false)
 const mailStore = useMailStore()
+const stateStore = useStateStore()
 const changeIsOpen = () => (isOpen.value = !isOpen.value)
+const readMessage = async (id) => {
+  stateStore.isLoading = true
+  await mailStore.readMessage(id)
+  await mailStore.getMessages()
+  stateStore.isLoading = false
 
+}
 onMounted(async () => {
   await mailStore.getMessages()
 })
@@ -43,9 +51,12 @@ onMounted(async () => {
                 </div>
               </div>
               <div class="notification-actions">
-                <!--              <BaseButton>-->
-                <!--                <p>Удалить</p>-->
-                <!--              </BaseButton>-->
+                <BaseButton
+                  class="action"
+                  @click="readMessage(message.id)"
+                >
+                  <p>Прочитать</p>
+                </BaseButton>
               </div>
             </article>
           </div>
