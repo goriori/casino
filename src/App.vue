@@ -1,16 +1,16 @@
 <script setup>
 import { useRoute } from 'vue-router'
+import { onMounted } from 'vue'
 import { useStateStore } from '@/store/stateStore'
 import { useSessionStore } from '@/store/session/sessionStore.js'
 import { useGameStore } from '@/store/games/gameStore.js'
 import { useProviderStore } from '@/store/providers/providerStore.js'
-import { useSettingsStore } from '@/store/settings/settingStore.js'
+import { useBonusSystemStore } from '@/store/bonus-system/bonusSystemStore.js'
+import { usePaymentStore } from '@/store/payments/paymentStore.js'
+import { useReloadInterval } from '@/utils/useReloadInterval.js'
 import MoveUpModule from '@/components/modules/move-up/MoveUpModule.vue'
 import VLoader from '@/components/VLoader.vue'
 import PopupsGlobal from '@/components/globals/popups/PopupsGlobal.vue'
-import { useBonusSystemStore } from '@/store/bonus-system/bonusSystemStore.js'
-import { onMounted } from 'vue'
-import { usePaymentStore } from '@/store/payments/paymentStore.js'
 
 const route = useRoute()
 const stateStore = useStateStore()
@@ -19,6 +19,7 @@ const gameStore = useGameStore()
 const providerStore = useProviderStore()
 const bonusSystemStore = useBonusSystemStore()
 const pyamentStore = usePaymentStore()
+
 const fetchEntityData = async () => {
   const hasToken = sessionStore.session.token
   if (!hasToken) return
@@ -31,6 +32,8 @@ const fetchEntityData = async () => {
   )
 }
 
+
+useReloadInterval()
 onMounted(async () => {
   await fetchEntityData()
 })
