@@ -8,7 +8,7 @@ import SeeMoreButton from '@/components/ui/buttons/see-more/SeeMoreButton.vue'
 import PopularIcon from '@/components/ui/icons/popular/PopularIcon.vue'
 import SeeMoreCard from '@/components/ui/cards/see-more/SeeMoreCard.vue'
 
-const categoriesId = [27, 28, 29]
+const categoriesId = window.CATEGORIES_ID
 const providerStore = useProviderStore()
 const gamesStore = useGameStore()
 const router = useRouter()
