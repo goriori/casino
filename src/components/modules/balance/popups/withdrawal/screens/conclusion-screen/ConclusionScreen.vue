@@ -8,6 +8,8 @@ import CurrencyIcon from '@/components/ui/icons/balance/CurrencyIcon.vue'
 import BaseButton from '@/components/ui/buttons/base/BaseButton.vue'
 
 const emits = defineEmits(['bank-card'])
+const minCountWithdrawal = window.MESSAGES_POPUP.WITHDRAWAL.MIN_COUNT_WITHDRAWAL
+const maxCountWithdrawal = window.MESSAGES_POPUP.WITHDRAWAL.MAX_COUNT_WITHDRAWAL
 </script>
 
 <template>
@@ -31,8 +33,8 @@ const emits = defineEmits(['bank-card'])
             <input
               type="number"
               placeholder="Введите сумму. Мин. 1000"
-              min="1000"
-              max="1000000000"
+              :min="minCountWithdrawal"
+              :max="maxCountWithdrawal"
               v-model="cnclsnForm.sum"
             />
             <div class="input-currency-target">

@@ -3,7 +3,8 @@ import { useSessionStore } from '@/store/session/sessionStore.js'
 import { onMounted } from 'vue'
 import {
   dateEnd,
-  dateStart, filteredHistory
+  dateStart,
+  filteredHistory,
 } from '@/components/modules/account/modules/history-balance/HistoryBalanceModule.options.js'
 
 const sessionStore = useSessionStore()
@@ -31,12 +32,12 @@ onMounted(async () => {
       </svg>
     </div>
     <div class="history__balance-module-content">
-<!--      <div class="history__balance-module-target">-->
-<!--        <p>с</p>-->
-<!--        <input type="date" v-model="dateStart" />-->
-<!--        <p>по</p>-->
-<!--        <input type="date" v-model="dateEnd" />-->
-<!--      </div>-->
+      <!--      <div class="history__balance-module-target">-->
+      <!--        <p>с</p>-->
+      <!--        <input type="date" v-model="dateStart" />-->
+      <!--        <p>по</p>-->
+      <!--        <input type="date" v-model="dateEnd" />-->
+      <!--      </div>-->
       <hr />
       <div class="history__balance-module-info">
         <table>
@@ -47,22 +48,23 @@ onMounted(async () => {
             <td class="info-title">Сумма</td>
             <td class="info-title">Статус</td>
           </tr>
-
-          <tr
-            class="info-content-item"
-            v-for="history in filteredHistory"
-            :key="history.id"
-          >
-            <td class="info-content">
-              {{ new Date(history.created_at).toLocaleDateString() }}
-            </td>
-            <td class="info-content">
-              {{ history.type === 'add' ? 'Зачисление' : 'Отправление' }}
-            </td>
-            <td class="info-content">evoplay</td>
-            <td class="info-content">{{ history.summ }} Р</td>
-            <td class="info-content">Успешно</td>
-          </tr>
+          <div class="list">
+            <tr
+              class="info-content-item"
+              v-for="history in filteredHistory"
+              :key="history.id"
+            >
+              <td class="info-content">
+                {{ new Date(history.created_at).toLocaleDateString() }}
+              </td>
+              <td class="info-content">
+                {{ history.type === 'add' ? 'Зачисление' : 'Отправление' }}
+              </td>
+              <td class="info-content">evoplay</td>
+              <td class="info-content">{{ history.summ }} Р</td>
+              <td class="info-content">Успешно</td>
+            </tr>
+          </div>
         </table>
       </div>
     </div>
@@ -137,6 +139,7 @@ hr {
         display: flex;
         flex-direction: column;
         gap: 12px;
+
       }
 
       &-info {
@@ -187,6 +190,9 @@ hr {
 }
 
 table {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   @media (max-width: $md2 + px) {
     width: 100%;
   }
@@ -219,5 +225,10 @@ td {
   @media (max-width: 1500px) {
     width: 60px;
   }
+}
+
+.list {
+  max-height: 300px;
+  overflow-y: auto;
 }
 </style>

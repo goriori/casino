@@ -1,4 +1,4 @@
-window.API = 'https://api.gamesoffutures.ru'
+window.API = 'https://api.slots-spincity.com'
 window.CEF = false
 window.TIMEOUT = 90
 window.IS_DEV = true

@@ -8,3 +8,4 @@ export const isRestraintPolicyOpen = ref(false)
 export const isAffiliatePolicyOpen = ref(false)
 export const isPrivacyPolicyOpen = ref(false)
 export const isTermsPolicyOpen = ref(false)
+
