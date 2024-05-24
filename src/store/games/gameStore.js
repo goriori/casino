@@ -12,8 +12,8 @@ export const useGameStore = defineStore('gameStore', () => {
       ...data.filter(
         (item) =>
           item.view === 1 &&
-          item.categories.length > 0 &&
-          item.categories[0]?.category_id !== 8
+          item.category.length > 0 &&
+          item.category[0] !== 8
       ),
     ]
     filteredGame.value = games.value
@@ -22,8 +22,8 @@ export const useGameStore = defineStore('gameStore', () => {
 
   const filterGames = (categoryPosition) => {
     const filterData = games.value.filter((item) => {
-      return item.categories.find(
-        (category) => category?.category_id === categoryPosition
+      return item.category.find(
+        (category) => category === categoryPosition
       )
     })
     filteredGame.value = [...filterData]
