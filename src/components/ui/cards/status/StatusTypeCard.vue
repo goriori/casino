@@ -44,8 +44,9 @@ const sessionStore = useSessionStore()
 const statusMaxExp = ref()
 const progressBar = ref('')
 const userExp = ref(0)
-const privilages = props.statusPrivilage.split('\r\n')
-console.log(privilages)
+const privilages = props.statusPrivilage?.split('\r\n') || [
+  'Привелегии отсутствуют...',
+]
 const indexStatus = settingsStore.statuses.findIndex(
   (status) => status.id === props.statusId
 )
