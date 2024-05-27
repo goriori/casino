@@ -42,7 +42,7 @@ const validForm = async () => {
   // console.log('valid date :', !dateTest(withdrawalForm.value.date))
   if (!cardTest(cnclsnForm.value.card)) throw false
   if (!dateTest(cnclsnForm.value.date)) throw false
-  if (cnclsnForm.value.sum < 1000) throw false
+  if (cnclsnForm.value.sum < 500) throw false
   return true
 }
 

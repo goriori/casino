@@ -32,7 +32,7 @@ const maxCountWithdrawal = window.MESSAGES_POPUP.WITHDRAWAL.MAX_COUNT_WITHDRAWAL
           <div class="input-currency">
             <input
               type="number"
-              placeholder="Введите сумму. Мин. 1000"
+              placeholder="Введите сумму. Мин. 500"
               :min="minCountWithdrawal"
               :max="maxCountWithdrawal"
               v-model="cnclsnForm.sum"
