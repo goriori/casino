@@ -64,6 +64,12 @@
 			&-section {
 				margin-top: auto;
 			}
+			&-btn {
+				max-width: 100px;
+				p {
+					font-size: 16px;
+				}
+			}
 		}
 		@media (max-width: $md4 + px) {
 			padding: 10px 20px;

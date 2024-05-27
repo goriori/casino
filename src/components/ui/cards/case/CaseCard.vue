@@ -226,6 +226,7 @@ const showPrizeDescription = (id) => {
   }
 
   p {
+    font-size: 16px;
     color: #fff;
   }
 }

@@ -80,7 +80,7 @@ onMounted(async () => {
                 </div>
                 <div class="card__content-section">
                   <h2>Колесо фортуны</h2>
-                  <BaseButton @click="onSpin">
+                  <BaseButton @click="onSpin" class="card__content-btn">
                     <p>Вращать</p>
                   </BaseButton>
                 </div>
