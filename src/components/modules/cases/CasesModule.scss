@@ -49,6 +49,9 @@
 			top: -70px;
 			width: 100px;
 		}
+		@media(max-width: $md5 + px) {
+			top: -20px;
+		}
 	}
 
 	&-card {
