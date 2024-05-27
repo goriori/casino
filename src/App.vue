@@ -33,7 +33,7 @@ const fetchEntityData = async () => {
 }
 
 
-useReloadInterval()
+// useReloadInterval()
 onMounted(async () => {
   await fetchEntityData()
 })
