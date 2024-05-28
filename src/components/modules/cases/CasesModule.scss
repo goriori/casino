@@ -6,11 +6,9 @@
 	transition: all 0.3s ease;
 	padding: 30px;
 }
-
 .slide {
-	padding: 20px;
+	padding: 10px;
 }
-
 .cases__module {
 	width: 100%;
 	display: flex;
@@ -42,16 +40,16 @@
 	svg {
 		position: absolute;
 		top: -30px;
+		width: 160px;
 		@media (max-width: $md1 + px) {
 			width: 120px;
+			top: -60px;
 		}
 		@media(max-width: $md4 + px) {
-			top: -70px;
+			top: -20px;
 			width: 100px;
 		}
-		@media(max-width: $md5 + px) {
-			top: -20px;
-		}
+
 	}
 
 	&-card {
