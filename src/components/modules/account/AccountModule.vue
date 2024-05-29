@@ -21,6 +21,7 @@ const HistoryBalanceModule = defineAsyncComponent(() =>
 const ExchangePointsModule = defineAsyncComponent(() =>
   import('@/components/modules/exchange-points/ExchangePointsModule.vue')
 )
+
 </script>
 
 <template>

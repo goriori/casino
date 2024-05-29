@@ -1,12 +1,15 @@
+@import '@/assets/scss/variables';
 .referal__promocode {
 
   &-tooltip {
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     gap: 20px;
     font-size: 14px;
     color: #bbbbbb;
     text-transform: none;
+
   }
 }
