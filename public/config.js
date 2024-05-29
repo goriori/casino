@@ -16,7 +16,7 @@ window.MESSAGES_POPUP = {
       'Во время регистрации произошла ошибка! Пожалуйста попробуйте позже!',
   },
   SUM_SCREEN: {
-    MIN_COUNT_PAY: 500,
+    MIN_COUNT_PAY: 300,
     ERROR_VALIDATION: 'Минимальная сумма для пополнения! ',
   },
   CONFIRM_TRANSLATION: {
@@ -24,6 +24,7 @@ window.MESSAGES_POPUP = {
     ERROR_SERVER:
       'Во время подтверждения  произошла ошибка! Пожалуйста попробуйте позже!',
   },
+
   WITHDRAWAL: {
     MIN_COUNT_WITHDRAWAL: 500,
     MAX_COUNT_WITHDRAWAL: 1000000000,
