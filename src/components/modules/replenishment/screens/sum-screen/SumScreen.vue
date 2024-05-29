@@ -5,7 +5,7 @@ import { useValid } from '@/components/modules/replenishment/screens/sum-screen/
 import { useSessionStore } from '@/store/session/sessionStore.js'
 
 const emits = defineEmits(['replenish'])
-const minCountPay = window.MIN_COUNT_WITHDRAWAL
+const minCountPay = window.MIN_COUNT_REPLENISHMENT
 const sessionStore = useSessionStore()
 const { balance, isValid, timeClosePopup, promo, bonusBalance } = useData()
 const { errorValid, validSum } = useValid(balance, isValid, timeClosePopup)

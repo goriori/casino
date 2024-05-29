@@ -1,7 +1,7 @@
 export function useValid(balance, isValid, timeClosePopup) {
-  const minCountBalance = window.MIN_COUNT_WITHDRAWAL
+  const minCountReplenishment = window.MIN_COUNT_REPLENISHMENT
   const validSum = async () => {
-    if (balance.value < minCountBalance) throw false
+    if (balance.value < minCountReplenishment) throw false
   }
 
   const errorValid = () => {
