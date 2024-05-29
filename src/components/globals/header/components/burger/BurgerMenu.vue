@@ -11,6 +11,7 @@ const settingStore = useSettingsStore()
 const router = useRouter()
 const visibility = ref(false)
 const changeVisibility = () => (visibility.value = !visibility.value)
+const serverUrl = window.API
 const redirectToSupports = () => {
   const telegramLink = window.TG_BOT
   const a = document.createElement('a')
@@ -33,7 +34,7 @@ const redirectToSupports = () => {
           <CloseIcon @click="changeVisibility" />
         </div>
         <div class="header-burger-menu-logo">
-          <img src="https://api.gamesoffutures.ru/logo/logo.png" alt="" />
+          <img :src="serverUrl + '/logo/logo.png'" alt="" />
         </div>
         <div class="header-burger-menu-list">
           <div class="header-burger-menu-item" @click="router.push('/bonuses')">
@@ -48,7 +49,6 @@ const redirectToSupports = () => {
         </div>
       </div>
     </Transition>
-
   </div>
 </template>
 
@@ -66,7 +66,6 @@ svg {
 
 .header {
   &-burger {
-
     &-menu {
       position: fixed;
       width: 100vw;
@@ -78,7 +77,7 @@ svg {
       padding: 30px 26px;
       display: flex;
       flex-direction: column;
-      gap:26px;
+      gap: 26px;
 
       &-head {
         display: flex;
