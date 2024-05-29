@@ -63,7 +63,7 @@ onMounted(() => {
     <h2>Обмен баллов</h2>
     <div class="exchange__points-card">
       <div class="exchange__points-card-container">
-        <InfoTooltip :message="ProfileStatusTooltipMessage" />
+        <InfoTooltip :message="ProfileStatusTooltipMessage" class="info-tooltip"/>
         <form class="exchange__points-form" @submit.prevent>
           <h3 class="form-title">
             Ваши баллы: <span>{{ bonusSystemStore.bonusSystemState.coins }}</span>
