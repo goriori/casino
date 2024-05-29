@@ -8,14 +8,8 @@ export function useData() {
   const balance = ref(0)
   const promo = ref('')
   const bonusBalance = computed(() => {
-    if (sessionStore.session.history.length === 0) {
-      return (balance.value / 100) * 50
-    } else if (sessionStore.session.history.length > 0) {
-      return (
-        (balance.value / 100) *
-        sessionStore.session?.profile?.stair_status?.bonus
-      )
-    }
+    if (sessionStore.session.profile.show_promo) return (balance.value / 100) * 50
+    else return ((balance.value / 100) * sessionStore.session?.profile?.stair_status?.bonus)
   })
   return {
     isValid,
