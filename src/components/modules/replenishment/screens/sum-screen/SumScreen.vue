@@ -85,7 +85,7 @@ const { onChangeSlotBalance, onConfirmSum } = useMethods(
           10000Р
         </div>
       </div>
-      <div class="popup-screen-promo" v-if="!sessionStore.session?.profile?.show_out_balance?.ticket">
+      <div class="popup-screen-promo" v-if="sessionStore.session?.profile?.show_promo">
         <label for="promo">Реферальный промокод:</label><br />
         <input type="text" id="promo" class="field" v-model="promo" />
       </div>
