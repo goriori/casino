@@ -40,6 +40,9 @@ p {
     display: flex;
     flex-direction: column;
     gap: 53px;
+    @media (max-width: $md5 + px) {
+      display: block;
+    }
   }
 
   &-preview {

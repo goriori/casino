@@ -115,7 +115,9 @@ const ExchangePointsModule = defineAsyncComponent(() =>
       gap: 48px;
 
       @media (max-width: 1500px) {
-        gap: 24px;
+        display: flex;
+        flex-wrap: wrap;
+
       }
       @media (max-width: $md2 + px) {
         display: flex;
@@ -154,6 +156,7 @@ const ExchangePointsModule = defineAsyncComponent(() =>
   flex-direction: column;
   gap: 20px;
   @media (max-width: 1500px) {
+    width: 100%;
     gap: 24px;
   }
 }
