@@ -75,7 +75,7 @@ onMounted(() => {
         class="message-need-verification"
         v-if="!sessionStore.session?.profile?.is_verified"
       >
-        Ваш аккаунт не верефицирован
+        Ваш аккаунт не верифицирован
       </h3>
       <h3
         class="message-success-verification"
@@ -85,7 +85,7 @@ onMounted(() => {
       </h3>
       <TextTooltip
         v-if="!sessionStore.session?.profile?.is_verified"
-        text="Как верефицировать мой аккаунт?"
+        text="Как верифицировать мой аккаунт?"
         message="Cвяжитесь с техподдержкой для верификации и дальнейших инструкций"
       />
     </div>
