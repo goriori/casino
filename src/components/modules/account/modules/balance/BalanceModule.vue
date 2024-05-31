@@ -181,6 +181,9 @@ onMounted(() => {
     @media (max-width: $md4 + px) {
       max-height: 10px;
     }
+    .tooltip {
+      flex: 0 1 20px;
+    }
   }
 }
 

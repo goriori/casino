@@ -1,6 +1,6 @@
 window.API = 'https://api.slots-spincity.com'
 window.TG_BOT = 'https://t.me/slotspincity_bot'
-window.TG_SUPPORT = 'https://t.me/xcasino1x_bot'
+window.TG_SUPPORT = 'https://t.me/spincityhelp'
 window.CEF = false
 window.TIMEOUT = 90
 window.IS_DEV = true
