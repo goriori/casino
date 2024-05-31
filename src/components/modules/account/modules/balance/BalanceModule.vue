@@ -182,7 +182,7 @@ onMounted(() => {
       max-height: 10px;
     }
     .tooltip {
-      flex: 0 1 20px;
+      flex: 0 0 20px;
     }
   }
 }
