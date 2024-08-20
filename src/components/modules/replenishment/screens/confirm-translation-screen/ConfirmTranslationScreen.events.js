@@ -29,6 +29,12 @@ export function useMethods(
       emits('error')
     }
   }
+
+  const onSubmit = (time, emits) => {
+    paymentStore.replObject.user_id = sessionStore.session.profile.id
+    paymentStore.replObject.time = time
+    onValidFullName(emits).then(onConfirmTranslation).catch(onErrorValid)
+  }
   const onChangeFile = (event, emits) => {
     const files = event.target.files || event.dataTransfer.files
     if (!files.length) return
@@ -56,5 +62,6 @@ export function useMethods(
     onChangeFile,
     onChangeFullName,
     onClipboardWrite,
+    onSubmit,
   }
 }

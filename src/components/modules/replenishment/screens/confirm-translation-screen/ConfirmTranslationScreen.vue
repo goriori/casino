@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, onUnmounted, watch } from 'vue'
+import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { usePaymentStore } from '@/store/payments/paymentStore.js'
 import { useTimer } from '@/utils/useTimer.js'
 import { useData } from '@/components/modules/replenishment/screens/confirm-translation-screen/ConfirmTranslationScreen.options.js'
@@ -18,12 +18,14 @@ const props = defineProps({
   },
 })
 
+const time = ref('')
+
 const paymentStore = usePaymentStore()
 const serverUrl = window.API
 const { currentTime, isFinished, startTimer } = useTimer(15 * 60 * 1000)
 const { screenshot, timeClosePopup, translationMessages, fullName } = useData()
 const { onValidFullName, onErrorValid } = useValids(fullName, timeClosePopup)
-const { clearOptions, onChangeFile, onChangeFullName, onClipboardWrite } =
+const { clearOptions, onSubmit, onChangeFullName, onClipboardWrite } =
   useMethods(
     fullName,
     screenshot,
@@ -32,6 +34,14 @@ const { clearOptions, onChangeFile, onChangeFullName, onClipboardWrite } =
     onErrorValid,
     onValidFullName
   )
+
+const onClick = () => {
+  if (time.value.length < 5) {
+    onErrorValid()
+    return
+  }
+  onSubmit(time, emits)
+}
 watch(isFinished, (value) => {
   if (value) emits('error')
 })
@@ -47,13 +57,7 @@ onUnmounted(() => clearOptions())
   <div class="confirm__translation-screen">
     <div class="confirm__translation-screen-title">
       <div class="title-target-bank">
-        <img
-          :src="
-            serverUrl +
-            paymentStore.targetRequisite.bankIcon
-          "
-          alt=""
-        />
+        <img :src="serverUrl + paymentStore.targetRequisite.bankIcon" alt="" />
         <p>{{ paymentStore.targetRequisite.bankName }}</p>
       </div>
       <div class="title-timer">
@@ -99,22 +103,18 @@ onUnmounted(() => clearOptions())
           @change="onChangeFullName"
         />
       </div>
-      <BaseButton>
-        <div class="btn-attach-file">
-          <AttachIcon />
-          <p>Прикрепить чек из банка*</p>
-          <input
-            type="file"
-            name="file"
-            autocomplete="off"
-            accept=".jpg,.png"
-            @change="(e) => onChangeFile(e, emits)"
-          />
-        </div>
-      </BaseButton>
-      <p class="attach-rules">
-        Чек по операции с номером документа (только PNG и JPG)
-      </p>
+      <div class="full_name-field">
+        <p>Время платежа:*</p>
+        <input
+          v-model="time"
+          type="text"
+          v-maska="'##:##'"
+          name="fullname"
+          autocomplete="off"
+          placeholder="00:00"
+        />
+      </div>
+      <BaseButton @click="onClick"> Отправить </BaseButton>
     </div>
   </div>
 </template>

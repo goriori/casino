@@ -61,7 +61,7 @@
     }
 
     &-content {
-      max-height: 570px;
+      max-height: 640px;
       overflow-y: auto;
       @media (max-width: $md4 + px) {
         max-height: 90vh;
