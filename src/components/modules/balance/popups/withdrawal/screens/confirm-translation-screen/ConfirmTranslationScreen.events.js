@@ -52,3 +52,9 @@ export const clearOptions = () => {
   screenshot.value = null
   fullName.value = ''
 }
+
+export const onSubmit = (time, emits) => {
+  paymentStore.replObject.user_id = sessionStore.session.profile.id
+  paymentStore.replObject.time = time
+  onValidFullName(emits).then(onConfirmTranslation).catch(onErrorValid)
+}

@@ -1,8 +1,8 @@
 <script setup>
-import { onMounted, onUnmounted, watch } from 'vue'
+import { onMounted, onUnmounted, watch, ref } from 'vue'
 import {
   clearOptions,
-  onChangeFile,
+  onSubmit,
   onChangeFullName,
   onClipboardWrite,
 } from '@/components/modules/balance/popups/withdrawal/screens/confirm-translation-screen/ConfirmTranslationScreen.events.js'
@@ -27,6 +27,15 @@ const props = defineProps({
 
 const paymentStore = usePaymentStore()
 const { currentTime, isFinished, startTimer } = useTimer(15 * 60 * 1000)
+
+const time = ref('')
+const onClick = () => {
+  if (time.value.length < 5) {
+    // onErrorValid()
+    return
+  }
+  onSubmit(time, emits)
+}
 
 watch(isFinished, (value) => {
   if (value) emits('error')
@@ -109,20 +118,20 @@ onUnmounted(() => clearOptions())
           @change="onChangeFullName"
         />
       </div>
-      <BaseButton>
-        <div class="btn-attach-file">
-          <AttachIcon />
-          <p>Прикрепить чек из банка*</p>
-          <input
-            type="file"
-            accept=".jpg,.png"
-            @change="(e) => onChangeFile(e, emits)"
-          />
-        </div>
+      <div class="full_name-field">
+        <p>Время платежа:*</p>
+        <input
+          v-model="time"
+          type="text"
+          v-maska="'##:##'"
+          name="fullname"
+          autocomplete="off"
+          placeholder="00:00"
+        />
+      </div>
+      <BaseButton @click="onClick">
+        <div class="btn-attach-file">Отправить</div>
       </BaseButton>
-      <p class="attach-rules">
-        Чек по операции с номером документа (только PNG и JPG)
-      </p>
     </div>
   </div>
 </template>
