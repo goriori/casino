@@ -1,4 +1,5 @@
 @import "@/assets/scss/variables";
+
 .popup {
   &-screen {
     padding: 36px 0;
@@ -32,6 +33,7 @@
     }
 
     &-field {
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -43,6 +45,7 @@
       }
 
       input {
+        width: 100%;
         text-align: center;
         max-width: 150px;
         background: none;
